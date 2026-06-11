@@ -44,7 +44,7 @@ nav{
   font-size:1.3rem;box-shadow:0 4px 12px rgba(236,72,153,0.3);flex-shrink:0;
 }
 .logo-name{font-family:'Fredoka One',cursive;font-weight:400;font-size:1.2rem;color:var(--navy);line-height:1.1}
-.logo-name span{display:block;font-family:'Quicksand',sans-serif;font-size:0.65rem;font-weight:700;color:var(--muted);letter-spacing:0.07em;text-transform:uppercase}
+.logo-name span{display:block;font-family:'Quicksand',sans-serif;font-size:0.65rem;font-weight:700;color:var(--muted);letter-spacing:0.07em;text-transform:uppercase;white-space:nowrap;overflow:hidden}
 .nav-links{display:flex;gap:0.15rem;justify-content:center;list-style:none}
 .nav-links a{text-decoration:none;color:var(--muted);font-weight:700;font-size:0.88rem;padding:0.45rem 0.85rem;border-radius:10px;transition:all 0.18s;white-space:nowrap}
 .nav-links a:hover,.nav-links a.active{color:var(--purple);background:var(--purple-l)}
@@ -246,6 +246,7 @@ footer{background:#0e4050;color:rgba(255,255,255,0.65);padding:3.5rem 2.5rem 2re
    =================================================== */
 @media(max-width:1024px){
   nav{padding:0 1.5rem}
+  .logo-name span{display:none}
   .nav-links a{font-size:0.82rem;padding:0.4rem 0.65rem}
   .nav-badge{display:none}
   .nav-enroll{padding:0.45rem 1rem;font-size:0.82rem}
