@@ -207,6 +207,16 @@ footer{background:#0e4050;color:rgba(255,255,255,0.65);padding:3.5rem 2.5rem 2re
 .ft-bottom-links a{color:rgba(255,255,255,0.4);text-decoration:none;margin-left:1.25rem;font-size:0.8rem}
 .ft-bottom-links a:hover{color:#fff}
 .heart{color:#EC4899}
+.icon-3d{border-radius:12px;display:flex;align-items:center;justify-content:center;flex-shrink:0;position:relative;overflow:hidden}
+.icon-3d::after{content:'';position:absolute;top:0;left:0;right:0;height:50%;background:rgba(255,255,255,0.18);border-radius:12px 12px 40% 40%/8px 8px 4px 4px}
+.icon-3d svg{position:relative;z-index:1}
+.c-teal{background:linear-gradient(145deg,#1a8ca8,#0e5268);box-shadow:0 4px 12px rgba(14,82,104,0.45),inset 0 1px 0 rgba(255,255,255,0.2)}
+.c-orange{background:linear-gradient(145deg,#fb923c,#c2410c);box-shadow:0 4px 12px rgba(249,115,22,0.45),inset 0 1px 0 rgba(255,255,255,0.2)}
+.c-green{background:linear-gradient(145deg,#22c55e,#15803d);box-shadow:0 4px 12px rgba(34,197,94,0.45),inset 0 1px 0 rgba(255,255,255,0.2)}
+.c-purple{background:linear-gradient(145deg,#a855f7,#7e22ce);box-shadow:0 4px 12px rgba(168,85,247,0.45),inset 0 1px 0 rgba(255,255,255,0.2)}
+.c-pink{background:linear-gradient(145deg,#f472b6,#be185d);box-shadow:0 4px 12px rgba(244,114,182,0.45),inset 0 1px 0 rgba(255,255,255,0.2)}
+.c-blue{background:linear-gradient(145deg,#3b82f6,#1d4ed8);box-shadow:0 4px 12px rgba(59,130,246,0.45),inset 0 1px 0 rgba(255,255,255,0.2)}
+.c-amber{background:linear-gradient(145deg,#fbbf24,#d97706);box-shadow:0 4px 12px rgba(251,191,36,0.45),inset 0 1px 0 rgba(255,255,255,0.2)}
 
 /* ===================================================
    RESPONSIVE — TABLET (768px – 1024px)
@@ -476,7 +486,7 @@ footer{background:#0e4050;color:rgba(255,255,255,0.65);padding:3.5rem 2.5rem 2re
 
 <div style="background:#166178;padding:3.5rem 2rem 3rem;text-align:center">
   <div style="max-width:700px;margin:0 auto">
-    <span style="display:inline-flex;align-items:center;gap:5px;background:rgba(255,255,255,0.15);color:#FDE68A;border:1px solid rgba(255,255,255,0.2);padding:0.3rem 0.85rem;border-radius:20px;font-size:0.75rem;font-weight:800;letter-spacing:0.06em;text-transform:uppercase;margin-bottom:1rem">👥 About Us</span>
+    <span style="display:inline-flex;align-items:center;gap:5px;background:rgba(255,255,255,0.15);color:#FDE68A;border:1px solid rgba(255,255,255,0.2);padding:0.3rem 0.85rem;border-radius:20px;font-size:0.75rem;font-weight:800;letter-spacing:0.06em;text-transform:uppercase;margin-bottom:1rem"><div class="icon-3d c-teal" style="width:22px;height:22px"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div> About Us</span>
     <h1 style="font-family:'Fredoka One',cursive;font-size:2.2rem;font-weight:400;color:#fff;margin-bottom:0.75rem;line-height:1.25">Who We Are</h1>
     <p style="color:rgba(255,255,255,0.8);font-size:1rem;line-height:1.7">NEST was founded with one belief — every child with special needs deserves world-class care, close to home.</p>
   </div>
@@ -492,7 +502,7 @@ footer{background:#0e4050;color:rgba(255,255,255,0.65);padding:3.5rem 2.5rem 2re
 <p style="color:#6b7280;font-size:0.95rem;line-height:1.8">Today, NEST serves hundreds of families across Pakistan from our center in DHA Phase 2, Sector G, Islamabad — providing hope, progress, and belonging to every child who walks through our doors.</p>
 </div>
 <div style="background:linear-gradient(145deg,#F0FDFA,#EFF6FF);border-radius:24px;padding:2.5rem;text-align:center">
-<div style="font-size:4rem;margin-bottom:1rem">🌟</div>
+<div class="icon-3d c-amber" style="width:72px;height:72px;margin:0 auto 1rem"><svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
 <div style="font-family:'Fredoka One',cursive;font-size:1.15rem;color:#1a1a2e;line-height:1.6;margin-bottom:0.75rem">"We don't just run a school — we build futures, one child at a time."</div>
 <div style="color:#6b7280;font-size:0.85rem;font-weight:700">— NEST Founders</div>
 </div>
@@ -503,22 +513,22 @@ footer{background:#0e4050;color:rgba(255,255,255,0.65);padding:3.5rem 2.5rem 2re
 <p style="color:#6b7280;text-align:center;margin-bottom:2rem;font-size:0.95rem">Everything we do is guided by these core principles.</p>
 <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1.25rem">
 <div style="background:#fff;border:2px solid #e5e7eb;border-radius:16px;padding:1.5rem;text-align:center">
-<div style="font-size:2rem;margin-bottom:0.75rem">💛</div>
+<div class="icon-3d c-orange" style="width:44px;height:44px;margin:0 auto 0.75rem"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></div>
 <h3 style="font-family:'Fredoka One',cursive;font-weight:400;font-size:1rem;color:#1a1a2e;margin-bottom:0.4rem">Compassion First</h3>
 <p style="color:#6b7280;font-size:0.84rem;line-height:1.6">Every interaction with children and families is rooted in empathy, patience, and genuine care.</p>
 </div>
 <div style="background:#fff;border:2px solid #e5e7eb;border-radius:16px;padding:1.5rem;text-align:center">
-<div style="font-size:2rem;margin-bottom:0.75rem">🔬</div>
+<div class="icon-3d c-teal" style="width:44px;height:44px;margin:0 auto 0.75rem"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 2v7.527a2 2 0 0 1-.211.896L4.72 20.55a1 1 0 0 0 .9 1.45h12.76a1 1 0 0 0 .9-1.45l-5.069-10.127A2 2 0 0 1 14 9.527V2"/><path d="M8.5 2h7"/><path d="M7 16h10"/></svg></div>
 <h3 style="font-family:'Fredoka One',cursive;font-weight:400;font-size:1rem;color:#1a1a2e;margin-bottom:0.4rem">Evidence-Based</h3>
 <p style="color:#6b7280;font-size:0.84rem;line-height:1.6">All our programs follow internationally recognized, research-backed therapeutic approaches.</p>
 </div>
 <div style="background:#fff;border:2px solid #e5e7eb;border-radius:16px;padding:1.5rem;text-align:center">
-<div style="font-size:2rem;margin-bottom:0.75rem">🤝</div>
+<div class="icon-3d c-blue" style="width:44px;height:44px;margin:0 auto 0.75rem"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
 <h3 style="font-family:'Fredoka One',cursive;font-weight:400;font-size:1rem;color:#1a1a2e;margin-bottom:0.4rem">Family Partnership</h3>
 <p style="color:#6b7280;font-size:0.84rem;line-height:1.6">Parents are our partners. We keep families informed, involved, and empowered at every step.</p>
 </div>
 <div style="background:#fff;border:2px solid #e5e7eb;border-radius:16px;padding:1.5rem;text-align:center">
-<div style="font-size:2rem;margin-bottom:0.75rem">🌱</div>
+<div class="icon-3d c-green" style="width:44px;height:44px;margin:0 auto 0.75rem"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 20h10"/><path d="M10 20c5.5-2.5.8-6.4 3-10"/><path d="M9.5 9.4c1.1.8 1.8 2.1 2 3.6.5-1.9 1.1-3.3 2.4-4.4"/><path d="M14.1 6.5a5.5 5.5 0 1 0 .9 10"/></svg></div>
 <h3 style="font-family:'Fredoka One',cursive;font-weight:400;font-size:1rem;color:#1a1a2e;margin-bottom:0.4rem">Continuous Growth</h3>
 <p style="color:#6b7280;font-size:0.84rem;line-height:1.6">We celebrate every milestone — no matter how small — because progress is progress.</p>
 </div>
@@ -530,25 +540,25 @@ footer{background:#0e4050;color:rgba(255,255,255,0.65);padding:3.5rem 2.5rem 2re
 <p style="color:#6b7280;text-align:center;margin-bottom:2rem;font-size:0.95rem">Dedicated professionals who bring expertise and heart to every session.</p>
 <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1.25rem">
 <div style="background:#fff;border:2px solid #e5e7eb;border-radius:16px;padding:1.5rem;text-align:center">
-<div style="width:64px;height:64px;border-radius:50%;background:linear-gradient(135deg,#166178,#0D9488);display:flex;align-items:center;justify-content:center;font-size:1.5rem;margin:0 auto 0.85rem">👩‍⚕️</div>
+<img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=300&auto=format&fit=crop&q=80" alt="Dr. Ayesha Malik" style="width:80px;height:80px;border-radius:50%;object-fit:cover;object-position:top;margin:0 auto 0.85rem;display:block;border:3px solid #166178;box-shadow:0 4px 14px rgba(0,0,0,0.15)">
 <h4 style="font-weight:700;color:#1a1a2e;font-size:0.95rem;margin-bottom:2px">Dr. Ayesha Malik</h4>
 <p style="color:#166178;font-size:0.8rem;font-weight:700;margin-bottom:0.4rem">Clinical Director</p>
 <p style="color:#6b7280;font-size:0.8rem">PhD Special Education · 12 years experience</p>
 </div>
 <div style="background:#fff;border:2px solid #e5e7eb;border-radius:16px;padding:1.5rem;text-align:center">
-<div style="width:64px;height:64px;border-radius:50%;background:linear-gradient(135deg,#7C3AED,#EC4899);display:flex;align-items:center;justify-content:center;font-size:1.5rem;margin:0 auto 0.85rem">👨‍⚕️</div>
+<img src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=300&auto=format&fit=crop&q=80" alt="Mr. Bilal Raza" style="width:80px;height:80px;border-radius:50%;object-fit:cover;object-position:top;margin:0 auto 0.85rem;display:block;border:3px solid #7C3AED;box-shadow:0 4px 14px rgba(0,0,0,0.15)">
 <h4 style="font-weight:700;color:#1a1a2e;font-size:0.95rem;margin-bottom:2px">Mr. Bilal Raza</h4>
 <p style="color:#7C3AED;font-size:0.8rem;font-weight:700;margin-bottom:0.4rem">Lead ABA Therapist</p>
 <p style="color:#6b7280;font-size:0.8rem">BCBA Certified · 8 years experience</p>
 </div>
 <div style="background:#fff;border:2px solid #e5e7eb;border-radius:16px;padding:1.5rem;text-align:center">
-<div style="width:64px;height:64px;border-radius:50%;background:linear-gradient(135deg,#F97316,#FBBF24);display:flex;align-items:center;justify-content:center;font-size:1.5rem;margin:0 auto 0.85rem">👩‍🏫</div>
+<img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=300&auto=format&fit=crop&q=80" alt="Ms. Sana Tariq" style="width:80px;height:80px;border-radius:50%;object-fit:cover;object-position:top;margin:0 auto 0.85rem;display:block;border:3px solid #F97316;box-shadow:0 4px 14px rgba(0,0,0,0.15)">
 <h4 style="font-weight:700;color:#1a1a2e;font-size:0.95rem;margin-bottom:2px">Ms. Sana Tariq</h4>
 <p style="color:#F97316;font-size:0.8rem;font-weight:700;margin-bottom:0.4rem">Head of Education</p>
 <p style="color:#6b7280;font-size:0.8rem">M.Ed Special Education · 10 years experience</p>
 </div>
 <div style="background:#fff;border:2px solid #e5e7eb;border-radius:16px;padding:1.5rem;text-align:center">
-<div style="width:64px;height:64px;border-radius:50%;background:linear-gradient(135deg,#EC4899,#7C3AED);display:flex;align-items:center;justify-content:center;font-size:1.5rem;margin:0 auto 0.85rem">👩‍💼</div>
+<img src="https://images.unsplash.com/photo-1607990281513-2c110a25bd8c?w=300&auto=format&fit=crop&q=80" alt="Ms. Hina Shah" style="width:80px;height:80px;border-radius:50%;object-fit:cover;object-position:top;margin:0 auto 0.85rem;display:block;border:3px solid #EC4899;box-shadow:0 4px 14px rgba(0,0,0,0.15)">
 <h4 style="font-weight:700;color:#1a1a2e;font-size:0.95rem;margin-bottom:2px">Ms. Hina Shah</h4>
 <p style="color:#EC4899;font-size:0.8rem;font-weight:700;margin-bottom:0.4rem">Speech-Language Pathologist</p>
 <p style="color:#6b7280;font-size:0.8rem">MS SLP · 6 years experience</p>
