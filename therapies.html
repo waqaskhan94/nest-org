@@ -207,6 +207,16 @@ footer{background:#0e4050;color:rgba(255,255,255,0.65);padding:3.5rem 2.5rem 2re
 .ft-bottom-links a{color:rgba(255,255,255,0.4);text-decoration:none;margin-left:1.25rem;font-size:0.8rem}
 .ft-bottom-links a:hover{color:#fff}
 .heart{color:#EC4899}
+.icon-3d{border-radius:12px;display:flex;align-items:center;justify-content:center;flex-shrink:0;position:relative;overflow:hidden}
+.icon-3d::after{content:'';position:absolute;top:0;left:0;right:0;height:50%;background:rgba(255,255,255,0.18);border-radius:12px 12px 40% 40%/8px 8px 4px 4px}
+.icon-3d svg{position:relative;z-index:1}
+.c-teal{background:linear-gradient(145deg,#1a8ca8,#0e5268);box-shadow:0 4px 12px rgba(14,82,104,0.45),inset 0 1px 0 rgba(255,255,255,0.2)}
+.c-orange{background:linear-gradient(145deg,#fb923c,#c2410c);box-shadow:0 4px 12px rgba(249,115,22,0.45),inset 0 1px 0 rgba(255,255,255,0.2)}
+.c-green{background:linear-gradient(145deg,#22c55e,#15803d);box-shadow:0 4px 12px rgba(34,197,94,0.45),inset 0 1px 0 rgba(255,255,255,0.2)}
+.c-purple{background:linear-gradient(145deg,#a855f7,#7e22ce);box-shadow:0 4px 12px rgba(168,85,247,0.45),inset 0 1px 0 rgba(255,255,255,0.2)}
+.c-pink{background:linear-gradient(145deg,#f472b6,#be185d);box-shadow:0 4px 12px rgba(244,114,182,0.45),inset 0 1px 0 rgba(255,255,255,0.2)}
+.c-blue{background:linear-gradient(145deg,#3b82f6,#1d4ed8);box-shadow:0 4px 12px rgba(59,130,246,0.45),inset 0 1px 0 rgba(255,255,255,0.2)}
+.c-amber{background:linear-gradient(145deg,#fbbf24,#d97706);box-shadow:0 4px 12px rgba(251,191,36,0.45),inset 0 1px 0 rgba(255,255,255,0.2)}
 
 /* ===================================================
    RESPONSIVE — TABLET (768px – 1024px)
@@ -460,7 +470,7 @@ footer{background:#0e4050;color:rgba(255,255,255,0.65);padding:3.5rem 2.5rem 2re
 <div class="mobile-menu" id="mobileMenu">
   <a href="index.html">🏠 Home</a>
   <a href="programs.html">📚 Programs</a>
-  <a href="therapies.html" class="active">💆 Therapies</a>
+  <a href="therapies.html" class="active"><svg width="14" height="14" viewBox="0 0 24 24" fill="#FDE68A" stroke="#FDE68A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg> Therapies</a>
   <a href="about.html">👥 About Us</a>
   <a href="gallery.html">🖼️ Gallery</a>
   <a href="contact.html">📞 Contact</a>
@@ -480,7 +490,7 @@ footer{background:#0e4050;color:rgba(255,255,255,0.65);padding:3.5rem 2.5rem 2re
 <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:2rem">
 
 <div style="background:#fff;border-radius:20px;border:2px solid #e5e7eb;padding:2rem;display:flex;gap:1.25rem;align-items:flex-start">
-<div style="width:56px;height:56px;background:#F0FDFA;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:1.8rem;flex-shrink:0">🗣️</div>
+<div class="icon-3d c-teal" style="width:56px;height:56px;flex-shrink:0"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
 <div>
 <h3 style="font-family:'Fredoka One',cursive;font-weight:400;font-size:1.15rem;color:#1a1a2e;margin-bottom:0.4rem">Speech & Language</h3>
 <p style="color:#6b7280;font-size:0.87rem;line-height:1.7">Improves verbal & non-verbal communication, language comprehension, and social use of language through structured therapy sessions.</p>
@@ -493,7 +503,7 @@ footer{background:#0e4050;color:rgba(255,255,255,0.65);padding:3.5rem 2.5rem 2re
 </div>
 
 <div style="background:#fff;border-radius:20px;border:2px solid #e5e7eb;padding:2rem;display:flex;gap:1.25rem;align-items:flex-start">
-<div style="width:56px;height:56px;background:#F5F3FF;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:1.8rem;flex-shrink:0">🧠</div>
+<div class="icon-3d c-purple" style="width:56px;height:56px;flex-shrink:0"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96-.44 2.5 2.5 0 0 1-2.96-3.08 3 3 0 0 1-.34-5.58 2.5 2.5 0 0 1 1.32-4.24 2.5 2.5 0 0 1 1.98-3A2.5 2.5 0 0 1 9.5 2"/><path d="M14.5 2A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96-.44 2.5 2.5 0 0 0 2.96-3.08 3 3 0 0 0 .34-5.58 2.5 2.5 0 0 0-1.32-4.24 2.5 2.5 0 0 0-1.98-3A2.5 2.5 0 0 0 14.5 2"/></svg></div>
 <div>
 <h3 style="font-family:'Fredoka One',cursive;font-weight:400;font-size:1.15rem;color:#1a1a2e;margin-bottom:0.4rem">ABA Therapy</h3>
 <p style="color:#6b7280;font-size:0.87rem;line-height:1.7">Applied Behavior Analysis reduces challenging behaviors and builds life skills through positive reinforcement, data tracking, and structured learning.</p>
@@ -506,7 +516,7 @@ footer{background:#0e4050;color:rgba(255,255,255,0.65);padding:3.5rem 2.5rem 2re
 </div>
 
 <div style="background:#fff;border-radius:20px;border:2px solid #e5e7eb;padding:2rem;display:flex;gap:1.25rem;align-items:flex-start">
-<div style="width:56px;height:56px;background:#FDF2F8;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:1.8rem;flex-shrink:0">🤲</div>
+<div class="icon-3d c-pink" style="width:56px;height:56px;flex-shrink:0"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 11V6a2 2 0 0 0-2-2 2 2 0 0 0-2 2v0"/><path d="M14 10V4a2 2 0 0 0-2-2 2 2 0 0 0-2 2v2"/><path d="M10 10.5V6a2 2 0 0 0-2-2 2 2 0 0 0-2 2v8"/><path d="M18 8a2 2 0 1 1 4 0v6a8 8 0 0 1-8 8h-2c-2.8 0-4.5-.86-5.99-2.34l-3.6-3.6a2 2 0 0 1 2.83-2.82L7 15"/></svg></div>
 <div>
 <h3 style="font-family:'Fredoka One',cursive;font-weight:400;font-size:1.15rem;color:#1a1a2e;margin-bottom:0.4rem">Occupational Therapy</h3>
 <p style="color:#6b7280;font-size:0.87rem;line-height:1.7">OT helps children manage sensory input, develop fine motor control, and perform everyday tasks like dressing, writing, and eating independently.</p>
@@ -518,7 +528,7 @@ footer{background:#0e4050;color:rgba(255,255,255,0.65);padding:3.5rem 2.5rem 2re
 </div>
 
 <div style="background:#fff;border-radius:20px;border:2px solid #e5e7eb;padding:2rem;display:flex;gap:1.25rem;align-items:flex-start">
-<div style="width:56px;height:56px;background:#F0FDF4;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:1.8rem;flex-shrink:0">🏃</div>
+<div class="icon-3d c-green" style="width:56px;height:56px;flex-shrink:0"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
 <div>
 <h3 style="font-family:'Fredoka One',cursive;font-weight:400;font-size:1.15rem;color:#1a1a2e;margin-bottom:0.4rem">Physical Therapy</h3>
 <p style="color:#6b7280;font-size:0.87rem;line-height:1.7">Targeted physical therapy programs improve posture, gait, strength, and overall physical function through fun, age-appropriate activities.</p>
@@ -531,7 +541,7 @@ footer{background:#0e4050;color:rgba(255,255,255,0.65);padding:3.5rem 2.5rem 2re
 </div>
 
 <div style="background:#fff;border-radius:20px;border:2px solid #e5e7eb;padding:2rem;display:flex;gap:1.25rem;align-items:flex-start">
-<div style="width:56px;height:56px;background:#FFFBEB;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:1.8rem;flex-shrink:0">🎨</div>
+<div class="icon-3d c-amber" style="width:56px;height:56px;flex-shrink:0"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="13.5" cy="6.5" r=".5" fill="white"/><circle cx="17.5" cy="10.5" r=".5" fill="white"/><circle cx="8.5" cy="7.5" r=".5" fill="white"/><circle cx="6.5" cy="12.5" r=".5" fill="white"/><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10c1.1 0 2-.9 2-2v-.5c0-.28-.22-.5-.5-.5H13c-1.1 0-2-.9-2-2 0-.55.22-1.05.59-1.41.37-.36.59-.86.59-1.41C12.18 13.1 11 11.9 11 10.38 11 6.86 13.91 4 17.43 4 20.12 4 22 5.6 22 8c0 2.21-1.79 4-4 4h-1c-1.1 0-2 .9-2 2"/></svg></div>
 <div>
 <h3 style="font-family:'Fredoka One',cursive;font-weight:400;font-size:1.15rem;color:#1a1a2e;margin-bottom:0.4rem">Play & Art Therapy</h3>
 <p style="color:#6b7280;font-size:0.87rem;line-height:1.7">Using creative play and art as therapeutic tools to help children express emotions, develop imagination, and build confidence in a fun setting.</p>
@@ -543,7 +553,7 @@ footer{background:#0e4050;color:rgba(255,255,255,0.65);padding:3.5rem 2.5rem 2re
 </div>
 
 <div style="background:#fff;border-radius:20px;border:2px solid #e5e7eb;padding:2rem;display:flex;gap:1.25rem;align-items:flex-start">
-<div style="width:56px;height:56px;background:#EFF6FF;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:1.8rem;flex-shrink:0">👨‍👩‍👧</div>
+<div class="icon-3d c-blue" style="width:56px;height:56px;flex-shrink:0"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
 <div>
 <h3 style="font-family:'Fredoka One',cursive;font-weight:400;font-size:1.15rem;color:#1a1a2e;margin-bottom:0.4rem">Parent Counseling</h3>
 <p style="color:#6b7280;font-size:0.87rem;line-height:1.7">One-on-one and group counseling sessions to help parents manage stress, understand their child's needs, and become confident advocates.</p>
@@ -570,7 +580,7 @@ footer{background:#0e4050;color:rgba(255,255,255,0.65);padding:3.5rem 2.5rem 2re
 <div style="max-width:600px;margin:0 auto">
 <h2 style="font-family:'Fredoka One',cursive;font-weight:400;font-size:1.8rem;color:#fff;margin-bottom:0.75rem">Not Sure Which Therapy?</h2>
 <p style="color:rgba(255,255,255,0.8);margin-bottom:1.75rem">Our team will assess your child and recommend the most suitable therapy combination — completely free.</p>
-<a href="#" onclick="openEnrollModal();return false;" style="background:linear-gradient(135deg,#FBBF24,#F97316);color:#1a1a2e;padding:0.85rem 2.2rem;border-radius:12px;font-weight:800;font-size:1rem;text-decoration:none;display:inline-block">📋 Book Free Assessment</a>
+<a href="#" onclick="openEnrollModal();return false;" style="background:linear-gradient(135deg,#FBBF24,#F97316);color:#1a1a2e;padding:0.85rem 2.2rem;border-radius:12px;font-weight:800;font-size:1rem;text-decoration:none;display:inline-flex;align-items:center;gap:10px"><div class="icon-3d c-teal" style="width:34px;height:34px"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="2" width="6" height="4" rx="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><path d="M12 11h4"/><path d="M12 16h4"/><path d="M8 11h.01"/><path d="M8 16h.01"/></svg></div> Book Free Assessment</a>
 </div>
 </section>
 <footer>
