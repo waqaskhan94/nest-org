@@ -207,6 +207,16 @@ footer{background:#0e4050;color:rgba(255,255,255,0.65);padding:3.5rem 2.5rem 2re
 .ft-bottom-links a{color:rgba(255,255,255,0.4);text-decoration:none;margin-left:1.25rem;font-size:0.8rem}
 .ft-bottom-links a:hover{color:#fff}
 .heart{color:#EC4899}
+.icon-3d{border-radius:12px;display:flex;align-items:center;justify-content:center;flex-shrink:0;position:relative;overflow:hidden}
+.icon-3d::after{content:'';position:absolute;top:0;left:0;right:0;height:50%;background:rgba(255,255,255,0.18);border-radius:12px 12px 40% 40%/8px 8px 4px 4px}
+.icon-3d svg{position:relative;z-index:1}
+.c-teal{background:linear-gradient(145deg,#1a8ca8,#0e5268);box-shadow:0 4px 12px rgba(14,82,104,0.45),inset 0 1px 0 rgba(255,255,255,0.2)}
+.c-orange{background:linear-gradient(145deg,#fb923c,#c2410c);box-shadow:0 4px 12px rgba(249,115,22,0.45),inset 0 1px 0 rgba(255,255,255,0.2)}
+.c-green{background:linear-gradient(145deg,#22c55e,#15803d);box-shadow:0 4px 12px rgba(34,197,94,0.45),inset 0 1px 0 rgba(255,255,255,0.2)}
+.c-purple{background:linear-gradient(145deg,#a855f7,#7e22ce);box-shadow:0 4px 12px rgba(168,85,247,0.45),inset 0 1px 0 rgba(255,255,255,0.2)}
+.c-pink{background:linear-gradient(145deg,#f472b6,#be185d);box-shadow:0 4px 12px rgba(244,114,182,0.45),inset 0 1px 0 rgba(255,255,255,0.2)}
+.c-blue{background:linear-gradient(145deg,#3b82f6,#1d4ed8);box-shadow:0 4px 12px rgba(59,130,246,0.45),inset 0 1px 0 rgba(255,255,255,0.2)}
+.c-amber{background:linear-gradient(145deg,#fbbf24,#d97706);box-shadow:0 4px 12px rgba(251,191,36,0.45),inset 0 1px 0 rgba(255,255,255,0.2)}
 
 /* ===================================================
    RESPONSIVE — TABLET (768px – 1024px)
@@ -469,7 +479,7 @@ footer{background:#0e4050;color:rgba(255,255,255,0.65);padding:3.5rem 2.5rem 2re
 
 <div style="background:#166178;padding:3.5rem 2rem 3rem;text-align:center">
   <div style="max-width:700px;margin:0 auto">
-    <span style="display:inline-flex;align-items:center;gap:5px;background:rgba(255,255,255,0.15);color:#FDE68A;border:1px solid rgba(255,255,255,0.2);padding:0.3rem 0.85rem;border-radius:20px;font-size:0.75rem;font-weight:800;letter-spacing:0.06em;text-transform:uppercase;margin-bottom:1rem">📚 Our Programs</span>
+    <span style="display:inline-flex;align-items:center;gap:5px;background:rgba(255,255,255,0.15);color:#FDE68A;border:1px solid rgba(255,255,255,0.2);padding:0.3rem 0.85rem;border-radius:20px;font-size:0.75rem;font-weight:800;letter-spacing:0.06em;text-transform:uppercase;margin-bottom:1rem"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#FDE68A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg> Our Programs</span>
     <h1 style="font-family:'Fredoka One',cursive;font-size:2.2rem;font-weight:400;color:#fff;margin-bottom:0.75rem;line-height:1.25">Complete Programs at NEST</h1>
     <p style="color:rgba(255,255,255,0.8);font-size:1rem;line-height:1.7">Every child is different. Our programs are individually tailored to help each child grow, learn, and thrive.</p>
   </div>
@@ -481,7 +491,7 @@ footer{background:#0e4050;color:rgba(255,255,255,0.65);padding:3.5rem 2.5rem 2re
 
 <div style="background:#fff;border-radius:20px;border:2px solid #e5e7eb;padding:1.75rem;position:relative;overflow:hidden">
 <div style="position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,#F97316,#FBBF24);border-radius:20px 20px 0 0"></div>
-<div style="font-size:2.5rem;margin-bottom:1rem">📚</div>
+<div class="icon-3d c-orange" style="width:46px;height:46px;margin-bottom:1rem"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg></div>
 <h2 style="font-family:'Fredoka One',cursive;font-weight:400;font-size:1.3rem;color:#1a1a2e;margin-bottom:0.5rem">Special Education</h2>
 <p style="color:#6b7280;font-size:0.9rem;line-height:1.7;margin-bottom:1rem">Our special education program offers individualized learning plans crafted for each child. With small class sizes of 4–6 students, certified special educators give focused attention to every learner.</p>
 <ul style="color:#6b7280;font-size:0.87rem;line-height:1.8;padding-left:1.2rem">
@@ -492,7 +502,7 @@ footer{background:#0e4050;color:rgba(255,255,255,0.65);padding:3.5rem 2.5rem 2re
 
 <div style="background:#fff;border-radius:20px;border:2px solid #e5e7eb;padding:1.75rem;position:relative;overflow:hidden">
 <div style="position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,#7C3AED,#EC4899);border-radius:20px 20px 0 0"></div>
-<div style="font-size:2.5rem;margin-bottom:1rem">🗣️</div>
+<div class="icon-3d c-purple" style="width:46px;height:46px;margin-bottom:1rem"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
 <h2 style="font-family:'Fredoka One',cursive;font-weight:400;font-size:1.3rem;color:#1a1a2e;margin-bottom:0.5rem">Speech Therapy</h2>
 <p style="color:#6b7280;font-size:0.9rem;line-height:1.7;margin-bottom:1rem">Our licensed speech-language pathologists work one-on-one with children to improve communication, language processing, and social interaction skills.</p>
 <ul style="color:#6b7280;font-size:0.87rem;line-height:1.8;padding-left:1.2rem">
@@ -503,7 +513,7 @@ footer{background:#0e4050;color:rgba(255,255,255,0.65);padding:3.5rem 2.5rem 2re
 
 <div style="background:#fff;border-radius:20px;border:2px solid #e5e7eb;padding:1.75rem;position:relative;overflow:hidden">
 <div style="position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,#0D9488,#2563EB);border-radius:20px 20px 0 0"></div>
-<div style="font-size:2.5rem;margin-bottom:1rem">🧠</div>
+<div class="icon-3d c-teal" style="width:46px;height:46px;margin-bottom:1rem"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96-.44 2.5 2.5 0 0 1-2.96-3.08 3 3 0 0 1-.34-5.58 2.5 2.5 0 0 1 1.32-4.24 2.5 2.5 0 0 1 1.98-3A2.5 2.5 0 0 1 9.5 2"/><path d="M14.5 2A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96-.44 2.5 2.5 0 0 0 2.96-3.08 3 3 0 0 0 .34-5.58 2.5 2.5 0 0 0-1.32-4.24 2.5 2.5 0 0 0-1.98-3A2.5 2.5 0 0 0 14.5 2"/></svg></div>
 <h2 style="font-family:'Fredoka One',cursive;font-weight:400;font-size:1.3rem;color:#1a1a2e;margin-bottom:0.5rem">ABA Therapy</h2>
 <p style="color:#6b7280;font-size:0.9rem;line-height:1.7;margin-bottom:1rem">Applied Behavior Analysis is a scientifically validated therapy for autism and developmental delays. Our certified BCBAs design structured programs to build essential skills.</p>
 <ul style="color:#6b7280;font-size:0.87rem;line-height:1.8;padding-left:1.2rem">
@@ -514,7 +524,7 @@ footer{background:#0e4050;color:rgba(255,255,255,0.65);padding:3.5rem 2.5rem 2re
 
 <div style="background:#fff;border-radius:20px;border:2px solid #e5e7eb;padding:1.75rem;position:relative;overflow:hidden">
 <div style="position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,#EC4899,#F97316);border-radius:20px 20px 0 0"></div>
-<div style="font-size:2.5rem;margin-bottom:1rem">🤲</div>
+<div class="icon-3d c-pink" style="width:46px;height:46px;margin-bottom:1rem"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 11V6a2 2 0 0 0-2-2 2 2 0 0 0-2 2v0"/><path d="M14 10V4a2 2 0 0 0-2-2 2 2 0 0 0-2 2v2"/><path d="M10 10.5V6a2 2 0 0 0-2-2 2 2 0 0 0-2 2v8"/><path d="M18 8a2 2 0 1 1 4 0v6a8 8 0 0 1-8 8h-2c-2.8 0-4.5-.86-5.99-2.34l-3.6-3.6a2 2 0 0 1 2.83-2.82L7 15"/></svg></div>
 <h2 style="font-family:'Fredoka One',cursive;font-weight:400;font-size:1.3rem;color:#1a1a2e;margin-bottom:0.5rem">Occupational Therapy</h2>
 <p style="color:#6b7280;font-size:0.9rem;line-height:1.7;margin-bottom:1rem">OT helps children develop the fine motor skills, sensory processing abilities, and daily living skills needed for greater independence and quality of life.</p>
 <ul style="color:#6b7280;font-size:0.87rem;line-height:1.8;padding-left:1.2rem">
@@ -525,7 +535,7 @@ footer{background:#0e4050;color:rgba(255,255,255,0.65);padding:3.5rem 2.5rem 2re
 
 <div style="background:#fff;border-radius:20px;border:2px solid #e5e7eb;padding:1.75rem;position:relative;overflow:hidden">
 <div style="position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,#16A34A,#0D9488);border-radius:20px 20px 0 0"></div>
-<div style="font-size:2.5rem;margin-bottom:1rem">🏃</div>
+<div class="icon-3d c-green" style="width:46px;height:46px;margin-bottom:1rem"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
 <h2 style="font-family:'Fredoka One',cursive;font-weight:400;font-size:1.3rem;color:#1a1a2e;margin-bottom:0.5rem">Physical Therapy</h2>
 <p style="color:#6b7280;font-size:0.9rem;line-height:1.7;margin-bottom:1rem">Our physical therapists use play-based activities to improve mobility, balance, coordination, and overall physical development in children.</p>
 <ul style="color:#6b7280;font-size:0.87rem;line-height:1.8;padding-left:1.2rem">
@@ -536,7 +546,7 @@ footer{background:#0e4050;color:rgba(255,255,255,0.65);padding:3.5rem 2.5rem 2re
 
 <div style="background:#fff;border-radius:20px;border:2px solid #e5e7eb;padding:1.75rem;position:relative;overflow:hidden">
 <div style="position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,#2563EB,#7C3AED);border-radius:20px 20px 0 0"></div>
-<div style="font-size:2.5rem;margin-bottom:1rem">👨‍👩‍👧</div>
+<div class="icon-3d c-blue" style="width:46px;height:46px;margin-bottom:1rem"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
 <h2 style="font-family:'Fredoka One',cursive;font-weight:400;font-size:1.3rem;color:#1a1a2e;margin-bottom:0.5rem">Family Support</h2>
 <p style="color:#6b7280;font-size:0.9rem;line-height:1.7;margin-bottom:1rem">We believe parents are the most important therapists. Our family program equips parents with the tools, knowledge, and emotional support to continue progress at home.</p>
 <ul style="color:#6b7280;font-size:0.87rem;line-height:1.8;padding-left:1.2rem">
