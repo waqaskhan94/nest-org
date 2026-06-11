@@ -585,6 +585,17 @@ nav.scrolled{box-shadow:0 4px 28px rgba(0,0,0,0.11)!important}
 .testi-progress-bar{display:none}
 @media(max-width:1024px){.testi-section{padding:3.5rem 1.5rem}.testi-header h2{font-size:1.85rem}}
 @media(max-width:768px){.testi-section{padding:2.5rem 1.2rem}.testi-header h2{font-size:1.6rem}.testi-card{padding:1.4rem 1.25rem}.testi-controls{margin-top:28px}}
+
+/* ===== HAMBURGER → X & BACKDROP ===== */
+.hamburger{border:none!important;border-radius:8px!important;transition:background .32s cubic-bezier(0.4,0,0.2,1)!important}
+.hamburger:hover{background:rgba(22,97,120,0.08)!important}
+.hamburger.open{background:none!important}
+.hamburger span{transition:all .32s cubic-bezier(0.4,0,0.2,1)!important}
+.hamburger.open span:nth-child(1){transform:translateY(7.5px) rotate(45deg)}
+.hamburger.open span:nth-child(2){opacity:0;transform:scaleX(0)}
+.hamburger.open span:nth-child(3){transform:translateY(-7.5px) rotate(-45deg)}
+.mobile-backdrop{display:none;position:fixed;inset:0;background:rgba(14,64,80,0.35);z-index:997;backdrop-filter:blur(2px)}
+.mobile-backdrop.open{display:block}
 </style>
 </head>
 <body>
@@ -609,10 +620,11 @@ nav.scrolled{box-shadow:0 4px 28px rgba(0,0,0,0.11)!important}
   Enroll Now — Free <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
 </a>
   </div>
-  <button class="hamburger" onclick="toggleMenu()" aria-label="Toggle menu">
+  <button class="hamburger" id="hamburger" aria-label="Toggle menu">
     <span></span><span></span><span></span>
   </button>
 </nav>
+<div class="mobile-backdrop" id="mobileBackdrop"></div>
 <div class="mobile-menu" id="mobileMenu">
   <a href="index.html" class="active">🏠 Home</a>
   <a href="programs.html">📚 Programs</a>
@@ -953,21 +965,9 @@ nav.scrolled{box-shadow:0 4px 28px rgba(0,0,0,0.11)!important}
 </footer>
 
 <script>
-function toggleMenu(){
-  var m=document.getElementById('mobileMenu');
-  m.classList.toggle('open');
-}
 
-// Close mobile menu when clicking anywhere outside nav or menu
-document.addEventListener('click', function(e){
-  var menu = document.getElementById('mobileMenu');
-  var nav  = document.querySelector('nav');
-  if(menu && menu.classList.contains('open')){
-    if(!nav.contains(e.target) && !menu.contains(e.target)){
-      menu.classList.remove('open');
-    }
-  }
-});
+
+
 
 // Close menu when any menu link is clicked
 document.addEventListener('DOMContentLoaded', function(){
@@ -1440,6 +1440,28 @@ if(nav){
   window.addEventListener('scroll',onScroll,{passive:true});
   onScroll();
 }
+/* ── Mobile menu ── */
+var hamburger   = document.getElementById('hamburger');
+var mobileMenu  = document.getElementById('mobileMenu');
+var backdrop    = document.getElementById('mobileBackdrop');
+function openMobileMenu(){
+  hamburger.classList.add('open');
+  mobileMenu.classList.add('open');
+  if(backdrop) backdrop.classList.add('open');
+  document.body.style.overflow='hidden';
+}
+function closeMobileMenu(){
+  hamburger.classList.remove('open');
+  mobileMenu.classList.remove('open');
+  if(backdrop) backdrop.classList.remove('open');
+  document.body.style.overflow='';
+}
+hamburger.addEventListener('click',function(){
+  mobileMenu.classList.contains('open')?closeMobileMenu():openMobileMenu();
+});
+if(backdrop) backdrop.addEventListener('click',closeMobileMenu);
+mobileMenu.querySelectorAll('a').forEach(function(l){l.addEventListener('click',closeMobileMenu);});
+
 
 /* ── 2. Float the logo bubble ── */
 var lb=document.querySelector('.logo-bubble');
