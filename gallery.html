@@ -443,31 +443,57 @@ footer{background:#0e4050;color:rgba(255,255,255,0.65);padding:3.5rem 2.5rem 2re
 
 
 /* ═══════ NEST Lively Animations ═══════ */
-@keyframes nestFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-9px)}}
+/* Keyframes */
+@keyframes fadeInUp{from{opacity:0;transform:translateY(32px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeInLeft{from{opacity:0;transform:translateX(-32px)}to{opacity:1;transform:translateX(0)}}
+@keyframes fadeInRight{from{opacity:0;transform:translateX(32px)}to{opacity:1;transform:translateX(0)}}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+@keyframes pulseRing{0%{transform:scale(1);opacity:.65}100%{transform:scale(1.6);opacity:0}}
 @keyframes nestShine{0%{left:-120%}100%{left:200%}}
-@keyframes nestPop{0%,100%{transform:scale(1)}50%{transform:scale(1.15)}}
-@keyframes nestSlideUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
-@keyframes nestFadeIn{from{opacity:0}to{opacity:1}}
-/* Hero cascade – staggered on page load */
-.hero-tag{animation:nestSlideUp 0.65s cubic-bezier(0.22,1,0.36,1) 0.08s both}
-.hero h1{animation:nestSlideUp 0.7s cubic-bezier(0.22,1,0.36,1) 0.2s both}
-.hero>p{animation:nestSlideUp 0.65s cubic-bezier(0.22,1,0.36,1) 0.32s both}
-.hero-btns{animation:nestSlideUp 0.65s cubic-bezier(0.22,1,0.36,1) 0.44s both}
-.hero-pills{animation:nestSlideUp 0.65s cubic-bezier(0.22,1,0.36,1) 0.54s both}
-.hero-card{animation:nestSlideUp 0.7s cubic-bezier(0.22,1,0.36,1) 0.35s both}
-/* Scroll-reveal base */
-.nest-reveal{opacity:0;transform:translateY(28px) scale(0.97);transition:opacity 0.62s cubic-bezier(0.22,1,0.36,1),transform 0.62s cubic-bezier(0.22,1,0.36,1)}
-.nest-reveal.in{opacity:1!important;transform:none!important}
-/* Floating logo */
-.nest-float{animation:nestFloat 3.8s ease-in-out infinite!important}
-/* Icon-3D spring-scale on hover */
-.icon-3d{transition:transform 0.22s cubic-bezier(0.34,1.56,0.64,1),box-shadow 0.22s ease!important}
+@keyframes nestPop{0%,100%{transform:scale(1)}50%{transform:scale(1.14)}}
+/* Scroll-reveal base classes (JS sets animationPlayState) */
+.animate-fade-up{animation:fadeInUp .72s cubic-bezier(.22,1,.36,1) both}
+.animate-fade-left{animation:fadeInLeft .72s cubic-bezier(.22,1,.36,1) both}
+.animate-fade-right{animation:fadeInRight .72s cubic-bezier(.22,1,.36,1) both}
+.anim-delay-1{animation-delay:.08s}.anim-delay-2{animation-delay:.18s}
+.anim-delay-3{animation-delay:.28s}.anim-delay-4{animation-delay:.38s}
+.anim-delay-5{animation-delay:.48s}.anim-delay-6{animation-delay:.56s}
+/* Float */
+.float-anim{animation:float 4s ease-in-out infinite!important}
+/* Hero section – staggered cascade on page load */
+.hero-tag{animation:fadeInUp .65s cubic-bezier(.22,1,.36,1) .08s both}
+.hero h1{animation:fadeInUp .72s cubic-bezier(.22,1,.36,1) .22s both}
+.hero>p{animation:fadeInUp .65s cubic-bezier(.22,1,.36,1) .34s both}
+.hero-btns{animation:fadeInUp .65s cubic-bezier(.22,1,.36,1) .46s both}
+.hero-pills{animation:fadeInUp .65s cubic-bezier(.22,1,.36,1) .56s both}
+.hero-card{animation:fadeInRight .7s cubic-bezier(.22,1,.36,1) .3s both}
+/* Navbar scroll state */
+nav{transition:box-shadow .28s ease,background .28s ease}
+nav.scrolled{box-shadow:0 4px 28px rgba(0,0,0,0.11)!important}
+/* Icon-3D spring-bounce + shine sweep on hover */
+.icon-3d{transition:transform .22s cubic-bezier(.34,1.56,.64,1),box-shadow .22s ease!important}
 .icon-3d:hover{transform:scale(1.22) translateY(-3px)!important}
-/* Icon shine sweep */
-.icon-3d::before{content:'';position:absolute;top:0;left:-120%;width:55%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.28),transparent);z-index:3;pointer-events:none}
-.icon-3d:hover::before{animation:nestShine 0.45s ease-in-out forwards}
-/* Navbar: smooth shadow transition */
-nav{transition:box-shadow 0.28s ease}
+.icon-3d::before{content:'';position:absolute;top:0;left:-120%;width:55%;height:100%;
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,.3),transparent);z-index:3;pointer-events:none}
+.icon-3d:hover::before{animation:nestShine .45s ease-in-out forwards}
+/* Card hover lift */
+.prog-card{transition:transform .28s cubic-bezier(.22,1,.36,1),box-shadow .28s ease,border-color .28s ease!important}
+.prog-card:hover{transform:translateY(-7px)!important;box-shadow:0 20px 48px rgba(0,0,0,.10)!important}
+.why-card{transition:transform .28s cubic-bezier(.22,1,.36,1),box-shadow .28s ease,border-color .28s ease!important}
+.why-card:hover{transform:translateY(-5px)!important}
+.test-card{transition:transform .28s cubic-bezier(.22,1,.36,1)!important}
+.test-card:hover{transform:translateY(-6px)!important}
+/* Gallery card image zoom on hover */
+.gallery-img-wrap,.gallery-thumb{overflow:hidden}
+.gallery-img-wrap img,.gallery-thumb img{transition:transform .5s ease}
+.gallery-card:hover .gallery-img-wrap img,.gallery-card:hover .gallery-thumb img{transform:scale(1.08)}
+/* Footer link hover shift */
+.ft-col a{transition:color .2s ease,padding-left .22s ease!important}
+.ft-col a:hover{padding-left:5px!important;color:#fff!important}
+/* Pulse ring (CTA / enroll buttons) */
+.pulse-ring{position:relative;overflow:visible}
+.pulse-ring::after{content:'';position:absolute;inset:-5px;border-radius:inherit;
+  border:2px solid rgba(249,115,22,.5);animation:pulseRing 2s ease-out infinite;pointer-events:none}
 /* ═══════════════════════════════════════ */
 </style>
 </head>
@@ -1064,93 +1090,111 @@ function selectRadio(el,groupId){
 (function(){
 'use strict';
 
-/* ── Scroll-reveal observer ── */
-var io=new IntersectionObserver(function(entries){
-  entries.forEach(function(e){
-    if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}
-  });
-},{threshold:0.08,rootMargin:'0px 0px -16px 0px'});
-
-function reveal(els){
-  Array.from(els).forEach(function(el,i){
-    if(el.classList.contains('nest-reveal'))return;
-    el.classList.add('nest-reveal');
-    el.style.transitionDelay=Math.min(i%6,5)*88+'ms';
-    io.observe(el);
-  });
-}
-
-/* Named card classes (index, programs, therapies, contact pages) */
-reveal(document.querySelectorAll(
-  '.prog-card,.why-card,.test-card,.faq-item,.hero-icon-box,.ribbon-item'
-));
-/* Section headings & tags */
-reveal(document.querySelectorAll(
-  '.sec-tag,.sec-title,.sec-sub,.cta-tag,.cta-title,.cta-sub'
-));
-/* Grid children fallback – catches inline-styled grids on all pages */
-document.querySelectorAll(
-  '.prog-grid,.why-cards,.test-grid,.faq-grid,.hero-icons-grid'
-).forEach(function(g){ reveal(g.children); });
-
-/* Inline-styled content cards (about, gallery, therapies sections) */
-document.querySelectorAll('section').forEach(function(sec){
-  var directDivs=sec.querySelectorAll(':scope>div>div');
-  if(directDivs.length>=2) reveal(directDivs);
-});
-
-/* ── Float the logo bubble ── */
-var lb=document.querySelector('.logo-bubble');
-if(lb) lb.classList.add('nest-float');
-
-/* ── Navbar shadow on scroll ── */
+/* ── 1. Navbar scrolled class (shadow + slight bg) ── */
 var nav=document.querySelector('nav');
 if(nav){
-  window.addEventListener('scroll',function(){
-    nav.style.boxShadow=window.scrollY>8
-      ?'0 4px 24px rgba(0,0,0,0.10)':'';
-  },{passive:true});
+  var onScroll=function(){nav.classList.toggle('scrolled',window.scrollY>40);};
+  window.addEventListener('scroll',onScroll,{passive:true});
+  onScroll();
 }
 
-/* ── Counter animation ── */
-function countUp(el,end,sfx){
-  var s=0,step=end/70,timer=setInterval(function(){
-    s=Math.min(s+step,end);
-    el.textContent=Math.floor(s)+sfx;
-    if(s>=end){
-      clearInterval(timer);
-      el.style.animation='nestPop 0.3s ease';
-    }
-  },20);
-}
-function initCounter(el){
-  var t=el.textContent.trim(), m=t.match(/^(d+)([+%]*)$/);
-  if(m&&+m[1]>0&&!el.dataset.nc){
-    el.dataset.nc=t;
-    el.textContent='0'+(m[2]||'');
-    co.observe(el);
-  }
-}
-var co=new IntersectionObserver(function(entries){
+/* ── 2. Float the logo bubble ── */
+var lb=document.querySelector('.logo-bubble');
+if(lb) lb.classList.add('float-anim');
+
+/* ── 3. Scroll-reveal via animationPlayState ─────────────────
+   Elements receive animate-fade-up / left / right + delay class.
+   JS sets animationPlayState:'paused' so they stay hidden.
+   IntersectionObserver sets 'running' when they enter viewport.
+─────────────────────────────────────────────────────────────── */
+var revealObs=new IntersectionObserver(function(entries){
   entries.forEach(function(e){
     if(e.isIntersecting){
-      var d=e.target.dataset.nc, m=d&&d.match(/^(d+)([+%]*)$/);
-      if(m) countUp(e.target,+m[1],m[2]);
-      co.unobserve(e.target);
+      e.target.style.animationPlayState='running';
+      revealObs.unobserve(e.target);
     }
   });
-},{threshold:0.6});
+},{threshold:0.1,rootMargin:'0px 0px -18px 0px'});
 
-/* Named stat classes */
-document.querySelectorAll('.wv-num,.hb-num').forEach(initCounter);
-/* Inline Fredoka stat numbers (contact/about/gallery pages) */
-document.querySelectorAll('[style*="Fredoka"]').forEach(function(el){
-  if(!el.children.length) initCounter(el);
+function addReveal(el,animClass,delayIdx){
+  if(el.dataset.nr) return; // avoid double-apply
+  el.dataset.nr='1';
+  el.classList.add(animClass);
+  if(delayIdx>0) el.classList.add('anim-delay-'+Math.min(delayIdx,6));
+  el.style.animationPlayState='paused';
+  revealObs.observe(el);
+}
+
+/* Named card classes – staggered fade-up */
+var cardSel='.prog-card,.why-card,.test-card,.faq-item,.hero-icon-box,.ribbon-item';
+document.querySelectorAll(cardSel).forEach(function(el,i){addReveal(el,'animate-fade-up',i%6+1);});
+
+/* Section meta – fade up no stagger */
+document.querySelectorAll('.sec-tag,.sec-title,.sec-sub').forEach(function(el,i){addReveal(el,'animate-fade-up',i%3+1);});
+document.querySelectorAll('.cta-tag,.cta-title,.cta-sub').forEach(function(el,i){addReveal(el,'animate-fade-up',i%3+1);});
+
+/* Grid children (inline-styled pages: about, gallery, therapies, contact) */
+document.querySelectorAll('.prog-grid,.why-cards,.test-grid,.faq-grid,.hero-icons-grid').forEach(function(g){
+  Array.from(g.children).forEach(function(child,i){addReveal(child,'animate-fade-up',i%6+1);});
 });
 
-/* ── Smooth card hover pulse ── */
+/* Inline content sections – direct div children of <section> divs */
+document.querySelectorAll('section>div>div').forEach(function(el,i){
+  /* Only apply if clearly a "card" (has border or background styling) */
+  var s=el.getAttribute('style')||'';
+  if((s.includes('border-radius')||s.includes('background'))&&!el.dataset.nr){
+    addReveal(el,'animate-fade-up',i%6+1);
+  }
+});
+
+/* ── 4. Counter animation – RAF + ease-out-cubic ── */
+function easeOutCubic(t){return 1-Math.pow(1-t,3);}
+function countUp(el,target,suffix){
+  var start=null,dur=1800;
+  function step(ts){
+    if(!start) start=ts;
+    var p=Math.min((ts-start)/dur,1);
+    el.textContent=Math.round(easeOutCubic(p)*target)+suffix;
+    if(p<1){requestAnimationFrame(step);}
+    else{el.textContent=target+suffix;el.style.animation='nestPop .32s ease';}
+  }
+  requestAnimationFrame(step);
+}
+function initCount(el){
+  var t=el.textContent.trim(),m=t.match(/^(d+)([+%]*)$/);
+  if(m&&+m[1]>0&&!el.dataset.nc){el.dataset.nc=t;el.textContent='0'+(m[2]||'');cObs.observe(el);}
+}
+var cObs=new IntersectionObserver(function(entries){
+  entries.forEach(function(e){
+    if(e.isIntersecting){
+      var d=e.target.dataset.nc,m=d&&d.match(/^(d+)([+%]*)$/);
+      if(m) countUp(e.target,+m[1],m[2]);
+      cObs.unobserve(e.target);
+    }
+  });
+},{threshold:0.55});
+/* Named stat classes */
+document.querySelectorAll('.wv-num,.hb-num').forEach(initCount);
+/* Inline Fredoka stat numbers (contact, gallery, about pages) */
+document.querySelectorAll('[style*="Fredoka"]').forEach(function(el){
+  if(!el.children.length) initCount(el);
+});
+
+/* ── 5. Enhanced card hover (smooth pointer transitions) ── */
 document.querySelectorAll('.prog-card,.why-card,.test-card').forEach(function(el){
-  el.style.transition='transform 0.28s cubic-bezier(0.22,1,0.36,1),box-shadow 0.28s ease,border-color 0.28s ease';
+  el.style.willChange='transform';
+});
+
+/* ── 6. Gallery: add overlay + zoom wrapper if not already set ── */
+document.querySelectorAll('[style*="height:160px"][style*="justify-content:center"]').forEach(function(el){
+  el.style.transition='background .25s ease';
+  el.addEventListener('mouseenter',function(){el.style.background='rgba(22,97,120,0.08)';});
+  el.addEventListener('mouseleave',function(){el.style.background='rgba(255,255,255,0.5)';});
+});
+
+/* ── 7. Stagger ribbon items (already handled by cardSel but ensure order) ── */
+document.querySelectorAll('.ribbon-item').forEach(function(el,i){
+  if(!el.dataset.nr) addReveal(el,'animate-fade-up',i%6+1);
 });
 
 })();
