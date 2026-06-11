@@ -441,6 +441,34 @@ footer{background:#0e4050;color:rgba(255,255,255,0.65);padding:3.5rem 2.5rem 2re
   .modal-body{padding:0.85rem}
 }
 
+
+/* ═══════ NEST Lively Animations ═══════ */
+@keyframes nestFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-9px)}}
+@keyframes nestShine{0%{left:-120%}100%{left:200%}}
+@keyframes nestPop{0%,100%{transform:scale(1)}50%{transform:scale(1.15)}}
+@keyframes nestSlideUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+@keyframes nestFadeIn{from{opacity:0}to{opacity:1}}
+/* Hero cascade – staggered on page load */
+.hero-tag{animation:nestSlideUp 0.65s cubic-bezier(0.22,1,0.36,1) 0.08s both}
+.hero h1{animation:nestSlideUp 0.7s cubic-bezier(0.22,1,0.36,1) 0.2s both}
+.hero>p{animation:nestSlideUp 0.65s cubic-bezier(0.22,1,0.36,1) 0.32s both}
+.hero-btns{animation:nestSlideUp 0.65s cubic-bezier(0.22,1,0.36,1) 0.44s both}
+.hero-pills{animation:nestSlideUp 0.65s cubic-bezier(0.22,1,0.36,1) 0.54s both}
+.hero-card{animation:nestSlideUp 0.7s cubic-bezier(0.22,1,0.36,1) 0.35s both}
+/* Scroll-reveal base */
+.nest-reveal{opacity:0;transform:translateY(28px) scale(0.97);transition:opacity 0.62s cubic-bezier(0.22,1,0.36,1),transform 0.62s cubic-bezier(0.22,1,0.36,1)}
+.nest-reveal.in{opacity:1!important;transform:none!important}
+/* Floating logo */
+.nest-float{animation:nestFloat 3.8s ease-in-out infinite!important}
+/* Icon-3D spring-scale on hover */
+.icon-3d{transition:transform 0.22s cubic-bezier(0.34,1.56,0.64,1),box-shadow 0.22s ease!important}
+.icon-3d:hover{transform:scale(1.22) translateY(-3px)!important}
+/* Icon shine sweep */
+.icon-3d::before{content:'';position:absolute;top:0;left:-120%;width:55%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.28),transparent);z-index:3;pointer-events:none}
+.icon-3d:hover::before{animation:nestShine 0.45s ease-in-out forwards}
+/* Navbar: smooth shadow transition */
+nav{transition:box-shadow 0.28s ease}
+/* ═══════════════════════════════════════ */
 </style>
 </head>
 <body>
@@ -1004,6 +1032,103 @@ function selectRadio(el,groupId){
   document.querySelectorAll('#'+groupId+' .radio-item').forEach(function(r){r.classList.remove('selected')});
   el.classList.add('selected');
 }
+</script>
+
+<script>
+/* NEST Lively Animations */
+(function(){
+'use strict';
+
+/* ── Scroll-reveal observer ── */
+var io=new IntersectionObserver(function(entries){
+  entries.forEach(function(e){
+    if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}
+  });
+},{threshold:0.08,rootMargin:'0px 0px -16px 0px'});
+
+function reveal(els){
+  Array.from(els).forEach(function(el,i){
+    if(el.classList.contains('nest-reveal'))return;
+    el.classList.add('nest-reveal');
+    el.style.transitionDelay=Math.min(i%6,5)*88+'ms';
+    io.observe(el);
+  });
+}
+
+/* Named card classes (index, programs, therapies, contact pages) */
+reveal(document.querySelectorAll(
+  '.prog-card,.why-card,.test-card,.faq-item,.hero-icon-box,.ribbon-item'
+));
+/* Section headings & tags */
+reveal(document.querySelectorAll(
+  '.sec-tag,.sec-title,.sec-sub,.cta-tag,.cta-title,.cta-sub'
+));
+/* Grid children fallback – catches inline-styled grids on all pages */
+document.querySelectorAll(
+  '.prog-grid,.why-cards,.test-grid,.faq-grid,.hero-icons-grid'
+).forEach(function(g){ reveal(g.children); });
+
+/* Inline-styled content cards (about, gallery, therapies sections) */
+document.querySelectorAll('section').forEach(function(sec){
+  var directDivs=sec.querySelectorAll(':scope>div>div');
+  if(directDivs.length>=2) reveal(directDivs);
+});
+
+/* ── Float the logo bubble ── */
+var lb=document.querySelector('.logo-bubble');
+if(lb) lb.classList.add('nest-float');
+
+/* ── Navbar shadow on scroll ── */
+var nav=document.querySelector('nav');
+if(nav){
+  window.addEventListener('scroll',function(){
+    nav.style.boxShadow=window.scrollY>8
+      ?'0 4px 24px rgba(0,0,0,0.10)':'';
+  },{passive:true});
+}
+
+/* ── Counter animation ── */
+function countUp(el,end,sfx){
+  var s=0,step=end/70,timer=setInterval(function(){
+    s=Math.min(s+step,end);
+    el.textContent=Math.floor(s)+sfx;
+    if(s>=end){
+      clearInterval(timer);
+      el.style.animation='nestPop 0.3s ease';
+    }
+  },20);
+}
+function initCounter(el){
+  var t=el.textContent.trim(), m=t.match(/^(d+)([+%]*)$/);
+  if(m&&+m[1]>0&&!el.dataset.nc){
+    el.dataset.nc=t;
+    el.textContent='0'+(m[2]||'');
+    co.observe(el);
+  }
+}
+var co=new IntersectionObserver(function(entries){
+  entries.forEach(function(e){
+    if(e.isIntersecting){
+      var d=e.target.dataset.nc, m=d&&d.match(/^(d+)([+%]*)$/);
+      if(m) countUp(e.target,+m[1],m[2]);
+      co.unobserve(e.target);
+    }
+  });
+},{threshold:0.6});
+
+/* Named stat classes */
+document.querySelectorAll('.wv-num,.hb-num').forEach(initCounter);
+/* Inline Fredoka stat numbers (contact/about/gallery pages) */
+document.querySelectorAll('[style*="Fredoka"]').forEach(function(el){
+  if(!el.children.length) initCounter(el);
+});
+
+/* ── Smooth card hover pulse ── */
+document.querySelectorAll('.prog-card,.why-card,.test-card').forEach(function(el){
+  el.style.transition='transform 0.28s cubic-bezier(0.22,1,0.36,1),box-shadow 0.28s ease,border-color 0.28s ease';
+});
+
+})();
 </script>
 </body>
 </html>
