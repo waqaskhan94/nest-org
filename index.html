@@ -63,8 +63,17 @@ nav{
 .mobile-menu.open{display:flex}
 
 /* ===== HERO ===== */
-.hero-wrap{background:#166178}
+.hero-wrap{background:#166178;position:relative;overflow:hidden}
+.hero-wrap-pts{position:absolute;inset:0;overflow:hidden;pointer-events:none;z-index:1}
+.hp{position:absolute;border-radius:50%;animation:hpUp linear infinite;opacity:0}
+@keyframes hpUp{
+  0%  {transform:translateY(0) translateX(0);opacity:0}
+  8%  {opacity:1}
+  88% {opacity:.5}
+  100%{transform:translateY(-110vh) translateX(var(--dx,0px));opacity:0}
+}
 .hero{
+  position:relative;z-index:2;
   padding:4.5rem 2.5rem 3.5rem;
   display:grid;grid-template-columns:1.1fr 0.9fr;
   gap:3rem;align-items:center;
@@ -732,6 +741,28 @@ nav.scrolled{box-shadow:0 4px 28px rgba(0,0,0,0.11)!important}
 
 <!-- ===== HERO ===== -->
 <div class="hero-wrap">
+  <div class="hero-wrap-pts">
+    <div class="hp" style="left:3%;bottom:0;width:3px;height:3px;background:rgba(255,255,255,0.45);animation-duration:15s;animation-delay:-2s;--dx:14px"></div>
+    <div class="hp" style="left:9%;bottom:0;width:2px;height:2px;background:rgba(251,191,36,0.60);animation-duration:19s;animation-delay:-5s;--dx:-10px"></div>
+    <div class="hp" style="left:16%;bottom:0;width:4px;height:4px;background:rgba(255,255,255,0.28);animation-duration:13s;animation-delay:-9s;--dx:20px"></div>
+    <div class="hp" style="left:23%;bottom:0;width:2px;height:2px;background:rgba(13,148,136,0.55);animation-duration:21s;animation-delay:-3s;--dx:-16px"></div>
+    <div class="hp" style="left:30%;bottom:0;width:3px;height:3px;background:rgba(255,255,255,0.40);animation-duration:17s;animation-delay:-12s;--dx:11px"></div>
+    <div class="hp" style="left:38%;bottom:0;width:5px;height:5px;background:rgba(255,255,255,0.16);animation-duration:24s;animation-delay:-7s;--dx:-22px"></div>
+    <div class="hp" style="left:44%;bottom:0;width:2px;height:2px;background:rgba(251,191,36,0.52);animation-duration:14s;animation-delay:-16s;--dx:9px"></div>
+    <div class="hp" style="left:51%;bottom:0;width:3px;height:3px;background:rgba(255,255,255,0.38);animation-duration:18s;animation-delay:-4s;--dx:-13px"></div>
+    <div class="hp" style="left:59%;bottom:0;width:2px;height:2px;background:rgba(13,148,136,0.50);animation-duration:16s;animation-delay:-10s;--dx:24px"></div>
+    <div class="hp" style="left:66%;bottom:0;width:4px;height:4px;background:rgba(255,255,255,0.26);animation-duration:20s;animation-delay:-8s;--dx:-20px"></div>
+    <div class="hp" style="left:73%;bottom:0;width:2px;height:2px;background:rgba(251,191,36,0.58);animation-duration:12s;animation-delay:-14s;--dx:16px"></div>
+    <div class="hp" style="left:79%;bottom:0;width:3px;height:3px;background:rgba(255,255,255,0.36);animation-duration:22s;animation-delay:-6s;--dx:-11px"></div>
+    <div class="hp" style="left:86%;bottom:0;width:2px;height:2px;background:rgba(255,255,255,0.44);animation-duration:17s;animation-delay:-17s;--dx:18px"></div>
+    <div class="hp" style="left:93%;bottom:0;width:4px;height:4px;background:rgba(13,148,136,0.42);animation-duration:15s;animation-delay:-11s;--dx:-9px"></div>
+    <div class="hp" style="left:6%;bottom:0;width:6px;height:6px;background:rgba(255,255,255,0.12);animation-duration:26s;animation-delay:-13s;--dx:17px"></div>
+    <div class="hp" style="left:19%;bottom:0;width:2px;height:2px;background:rgba(251,191,36,0.48);animation-duration:13s;animation-delay:-19s;--dx:-24px"></div>
+    <div class="hp" style="left:46%;bottom:0;width:3px;height:3px;background:rgba(255,255,255,0.34);animation-duration:18s;animation-delay:-15s;--dx:7px"></div>
+    <div class="hp" style="left:63%;bottom:0;width:2px;height:2px;background:rgba(13,148,136,0.48);animation-duration:21s;animation-delay:-9s;--dx:-17px"></div>
+    <div class="hp" style="left:76%;bottom:0;width:4px;height:4px;background:rgba(255,255,255,0.22);animation-duration:16s;animation-delay:-3s;--dx:12px"></div>
+    <div class="hp" style="left:89%;bottom:0;width:2px;height:2px;background:rgba(251,191,36,0.52);animation-duration:14s;animation-delay:-8s;--dx:-15px"></div>
+  </div>
   <div class="hero">
     <div>
       <div class="hero-tag"><svg width="14" height="14" viewBox="0 0 24 24" fill="#FDE68A" style="flex-shrink:0"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg> Trusted by 500+ Families Across Pakistan</div>
