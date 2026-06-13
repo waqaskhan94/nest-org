@@ -295,7 +295,7 @@ footer{background:#0e4050;color:rgba(255,255,255,0.65);padding:3.5rem 2.5rem 2re
 .c-purple{background:linear-gradient(145deg,#a855f7,#7e22ce);box-shadow:0 4px 12px rgba(168,85,247,0.45),inset 0 1px 0 rgba(255,255,255,0.2)}
 .c-pink{background:linear-gradient(145deg,#f472b6,#be185d);box-shadow:0 4px 12px rgba(244,114,182,0.45),inset 0 1px 0 rgba(255,255,255,0.2)}
 .c-blue{background:linear-gradient(145deg,#3b82f6,#1d4ed8);box-shadow:0 4px 12px rgba(59,130,246,0.45),inset 0 1px 0 rgba(255,255,255,0.2)}
-.icon-3d.xs{width:22px;height:22px;border-radius:6px;flex-shrink:0}
+.icon-3d.xs{width:22px;height:22px;border-radius:6px;flex-shrink:0;display:inline-flex}
 .icon-3d.xs::after{border-radius:6px 6px 40% 40%/4px 4px 2px 2px}
 .icon-3d.sm{width:34px;height:34px;border-radius:10px;flex-shrink:0}
 .icon-3d.sm::after{border-radius:10px 10px 40% 40%/7px 7px 3px 3px}
@@ -501,7 +501,7 @@ footer{background:#0e4050;color:rgba(255,255,255,0.65);padding:3.5rem 2.5rem 2re
 .form-group textarea{resize:vertical;min-height:90px}
 .form-group select{-webkit-appearance:none;appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%236b7280' d='M1 1l5 5 5-5'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 1rem center;padding-right:2.5rem}
 .check-group{display:grid;grid-template-columns:1fr 1fr;gap:0.6rem;margin-top:0.4rem}
-.check-item{display:flex;align-items:center;gap:8px;padding:0.6rem 0.85rem;border-radius:10px;border:2px solid #e5e7eb;cursor:pointer;transition:all 0.18s;font-size:0.85rem;font-weight:600;color:#1a1a2e;line-height:1.5}
+.check-item{display:flex;flex-direction:row;flex-wrap:nowrap;align-items:center;gap:8px;padding:0.6rem 0.85rem;border-radius:10px;border:2px solid #e5e7eb;cursor:pointer;transition:all 0.18s;font-size:0.85rem;font-weight:600;color:#1a1a2e;line-height:1.5}
 .check-item:hover,.check-item.checked{border-color:#166178;background:#F0FDFA}
 .check-item input{width:16px;height:16px;accent-color:#166178;cursor:pointer}
 .radio-group{display:flex;gap:0.75rem;flex-wrap:wrap;margin-top:0.4rem}
