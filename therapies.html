@@ -563,8 +563,156 @@ nav.scrolled{box-shadow:0 4px 28px rgba(0,0,0,0.11)!important}
   <a href="#" onclick="openEnrollModal();return false;" class="mob-enroll">Enroll Now — Free <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></a>
 </div>
 
-<div style="background:#166178;padding:3.5rem 2rem 3rem;text-align:center">
-  <div style="max-width:700px;margin:0 auto">
+<div style="background:linear-gradient(135deg,rgba(13,79,97,0.82) 0%,rgba(22,97,120,0.75) 50%,rgba(26,122,138,0.72) 100%),url('https://images.pexels.com/photos/7447263/pexels-photo-7447263.jpeg?auto=compress&cs=tinysrgb&w=1920&fit=max');background-size:cover;background-position:center center;background-repeat:no-repeat;min-height:520px;padding:6rem 2rem 5rem;text-align:center;position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center">
+
+  <!-- ===== DECORATIVE SVG BACKGROUND ===== -->
+  <svg style="position:absolute;inset:0;width:100%;height:100%;pointer-events:none" viewBox="0 0 1440 400" preserveAspectRatio="xMidYMid slice" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <radialGradient id="tg1" cx="12%" cy="55%" r="38%">
+        <stop offset="0%" stop-color="#F97316" stop-opacity="0.28"/>
+        <stop offset="100%" stop-color="#F97316" stop-opacity="0"/>
+      </radialGradient>
+      <radialGradient id="tg2" cx="88%" cy="50%" r="38%">
+        <stop offset="0%" stop-color="#EC4899" stop-opacity="0.22"/>
+        <stop offset="100%" stop-color="#EC4899" stop-opacity="0"/>
+      </radialGradient>
+      <radialGradient id="tg3" cx="50%" cy="10%" r="55%">
+        <stop offset="0%" stop-color="#FBBF24" stop-opacity="0.14"/>
+        <stop offset="100%" stop-color="#FBBF24" stop-opacity="0"/>
+      </radialGradient>
+      <filter id="tblur"><feGaussianBlur stdDeviation="18"/></filter>
+    </defs>
+
+    <!-- Ambient glow layers -->
+    <rect width="1440" height="400" fill="url(#tg1)"/>
+    <rect width="1440" height="400" fill="url(#tg2)"/>
+    <rect width="1440" height="400" fill="url(#tg3)"/>
+
+    <!-- Large concentric rings — top-left corner -->
+    <circle cx="0" cy="0" r="320" stroke="rgba(255,255,255,0.055)" stroke-width="1"/>
+    <circle cx="0" cy="0" r="230" stroke="rgba(255,255,255,0.07)" stroke-width="1"/>
+    <circle cx="0" cy="0" r="145" stroke="rgba(255,255,255,0.09)" stroke-width="1"/>
+    <!-- Large concentric rings — bottom-right corner -->
+    <circle cx="1440" cy="400" r="340" stroke="rgba(255,255,255,0.055)" stroke-width="1"/>
+    <circle cx="1440" cy="400" r="240" stroke="rgba(255,255,255,0.07)" stroke-width="1"/>
+    <circle cx="1440" cy="400" r="150" stroke="rgba(255,255,255,0.09)" stroke-width="1"/>
+
+    <!-- Soft glow blobs (blurred circles) -->
+    <circle cx="120" cy="200" r="110" fill="rgba(249,115,22,0.13)" filter="url(#tblur)"/>
+    <circle cx="1320" cy="200" r="110" fill="rgba(236,72,153,0.12)" filter="url(#tblur)"/>
+    <circle cx="720" cy="400" r="130" fill="rgba(251,191,36,0.09)" filter="url(#tblur)"/>
+
+    <!-- Neural network — left panel -->
+    <circle cx="75"  cy="85"  r="4.5" fill="rgba(249,115,22,0.8)"/>
+    <circle cx="165" cy="150" r="3"   fill="rgba(255,255,255,0.45)"/>
+    <circle cx="110" cy="240" r="4"   fill="rgba(236,72,153,0.7)"/>
+    <circle cx="230" cy="300" r="3"   fill="rgba(251,191,36,0.6)"/>
+    <circle cx="55"  cy="320" r="5"   fill="rgba(249,115,22,0.45)"/>
+    <circle cx="195" cy="65"  r="3"   fill="rgba(255,255,255,0.35)"/>
+    <circle cx="290" cy="110" r="4"   fill="rgba(236,72,153,0.55)"/>
+    <circle cx="265" cy="215" r="3"   fill="rgba(255,255,255,0.35)"/>
+    <circle cx="340" cy="170" r="3.5" fill="rgba(251,191,36,0.5)"/>
+    <line x1="75"  y1="85"  x2="165" y2="150" stroke="rgba(255,255,255,0.13)" stroke-width="1"/>
+    <line x1="165" y1="150" x2="110" y2="240" stroke="rgba(255,255,255,0.11)" stroke-width="1"/>
+    <line x1="110" y1="240" x2="230" y2="300" stroke="rgba(255,255,255,0.11)" stroke-width="1"/>
+    <line x1="75"  y1="85"  x2="195" y2="65"  stroke="rgba(249,115,22,0.25)" stroke-width="1"/>
+    <line x1="195" y1="65"  x2="290" y2="110" stroke="rgba(255,255,255,0.12)" stroke-width="1"/>
+    <line x1="290" y1="110" x2="265" y2="215" stroke="rgba(236,72,153,0.18)" stroke-width="1"/>
+    <line x1="165" y1="150" x2="290" y2="110" stroke="rgba(255,255,255,0.09)" stroke-width="1"/>
+    <line x1="55"  y1="320" x2="110" y2="240" stroke="rgba(249,115,22,0.18)" stroke-width="1"/>
+    <line x1="230" y1="300" x2="265" y2="215" stroke="rgba(255,255,255,0.11)" stroke-width="1"/>
+    <line x1="290" y1="110" x2="340" y2="170" stroke="rgba(251,191,36,0.2)"  stroke-width="1"/>
+    <line x1="265" y1="215" x2="340" y2="170" stroke="rgba(255,255,255,0.1)"  stroke-width="1"/>
+
+    <!-- Neural network — right panel -->
+    <circle cx="1365" cy="85"  r="4.5" fill="rgba(249,115,22,0.8)"/>
+    <circle cx="1275" cy="150" r="3"   fill="rgba(255,255,255,0.45)"/>
+    <circle cx="1330" cy="240" r="4"   fill="rgba(236,72,153,0.7)"/>
+    <circle cx="1210" cy="300" r="3"   fill="rgba(251,191,36,0.6)"/>
+    <circle cx="1385" cy="320" r="5"   fill="rgba(249,115,22,0.45)"/>
+    <circle cx="1245" cy="65"  r="3"   fill="rgba(255,255,255,0.35)"/>
+    <circle cx="1150" cy="110" r="4"   fill="rgba(236,72,153,0.55)"/>
+    <circle cx="1175" cy="215" r="3"   fill="rgba(255,255,255,0.35)"/>
+    <circle cx="1100" cy="170" r="3.5" fill="rgba(251,191,36,0.5)"/>
+    <line x1="1365" y1="85"  x2="1275" y2="150" stroke="rgba(255,255,255,0.13)" stroke-width="1"/>
+    <line x1="1275" y1="150" x2="1330" y2="240" stroke="rgba(255,255,255,0.11)" stroke-width="1"/>
+    <line x1="1330" y1="240" x2="1210" y2="300" stroke="rgba(255,255,255,0.11)" stroke-width="1"/>
+    <line x1="1365" y1="85"  x2="1245" y2="65"  stroke="rgba(249,115,22,0.25)" stroke-width="1"/>
+    <line x1="1245" y1="65"  x2="1150" y2="110" stroke="rgba(255,255,255,0.12)" stroke-width="1"/>
+    <line x1="1150" y1="110" x2="1175" y2="215" stroke="rgba(236,72,153,0.18)" stroke-width="1"/>
+    <line x1="1275" y1="150" x2="1150" y2="110" stroke="rgba(255,255,255,0.09)" stroke-width="1"/>
+    <line x1="1385" y1="320" x2="1330" y2="240" stroke="rgba(249,115,22,0.18)" stroke-width="1"/>
+    <line x1="1210" y1="300" x2="1175" y2="215" stroke="rgba(255,255,255,0.11)" stroke-width="1"/>
+    <line x1="1150" y1="110" x2="1100" y2="170" stroke="rgba(251,191,36,0.2)"  stroke-width="1"/>
+    <line x1="1175" y1="215" x2="1100" y2="170" stroke="rgba(255,255,255,0.1)"  stroke-width="1"/>
+
+    <!-- EKG / heartbeat pulse lines -->
+    <path d="M360 200 L400 200 L418 162 L436 238 L454 178 L472 212 L490 200 L540 200" stroke="rgba(249,115,22,0.45)" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M900 200 L940 200 L958 162 L976 238 L994 178 L1012 212 L1030 200 L1080 200" stroke="rgba(236,72,153,0.38)" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+
+    <!-- Brain-lobe silhouette motifs -->
+    <path d="M118 155 Q155 100 205 138 Q248 160 232 205 Q215 248 170 232 Q125 215 118 155Z" stroke="rgba(251,191,36,0.22)" stroke-width="1.5" fill="rgba(251,191,36,0.07)"/>
+    <path d="M1322 155 Q1285 100 1235 138 Q1192 160 1208 205 Q1225 248 1270 232 Q1315 215 1322 155Z" stroke="rgba(251,191,36,0.22)" stroke-width="1.5" fill="rgba(251,191,36,0.07)"/>
+
+    <!-- Medical cross symbols -->
+    <g opacity="0.22">
+      <rect x="375" y="64"  width="3.5" height="16" rx="1.75" fill="white"/>
+      <rect x="368" y="71"  width="16"  height="3.5" rx="1.75" fill="white"/>
+    </g>
+    <g opacity="0.22">
+      <rect x="1062" y="64"  width="3.5" height="16" rx="1.75" fill="white"/>
+      <rect x="1055" y="71"  width="16"  height="3.5" rx="1.75" fill="white"/>
+    </g>
+    <g opacity="0.28">
+      <rect x="455" y="318" width="3"   height="13"  rx="1.5"  fill="rgba(251,191,36,1)"/>
+      <rect x="449" y="324" width="13"  height="3"   rx="1.5"  fill="rgba(251,191,36,1)"/>
+    </g>
+    <g opacity="0.28">
+      <rect x="985" y="318" width="3"   height="13"  rx="1.5"  fill="rgba(249,115,22,1)"/>
+      <rect x="979" y="324" width="13"  height="3"   rx="1.5"  fill="rgba(249,115,22,1)"/>
+    </g>
+
+    <!-- 4-point sparkle stars -->
+    <path d="M330 52 L333 63 L344 66 L333 69 L330 80 L327 69 L316 66 L327 63Z" fill="rgba(249,115,22,0.35)"/>
+    <path d="M1110 52 L1113 63 L1124 66 L1113 69 L1110 80 L1107 69 L1096 66 L1107 63Z" fill="rgba(236,72,153,0.35)"/>
+    <path d="M700 22  L702 30 L710 32 L702 34 L700 42 L698 34 L690 32 L698 30Z" fill="rgba(251,191,36,0.4)"/>
+    <path d="M430 340 L432 348 L440 350 L432 352 L430 360 L428 352 L420 350 L428 348Z" fill="rgba(251,191,36,0.3)"/>
+    <path d="M1010 340 L1012 348 L1020 350 L1012 352 L1010 360 L1008 352 L1000 350 L1008 348Z" fill="rgba(249,115,22,0.3)"/>
+
+    <!-- Floating pill / capsule shapes -->
+    <rect x="48"  y="140" width="30" height="12" rx="6" fill="rgba(249,115,22,0.22)"  transform="rotate(-28 63 146)"/>
+    <rect x="1362" y="140" width="30" height="12" rx="6" fill="rgba(236,72,153,0.22)" transform="rotate(28 1377 146)"/>
+    <rect x="285" y="330" width="24" height="10" rx="5" fill="rgba(251,191,36,0.22)" transform="rotate(14 297 335)"/>
+    <rect x="1131" y="330" width="24" height="10" rx="5" fill="rgba(249,115,22,0.22)" transform="rotate(-14 1143 335)"/>
+
+    <!-- Dot grid — top band -->
+    <g fill="rgba(255,255,255,0.14)">
+      <circle cx="500" cy="28" r="1.5"/><circle cx="540" cy="28" r="1.5"/><circle cx="580" cy="28" r="1.5"/>
+      <circle cx="620" cy="28" r="1.5"/><circle cx="660" cy="28" r="1.5"/><circle cx="700" cy="28" r="1.5"/>
+      <circle cx="740" cy="28" r="1.5"/><circle cx="780" cy="28" r="1.5"/><circle cx="820" cy="28" r="1.5"/>
+      <circle cx="860" cy="28" r="1.5"/><circle cx="900" cy="28" r="1.5"/><circle cx="940" cy="28" r="1.5"/>
+      <circle cx="480" cy="60" r="1.5"/><circle cx="520" cy="60" r="1.5"/><circle cx="560" cy="60" r="1.5"/>
+      <circle cx="600" cy="60" r="1.5"/><circle cx="640" cy="60" r="1.5"/><circle cx="680" cy="60" r="1.5"/>
+      <circle cx="720" cy="60" r="1.5"/><circle cx="760" cy="60" r="1.5"/><circle cx="800" cy="60" r="1.5"/>
+      <circle cx="840" cy="60" r="1.5"/><circle cx="880" cy="60" r="1.5"/><circle cx="920" cy="60" r="1.5"/>
+      <circle cx="960" cy="60" r="1.5"/>
+    </g>
+    <!-- Dot grid — bottom band -->
+    <g fill="rgba(255,255,255,0.11)">
+      <circle cx="510" cy="345" r="1.5"/><circle cx="550" cy="345" r="1.5"/><circle cx="590" cy="345" r="1.5"/>
+      <circle cx="630" cy="345" r="1.5"/><circle cx="670" cy="345" r="1.5"/><circle cx="710" cy="345" r="1.5"/>
+      <circle cx="750" cy="345" r="1.5"/><circle cx="790" cy="345" r="1.5"/><circle cx="830" cy="345" r="1.5"/>
+      <circle cx="870" cy="345" r="1.5"/><circle cx="910" cy="345" r="1.5"/>
+    </g>
+
+    <!-- Flowing wave curves -->
+    <path d="M0 290 Q200 255 400 285 Q600 318 800 275 Q1000 232 1200 268 Q1340 295 1440 258" stroke="rgba(255,255,255,0.07)" stroke-width="1.5" fill="none"/>
+    <path d="M0 310 Q220 272 440 308 Q660 344 880 298 Q1060 258 1260 292 Q1370 312 1440 278" stroke="rgba(249,115,22,0.1)" stroke-width="1.5" fill="none"/>
+    <path d="M0 330 Q180 298 380 325 Q580 352 780 318 Q960 288 1140 310 Q1310 330 1440 305" stroke="rgba(236,72,153,0.07)" stroke-width="1" fill="none"/>
+  </svg>
+  <!-- ===== END BACKGROUND ===== -->
+
+  <div style="position:relative;z-index:1;max-width:700px;margin:0 auto">
     <span style="display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,0.15);color:#FDE68A;border:1px solid rgba(255,255,255,0.2);padding:0.3rem 0.85rem;border-radius:20px;font-size:0.75rem;font-weight:800;letter-spacing:0.06em;text-transform:uppercase;margin-bottom:1rem"><div class="icon-3d c-teal" style="width:22px;height:22px"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></div> Therapies</span>
     <h1 style="font-family:'Fredoka One',cursive;font-size:2.2rem;font-weight:400;color:#fff;margin-bottom:0.75rem;line-height:1.25">Expert Therapy Services</h1>
     <p style="color:rgba(255,255,255,0.8);font-size:1rem;line-height:1.7">Our certified therapists use evidence-based approaches to unlock each child's unique potential.</p>
