@@ -176,7 +176,16 @@ section{padding:4rem 2.5rem}
 
 /* ===== TEAM ===== */
 .team-sec{background:var(--bg)}
-.team-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;margin-top:2.75rem}
+.team-slider-wrap{position:relative;overflow:visible;margin-top:2.75rem}
+.team-track-clip{overflow:hidden;padding:14px 0;margin:-14px 0}
+.team-track{display:flex;align-items:stretch;transition:transform .55s cubic-bezier(0.4,0,0.2,1);will-change:transform}
+.team-slide{margin:0 8px;flex-shrink:0;display:flex;flex-direction:column;align-items:stretch}
+.team-controls{display:flex;align-items:center;justify-content:center;gap:18px;margin-top:36px}
+.team-arrow{width:44px;height:44px;border-radius:50%;background:var(--white);border:2px solid var(--border);color:#166178;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .25s,border-color .25s,transform .2s,color .2s;flex-shrink:0;box-shadow:0 2px 12px rgba(22,97,120,0.12);font-size:1.15rem;line-height:1}
+.team-arrow:hover{background:#166178;border-color:#166178;color:#fff;transform:scale(1.1)}
+.team-dots{display:flex;align-items:center;justify-content:center;gap:8px}
+.team-dot{width:10px;height:10px;border-radius:5px;background:var(--border);border:none;cursor:pointer;padding:0;transition:background .3s,width .3s}
+.team-dot.active{background:var(--orange);width:28px}
 .team-card{
   background:var(--white);border:2px solid var(--border);border-radius:20px;
   padding:2.25rem 1.5rem 1.75rem;text-align:center;
@@ -307,7 +316,6 @@ footer{background:#0e4050;color:rgba(255,255,255,0.65);padding:3.5rem 2.5rem 2re
   .why-grid{grid-template-columns:1fr;gap:2rem}
   .test-grid{grid-template-columns:repeat(2,1fr)}
   .faq-grid{grid-template-columns:1fr}
-  .team-grid{grid-template-columns:repeat(2,1fr)}
   .ft-top{grid-template-columns:1fr 1fr;gap:2rem}
   section{padding:3rem 1.5rem}
 }
@@ -356,7 +364,6 @@ footer{background:#0e4050;color:rgba(255,255,255,0.65);padding:3.5rem 2.5rem 2re
   .sec-sub{font-size:0.9rem}
   .prog-grid{grid-template-columns:1fr;gap:1rem}
   .prog-card-body{padding:1.25rem}
-  .team-grid{grid-template-columns:repeat(2,1fr);gap:1rem}
   .team-card{padding:1.75rem 1.25rem 1.5rem}
   .team-avatar-wrap{width:80px;height:80px}
 
@@ -418,7 +425,6 @@ footer{background:#0e4050;color:rgba(255,255,255,0.65);padding:3.5rem 2.5rem 2re
   .sec-title{font-size:1.35rem}
   .sec-sub{font-size:0.85rem}
   .prog-card-img{height:180px}
-  .team-grid{grid-template-columns:1fr}
   .team-card{padding:1.75rem 1.25rem 1.5rem}
   .team-avatar-wrap{width:88px;height:88px}
   .why-cards{grid-template-columns:1fr}
@@ -983,104 +989,123 @@ nav.scrolled{box-shadow:0 4px 28px rgba(0,0,0,0.11)!important}
     <h2 class="sec-title">Meet Our Dedicated Team</h2>
     <p class="sec-sub">Our therapists and educators bring heart, skill, and expertise to every session. Each one is passionate about helping your child succeed.</p>
 
-    <div class="team-grid">
+    <div class="team-slider-wrap">
+      <div class="team-track-clip">
+        <div class="team-track" id="team-track">
 
-      <!-- Dr. Ayesha Malik -->
-      <div class="team-card">
-        <div class="team-avatar-wrap">
-          <div class="team-avatar-inner">
-            <img class="team-avatar" src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=200&h=200&auto=format&fit=crop&crop=face&q=80" alt="Dr. Ayesha Malik" loading="lazy"/>
-          </div>
-        </div>
-        <h3 class="team-name">Hina Haroon</h3>
-        <p class="team-role">Founder &amp; Clinical Director</p>
-        <p class="team-creds">PhD Child Psychology &middot; 18 yrs experience &middot; Certified ABA Analyst</p>
-        <div class="team-divider"></div>
-        <div class="team-socials">
-          <a href="#" class="team-soc" aria-label="LinkedIn">
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
-          </a>
-          <a href="#" class="team-soc" aria-label="Email">
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-          </a>
-          <a href="about.html" class="team-soc" aria-label="Profile">
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-          </a>
-        </div>
+          <div class="team-slide"><div class="team-card">
+            <div class="team-avatar-wrap"><div class="team-avatar-inner">
+              <img class="team-avatar" src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=200&h=200&auto=format&fit=crop&crop=face&q=80" alt="Hina Haroon" loading="lazy"/>
+            </div></div>
+            <h3 class="team-name">Hina Haroon</h3>
+            <p class="team-role">Founder &amp; Clinical Director</p>
+            <p class="team-creds">PhD Child Psychology &middot; 18 yrs experience &middot; Certified ABA Analyst</p>
+            <div class="team-divider"></div>
+            <div class="team-socials">
+              <a href="#" class="team-soc" aria-label="LinkedIn"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a>
+              <a href="#" class="team-soc" aria-label="Email"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></a>
+              <a href="about.html" class="team-soc" aria-label="Profile"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></a>
+            </div>
+          </div></div>
+
+          <div class="team-slide"><div class="team-card">
+            <div class="team-avatar-wrap"><div class="team-avatar-inner">
+              <img class="team-avatar" src="https://images.unsplash.com/photo-1582750433449-648ed127bb54?w=200&h=200&auto=format&fit=crop&crop=face&q=80" alt="Sumaira Tariq" loading="lazy"/>
+            </div></div>
+            <h3 class="team-name">Sumaira Tariq</h3>
+            <p class="team-role">Lead Speech Therapist</p>
+            <p class="team-creds">M.Sc. Speech-Language Pathology &middot; 12 yrs experience &middot; AAC Specialist</p>
+            <div class="team-divider"></div>
+            <div class="team-socials">
+              <a href="#" class="team-soc" aria-label="LinkedIn"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a>
+              <a href="#" class="team-soc" aria-label="Email"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></a>
+              <a href="about.html" class="team-soc" aria-label="Profile"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></a>
+            </div>
+          </div></div>
+
+          <div class="team-slide"><div class="team-card">
+            <div class="team-avatar-wrap"><div class="team-avatar-inner">
+              <img class="team-avatar" src="https://images.unsplash.com/photo-1551836022-deb4988cc6c0?w=200&h=200&auto=format&fit=crop&crop=face&q=80" alt="Sidra Simaab" loading="lazy"/>
+            </div></div>
+            <h3 class="team-name">Sidra Simaab</h3>
+            <p class="team-role">Senior Occupational Therapist</p>
+            <p class="team-creds">B.Sc. OT &middot; Sensory Integration Cert. &middot; 10 yrs experience</p>
+            <div class="team-divider"></div>
+            <div class="team-socials">
+              <a href="#" class="team-soc" aria-label="LinkedIn"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a>
+              <a href="#" class="team-soc" aria-label="Email"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></a>
+              <a href="about.html" class="team-soc" aria-label="Profile"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></a>
+            </div>
+          </div></div>
+
+          <div class="team-slide"><div class="team-card">
+            <div class="team-avatar-wrap"><div class="team-avatar-inner">
+              <img class="team-avatar" src="https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?w=200&h=200&auto=format&fit=crop&crop=face&q=80" alt="Hina Baig" loading="lazy"/>
+            </div></div>
+            <h3 class="team-name">Hina Baig</h3>
+            <p class="team-role">Head of Special Education</p>
+            <p class="team-creds">M.Ed. Special Education &middot; IEP Specialist &middot; 14 yrs experience</p>
+            <div class="team-divider"></div>
+            <div class="team-socials">
+              <a href="#" class="team-soc" aria-label="LinkedIn"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a>
+              <a href="#" class="team-soc" aria-label="Email"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></a>
+              <a href="about.html" class="team-soc" aria-label="Profile"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></a>
+            </div>
+          </div></div>
+
+          <div class="team-slide"><div class="team-card">
+            <div class="team-avatar-wrap"><div class="team-avatar-inner">
+              <img class="team-avatar" src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=200&h=200&auto=format&fit=crop&crop=face&q=80" alt="Dr. Zara Khan" loading="lazy"/>
+            </div></div>
+            <h3 class="team-name">Dr. Zara Khan</h3>
+            <p class="team-role">Lead ABA Therapist</p>
+            <p class="team-creds">M.Phil Applied Behavior Analysis &middot; BCBA Certified &middot; 9 yrs experience</p>
+            <div class="team-divider"></div>
+            <div class="team-socials">
+              <a href="#" class="team-soc" aria-label="LinkedIn"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a>
+              <a href="#" class="team-soc" aria-label="Email"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></a>
+              <a href="about.html" class="team-soc" aria-label="Profile"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></a>
+            </div>
+          </div></div>
+
+          <div class="team-slide"><div class="team-card">
+            <div class="team-avatar-wrap"><div class="team-avatar-inner">
+              <img class="team-avatar" src="https://images.unsplash.com/photo-1573496799652-408c2ac9fe98?w=200&h=200&auto=format&fit=crop&crop=face&q=80" alt="Fatima Noor" loading="lazy"/>
+            </div></div>
+            <h3 class="team-name">Fatima Noor</h3>
+            <p class="team-role">Senior Physical Therapist</p>
+            <p class="team-creds">DPT &middot; Pediatric Rehabilitation Cert. &middot; 11 yrs experience</p>
+            <div class="team-divider"></div>
+            <div class="team-socials">
+              <a href="#" class="team-soc" aria-label="LinkedIn"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a>
+              <a href="#" class="team-soc" aria-label="Email"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></a>
+              <a href="about.html" class="team-soc" aria-label="Profile"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></a>
+            </div>
+          </div></div>
+
+          <div class="team-slide"><div class="team-card">
+            <div class="team-avatar-wrap"><div class="team-avatar-inner">
+              <img class="team-avatar" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&h=200&auto=format&fit=crop&crop=face&q=80" alt="Usman Tariq" loading="lazy"/>
+            </div></div>
+            <h3 class="team-name">Usman Tariq</h3>
+            <p class="team-role">Child Psychologist</p>
+            <p class="team-creds">M.Phil Child Psychology &middot; CBT Specialist &middot; 8 yrs experience</p>
+            <div class="team-divider"></div>
+            <div class="team-socials">
+              <a href="#" class="team-soc" aria-label="LinkedIn"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a>
+              <a href="#" class="team-soc" aria-label="Email"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></a>
+              <a href="about.html" class="team-soc" aria-label="Profile"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></a>
+            </div>
+          </div></div>
+
+        </div><!-- /team-track -->
+      </div><!-- /team-track-clip -->
+
+      <div class="team-controls">
+        <button class="team-arrow" id="team-prev" aria-label="Previous">&#8592;</button>
+        <div class="team-dots" id="team-dots"></div>
+        <button class="team-arrow" id="team-next" aria-label="Next">&#8594;</button>
       </div>
-
-      <!-- Bilal Raza -->
-      <div class="team-card">
-        <div class="team-avatar-wrap">
-          <div class="team-avatar-inner">
-            <img class="team-avatar" src="https://images.unsplash.com/photo-1582750433449-648ed127bb54?w=200&h=200&auto=format&fit=crop&crop=face&q=80" alt="Bilal Raza" loading="lazy"/>
-          </div>
-        </div>
-        <h3 class="team-name">Sumaira Tariq</h3>
-        <p class="team-role">Lead Speech Therapist</p>
-        <p class="team-creds">M.Sc. Speech-Language Pathology &middot; 12 yrs experience &middot; AAC Specialist</p>
-        <div class="team-divider"></div>
-        <div class="team-socials">
-          <a href="#" class="team-soc" aria-label="LinkedIn">
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
-          </a>
-          <a href="#" class="team-soc" aria-label="Email">
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-          </a>
-          <a href="about.html" class="team-soc" aria-label="Profile">
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-          </a>
-        </div>
-      </div>
-
-      <!-- Sana Qureshi -->
-      <div class="team-card">
-        <div class="team-avatar-wrap">
-          <div class="team-avatar-inner">
-            <img class="team-avatar" src="https://images.unsplash.com/photo-1551836022-deb4988cc6c0?w=200&h=200&auto=format&fit=crop&crop=face&q=80" alt="Sana Qureshi" loading="lazy"/>
-          </div>
-        </div>
-        <h3 class="team-name">Sidra Simaab</h3>
-        <p class="team-role">Senior Occupational Therapist</p>
-        <p class="team-creds">B.Sc. OT &middot; Sensory Integration Cert. &middot; 10 yrs experience</p>
-        <div class="team-divider"></div>
-        <div class="team-socials">
-          <a href="#" class="team-soc" aria-label="LinkedIn">
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
-          </a>
-          <a href="#" class="team-soc" aria-label="Email">
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-          </a>
-          <a href="about.html" class="team-soc" aria-label="Profile">
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-          </a>
-        </div>
-      </div>
-
-      <!-- Hina Baig -->
-      <div class="team-card">
-        <div class="team-avatar-wrap">
-          <div class="team-avatar-inner">
-            <img class="team-avatar" src="https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?w=200&h=200&auto=format&fit=crop&crop=face&q=80" alt="Hina Baig" loading="lazy"/>
-          </div>
-        </div>
-        <h3 class="team-name">Hina Baig</h3>
-        <p class="team-role">Head of Special Education</p>
-        <p class="team-creds">M.Ed. Special Education &middot; IEP Specialist &middot; 14 yrs experience</p>
-        <div class="team-divider"></div>
-        <div class="team-socials">
-          <a href="#" class="team-soc" aria-label="LinkedIn">
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
-          </a>
-          <a href="#" class="team-soc" aria-label="Email">
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-          </a>
-          <a href="about.html" class="team-soc" aria-label="Profile">
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-          </a>
-        </div>
-      </div>
-
     </div>
   </div>
 </section>
@@ -1861,6 +1886,98 @@ document.querySelectorAll('.ribbon-item').forEach(function(el,i){
   recalcSlides();
   buildDots();
   resetProgress();
+  startAuto();
+})();
+
+/* ── Team Slider ─────────────────────────────────────── */
+(function(){
+  var track   = document.getElementById('team-track');
+  if(!track) return;
+  var prevBtn = document.getElementById('team-prev');
+  var nextBtn = document.getElementById('team-next');
+  var dotsWrap= document.getElementById('team-dots');
+  var slides  = track.querySelectorAll('.team-slide');
+  var total   = slides.length;
+  var current = 0;
+  var AUTO_MS = 4800;
+  var autoTimer;
+
+  function visibleCount(){
+    var w = track.parentElement.offsetWidth;
+    return w >= 1024 ? 4 : w >= 640 ? 2 : 1;
+  }
+  function slideWidth(){
+    return Math.floor(track.parentElement.offsetWidth / visibleCount());
+  }
+  function recalcSlides(){
+    var vis = visibleCount();
+    var sw  = Math.floor(track.parentElement.offsetWidth / vis) - 16;
+    slides.forEach(function(s){
+      s.style.width    = sw + 'px';
+      s.style.minWidth = sw + 'px';
+    });
+    var maxH = 0;
+    slides.forEach(function(s){ maxH = Math.max(maxH, s.firstElementChild.scrollHeight); });
+    slides.forEach(function(s){ s.firstElementChild.style.minHeight = maxH + 'px'; });
+  }
+  function buildDots(){
+    if(!dotsWrap) return;
+    dotsWrap.innerHTML = '';
+    var pages = Math.max(1, total - visibleCount() + 1);
+    for(var i = 0; i < pages; i++){
+      (function(idx){
+        var d = document.createElement('button');
+        d.className = 'team-dot' + (idx === 0 ? ' active' : '');
+        d.setAttribute('aria-label', 'Go to slide ' + (idx + 1));
+        d.addEventListener('click', function(){ stopAuto(); goTo(idx); startAuto(); });
+        dotsWrap.appendChild(d);
+      })(i);
+    }
+  }
+  function updateDots(){
+    if(!dotsWrap) return;
+    var dots = dotsWrap.querySelectorAll('.team-dot');
+    dots.forEach(function(d, i){ d.classList.toggle('active', i === current); });
+  }
+  function goTo(idx){
+    var maxIdx = Math.max(0, total - visibleCount());
+    current = Math.max(0, Math.min(idx, maxIdx));
+    track.style.transform = 'translateX(-' + (current * slideWidth()) + 'px)';
+    updateDots();
+  }
+  function startAuto(){
+    autoTimer = setInterval(function(){
+      var maxIdx = Math.max(0, total - visibleCount());
+      goTo(current < maxIdx ? current + 1 : 0);
+    }, AUTO_MS);
+  }
+  function stopAuto(){ clearInterval(autoTimer); }
+
+  if(prevBtn) prevBtn.addEventListener('click', function(){ stopAuto(); goTo(current - 1); startAuto(); });
+  if(nextBtn) nextBtn.addEventListener('click', function(){ stopAuto(); goTo(current + 1); startAuto(); });
+
+  /* Touch / swipe */
+  var tsX = 0;
+  track.addEventListener('touchstart', function(e){ tsX = e.touches[0].clientX; }, {passive:true});
+  track.addEventListener('touchend',   function(e){
+    var dx = e.changedTouches[0].clientX - tsX;
+    if(Math.abs(dx) > 40){ stopAuto(); goTo(dx < 0 ? current + 1 : current - 1); startAuto(); }
+  }, {passive:true});
+
+  /* Pause on hover */
+  track.parentElement.addEventListener('mouseenter', stopAuto);
+  track.parentElement.addEventListener('mouseleave', startAuto);
+
+  /* Resize */
+  var resizeTimer;
+  window.addEventListener('resize', function(){
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(function(){ recalcSlides(); buildDots(); goTo(0); }, 200);
+  });
+
+  recalcSlides();
+  buildDots();
+  goTo(0);
   startAuto();
 })();
 </script>
