@@ -223,16 +223,45 @@ section{padding:4rem 2.5rem}
 .team-soc:hover{border-color:#166178;color:#166178;background:var(--teal-l);transform:translateY(-2px)}
 
 /* ===== CTA ===== */
-.cta-sec{background:#166178;text-align:center}
-.cta-icon{font-size:3.5rem;display:block;margin-bottom:1rem}
-.cta-btns{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;margin-top:1.75rem}
+.cta-sec{
+  background:linear-gradient(135deg,#0b3040 0%,#104f65 35%,#166178 65%,#1a7a96 100%);
+  text-align:center;position:relative;overflow:hidden
+}
+.cta-blob{position:absolute;border-radius:50%;pointer-events:none}
+.cta-blob-1{
+  width:480px;height:480px;
+  top:-120px;left:-140px;
+  background:radial-gradient(circle,rgba(255,255,255,0.07) 0%,rgba(255,255,255,0.02) 55%,transparent 70%);
+  border:1.5px solid rgba(255,255,255,0.06)
+}
+.cta-blob-2{
+  width:360px;height:360px;
+  bottom:-100px;right:-80px;
+  background:radial-gradient(circle,rgba(249,115,22,0.12) 0%,rgba(249,115,22,0.03) 55%,transparent 70%);
+  border:1.5px solid rgba(249,115,22,0.08)
+}
+.cta-blob-3{
+  width:200px;height:200px;
+  top:50%;right:8%;
+  transform:translateY(-50%);
+  background:radial-gradient(circle,rgba(255,255,255,0.05) 0%,transparent 70%);
+  border:1px solid rgba(255,255,255,0.05)
+}
+.cta-blob-4{
+  width:120px;height:120px;
+  bottom:10%;left:12%;
+  background:radial-gradient(circle,rgba(249,115,22,0.08) 0%,transparent 70%);
+  border:1px solid rgba(249,115,22,0.06)
+}
+.cta-icon{font-size:3.5rem;display:block;margin-bottom:1rem;position:relative;z-index:1}
+.cta-btns{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;margin-top:1.75rem;position:relative;z-index:1}
 .btn-cta-main{background:linear-gradient(135deg,var(--orange),var(--pink));color:#fff;padding:0.85rem 2rem;border-radius:12px;font-weight:900;font-size:1rem;text-decoration:none;box-shadow:0 6px 20px rgba(249,115,22,0.35);transition:all 0.2s;display:inline-flex;align-items:center;gap:8px}
 .btn-cta-main:hover{transform:translateY(-2px);box-shadow:0 10px 28px rgba(249,115,22,0.5)}
 .btn-cta-out{background:rgba(255,255,255,0.12);color:#fff;border:2px solid rgba(255,255,255,0.35);padding:0.85rem 2rem;border-radius:12px;font-weight:800;font-size:1rem;text-decoration:none;transition:all 0.2s;display:inline-flex;align-items:center;gap:8px}
 .btn-cta-out:hover{background:rgba(255,255,255,0.22);border-color:rgba(255,255,255,0.6)}
-.cta-title{font-family:'Fredoka One',cursive;font-size:2.1rem;font-weight:400;color:#fff;margin-bottom:0.6rem;line-height:1.25;letter-spacing:0.01em}
-.cta-sub{color:rgba(255,255,255,0.8);font-size:0.97rem;max-width:580px;line-height:1.7;margin:0 auto}
-.cta-tag{display:inline-flex;align-items:center;gap:5px;background:rgba(255,255,255,0.15);color:#FDE68A;border:1px solid rgba(255,255,255,0.2);padding:0.3rem 0.85rem;border-radius:20px;font-size:0.75rem;font-weight:800;letter-spacing:0.06em;text-transform:uppercase;margin-bottom:0.9rem}
+.cta-title{font-family:'Fredoka One',cursive;font-size:2.2rem;font-weight:400;color:#fff;margin-bottom:0.6rem;line-height:1.25;letter-spacing:0.01em;position:relative;z-index:1}
+.cta-sub{color:rgba(255,255,255,0.82);font-size:0.97rem;max-width:560px;line-height:1.75;margin:0 auto;position:relative;z-index:1}
+.cta-tag{display:inline-flex;align-items:center;gap:5px;background:rgba(255,255,255,0.12);color:#FDE68A;border:1px solid rgba(255,255,255,0.18);padding:0.3rem 0.85rem;border-radius:20px;font-size:0.75rem;font-weight:800;letter-spacing:0.06em;text-transform:uppercase;margin-bottom:0.9rem;position:relative;z-index:1;backdrop-filter:blur(6px)}
 
 /* ===== FOOTER ===== */
 footer{background:#0e4050;color:rgba(255,255,255,0.65);padding:3.5rem 2.5rem 2rem}
@@ -1112,11 +1141,15 @@ nav.scrolled{box-shadow:0 4px 28px rgba(0,0,0,0.11)!important}
 
 <!-- ===== CTA ===== -->
 <section class="cta-sec">
-  <div class="sec-inner" style="text-align:center;max-width:700px;margin:0 auto">
-    <span class="cta-icon"><svg width="52" height="52" viewBox="0 0 24 24" fill="rgba(255,230,50,0.85)" stroke="rgba(255,255,255,0.5)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></span>
+  <div class="cta-blob cta-blob-1"></div>
+  <div class="cta-blob cta-blob-2"></div>
+  <div class="cta-blob cta-blob-3"></div>
+  <div class="cta-blob cta-blob-4"></div>
+  <div class="sec-inner" style="text-align:center;max-width:700px;margin:0 auto;position:relative;z-index:1">
+    <span class="cta-icon"><svg width="54" height="54" viewBox="0 0 24 24" fill="rgba(255,230,50,0.9)" stroke="rgba(255,255,255,0.45)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></span>
     <span class="cta-tag"><svg width="13" height="13" viewBox="0 0 24 24" fill="#FDE68A"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg> Get Started Today</span>
-    <h2 class="cta-title">Your Child's Bright Future Begins Here</h2>
-    <p class="cta-sub">Take the first step. Our caring team is ready to listen, understand, and create the perfect path for your child's unique journey.</p>
+    <h2 class="cta-title">Ready to Give Your Child the Best Start?</h2>
+    <p class="cta-sub">Book a free 30-minute assessment with one of our specialists today. No waiting lists, no complicated process — just a warm conversation about your child's future.</p>
     <div class="cta-btns">
       <a href="#" onclick="openEnrollModal();return false;" class="btn-cta-main"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><rect x="8" y="2" width="8" height="4" rx="1" ry="1"/></svg> Schedule Free Assessment</a>
       <a href="contact.html" class="btn-cta-out"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.42 2 2 0 0 1 3.6 1.21h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 9a16 16 0 0 0 6.09 6.09l1.95-1.95a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg> Talk to Our Team</a>
