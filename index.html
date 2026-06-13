@@ -63,68 +63,12 @@ nav{
 .mobile-menu.open{display:flex}
 
 /* ===== HERO ===== */
-.hero-wrap{background:#0b3040;position:relative;overflow:hidden}
-
-/* ── Background image with Ken Burns zoom ── */
-.hero-bg-img{
-  position:absolute;inset:0;
-  background:url('https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=1920&h=900&auto=format&fit=crop&q=80') center 40%/cover no-repeat;
-  animation:heroZoom 32s ease-in-out infinite alternate;
-  will-change:transform;z-index:0;
-}
-@keyframes heroZoom{
-  0%  {transform:scale(1.0) translate(0,0)}
-  100%{transform:scale(1.12) translate(1%,-1%)}
-}
-
-/* ── Multi-layer gradient overlay ── */
-.hero-bg-overlay{
-  position:absolute;inset:0;z-index:1;
-  background:
-    linear-gradient(155deg,rgba(11,48,64,0.93) 0%,rgba(22,97,120,0.80) 52%,rgba(14,64,80,0.91) 100%);
-}
-
-/* ── Animated color glow orbs ── */
-.hero-glow-orbs{
-  position:absolute;inset:0;z-index:2;pointer-events:none;
-  background:
-    radial-gradient(ellipse 700px 500px at 8% 65%,rgba(249,115,22,0.17) 0%,transparent 58%),
-    radial-gradient(ellipse 600px 420px at 92% 18%,rgba(236,72,153,0.13) 0%,transparent 54%),
-    radial-gradient(ellipse 500px 380px at 52% 105%,rgba(13,148,136,0.20) 0%,transparent 52%);
-  animation:glowPulse 9s ease-in-out infinite alternate;
-}
-@keyframes glowPulse{0%{opacity:.65}100%{opacity:1.05}}
-
-/* ── Top rainbow accent line ── */
-.hero-top-line{
-  position:absolute;top:0;left:0;right:0;height:3px;z-index:5;
-  background:linear-gradient(90deg,#F97316,#EC4899 30%,#7C3AED 55%,#166178 78%,#0D9488);
-  opacity:.9;
-}
-
-/* ── Floating particle dots ── */
-.hero-particles{position:absolute;inset:0;overflow:hidden;pointer-events:none;z-index:2}
-.hp{position:absolute;border-radius:50%;animation:floatUp linear infinite;opacity:0}
-@keyframes floatUp{
-  0%  {transform:translateY(0) translateX(0);opacity:0}
-  8%  {opacity:1}
-  86% {opacity:.55}
-  100%{transform:translateY(-105vh) translateX(var(--dx,0px));opacity:0}
-}
-
-/* ── Bottom wave shape ── */
-.hero-wave{
-  position:absolute;bottom:-1px;left:0;right:0;z-index:4;
-  line-height:0;pointer-events:none;
-}
-.hero-wave svg{display:block;width:100%;height:64px}
-
+.hero-wrap{background:#166178}
 .hero{
-  padding:4.5rem 2.5rem 5rem;
+  padding:4.5rem 2.5rem 3.5rem;
   display:grid;grid-template-columns:1.1fr 0.9fr;
   gap:3rem;align-items:center;
   max-width:1200px;margin:0 auto;
-  position:relative;z-index:3;
 }
 .hero-tag{
   display:inline-flex;align-items:center;gap:6px;
