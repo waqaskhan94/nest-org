@@ -526,10 +526,13 @@ footer{background:#0e4050;color:rgba(255,255,255,0.65);padding:3.5rem 2.5rem 2re
 .modal-footer{display:flex;justify-content:space-between;align-items:center;padding:1.1rem 2rem;border-top:2px solid #e5e7eb;background:#FFF8F0;border-radius:0 0 24px 24px;gap:0.75rem;flex-wrap:nowrap;flex-shrink:0;position:sticky;bottom:0;z-index:10}
 .btn-back{background:#fff;color:#6b7280;border:2px solid #e5e7eb;padding:0.65rem 1rem;border-radius:10px;font-family:"Quicksand",sans-serif;font-weight:700;font-size:0.9rem;cursor:pointer;transition:all 0.2s;white-space:nowrap}
 .btn-back:hover{border-color:#1a1a2e;color:#1a1a2e}
-.btn-fnext{background:linear-gradient(135deg,#166178,#0D9488);color:#fff;border:none;padding:0.65rem 1.5rem;border-radius:10px;font-family:"Quicksand",sans-serif;font-weight:800;font-size:0.9rem;cursor:pointer;transition:all 0.2s;display:flex;align-items:center;gap:6px;white-space:nowrap}
-.btn-fnext:hover{transform:translateY(-1px);box-shadow:0 6px 18px rgba(22,97,120,0.35)}
-.btn-fsubmit{background:linear-gradient(135deg,#F97316,#EC4899);color:#fff;border:none;padding:0.65rem 1.5rem;border-radius:10px;font-family:"Quicksand",sans-serif;font-weight:800;font-size:0.9rem;cursor:pointer;transition:all 0.2s;display:flex;align-items:center;gap:6px;white-space:nowrap}
-.btn-fsubmit:hover{transform:translateY(-1px);box-shadow:0 6px 18px rgba(249,115,22,0.35)}
+.btn-fnext{background:linear-gradient(135deg,#166178,#0D9488);color:#fff;border:none;padding:0.65rem 1.5rem;border-radius:10px;font-family:"Quicksand",sans-serif;font-weight:800;font-size:0.9rem;cursor:pointer;transition:all 0.2s;display:flex;align-items:center;gap:8px;white-space:nowrap}
+.btn-fnext:hover{transform:translateY(-2px);box-shadow:0 8px 22px rgba(22,97,120,0.38)}
+.btn-fsubmit{background:linear-gradient(135deg,#166178,#0D9488);color:#fff;border:none;padding:0.65rem 1.5rem;border-radius:10px;font-family:"Quicksand",sans-serif;font-weight:800;font-size:0.9rem;cursor:pointer;transition:all 0.25s cubic-bezier(0.4,0,0.2,1);display:flex;align-items:center;gap:8px;white-space:nowrap;box-shadow:0 4px 14px rgba(22,97,120,0.28);animation:btnPulse 2.8s ease-in-out infinite}
+.btn-fsubmit:hover{transform:translateY(-2px);box-shadow:0 10px 28px rgba(22,97,120,0.42);animation:none}
+.btn-icon{width:22px;height:22px;border-radius:6px;background:rgba(255,255,255,0.18);border:1px solid rgba(255,255,255,0.28);display:inline-flex;align-items:center;justify-content:center;flex-shrink:0;position:relative;overflow:hidden}
+.btn-icon::after{content:'';position:absolute;top:0;left:0;right:0;height:50%;background:rgba(255,255,255,0.22);border-radius:6px 6px 40% 40%/4px 4px 2px 2px;pointer-events:none}
+.btn-icon svg{position:relative;z-index:1}
 .step-counter{font-size:0.8rem;color:#6b7280;font-weight:700;white-space:nowrap;flex-shrink:0}
 @media(max-width:600px){
 .modal{
@@ -1380,8 +1383,8 @@ function toggleFaq(el){
     <div class="modal-footer" id="modalFooter">
       <button class="btn-back" id="btnBack" onclick="prevStep()" style="visibility:hidden">&#8592; Back</button>
       <span class="step-counter" id="stepCounter">Step 1 of 4</span>
-      <button class="btn-fnext" id="btnNext" onclick="nextStep()">Next &#8594;</button>
-      <button class="btn-fsubmit" id="btnSubmit" style="display:none" onclick="submitForm()">Submit Enrollment &#127881;</button>
+      <button class="btn-fnext" id="btnNext" onclick="nextStep()">Next <span class="btn-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span></button>
+      <button class="btn-fsubmit" id="btnSubmit" style="display:none" onclick="submitForm()">Submit Enrollment <span class="btn-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2" fill="white" stroke="none"/></svg></span></button>
     </div>
   </div>
 </div>
