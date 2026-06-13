@@ -98,45 +98,6 @@ nav{
 .hb-lbl{font-size:0.7rem;color:rgba(255,255,255,0.6);font-weight:600}
 .hb-div{width:1px;height:32px;background:rgba(255,255,255,0.15)}
 
-/* ===== PROGRAMS PAGE HERO ===== */
-.pg-hero{position:relative;overflow:hidden;min-height:490px;display:flex;align-items:center;justify-content:center;background:#0b3040}
-.pg-hero-bg-img{position:absolute;inset:0;background:url('https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=1920&h=900&auto=format&fit=crop&q=80') center 38%/cover no-repeat;animation:pgHeroZoom 32s ease-in-out infinite alternate;will-change:transform}
-@keyframes pgHeroZoom{0%{transform:scale(1.0)}100%{transform:scale(1.12) translate(1.5%,-1%)}}
-.pg-hero-overlay{position:absolute;inset:0;background:linear-gradient(160deg,rgba(11,48,64,0.93) 0%,rgba(22,97,120,0.80) 52%,rgba(14,64,80,0.92) 100%)}
-.pg-hero-glow{position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse 800px 500px at 5% 70%,rgba(249,115,22,0.18) 0%,transparent 58%),radial-gradient(ellipse 700px 400px at 95% 15%,rgba(236,72,153,0.14) 0%,transparent 55%),radial-gradient(ellipse 600px 400px at 50% 115%,rgba(13,148,136,0.22) 0%,transparent 52%);animation:pgGlowPulse 9s ease-in-out infinite alternate}
-@keyframes pgGlowPulse{0%{opacity:.68}100%{opacity:1.05}}
-.pg-hero-top-line{position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#F97316,#EC4899 28%,#7C3AED 54%,#166178 78%,#0D9488);opacity:.9;z-index:5}
-.pg-hero-particles{position:absolute;inset:0;overflow:hidden;pointer-events:none;z-index:2}
-.php{position:absolute;border-radius:50%;animation:pgFloatUp linear infinite;opacity:0}
-@keyframes pgFloatUp{0%{transform:translateY(0) translateX(0);opacity:0}8%{opacity:1}86%{opacity:.55}100%{transform:translateY(-105vh) translateX(var(--dx,0px));opacity:0}}
-.pg-hero-content{position:relative;z-index:4;text-align:center;max-width:720px;width:100%;padding:5rem 2rem 6.5rem;margin:0 auto}
-.pg-hero-breadcrumb{display:flex;align-items:center;justify-content:center;gap:7px;margin-bottom:1.2rem}
-.pg-hero-breadcrumb a{color:rgba(255,255,255,0.5);font-size:0.8rem;font-weight:700;text-decoration:none;transition:color .2s}
-.pg-hero-breadcrumb a:hover{color:rgba(255,255,255,0.9)}
-.pg-hero-breadcrumb .bsep{color:rgba(255,255,255,0.28);font-size:0.7rem}
-.pg-hero-breadcrumb .bcur{color:rgba(255,255,255,0.85);font-size:0.8rem;font-weight:700}
-.pg-hero-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,0.12);border:1.5px solid rgba(255,255,255,0.22);color:#FDE68A;padding:0.35rem 1rem;border-radius:20px;font-size:0.76rem;font-weight:800;letter-spacing:0.07em;text-transform:uppercase;margin-bottom:1.1rem;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);display:inline-flex}
-.pg-hero-content h1{font-family:'Fredoka One',cursive;font-size:2.85rem;font-weight:400;color:#fff;margin-bottom:0.9rem;line-height:1.2;letter-spacing:0.01em}
-.hl-o{color:#FCD34D}.hl-p{color:#F9A8D4}
-.pg-hero-content>p{color:rgba(255,255,255,0.80);font-size:1rem;line-height:1.75;max-width:580px;margin:0 auto 1.6rem}
-.pg-hero-pills{display:flex;gap:0.65rem;justify-content:center;flex-wrap:wrap;margin-bottom:1.65rem}
-.pg-hero-pill{display:flex;align-items:center;gap:6px;background:rgba(255,255,255,0.10);border:1px solid rgba(255,255,255,0.20);color:rgba(255,255,255,0.9);padding:0.3rem 0.85rem;border-radius:20px;font-size:0.79rem;font-weight:700;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
-.pg-hero-cta{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,#F97316,#166178);color:#fff;padding:0.75rem 1.85rem;border-radius:100px;font-weight:800;font-size:0.95rem;text-decoration:none;box-shadow:0 4px 20px rgba(249,115,22,0.35);transition:all 0.25s cubic-bezier(0.4,0,0.2,1);animation:btnPulse 2.8s ease-in-out infinite}
-.pg-hero-cta:hover{transform:translateY(-3px);box-shadow:0 8px 28px rgba(0,0,0,0.22);animation:none}
-.pg-hero-stats{display:flex;align-items:center;justify-content:center;margin:1.8rem auto 0;max-width:440px;background:rgba(255,255,255,0.09);border:1px solid rgba(255,255,255,0.15);border-radius:16px;padding:0.75rem 1.5rem;backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}
-.pgh-stat{text-align:center;flex:1}
-.pgh-num{font-family:'Fredoka One',cursive;font-size:1.3rem;color:#FBBF24;display:block}
-.pgh-lbl{font-size:0.7rem;color:rgba(255,255,255,0.6);font-weight:700}
-.pgh-div{width:1px;height:34px;background:rgba(255,255,255,0.15)}
-.pg-hero-wave{position:absolute;bottom:-1px;left:0;right:0;z-index:5;line-height:0;pointer-events:none}
-.pg-hero-wave svg{display:block;width:100%;height:64px}
-@media(max-width:768px){
-  .pg-hero-content h1{font-size:2rem}
-  .pg-hero-content{padding:3.5rem 1.25rem 5rem}
-  .pg-hero{min-height:420px}
-  .pg-hero-stats{max-width:100%}
-}
-
 /* ===== RIBBON ===== */
 .ribbon{background:var(--white);border-bottom:2px solid var(--border);padding:1rem 2.5rem}
 .ribbon-inner{max-width:1100px;margin:0 auto;display:flex;flex-wrap:nowrap;align-items:center;justify-content:center;gap:0}
@@ -598,71 +559,11 @@ nav.scrolled{box-shadow:0 4px 28px rgba(0,0,0,0.11)!important}
   <a href="#" onclick="openEnrollModal();return false;" class="mob-enroll">Enroll Now — Free <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></a>
 </div>
 
-<div class="pg-hero">
-  <!-- Background layers -->
-  <div class="pg-hero-bg-img"></div>
-  <div class="pg-hero-overlay"></div>
-  <div class="pg-hero-glow"></div>
-  <div class="pg-hero-top-line"></div>
-
-  <!-- Floating particles -->
-  <div class="pg-hero-particles">
-    <div class="php" style="left:2%;bottom:0;width:3px;height:3px;background:rgba(255,255,255,0.50);animation-duration:14s;animation-delay:-1s;--dx:12px"></div>
-    <div class="php" style="left:8%;bottom:0;width:2px;height:2px;background:rgba(251,191,36,0.65);animation-duration:18s;animation-delay:-4s;--dx:-8px"></div>
-    <div class="php" style="left:15%;bottom:0;width:4px;height:4px;background:rgba(255,255,255,0.35);animation-duration:12s;animation-delay:-8s;--dx:18px"></div>
-    <div class="php" style="left:22%;bottom:0;width:2px;height:2px;background:rgba(13,148,136,0.60);animation-duration:20s;animation-delay:-2s;--dx:-15px"></div>
-    <div class="php" style="left:28%;bottom:0;width:3px;height:3px;background:rgba(255,255,255,0.45);animation-duration:16s;animation-delay:-11s;--dx:10px"></div>
-    <div class="php" style="left:35%;bottom:0;width:5px;height:5px;background:rgba(255,255,255,0.20);animation-duration:22s;animation-delay:-6s;--dx:-20px"></div>
-    <div class="php" style="left:42%;bottom:0;width:2px;height:2px;background:rgba(251,191,36,0.55);animation-duration:13s;animation-delay:-15s;--dx:8px"></div>
-    <div class="php" style="left:50%;bottom:0;width:3px;height:3px;background:rgba(255,255,255,0.40);animation-duration:17s;animation-delay:-3s;--dx:-12px"></div>
-    <div class="php" style="left:58%;bottom:0;width:2px;height:2px;background:rgba(13,148,136,0.55);animation-duration:15s;animation-delay:-9s;--dx:22px"></div>
-    <div class="php" style="left:65%;bottom:0;width:4px;height:4px;background:rgba(255,255,255,0.30);animation-duration:19s;animation-delay:-7s;--dx:-18px"></div>
-    <div class="php" style="left:72%;bottom:0;width:2px;height:2px;background:rgba(251,191,36,0.60);animation-duration:11s;animation-delay:-13s;--dx:14px"></div>
-    <div class="php" style="left:78%;bottom:0;width:3px;height:3px;background:rgba(255,255,255,0.42);animation-duration:21s;animation-delay:-5s;--dx:-10px"></div>
-    <div class="php" style="left:85%;bottom:0;width:2px;height:2px;background:rgba(255,255,255,0.48);animation-duration:16s;animation-delay:-16s;--dx:20px"></div>
-    <div class="php" style="left:92%;bottom:0;width:4px;height:4px;background:rgba(13,148,136,0.45);animation-duration:14s;animation-delay:-10s;--dx:-8px"></div>
-    <div class="php" style="left:5%;bottom:0;width:6px;height:6px;background:rgba(255,255,255,0.15);animation-duration:25s;animation-delay:-12s;--dx:15px"></div>
-    <div class="php" style="left:18%;bottom:0;width:2px;height:2px;background:rgba(251,191,36,0.50);animation-duration:12s;animation-delay:-18s;--dx:-22px"></div>
-    <div class="php" style="left:45%;bottom:0;width:3px;height:3px;background:rgba(255,255,255,0.38);animation-duration:17s;animation-delay:-14s;--dx:6px"></div>
-    <div class="php" style="left:62%;bottom:0;width:2px;height:2px;background:rgba(13,148,136,0.52);animation-duration:20s;animation-delay:-8s;--dx:-16px"></div>
-    <div class="php" style="left:75%;bottom:0;width:4px;height:4px;background:rgba(255,255,255,0.25);animation-duration:15s;animation-delay:-2s;--dx:10px"></div>
-    <div class="php" style="left:88%;bottom:0;width:2px;height:2px;background:rgba(251,191,36,0.55);animation-duration:13s;animation-delay:-7s;--dx:-14px"></div>
-  </div>
-
-  <!-- Hero content -->
-  <div class="pg-hero-content">
-    <div class="pg-hero-breadcrumb">
-      <a href="index.html">Home</a>
-      <span class="bsep">›</span>
-      <span class="bcur">Programs</span>
-    </div>
-    <span class="pg-hero-badge">
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#FDE68A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
-      Our Programs
-    </span>
-    <h1>Complete <span class="hl-o">Programs</span> at <span class="hl-p">NEST</span></h1>
-    <p>Every child is different. Our programs are individually tailored to help each child grow, learn, and thrive.</p>
-    <div class="pg-hero-pills">
-      <span class="pg-hero-pill"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.9)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> 6 Specialized Programs</span>
-      <span class="pg-hero-pill"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.9)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Ages 2–20 Years</span>
-      <span class="pg-hero-pill"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.9)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Certified Specialists</span>
-    </div>
-    <a href="#" onclick="openEnrollModal();return false;" class="pg-hero-cta">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><rect x="8" y="2" width="8" height="4" rx="1" ry="1"/></svg>
-      Enroll Now — Free
-    </a>
-    <div class="pg-hero-stats">
-      <div class="pgh-stat"><span class="pgh-num">500+</span><span class="pgh-lbl">Children Helped</span></div>
-      <div class="pgh-div"></div>
-      <div class="pgh-stat"><span class="pgh-num">6</span><span class="pgh-lbl">Programs</span></div>
-      <div class="pgh-div"></div>
-      <div class="pgh-stat"><span class="pgh-num">25+</span><span class="pgh-lbl">Specialists</span></div>
-    </div>
-  </div>
-
-  <!-- Bottom wave -->
-  <div class="pg-hero-wave" aria-hidden="true">
-    <svg viewBox="0 0 1440 64" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none"><path d="M0,32 C240,64 480,0 720,32 C960,64 1200,0 1440,32 L1440,64 L0,64 Z" fill="#FFF8F0"/></svg>
+<div style="background:#166178;padding:3.5rem 2rem 3rem;text-align:center">
+  <div style="max-width:700px;margin:0 auto">
+    <span style="display:inline-flex;align-items:center;gap:5px;background:rgba(255,255,255,0.15);color:#FDE68A;border:1px solid rgba(255,255,255,0.2);padding:0.3rem 0.85rem;border-radius:20px;font-size:0.75rem;font-weight:800;letter-spacing:0.06em;text-transform:uppercase;margin-bottom:1rem"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#FDE68A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg> Our Programs</span>
+    <h1 style="font-family:'Fredoka One',cursive;font-size:2.2rem;font-weight:400;color:#fff;margin-bottom:0.75rem;line-height:1.25">Complete Programs at NEST</h1>
+    <p style="color:rgba(255,255,255,0.8);font-size:1rem;line-height:1.7">Every child is different. Our programs are individually tailored to help each child grow, learn, and thrive.</p>
   </div>
 </div>
 <section style="background:#FFF8F0;padding:3.5rem 2rem">
