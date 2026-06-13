@@ -575,6 +575,29 @@ nav.scrolled{box-shadow:0 4px 28px rgba(0,0,0,0.11)!important}
 .hamburger.open span:nth-child(3){transform:translateY(-7.5px) rotate(-45deg)}
 .mobile-backdrop{display:none;position:fixed;inset:0;background:rgba(14,64,80,0.35);z-index:997;backdrop-filter:blur(2px)}
 .mobile-backdrop.open{display:block}
+
+/* ===== PROGRAMS CARDS ===== */
+.prog-cards-sec{background:#FFF8F0;padding:5rem 2rem 4.5rem}
+.prog-cards-inner{max-width:1200px;margin:0 auto}
+.prog-cards-head{text-align:center;margin-bottom:3rem}
+.prog-cards-head h2{font-family:'Fredoka One',cursive;font-weight:400;font-size:2.2rem;color:#1a1a2e;line-height:1.2;margin-bottom:0.75rem}
+.prog-cards-head p{color:#6b7280;font-size:1rem;max-width:560px;margin:0 auto;line-height:1.7}
+.prog-cards-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.75rem}
+.pcard{background:#fff;border-radius:22px;border:2px solid #e5e7eb;overflow:hidden;transition:transform 0.28s cubic-bezier(0.4,0,0.2,1),box-shadow 0.28s cubic-bezier(0.4,0,0.2,1)}
+.pcard:hover{transform:translateY(-7px);box-shadow:0 18px 52px rgba(22,97,120,0.14);border-color:rgba(22,97,120,0.14)}
+.pcard-img{height:200px;overflow:hidden}
+.pcard-img img{width:100%;height:100%;object-fit:cover;transition:transform 0.45s ease;display:block}
+.pcard:hover .pcard-img img{transform:scale(1.07)}
+.pcard-body{padding:1.5rem 1.5rem 1.25rem}
+.pcard-hd{display:flex;align-items:center;gap:0.75rem;margin-bottom:0.8rem}
+.pcard-hd h3{font-family:'Fredoka One',cursive;font-weight:400;font-size:1.15rem;color:#1a1a2e;line-height:1.2}
+.pcard-desc{color:#6b7280;font-size:0.86rem;line-height:1.72;margin-bottom:0.9rem}
+.pcard-chks{list-style:none;padding:0;margin:0 0 1rem;display:flex;flex-direction:column;gap:0.42rem}
+.pcard-chks li{display:flex;align-items:flex-start;gap:0.5rem;color:#374151;font-size:0.82rem;line-height:1.5}
+.pcard-chks li svg{flex-shrink:0;margin-top:2px}
+.pcard-tag{display:inline-block;padding:0.25rem 0.8rem;border-radius:20px;font-size:0.77rem;font-weight:700}
+@media(max-width:960px){.prog-cards-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:600px){.prog-cards-grid{grid-template-columns:1fr}.prog-cards-sec{padding:3.5rem 1.25rem 3rem}}
 </style>
 </head>
 <body>
@@ -652,79 +675,130 @@ nav.scrolled{box-shadow:0 4px 28px rgba(0,0,0,0.11)!important}
     </svg>
   </div>
 </div>
-<section style="background:#FFF8F0;padding:3.5rem 2rem">
-<div style="max-width:1100px;margin:0 auto">
+<section class="prog-cards-sec">
+  <div class="prog-cards-inner">
 
-<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.5rem;margin-top:1rem">
+    <div class="prog-cards-head">
+      <span class="sec-tag tag-orange" style="margin-bottom:1rem">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#c2410c" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+        All Programs
+      </span>
+      <h2>Six Pathways to Every Child's Best Life</h2>
+      <p>Each program combines clinical expertise with genuine warmth — because the best therapy always feels like play.</p>
+    </div>
 
-<div style="background:#fff;border-radius:20px;border:2px solid #e5e7eb;padding:1.75rem;position:relative;overflow:hidden">
-<div style="position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,#F97316,#FBBF24);border-radius:20px 20px 0 0"></div>
-<div class="icon-3d c-orange" style="width:46px;height:46px;margin-bottom:1rem"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg></div>
-<h2 style="font-family:'Fredoka One',cursive;font-weight:400;font-size:1.3rem;color:#1a1a2e;margin-bottom:0.5rem">Special Education</h2>
-<p style="color:#6b7280;font-size:0.9rem;line-height:1.7;margin-bottom:1rem">Our special education program offers individualized learning plans crafted for each child. With small class sizes of 4–6 students, certified special educators give focused attention to every learner.</p>
-<ul style="color:#6b7280;font-size:0.87rem;line-height:1.8;padding-left:1.2rem">
-<li>Ages 2–20 years</li><li>Individual Education Plans (IEP)</li><li>Literacy, numeracy & life skills</li><li>Regular progress assessments</li>
-</ul>
-<span style="display:inline-block;margin-top:1rem;background:#FFF7ED;color:#c2410c;padding:0.25rem 0.75rem;border-radius:20px;font-size:0.78rem;font-weight:700">Ages 2–20</span>
-</div>
+    <div class="prog-cards-grid">
 
-<div style="background:#fff;border-radius:20px;border:2px solid #e5e7eb;padding:1.75rem;position:relative;overflow:hidden">
-<div style="position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,#7C3AED,#EC4899);border-radius:20px 20px 0 0"></div>
-<div class="icon-3d c-purple" style="width:46px;height:46px;margin-bottom:1rem"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
-<h2 style="font-family:'Fredoka One',cursive;font-weight:400;font-size:1.3rem;color:#1a1a2e;margin-bottom:0.5rem">Speech Therapy</h2>
-<p style="color:#6b7280;font-size:0.9rem;line-height:1.7;margin-bottom:1rem">Our licensed speech-language pathologists work one-on-one with children to improve communication, language processing, and social interaction skills.</p>
-<ul style="color:#6b7280;font-size:0.87rem;line-height:1.8;padding-left:1.2rem">
-<li>Expressive & receptive language</li><li>Articulation therapy</li><li>Augmentative communication (AAC)</li><li>Social communication skills</li>
-</ul>
-<span style="display:inline-block;margin-top:1rem;background:#F5F3FF;color:#5b21b6;padding:0.25rem 0.75rem;border-radius:20px;font-size:0.78rem;font-weight:700">1-on-1 & Group</span>
-</div>
+      <!-- Special Education -->
+      <div class="pcard">
+        <div class="pcard-img"><img src="https://images.unsplash.com/photo-1588072432836-e10032774350?w=600&auto=format&fit=crop&q=80" alt="Special Education" loading="lazy"></div>
+        <div class="pcard-body">
+          <div class="pcard-hd">
+            <div class="icon-3d c-orange" style="width:40px;height:40px;flex-shrink:0"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg></div>
+            <h3>Special Education</h3>
+          </div>
+          <p class="pcard-desc">Our flagship academic program delivers individualized instruction using structured teaching, sensory integration, and adaptive curriculum frameworks. Every child receives a personalized IEP built by our M.Ed qualified educators.</p>
+          <ul class="pcard-chks">
+            <li><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#0D9488" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Individualized Education Plans (IEP) reviewed quarterly</li>
+            <li><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#0D9488" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Small classes (max 4 students) for focused attention</li>
+            <li><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#0D9488" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Functional academics &amp; life-skills integration</li>
+          </ul>
+          <span class="pcard-tag" style="background:#FFF7ED;color:#c2410c">Ages 3–18 · Daily Sessions</span>
+        </div>
+      </div>
 
-<div style="background:#fff;border-radius:20px;border:2px solid #e5e7eb;padding:1.75rem;position:relative;overflow:hidden">
-<div style="position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,#0D9488,#2563EB);border-radius:20px 20px 0 0"></div>
-<div class="icon-3d c-teal" style="width:46px;height:46px;margin-bottom:1rem"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96-.44 2.5 2.5 0 0 1-2.96-3.08 3 3 0 0 1-.34-5.58 2.5 2.5 0 0 1 1.32-4.24 2.5 2.5 0 0 1 1.98-3A2.5 2.5 0 0 1 9.5 2"/><path d="M14.5 2A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96-.44 2.5 2.5 0 0 0 2.96-3.08 3 3 0 0 0 .34-5.58 2.5 2.5 0 0 0-1.32-4.24 2.5 2.5 0 0 0-1.98-3A2.5 2.5 0 0 0 14.5 2"/></svg></div>
-<h2 style="font-family:'Fredoka One',cursive;font-weight:400;font-size:1.3rem;color:#1a1a2e;margin-bottom:0.5rem">ABA Therapy</h2>
-<p style="color:#6b7280;font-size:0.9rem;line-height:1.7;margin-bottom:1rem">Applied Behavior Analysis is a scientifically validated therapy for autism and developmental delays. Our certified BCBAs design structured programs to build essential skills.</p>
-<ul style="color:#6b7280;font-size:0.87rem;line-height:1.8;padding-left:1.2rem">
-<li>Discrete Trial Training (DTT)</li><li>Natural Environment Teaching</li><li>Behavior intervention planning</li><li>Parent training included</li>
-</ul>
-<span style="display:inline-block;margin-top:1rem;background:#F0FDFA;color:#0f766e;padding:0.25rem 0.75rem;border-radius:20px;font-size:0.78rem;font-weight:700">Evidence-Based</span>
-</div>
+      <!-- Speech & Language Therapy -->
+      <div class="pcard">
+        <div class="pcard-img"><img src="https://images.unsplash.com/photo-1580582932707-520aed937b7b?w=600&auto=format&fit=crop&q=80" alt="Speech & Language Therapy" loading="lazy"></div>
+        <div class="pcard-body">
+          <div class="pcard-hd">
+            <div class="icon-3d c-pink" style="width:40px;height:40px;flex-shrink:0"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
+            <h3>Speech &amp; Language Therapy</h3>
+          </div>
+          <p class="pcard-desc">MS-qualified Speech-Language Pathologists help children develop expressive and receptive language skills, articulation, fluency, and AAC for non-verbal children.</p>
+          <ul class="pcard-chks">
+            <li><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#0D9488" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> AAC device training &amp; PECS implementation</li>
+            <li><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#0D9488" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Oral-motor &amp; feeding therapy integration</li>
+            <li><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#0D9488" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Social communication &amp; pragmatics groups</li>
+          </ul>
+          <span class="pcard-tag" style="background:#FDF2F8;color:#be185d">Ages 2–16 · 45-min Sessions</span>
+        </div>
+      </div>
 
-<div style="background:#fff;border-radius:20px;border:2px solid #e5e7eb;padding:1.75rem;position:relative;overflow:hidden">
-<div style="position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,#EC4899,#F97316);border-radius:20px 20px 0 0"></div>
-<div class="icon-3d c-pink" style="width:46px;height:46px;margin-bottom:1rem"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 11V6a2 2 0 0 0-2-2 2 2 0 0 0-2 2v0"/><path d="M14 10V4a2 2 0 0 0-2-2 2 2 0 0 0-2 2v2"/><path d="M10 10.5V6a2 2 0 0 0-2-2 2 2 0 0 0-2 2v8"/><path d="M18 8a2 2 0 1 1 4 0v6a8 8 0 0 1-8 8h-2c-2.8 0-4.5-.86-5.99-2.34l-3.6-3.6a2 2 0 0 1 2.83-2.82L7 15"/></svg></div>
-<h2 style="font-family:'Fredoka One',cursive;font-weight:400;font-size:1.3rem;color:#1a1a2e;margin-bottom:0.5rem">Occupational Therapy</h2>
-<p style="color:#6b7280;font-size:0.9rem;line-height:1.7;margin-bottom:1rem">OT helps children develop the fine motor skills, sensory processing abilities, and daily living skills needed for greater independence and quality of life.</p>
-<ul style="color:#6b7280;font-size:0.87rem;line-height:1.8;padding-left:1.2rem">
-<li>Sensory integration therapy</li><li>Fine & gross motor skills</li><li>Self-care & daily routines</li><li>Handwriting & pencil grip</li>
-</ul>
-<span style="display:inline-block;margin-top:1rem;background:#FDF2F8;color:#be185d;padding:0.25rem 0.75rem;border-radius:20px;font-size:0.78rem;font-weight:700">Sensory Focus</span>
-</div>
+      <!-- ABA Therapy -->
+      <div class="pcard">
+        <div class="pcard-img"><img src="https://images.unsplash.com/photo-1560707303-4e980ce876ad?w=600&auto=format&fit=crop&q=80" alt="ABA Therapy" loading="lazy"></div>
+        <div class="pcard-body">
+          <div class="pcard-hd">
+            <div class="icon-3d c-purple" style="width:40px;height:40px;flex-shrink:0"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg></div>
+            <h3>ABA Therapy</h3>
+          </div>
+          <p class="pcard-desc">Applied Behavior Analysis delivered by BCBA-certified therapists. Naturalistic, play-based ABA builds communication, social, adaptive, and academic skills while reducing challenging behaviors compassionately.</p>
+          <ul class="pcard-chks">
+            <li><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#0D9488" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> BCBA-designed &amp; supervised programs</li>
+            <li><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#0D9488" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> VB-MAPP &amp; ABLLS-R assessments included</li>
+            <li><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#0D9488" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Intensive &amp; maintenance programming options</li>
+          </ul>
+          <span class="pcard-tag" style="background:#F5F3FF;color:#5b21b6">Ages 2–12 · 1–4 hrs/day</span>
+        </div>
+      </div>
 
-<div style="background:#fff;border-radius:20px;border:2px solid #e5e7eb;padding:1.75rem;position:relative;overflow:hidden">
-<div style="position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,#16A34A,#0D9488);border-radius:20px 20px 0 0"></div>
-<div class="icon-3d c-green" style="width:46px;height:46px;margin-bottom:1rem"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
-<h2 style="font-family:'Fredoka One',cursive;font-weight:400;font-size:1.3rem;color:#1a1a2e;margin-bottom:0.5rem">Physical Therapy</h2>
-<p style="color:#6b7280;font-size:0.9rem;line-height:1.7;margin-bottom:1rem">Our physical therapists use play-based activities to improve mobility, balance, coordination, and overall physical development in children.</p>
-<ul style="color:#6b7280;font-size:0.87rem;line-height:1.8;padding-left:1.2rem">
-<li>Gross motor development</li><li>Balance & coordination</li><li>Strength & mobility</li><li>Therapeutic exercise programs</li>
-</ul>
-<span style="display:inline-block;margin-top:1rem;background:#F0FDF4;color:#166534;padding:0.25rem 0.75rem;border-radius:20px;font-size:0.78rem;font-weight:700">Play-Based</span>
-</div>
+      <!-- Occupational Therapy -->
+      <div class="pcard">
+        <div class="pcard-img"><img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=600&auto=format&fit=crop&q=80" alt="Occupational Therapy" loading="lazy"></div>
+        <div class="pcard-body">
+          <div class="pcard-hd">
+            <div class="icon-3d c-teal" style="width:40px;height:40px;flex-shrink:0"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 11V6a2 2 0 0 0-2-2 2 2 0 0 0-2 2v0"/><path d="M14 10V4a2 2 0 0 0-2-2 2 2 0 0 0-2 2v2"/><path d="M10 10.5V6a2 2 0 0 0-2-2 2 2 0 0 0-2 2v8"/><path d="M18 8a2 2 0 1 1 4 0v6a8 8 0 0 1-8 8h-2c-2.8 0-4.5-.86-5.99-2.34l-3.6-3.6a2 2 0 0 1 2.83-2.82L7 15"/></svg></div>
+            <h3>Occupational Therapy</h3>
+          </div>
+          <p class="pcard-desc">Certified OTs address sensory processing, fine-motor development, self-care independence, handwriting, and school readiness in a fully equipped sensory gym and fine-motor lab.</p>
+          <ul class="pcard-chks">
+            <li><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#0D9488" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Sensory Integration Therapy (SI) certified therapists</li>
+            <li><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#0D9488" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Full sensory gym with swing, crash pad, climbing wall</li>
+            <li><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#0D9488" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> School-readiness &amp; daily living skills training</li>
+          </ul>
+          <span class="pcard-tag" style="background:#F0FDFA;color:#0f766e">Ages 18mo–16 · 45-min Sessions</span>
+        </div>
+      </div>
 
-<div style="background:#fff;border-radius:20px;border:2px solid #e5e7eb;padding:1.75rem;position:relative;overflow:hidden">
-<div style="position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,#2563EB,#7C3AED);border-radius:20px 20px 0 0"></div>
-<div class="icon-3d c-blue" style="width:46px;height:46px;margin-bottom:1rem"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
-<h2 style="font-family:'Fredoka One',cursive;font-weight:400;font-size:1.3rem;color:#1a1a2e;margin-bottom:0.5rem">Family Support</h2>
-<p style="color:#6b7280;font-size:0.9rem;line-height:1.7;margin-bottom:1rem">We believe parents are the most important therapists. Our family program equips parents with the tools, knowledge, and emotional support to continue progress at home.</p>
-<ul style="color:#6b7280;font-size:0.87rem;line-height:1.8;padding-left:1.2rem">
-<li>Parent training workshops</li><li>Home activity guides</li><li>Individual counseling sessions</li><li>Monthly parent review meetings</li>
-</ul>
-<span style="display:inline-block;margin-top:1rem;background:#EFF6FF;color:#1d4ed8;padding:0.25rem 0.75rem;border-radius:20px;font-size:0.78rem;font-weight:700">For Parents</span>
-</div>
+      <!-- Physical Therapy -->
+      <div class="pcard">
+        <div class="pcard-img"><img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=600&auto=format&fit=crop&q=80" alt="Physical Therapy" loading="lazy"></div>
+        <div class="pcard-body">
+          <div class="pcard-hd">
+            <div class="icon-3d c-green" style="width:40px;height:40px;flex-shrink:0"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
+            <h3>Physical Therapy</h3>
+          </div>
+          <p class="pcard-desc">Targeted physiotherapy for children with motor delays, cerebral palsy, hypotonia, or post-surgical rehabilitation needs. DPT-qualified therapists focus on gross motor skills, balance, and functional mobility.</p>
+          <ul class="pcard-chks">
+            <li><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#0D9488" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Neurodevelopmental Treatment (NDT) approach</li>
+            <li><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#0D9488" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Gait analysis &amp; orthotics recommendations</li>
+            <li><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#0D9488" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Hydrotherapy &amp; theraband exercise programs</li>
+          </ul>
+          <span class="pcard-tag" style="background:#F0FDF4;color:#166534">Ages 0–18 · 45-min Sessions</span>
+        </div>
+      </div>
 
-</div>
-</div>
+      <!-- Family Support Program -->
+      <div class="pcard">
+        <div class="pcard-img"><img src="https://images.unsplash.com/photo-1491013516836-7db643ee125a?w=600&auto=format&fit=crop&q=80" alt="Family Support Program" loading="lazy"></div>
+        <div class="pcard-body">
+          <div class="pcard-hd">
+            <div class="icon-3d c-blue" style="width:40px;height:40px;flex-shrink:0"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+            <h3>Family Support Program</h3>
+          </div>
+          <p class="pcard-desc">Dedicated program equipping parents, siblings, and caregivers with practical skills, emotional resilience, and community connections to thrive together.</p>
+          <ul class="pcard-chks">
+            <li><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#0D9488" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Weekly parent training &amp; coaching sessions</li>
+            <li><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#0D9488" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Home program guides customized per child</li>
+            <li><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#0D9488" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Monthly parent support group &amp; workshops</li>
+          </ul>
+          <span class="pcard-tag" style="background:#EFF6FF;color:#1d4ed8">All Ages · Flexible Schedule</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
 </section>
 
 <section style="background:#166178;padding:3rem 2rem;text-align:center">
