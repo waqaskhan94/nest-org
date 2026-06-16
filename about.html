@@ -348,6 +348,24 @@ footer{background:#0e4050;color:rgba(255,255,255,0.65);padding:3.5rem 2.5rem 2re
 .tcard-bio{color:#6b7280;font-size:0.82rem;line-height:1.65;text-align:center}
 @media(max-width:1024px){.team-grid{grid-template-columns:repeat(2,1fr)}.team-section{padding:4rem 1.5rem}}
 @media(max-width:540px){.team-grid{grid-template-columns:1fr}.team-section{padding:3rem 1.2rem}}
+/* ===== HOLISTIC APPROACH SECTION ===== */
+.approach-section{background:#FFF8F0;padding:5.5rem 2.5rem}
+.approach-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center}
+.approach-img{border-radius:28px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,0.14)}
+.approach-img img{width:100%;height:100%;object-fit:cover;object-position:center;display:block}
+.approach-content{}
+.approach-tag{display:inline-flex;align-items:center;gap:6px;background:rgba(249,115,22,0.1);color:#EA580C;border:1.5px solid rgba(249,115,22,0.25);padding:0.32rem 0.9rem;border-radius:20px;font-size:0.75rem;font-weight:800;letter-spacing:0.07em;text-transform:uppercase;margin-bottom:1rem}
+.approach-title{font-family:'Fredoka One',cursive;font-size:2.4rem;font-weight:400;color:#1a1a2e;margin-bottom:0.75rem;line-height:1.2}
+.approach-sub{color:#6b7280;font-size:0.97rem;line-height:1.75;margin-bottom:2rem}
+.step-list{display:flex;flex-direction:column;gap:0.85rem}
+.step-card{background:#fff;border:1.5px solid #f0e4d4;border-radius:16px;padding:1.1rem 1.25rem;display:flex;align-items:flex-start;gap:1rem;box-shadow:0 3px 14px rgba(0,0,0,0.05);transition:box-shadow 0.25s ease,transform 0.25s ease}
+.step-card:hover{box-shadow:0 10px 30px rgba(249,115,22,0.14);transform:translateX(4px)}
+.step-num{flex-shrink:0;width:38px;height:38px;border-radius:12px;background:linear-gradient(135deg,#F97316,#EA580C);display:flex;align-items:center;justify-content:center;font-family:'Fredoka One',cursive;font-size:1.1rem;color:#fff;box-shadow:0 4px 12px rgba(249,115,22,0.4)}
+.step-body{}
+.step-title{font-weight:800;font-size:0.95rem;color:#1a1a2e;margin-bottom:0.25rem}
+.step-desc{font-size:0.82rem;line-height:1.65;background:linear-gradient(90deg,#166178,#0D9488);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+@media(max-width:1024px){.approach-inner{grid-template-columns:1fr;gap:2.5rem}.approach-section{padding:4rem 1.5rem}.approach-img{max-height:380px}}
+@media(max-width:540px){.approach-section{padding:3rem 1.2rem}.approach-title{font-size:1.9rem}}
 /* ===== ENROLLMENT MODAL ===== */
 .modal-overlay{display:none;position:fixed;inset:0;background:rgba(22,97,120,0.55);z-index:9999;align-items:flex-start;justify-content:center;padding:0.5rem;backdrop-filter:blur(3px);overflow-y:auto}
 .modal-overlay.open{display:flex}
@@ -763,6 +781,64 @@ nav.scrolled{box-shadow:0 4px 28px rgba(0,0,0,0.11)!important}
       </div>
 
     </div>
+  </div>
+</section>
+
+<!-- ===== HOLISTIC APPROACH SECTION ===== -->
+<section class="approach-section">
+  <div class="approach-inner">
+
+    <div class="approach-img">
+      <img src="https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?w=800&auto=format&fit=crop&q=80" alt="Child in therapy session">
+    </div>
+
+    <div class="approach-content">
+      <div class="approach-tag">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22V12M12 12L8 16M12 12L16 16"/><circle cx="12" cy="7" r="4"/></svg>
+        How We Work
+      </div>
+      <h2 class="approach-title">Our Holistic<br>Approach</h2>
+      <p class="approach-sub">We don't just offer therapy — we build a complete ecosystem of support around each child and family. Here's our proven five-step process that delivers real, lasting results.</p>
+
+      <div class="step-list">
+        <div class="step-card">
+          <div class="step-num">1</div>
+          <div class="step-body">
+            <div class="step-title">Comprehensive Assessment</div>
+            <div class="step-desc">A multidisciplinary evaluation covering cognitive, communication, motor, and social-emotional domains to build a complete picture of your child's strengths and needs.</div>
+          </div>
+        </div>
+        <div class="step-card">
+          <div class="step-num">2</div>
+          <div class="step-body">
+            <div class="step-title">Personalized Therapy Plan</div>
+            <div class="step-desc">Our team designs an individualized plan with clear, measurable goals aligned to your child's specific profile — reviewed and updated every three months.</div>
+          </div>
+        </div>
+        <div class="step-card">
+          <div class="step-num">3</div>
+          <div class="step-body">
+            <div class="step-title">Expert Therapy Sessions</div>
+            <div class="step-desc">Engaging, evidence-based one-on-one and small-group sessions delivered by our certified specialists in a warm, stimulating environment.</div>
+          </div>
+        </div>
+        <div class="step-card">
+          <div class="step-num">4</div>
+          <div class="step-body">
+            <div class="step-title">Family Training &amp; Support</div>
+            <div class="step-desc">We train parents and caregivers with practical home strategies so therapy goals are reinforced throughout the day — not just during clinic hours.</div>
+          </div>
+        </div>
+        <div class="step-card">
+          <div class="step-num">5</div>
+          <div class="step-body">
+            <div class="step-title">Ongoing Progress Tracking</div>
+            <div class="step-desc">Regular progress reports, parent meetings, and goal reviews ensure transparency and keep the entire team — including your family — aligned at all times.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
   </div>
 </section>
 
