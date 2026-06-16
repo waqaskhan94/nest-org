@@ -98,6 +98,38 @@ nav{
 .hb-lbl{font-size:0.7rem;color:rgba(255,255,255,0.6);font-weight:600}
 .hb-div{width:1px;height:32px;background:rgba(255,255,255,0.15)}
 
+/* ===== ABOUT HERO ANIMATED ===== */
+.about-hero-wrap{
+  position:relative;overflow:hidden;padding:5rem 2.5rem 5.5rem;text-align:center;
+  background:
+    radial-gradient(ellipse 50% 45% at 88% 10%,rgba(249,115,22,0.13) 0%,transparent 70%),
+    radial-gradient(ellipse 55% 50% at 7% 72%,rgba(13,148,136,0.16) 0%,transparent 65%),
+    radial-gradient(ellipse 40% 35% at 92% 88%,rgba(236,72,153,0.09) 0%,transparent 60%),
+    radial-gradient(ellipse 65% 55% at 45% 42%,rgba(22,97,120,0.30) 0%,transparent 80%),
+    linear-gradient(145deg,#071e2a 0%,#0c3347 42%,#0b2f44 100%)
+}
+.about-hero-wrap::before{
+  content:'';position:absolute;inset:0;z-index:0;pointer-events:none;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
+  opacity:0.045}
+.ahero-bokeh{position:absolute;border-radius:50%;pointer-events:none;filter:blur(72px);z-index:1}
+.ahero-b1{width:380px;height:380px;background:rgba(249,115,22,0.11);top:-130px;right:4%}
+.ahero-b2{width:320px;height:320px;background:rgba(13,148,136,0.15);bottom:-90px;left:2%}
+.ahero-b3{width:260px;height:260px;background:rgba(251,191,36,0.09);top:25%;right:1%}
+.ahero-b4{width:300px;height:300px;background:rgba(22,97,120,0.22);top:12%;left:18%}
+@keyframes aheroFloat{0%,100%{transform:translateY(0) rotate(var(--r,0deg))}50%{transform:translateY(-14px) rotate(var(--r,0deg))}}
+@keyframes aheroFloatD{0%,100%{transform:translateY(0) rotate(var(--r,0deg))}50%{transform:translateY(12px) rotate(var(--r,0deg))}}
+.ahero-deco{position:absolute;pointer-events:none;z-index:2;opacity:var(--op,0.13);animation:var(--anim,aheroFloat) var(--dur,6s) ease-in-out infinite;animation-delay:var(--delay,0s);--r:0deg}
+.ahero-deco svg{display:block;width:var(--sz,56px);height:var(--sz,56px)}
+.ahero-d1{top:12%;left:3.5%;--sz:70px;--r:-20deg;--op:0.13;--dur:7.5s;--delay:0s}
+.ahero-d2{top:8%;right:5%;--sz:62px;--r:15deg;--op:0.11;--dur:8.8s;--delay:-2s;--anim:aheroFloatD}
+.ahero-d3{bottom:22%;left:6%;--sz:48px;--r:8deg;--op:0.15;--dur:6.4s;--delay:-1s}
+.ahero-d4{top:42%;right:3.5%;--sz:78px;--r:36deg;--op:0.09;--dur:9.6s;--delay:-3.5s;--anim:aheroFloatD}
+.ahero-d5{bottom:11%;right:9%;--sz:54px;--r:-12deg;--op:0.12;--dur:8.2s;--delay:-0.5s}
+.ahero-d6{top:60%;left:2%;--sz:42px;--r:0deg;--op:0.14;--dur:5.6s;--delay:-4s}
+.ahero-inner{position:relative;z-index:3;max-width:700px;margin:0 auto}
+@media(max-width:768px){.ahero-d1,.ahero-d2,.ahero-d4{display:none}.about-hero-wrap{padding:4rem 1.5rem 4.5rem}}
+
 /* ===== RIBBON ===== */
 .ribbon{background:var(--white);border-bottom:2px solid var(--border);padding:1rem 2.5rem}
 .ribbon-inner{max-width:1100px;margin:0 auto;display:flex;flex-wrap:nowrap;align-items:center;justify-content:center;gap:0}
@@ -623,11 +655,36 @@ nav.scrolled{box-shadow:0 4px 28px rgba(0,0,0,0.11)!important}
   <a href="#" onclick="openEnrollModal();return false;" class="mob-enroll">Enroll Now — Free <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></a>
 </div>
 
-<div style="background:#166178;padding:3.5rem 2rem 3rem;text-align:center">
-  <div style="max-width:700px;margin:0 auto">
-    <span style="display:inline-flex;align-items:center;gap:5px;background:rgba(255,255,255,0.15);color:#FDE68A;border:1px solid rgba(255,255,255,0.2);padding:0.3rem 0.85rem;border-radius:20px;font-size:0.75rem;font-weight:800;letter-spacing:0.06em;text-transform:uppercase;margin-bottom:1rem"><div class="icon-3d c-teal" style="width:22px;height:22px"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div> About Us</span>
-    <h1 style="font-family:'Fredoka One',cursive;font-size:2.2rem;font-weight:400;color:#fff;margin-bottom:0.75rem;line-height:1.25">Who We Are</h1>
-    <p style="color:rgba(255,255,255,0.8);font-size:1rem;line-height:1.7">NEST was founded with one belief — every child with special needs deserves world-class care, close to home.</p>
+<div class="about-hero-wrap">
+  <!-- bokeh lights -->
+  <div class="ahero-bokeh ahero-b1"></div>
+  <div class="ahero-bokeh ahero-b2"></div>
+  <div class="ahero-bokeh ahero-b3"></div>
+  <div class="ahero-bokeh ahero-b4"></div>
+  <!-- floating deco icons -->
+  <div class="ahero-deco ahero-d1">
+    <svg viewBox="0 0 24 24" fill="none" stroke="#FBBF24" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+  </div>
+  <div class="ahero-deco ahero-d2">
+    <svg viewBox="0 0 24 24" fill="none" stroke="#F97316" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+  </div>
+  <div class="ahero-deco ahero-d3">
+    <svg viewBox="0 0 24 24" fill="none" stroke="#0D9488" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+  </div>
+  <div class="ahero-deco ahero-d4">
+    <svg viewBox="0 0 24 24" fill="none" stroke="#EC4899" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+  </div>
+  <div class="ahero-deco ahero-d5">
+    <svg viewBox="0 0 24 24" fill="none" stroke="#FBBF24" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/></svg>
+  </div>
+  <div class="ahero-deco ahero-d6">
+    <svg viewBox="0 0 24 24" fill="none" stroke="#0D9488" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"/></svg>
+  </div>
+  <!-- content -->
+  <div class="ahero-inner">
+    <span style="display:inline-flex;align-items:center;gap:5px;background:rgba(255,255,255,0.15);color:#FDE68A;border:1px solid rgba(255,255,255,0.2);padding:0.3rem 0.85rem;border-radius:20px;font-size:0.75rem;font-weight:800;letter-spacing:0.06em;text-transform:uppercase;margin-bottom:1.1rem"><div class="icon-3d c-teal" style="width:22px;height:22px"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div> About Us</span>
+    <h1 style="font-family:'Fredoka One',cursive;font-size:2.6rem;font-weight:400;color:#fff;margin-bottom:0.85rem;line-height:1.25;letter-spacing:0.01em">Who We Are</h1>
+    <p style="color:rgba(255,255,255,0.8);font-size:1.05rem;line-height:1.75;max-width:560px;margin:0 auto">NEST was founded with one belief — every child with special needs deserves world-class care, close to home.</p>
   </div>
 </div>
 <section style="background:#FFF8F0;padding:3.5rem 2rem">
