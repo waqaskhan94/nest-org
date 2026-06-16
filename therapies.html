@@ -7,513 +7,333 @@
 <link rel="icon" type="image/png" href="/favicon.png"/>
 <link rel="shortcut icon" href="/favicon.png"/>
 <link rel="canonical" href="https://nest-org.pages.dev/therapies"/>
-<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&family=Fredoka+One&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&family=Fredoka+One&family=Nunito:wght@600;700;800;900&display=swap" rel="stylesheet"/>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{font-family:'Quicksand',sans-serif;background:#FFF8F0;color:#1a1a2e;line-height:1.75;letter-spacing:0.01em}
 :root{
-  --navy:#1a1a2e;
-  --dark-bg:#166178;
-  --purple:#7C3AED;--purple-l:#F5F3FF;
-  --pink:#EC4899;--pink-l:#FDF2F8;
-  --orange:#F97316;--orange-l:#FFF7ED;
-  --teal:#0D9488;--teal-l:#F0FDFA;
-  --yellow:#FBBF24;--yellow-l:#FFFBEB;
-  --green:#16A34A;--green-l:#F0FDF4;
-  --blue:#2563EB;--blue-l:#EFF6FF;
-  --bg:#FFF8F0;--white:#ffffff;
-  --text:#1a1a2e;--muted:#6b7280;--border:#e5e7eb;
+  --navy:#1a1a2e;--teal:#166178;--orange:#F97316;--pink:#EC4899;
+  --yellow:#FBBF24;--muted:#6b7280;--border:#e5e7eb;--white:#fff;--bg:#FFF8F0;
 }
 
 /* ===== NAVBAR ===== */
-nav{
-  background:var(--white);border-bottom:2px solid var(--border);
-  padding:0 2.5rem;
-  display:grid;grid-template-columns:auto 1fr auto;
-  align-items:center;height:72px;gap:1rem;
-  position:sticky;top:0;z-index:1000;
-}
+#navbar{background:#fff;border-bottom:2px solid var(--border);padding:0 2.5rem;display:grid;grid-template-columns:auto 1fr auto;align-items:center;height:72px;gap:1rem;position:sticky;top:0;z-index:1000;transition:box-shadow 0.3s}
+#navbar.scrolled{box-shadow:0 4px 24px rgba(0,0,0,0.08)}
 .nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none}
-.logo-bubble{
-  width:42px;height:42px;
-  background:linear-gradient(135deg,#F97316,#EC4899);
-  border-radius:14px;display:flex;align-items:center;justify-content:center;
-  font-size:1.3rem;box-shadow:0 4px 12px rgba(236,72,153,0.3);flex-shrink:0;
-}
-.logo-name{font-family:'Fredoka One',cursive;font-weight:400;font-size:1.2rem;color:#166178;line-height:1.1}
-.logo-name span{display:block;font-family:'Quicksand',sans-serif;font-size:0.65rem;font-weight:700;color:var(--muted);letter-spacing:0.07em;text-transform:uppercase;white-space:nowrap;overflow:hidden}
-.nav-links{display:flex;gap:0.15rem;justify-content:center;list-style:none}
+.logo-name{font-family:'Fredoka One',cursive;font-weight:400;font-size:1.2rem;color:#1a1a2e;line-height:1.1}
+.logo-name span{display:block;font-family:'Quicksand',sans-serif;font-size:0.63rem;font-weight:700;color:var(--muted);letter-spacing:0.07em;text-transform:uppercase}
+.nav-links{display:flex;gap:0.15rem;justify-content:center;list-style:none;margin:0;padding:0}
 .nav-links a{text-decoration:none;color:var(--muted);font-weight:700;font-size:0.88rem;padding:0.45rem 0.85rem;border-radius:10px;transition:all 0.18s;white-space:nowrap}
-.nav-links a:hover{color:#F97316;background:rgba(249,115,22,0.07)}.nav-links a.active{color:#F97316;background:rgba(249,115,22,0.09);font-weight:800}
-.nav-right{display:flex;align-items:center;gap:0.75rem}
-.nav-badge{display:none}
+.nav-links a:hover{color:var(--orange);background:#FFF7ED}
+.nav-links a.active{color:var(--orange);background:#FFF7ED}
 @keyframes btnPulse{0%{box-shadow:0 0 0 0 rgba(249,115,22,0.45)}70%{box-shadow:0 0 0 10px rgba(249,115,22,0)}100%{box-shadow:0 0 0 0 rgba(249,115,22,0)}}
-.nav-enroll{background:linear-gradient(135deg,#F97316,#166178);color:#fff;padding:0.5rem 1.4rem;border-radius:100px;font-weight:800;font-size:0.88rem;text-decoration:none;box-shadow:0 4px 16px rgba(249,115,22,0.30);transition:all 0.25s cubic-bezier(0.4,0,0.2,1);white-space:nowrap;display:inline-flex;align-items:center;gap:8px;animation:btnPulse 2.8s ease-in-out infinite}
-.nav-enroll:hover{transform:translateY(-3px);box-shadow:0 8px 24px rgba(0,0,0,0.18);animation:none}
-.nav-enroll:active{transform:translateY(-1px);box-shadow:0 4px 12px rgba(0,0,0,0.14)}
-.hamburger{display:none;background:none;border:none;cursor:pointer;flex-direction:column;gap:5px;padding:4px}
-.hamburger span{display:block;width:24px;height:2.5px;background:var(--navy);border-radius:2px;transition:all 0.3s}
-.mobile-menu{display:none;background:var(--white);border-top:2px solid var(--border);padding:1rem 1.5rem;flex-direction:column;gap:0.35rem;position:sticky;top:62px;z-index:999;box-shadow:0 8px 24px rgba(0,0,0,0.1)}
-.mobile-menu a{text-decoration:none;color:var(--muted);font-weight:700;font-size:0.95rem;padding:0.6rem 0.9rem;border-radius:10px;transition:all 0.18s;display:flex;align-items:center;gap:12px}
-.mobile-menu a:hover{color:#F97316;background:rgba(249,115,22,0.07)}.mobile-menu a.active{color:#166178!important;background:rgba(22,97,120,0.12)!important;font-weight:800!important}
-.mobile-menu .mob-enroll{background:linear-gradient(135deg,#F97316,#166178)!important;color:#fff!important;text-align:center;justify-content:center;border-radius:100px!important;margin-top:0.75rem;padding:0.75rem 1.5rem!important;box-shadow:0 4px 16px rgba(249,115,22,0.35);transition:all .25s cubic-bezier(0.4,0,0.2,1)!important;display:flex!important;align-items:center;gap:8px;font-size:0.92rem;font-weight:800!important;letter-spacing:0.01em}.mobile-menu .mob-enroll:hover{transform:translateY(-3px)!important;box-shadow:0 8px 24px rgba(0,0,0,0.18)!important}
-.mobile-menu.open{display:flex}
-
-/* ===== HERO ===== */
-.hero-wrap{background:#166178}
-.hero{
-  padding:4.5rem 2.5rem 3.5rem;
-  display:grid;grid-template-columns:1.1fr 0.9fr;
-  gap:3rem;align-items:center;
-  max-width:1200px;margin:0 auto;
-}
-.hero-tag{
-  display:inline-flex;align-items:center;gap:6px;
-  background:rgba(251,191,36,0.18);border:1px solid rgba(251,191,36,0.35);
-  color:#FDE68A;padding:0.35rem 1rem;border-radius:20px;
-  font-size:0.78rem;font-weight:800;letter-spacing:0.05em;margin-bottom:1.25rem;
-}
-.hero h1{font-family:'Fredoka One',cursive;font-size:2.7rem;font-weight:400;color:#fff;line-height:1.2;margin-bottom:1.1rem;letter-spacing:0.01em}
-.color-orange{color:#FCD34D}.color-pink{color:#F9A8D4}
-.hero p{color:rgba(255,255,255,0.8);font-size:1rem;margin-bottom:1.75rem;line-height:1.75}
-.hero-btns{display:flex;gap:1rem;flex-wrap:wrap}
-.btn-bright{background:linear-gradient(135deg,#FBBF24,#F97316);color:#1a1a2e;padding:0.75rem 1.6rem;border-radius:12px;font-weight:900;font-size:0.95rem;text-decoration:none;box-shadow:0 4px 16px rgba(251,191,36,0.4);transition:all 0.2s;display:inline-flex;align-items:center;gap:6px}
-.btn-bright:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(251,191,36,0.5)}
-.btn-ghost{background:rgba(255,255,255,0.12);color:#fff;border:1.5px solid rgba(255,255,255,0.35);padding:0.75rem 1.6rem;border-radius:12px;font-weight:700;font-size:0.95rem;text-decoration:none;transition:all 0.2s}
-.btn-ghost:hover{background:rgba(255,255,255,0.22)}
-.hero-pills{display:flex;gap:0.75rem;margin-top:1.5rem;flex-wrap:wrap}
-.hero-pill{display:flex;align-items:center;gap:6px;background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.22);color:rgba(255,255,255,0.9);padding:0.3rem 0.85rem;border-radius:20px;font-size:0.8rem;font-weight:700}
-.hero-card{background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);border-radius:24px;padding:1.5rem}
-.hero-card-title{font-family:'Fredoka One',cursive;font-size:0.9rem;font-weight:400;color:rgba(255,255,255,0.55);letter-spacing:0.06em;text-transform:uppercase;margin-bottom:1rem;text-align:center}
-.hero-icons-grid{display:grid;grid-template-columns:1fr 1fr;gap:0.75rem}
-.hero-icon-box{background:rgba(255,255,255,0.09);border:1px solid rgba(255,255,255,0.12);border-radius:16px;padding:1.1rem 0.75rem;text-align:center;transition:background 0.2s}
-.hero-icon-box:hover{background:rgba(255,255,255,0.16)}
-.hib-emoji{font-size:2rem;display:block;margin-bottom:0.4rem}
-.hib-title{font-family:'Quicksand',sans-serif;font-weight:600;font-size:0.84rem;color:#fff;margin-bottom:2px}
-.hib-sub{font-size:0.72rem;color:rgba(255,255,255,0.55)}
-.hero-bottom{margin-top:1rem;background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.12);border-radius:14px;padding:0.9rem 1rem;display:flex;align-items:center;justify-content:space-between}
-.hb-stat{text-align:center}
-.hb-num{font-family:'Fredoka One',cursive;font-weight:400;font-size:1.2rem;color:#FBBF24;letter-spacing:0.01em}
-.hb-lbl{font-size:0.7rem;color:rgba(255,255,255,0.6);font-weight:600}
-.hb-div{width:1px;height:32px;background:rgba(255,255,255,0.15)}
-
-/* ===== RIBBON ===== */
-.ribbon{background:var(--white);border-bottom:2px solid var(--border);padding:1rem 2.5rem}
-.ribbon-inner{max-width:1100px;margin:0 auto;display:flex;flex-wrap:nowrap;align-items:center;justify-content:center;gap:0}
-.ribbon-item{display:flex;align-items:center;gap:8px;font-weight:600;font-size:0.85rem;color:var(--muted);padding:0.4rem 1.5rem;white-space:nowrap;border-right:1px solid var(--border)}
-.ribbon-dot{width:34px;height:34px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0}
-.ribbon-item:last-child{border-right:none}
-
-/* ===== SECTIONS ===== */
-section{padding:4rem 2.5rem}
-.sec-inner{max-width:1200px;margin:0 auto}
-.sec-tag{display:flex;align-items:center;justify-content:center;gap:5px;padding:0.3rem 0.85rem;border-radius:20px;font-size:0.75rem;font-weight:800;letter-spacing:0.06em;text-transform:uppercase;margin-bottom:0.9rem;width:fit-content;margin-left:auto;margin-right:auto;text-align:center}
-.tag-purple{background:var(--purple-l);color:#5b21b6}
-.tag-orange{background:var(--orange-l);color:#c2410c}
-.tag-teal{background:var(--teal-l);color:#0f766e}
-.tag-pink{background:var(--pink-l);color:#be185d}
-.sec-title{font-family:'Fredoka One',cursive;font-size:2.1rem;font-weight:400;color:var(--navy);margin-bottom:0.6rem;line-height:1.25;letter-spacing:0.01em;text-align:center}
-.sec-sub{color:var(--muted);font-size:0.97rem;max-width:580px;line-height:1.7;text-align:center;margin-left:auto;margin-right:auto}
-
-/* ===== PROGRAMS ===== */
-.prog-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;margin-top:2.5rem}
-.prog-card{background:var(--white);border:2px solid var(--border);border-radius:20px;padding:1.5rem;transition:all 0.22s;position:relative;overflow:hidden}
-.prog-card::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;border-radius:20px 20px 0 0}
-.pc-orange::before{background:linear-gradient(90deg,#F97316,#FBBF24)}
-.pc-purple::before{background:linear-gradient(90deg,#7C3AED,#EC4899)}
-.pc-teal::before{background:linear-gradient(90deg,#0D9488,#2563EB)}
-.pc-pink::before{background:linear-gradient(90deg,#EC4899,#F97316)}
-.pc-green::before{background:linear-gradient(90deg,#16A34A,#0D9488)}
-.pc-blue::before{background:linear-gradient(90deg,#2563EB,#7C3AED)}
-.prog-card:hover{transform:translateY(-5px);box-shadow:0 16px 40px rgba(0,0,0,0.08);border-color:transparent}
-.prog-emoji{font-size:2.2rem;margin-bottom:0.9rem;display:block}
-.prog-card h3{font-family:'Fredoka One',cursive;font-size:1.05rem;font-weight:400;color:var(--navy);margin-bottom:0.4rem;letter-spacing:0.01em}
-.prog-card p{font-size:0.85rem;color:var(--muted);line-height:1.6}
-.prog-tag{display:inline-block;margin-top:0.85rem;padding:0.22rem 0.7rem;border-radius:20px;font-size:0.75rem;font-weight:800}
-
-/* ===== WHY ===== */
-.why-left-head{text-align:center}
-.why-left-head .sec-tag,.why-left-head .sec-sub{margin-left:auto;margin-right:auto}
-.why-sec{background:var(--white)}
-.why-grid{display:grid;grid-template-columns:1fr 1fr;gap:3.5rem;align-items:start;margin-top:2rem}
-.why-cards{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:0.5rem}
-.why-card{background:var(--bg);border:2px solid var(--border);border-radius:16px;padding:1.25rem;transition:all 0.2s}
-.why-card:hover{border-color:var(--purple);background:var(--purple-l)}
-.wc-icon{font-size:1.5rem;margin-bottom:0.5rem;display:block}
-.wc-title{font-weight:700;color:var(--navy);font-size:0.88rem;margin-bottom:3px}
-.wc-text{color:var(--muted);font-size:0.82rem;line-height:1.55}
-.why-visual{background:linear-gradient(145deg,#FFF8F0,#FDF2F8);border:2px solid #FCE7F3;border-radius:24px;padding:2rem}
-.wv-quote{font-family:'Quicksand',sans-serif;font-size:1.05rem;font-weight:600;color:var(--navy);line-height:1.65;margin-bottom:1rem;font-style:italic}
-.wv-cite{color:var(--muted);font-size:0.82rem;font-weight:700;margin-bottom:1.5rem}
-.wv-stats{display:grid;grid-template-columns:1fr 1fr;gap:0.75rem}
-.wv-stat{background:var(--white);border-radius:12px;padding:1rem;text-align:center;border:1.5px solid var(--border)}
-.wv-num{font-family:'Fredoka One',cursive;font-size:1.6rem;font-weight:400}
-.wv-lbl{font-size:0.75rem;color:var(--muted);font-weight:700;margin-top:2px}
-.wv-emoji{font-size:2.5rem;text-align:center;display:block;margin-bottom:1rem}
-
-/* ===== TESTIMONIALS ===== */
-.test-sec{background:#166178}
-.test-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;margin-top:2.5rem}
-.test-card{background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);border-radius:20px;padding:1.5rem}
-.stars{color:#FBBF24;font-size:0.95rem;letter-spacing:2px;margin-bottom:0.75rem}
-.test-text{color:rgba(255,255,255,0.85);font-size:0.88rem;line-height:1.7;font-style:italic}
-.test-author{margin-top:1.1rem;display:flex;align-items:center;gap:10px}
-.ta-avatar{width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:0.85rem;color:#fff;flex-shrink:0}
-.ta-name{font-weight:700;color:#fff;font-size:0.85rem}
-.ta-role{color:rgba(255,255,255,0.5);font-size:0.75rem}
-
-/* ===== FAQ ===== */
-.faq-sec{background:var(--white)}
-.faq-grid{display:grid;grid-template-columns:1fr 1fr;gap:0.85rem;margin-top:2.5rem;align-items:start}
-.faq-item{border:2px solid var(--border);border-radius:16px;padding:1.1rem 1.25rem;cursor:pointer;transition:all 0.2s}
-.faq-item:hover{border-color:#C4B5FD;background:var(--purple-l)}
-.faq-item.open{border-color:var(--purple);background:var(--purple-l)}
-.faq-q{font-weight:800;color:var(--navy);font-size:0.88rem;display:flex;justify-content:space-between;align-items:center;gap:0.75rem}
-.faq-arrow{color:var(--muted);transition:transform 0.2s;flex-shrink:0;font-size:1rem}
-.faq-item.open .faq-arrow{transform:rotate(180deg);color:var(--purple)}
-.faq-a{color:var(--muted);font-size:0.84rem;margin-top:0.5rem;margin-bottom:0;line-height:1.6;display:none}
-.faq-item.open .faq-a{display:block}
-
-/* ===== CTA ===== */
-.cta-sec{background:#166178;text-align:center}
-.cta-icon{font-size:3.5rem;display:block;margin-bottom:1rem}
-.cta-btns{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;margin-top:1.75rem}
-.btn-cta-main{background:linear-gradient(135deg,var(--orange),var(--pink));color:#fff;padding:0.85rem 2rem;border-radius:12px;font-weight:900;font-size:1rem;text-decoration:none;box-shadow:0 6px 20px rgba(249,115,22,0.35);transition:all 0.2s}
-.btn-cta-main:hover{transform:translateY(-2px);box-shadow:0 10px 28px rgba(249,115,22,0.5)}
-.btn-cta-out{background:rgba(255,255,255,0.12);color:#fff;border:2px solid rgba(255,255,255,0.35);padding:0.85rem 2rem;border-radius:12px;font-weight:800;font-size:1rem;text-decoration:none;transition:all 0.2s}
-.btn-cta-out:hover{background:rgba(255,255,255,0.22);border-color:rgba(255,255,255,0.6)}
-.cta-title{font-family:'Fredoka One',cursive;font-size:2.1rem;font-weight:400;color:#fff;margin-bottom:0.6rem;line-height:1.25;letter-spacing:0.01em}
-.cta-sub{color:rgba(255,255,255,0.8);font-size:0.97rem;max-width:580px;line-height:1.7;margin:0 auto}
-.cta-tag{display:inline-flex;align-items:center;gap:5px;background:rgba(255,255,255,0.15);color:#FDE68A;border:1px solid rgba(255,255,255,0.2);padding:0.3rem 0.85rem;border-radius:20px;font-size:0.75rem;font-weight:800;letter-spacing:0.06em;text-transform:uppercase;margin-bottom:0.9rem}
-
-/* ===== FOOTER ===== */
-footer{background:#0e4050;color:rgba(255,255,255,0.65);padding:3.5rem 2.5rem 2rem}
-.ft-inner{max-width:1200px;margin:0 auto}
-.ft-top{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:2.5rem;margin-bottom:2.5rem}
-.ft-logo{display:flex;align-items:center;gap:10px;margin-bottom:1rem;text-decoration:none}
-.ft-logo-bubble{width:38px;height:38px;border-radius:12px;background:linear-gradient(135deg,#F97316,#EC4899);display:flex;align-items:center;justify-content:center;font-size:1.1rem}
-.ft-brand-name{font-family:'Fredoka One',cursive;font-weight:400;font-size:1.1rem;color:#fff}
-.ft-desc{font-size:0.85rem;line-height:1.7;color:rgba(255,255,255,0.55)}
-.ft-social{display:flex;gap:0.6rem;margin-top:1rem;flex-wrap:wrap}
-.ft-soc{width:34px;height:34px;border-radius:9px;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.15);display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,0.65);text-decoration:none;font-size:0.8rem;font-weight:700;transition:all 0.2s}
-.ft-soc:hover{background:rgba(255,255,255,0.2);color:#fff}
-.ft-col h5{color:#fff;font-weight:700;font-size:0.88rem;margin-bottom:0.85rem}
-.ft-col ul{list-style:none}
-.ft-col li{margin-bottom:0.45rem}
-.ft-col a{color:rgba(255,255,255,0.55);text-decoration:none;font-size:0.83rem;transition:color 0.2s}
-.ft-col a:hover{color:#fff}
-.ft-bottom{border-top:1px solid rgba(255,255,255,0.1);padding-top:1.5rem;display:flex;justify-content:space-between;align-items:center;font-size:0.8rem;flex-wrap:wrap;gap:0.75rem}
-.ft-bottom-links a{color:rgba(255,255,255,0.4);text-decoration:none;margin-left:1.25rem;font-size:0.8rem}
-.ft-bottom-links a:hover{color:#fff}
-.heart{color:#EC4899}
-.icon-3d{border-radius:12px;display:flex;align-items:center;justify-content:center;flex-shrink:0;position:relative;overflow:hidden}
-.icon-3d::after{content:'';position:absolute;top:0;left:0;right:0;height:50%;background:rgba(255,255,255,0.18);border-radius:12px 12px 40% 40%/8px 8px 4px 4px}
-.icon-3d svg{position:relative;z-index:1}
-.c-teal{background:linear-gradient(145deg,#1a8ca8,#0e5268);box-shadow:0 4px 12px rgba(14,82,104,0.45),inset 0 1px 0 rgba(255,255,255,0.2)}
-.c-orange{background:linear-gradient(145deg,#fb923c,#c2410c);box-shadow:0 4px 12px rgba(249,115,22,0.45),inset 0 1px 0 rgba(255,255,255,0.2)}
-.c-green{background:linear-gradient(145deg,#22c55e,#15803d);box-shadow:0 4px 12px rgba(34,197,94,0.45),inset 0 1px 0 rgba(255,255,255,0.2)}
-.c-purple{background:linear-gradient(145deg,#a855f7,#7e22ce);box-shadow:0 4px 12px rgba(168,85,247,0.45),inset 0 1px 0 rgba(255,255,255,0.2)}
-.c-pink{background:linear-gradient(145deg,#f472b6,#be185d);box-shadow:0 4px 12px rgba(244,114,182,0.45),inset 0 1px 0 rgba(255,255,255,0.2)}
-.c-blue{background:linear-gradient(145deg,#3b82f6,#1d4ed8);box-shadow:0 4px 12px rgba(59,130,246,0.45),inset 0 1px 0 rgba(255,255,255,0.2)}
-.c-amber{background:linear-gradient(145deg,#fbbf24,#d97706);box-shadow:0 4px 12px rgba(251,191,36,0.45),inset 0 1px 0 rgba(255,255,255,0.2)}
-
-/* ===================================================
-   RESPONSIVE â€” TABLET (768px â€“ 1024px)
-   iPad Mini, Surface Pro 7, iPad Air, etc.
-   =================================================== */
-@media(max-width:1024px){
-  nav{padding:0 1.5rem}
-  .logo-name span{display:none}
-  .nav-links a{font-size:0.82rem;padding:0.4rem 0.65rem}
-  .nav-badge{display:none}
-  .nav-enroll{padding:0.45rem 1rem;font-size:0.82rem}
-  .ribbon-inner{flex-wrap:wrap;justify-content:center}
-  .ribbon-item{padding:0.35rem 1rem;border-right:none}
-
-  /* Hero: stack on tablet */
-  .hero{
-    grid-template-columns:1fr;
-    gap:2.5rem;
-    padding:3.5rem 2rem 3rem;
-    text-align:center;
-  }
-  .hero-tag{margin:0 auto 1.25rem}
-  .hero-btns{justify-content:center}
-  .hero-pills{justify-content:center}
-
-  /* Hero card: center + limit width */
-  .hero-card{
-    max-width:520px;
-    margin:0 auto;
-    width:100%;
-  }
-
-  .prog-grid{grid-template-columns:repeat(2,1fr)}
-  .why-grid{grid-template-columns:1fr;gap:2rem}
-  .test-grid{grid-template-columns:repeat(2,1fr)}
-  .faq-grid{grid-template-columns:1fr}
-  .ft-top{grid-template-columns:1fr 1fr;gap:2rem}
-  section{padding:3rem 1.5rem}
-  .ribbon{padding:1rem 1.5rem}
-}
-
-/* ===================================================
-   RESPONSIVE â€” MOBILE (max-width: 768px)
-   =================================================== */
-@media(max-width:768px){
-  nav{
-    grid-template-columns:auto auto;
-    justify-content:space-between;
-    height:62px;padding:0 1.2rem;
-  }
-  .nav-links{display:none}
-  .nav-right{display:none}
-  .hamburger{display:flex}
-
-  .hero{
-    grid-template-columns:1fr;
-    padding:2.5rem 1.2rem 2rem;
-    gap:2rem;text-align:center;
-  }
-  .hero-tag{margin:0 auto 1.25rem}
-  .hero h1{font-size:1.9rem}
-  .hero p{font-size:0.95rem}
-  .hero-btns{flex-direction:column;gap:0.75rem;align-items:center}
-  .btn-bright,.btn-ghost{text-align:center;justify-content:center;width:100%;max-width:100%;font-size:0.9rem;padding:0.7rem 1.2rem}
-  .hero-pills{justify-content:center;gap:0.5rem}
-  .hero-pill{font-size:0.75rem;padding:0.25rem 0.7rem}
-  .hero-card{width:100%;max-width:420px;margin:0 auto}
-  .hib-emoji{font-size:1.6rem}
-  .hero-bottom{gap:0.25rem;padding:0.75rem 0.5rem}
-  .hb-num{font-size:1.1rem}
-  .hb-lbl{font-size:0.62rem}
-
-  .ribbon{padding:0.75rem 1.2rem}
-  .ribbon-inner{display:grid;grid-template-columns:1fr 1fr;gap:0.5rem;justify-items:start}
-  .ribbon-item{white-space:nowrap;font-size:0.8rem;padding:0.35rem 0.5rem;border-right:none;gap:6px}
-  .ribbon-dot{width:28px;height:28px;font-size:0.95rem}
-
-  .sec-title{font-size:1.65rem}
-  .prog-grid{grid-template-columns:1fr}
-  .why-grid{grid-template-columns:1fr}
-  .why-cards{grid-template-columns:1fr 1fr}
-  .test-grid{grid-template-columns:1fr}
-  .faq-grid{grid-template-columns:1fr}
-
-  .cta-sec{padding:3rem 1.2rem}
-  .cta-btns{flex-direction:column;align-items:center}
-  .btn-cta-main,.btn-cta-out{width:100%;max-width:100%;text-align:center;font-size:0.9rem;padding:0.75rem 1.2rem}
-
-  .ft-top{grid-template-columns:1fr}
-  footer{padding:2.5rem 1.2rem 1.5rem}
-  .ft-bottom{flex-direction:column;align-items:flex-start;gap:0.5rem}
-  .ft-bottom-links{display:flex;flex-wrap:wrap;gap:0.5rem}
-  .ft-bottom-links a{margin-left:0}
-
-  section{padding:2.5rem 1.2rem}
-}
-
-/* ===================================================
-   RESPONSIVE â€” SMALL MOBILE (max-width: 400px)
-   =================================================== */
-@media(max-width:400px){
-  .btn-bright,.btn-ghost,.btn-cta-main,.btn-cta-out{font-size:0.85rem;padding:0.65rem 1rem}
-  .nav-enroll{font-size:0.78rem;padding:0.4rem 0.8rem}
-  .hero h1{font-size:1.65rem}
-  .sec-title{font-size:1.4rem}
-  .why-cards{grid-template-columns:1fr}
-  .logo-name span{display:none}
-}
-
-/* ===== ENROLLMENT MODAL ===== */
-.modal-overlay{display:none;position:fixed;inset:0;background:rgba(22,97,120,0.55);z-index:9999;align-items:flex-start;justify-content:center;padding:0.5rem;backdrop-filter:blur(3px);overflow-y:auto}
-.modal-overlay.open{display:flex}
-.modal{background:#fff;border-radius:24px;width:100%;max-width:680px;max-height:none;position:relative;box-shadow:0 24px 64px rgba(22,97,120,0.25);animation:slideUp 0.3s ease;display:flex;flex-direction:column}
-@keyframes slideUp{from{transform:translateY(30px);opacity:0}to{transform:translateY(0);opacity:1}}
-.modal-header{background:#166178;padding:2rem 2rem 1.5rem;border-radius:24px 24px 0 0;position:relative;text-align:center}
-.modal-close{position:absolute;top:1rem;right:1rem;width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,0.15);border:none;color:#fff;font-size:1.1rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background 0.2s}
-.modal-close:hover{background:rgba(255,255,255,0.3)}
-.modal-icon{font-size:2.5rem;display:block;margin-bottom:0.5rem}
-.modal-title{font-family:"Fredoka One",cursive;font-size:1.7rem;color:#fff;margin-bottom:0.3rem}
-.modal-sub-txt{color:rgba(255,255,255,0.8);font-size:0.88rem}
-.modal-steps{display:flex;justify-content:center;gap:0.5rem;margin-top:1.2rem}
-.step-dot{width:28px;height:6px;border-radius:3px;background:rgba(255,255,255,0.25);transition:background 0.3s}
-.step-dot.active{background:#FBBF24}.step-dot.done{background:rgba(255,255,255,0.6)}
-.modal-body{padding:2rem;overflow-y:auto;flex:1;max-height:65vh}
-.step-panel{display:none}.step-panel.active{display:block}
-.step-title{font-family:"Fredoka One",cursive;font-size:1.2rem;color:#1a1a2e;margin-bottom:0.3rem}
-.step-desc{color:#6b7280;font-size:0.85rem;margin-bottom:1.5rem}
-.form-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem}
-.form-group{margin-bottom:1rem}
-.form-group label{display:block;font-weight:700;font-size:0.85rem;color:#1a1a2e;margin-bottom:0.4rem}
-.form-group label span.req{color:#DC2626;margin-left:2px}
-.form-group input,.form-group select,.form-group textarea{width:100%;padding:0.7rem 1rem;border:2px solid #d1d5db;border-radius:12px;font-family:"Quicksand",sans-serif;font-size:0.9rem;color:#1a1a2e;background:#fff;transition:border-color 0.2s,box-shadow 0.2s;outline:none}
-.form-group input:focus,.form-group select:focus,.form-group textarea:focus{border-color:#166178;box-shadow:0 0 0 3px rgba(22,97,120,0.1)}
-.form-group input.error,.form-group select.error{border-color:#DC2626}
-.form-group .err-msg{color:#DC2626;font-size:0.78rem;margin-top:4px;display:none}
-.form-group input.error~.err-msg,.form-group select.error~.err-msg{display:block}
-.form-group textarea{resize:vertical;min-height:90px}
-.form-group select{-webkit-appearance:none;appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%236b7280' d='M1 1l5 5 5-5'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 1rem center;padding-right:2.5rem}
-.check-group{display:grid;grid-template-columns:1fr 1fr;gap:0.6rem;margin-top:0.4rem}
-.check-item{display:flex;align-items:flex-start;gap:8px;padding:0.6rem 0.85rem;border-radius:10px;border:2px solid #e5e7eb;cursor:pointer;transition:all 0.18s;font-size:0.85rem;font-weight:600;color:#1a1a2e;line-height:1.5}
-.check-item:hover,.check-item.checked{border-color:#166178;background:#F0FDFA}
-.check-item input{width:16px;height:16px;accent-color:#166178;cursor:pointer}
-.radio-group{display:flex;gap:0.75rem;flex-wrap:wrap;margin-top:0.4rem}
-.radio-item{display:flex;align-items:center;gap:0;padding:0.55rem 1.1rem;border-radius:20px;border:2px solid #e5e7eb;cursor:pointer;transition:all 0.18s;font-size:0.85rem;font-weight:600;color:#6b7280;position:relative}
-.radio-item:hover{border-color:#166178}.radio-item.selected{border-color:#166178;background:#F0FDFA;color:#1a1a2e}
-.radio-item input{accent-color:#166178;cursor:pointer;appearance:none;-webkit-appearance:none;width:0;height:0;margin:0;padding:0;opacity:0;position:absolute}
-.info-box{background:#F0FDFA;border:1.5px solid #99f6e4;border-radius:12px;padding:0.9rem 1rem;display:flex;gap:10px;align-items:flex-start;margin-bottom:1.25rem}
-.info-box span{font-size:1.1rem;flex-shrink:0;margin-top:1px}.info-box p{font-size:0.82rem;color:#0f766e;font-weight:600;line-height:1.5}
-.summary-box{background:#FFF8F0;border:2px solid #e5e7eb;border-radius:16px;padding:1.25rem;margin-bottom:1.5rem}
-.summary-title{font-family:"Fredoka One",cursive;font-size:1rem;font-weight:400;color:#1a1a2e;margin-bottom:0.75rem}
-.summary-row{display:flex;justify-content:space-between;align-items:center;padding:0.4rem 0;border-bottom:1px solid #e5e7eb;font-size:0.85rem}
-.summary-row:last-child{border:none}.summary-label{color:#6b7280;font-weight:600}
-.summary-val{color:#1a1a2e;font-weight:700;text-align:right;max-width:60%;word-break:break-word}
-.success-screen{display:none;text-align:center;padding:1.5rem 1rem}.success-screen.show{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:300px}
-.success-icon-big{width:64px;height:64px;background:#166178;color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:2rem;margin:0 auto 1.25rem;animation:bounce2 0.4s ease}
-@keyframes bounce2{0%,100%{transform:scale(1)}50%{transform:scale(1.2)}}
-.success-title2{font-family:"Fredoka One",cursive;font-size:1.4rem;color:#1a1a2e;margin-bottom:0.5rem}
-.success-sub2{color:#6b7280;font-size:0.88rem;line-height:1.6;max-width:320px;margin:0 auto;text-align:center}
-
-.modal-footer{display:flex;justify-content:space-between;align-items:center;padding:1.1rem 2rem;border-top:2px solid #e5e7eb;background:#FFF8F0;border-radius:0 0 24px 24px;gap:0.75rem;flex-wrap:nowrap;flex-shrink:0;position:sticky;bottom:0;z-index:10}
-.btn-back{background:#fff;color:#6b7280;border:2px solid #e5e7eb;padding:0.65rem 1rem;border-radius:10px;font-family:"Quicksand",sans-serif;font-weight:700;font-size:0.9rem;cursor:pointer;transition:all 0.2s;white-space:nowrap}
-.btn-back:hover{border-color:#1a1a2e;color:#1a1a2e}
-.btn-fnext{background:linear-gradient(135deg,#166178,#0D9488);color:#fff;border:none;padding:0.65rem 1.5rem;border-radius:10px;font-family:"Quicksand",sans-serif;font-weight:800;font-size:0.9rem;cursor:pointer;transition:all 0.2s;display:flex;align-items:center;gap:6px;white-space:nowrap}
-.btn-fnext:hover{transform:translateY(-1px);box-shadow:0 6px 18px rgba(22,97,120,0.35)}
-.btn-fsubmit{background:linear-gradient(135deg,#F97316,#EC4899);color:#fff;border:none;padding:0.65rem 1.5rem;border-radius:10px;font-family:"Quicksand",sans-serif;font-weight:800;font-size:0.9rem;cursor:pointer;transition:all 0.2s;display:flex;align-items:center;gap:6px;white-space:nowrap}
-.btn-fsubmit:hover{transform:translateY(-1px);box-shadow:0 6px 18px rgba(249,115,22,0.35)}
-.step-counter{font-size:0.8rem;color:#6b7280;font-weight:700;white-space:nowrap;flex-shrink:0}
-@media(max-width:600px){
-.modal{
-  border-radius:16px;
-  max-height:94vh;
-  margin:0.5rem;
-  width:calc(100% - 1rem);
-}
-.modal-header{padding:1.4rem 1.1rem 1.1rem;border-radius:16px 16px 0 0}
-.modal-title{font-size:1.3rem}
-.modal-sub-txt{font-size:0.8rem}
-.modal-body{padding:1rem 1.1rem}
-.form-row{grid-template-columns:1fr}
-.check-group{grid-template-columns:1fr}
-.modal-footer{
-  padding:0.9rem 1.1rem;
-  border-radius:0 0 16px 16px;
-  flex-wrap:nowrap;
-  gap:0.5rem;
-  align-items:center;
-  min-height:60px;
-  overflow:visible;
-}
-.btn-back{
-  padding:0.55rem 0.85rem;
-  font-size:0.8rem;
-  flex-shrink:0;
-  white-space:nowrap;
-  min-width:60px;
-}
-.btn-fnext,.btn-fsubmit{
-  flex:1;
-  justify-content:center;
-  padding:0.6rem 0.75rem;
-  font-size:0.82rem;
-  white-space:nowrap;
-  min-width:0;
-  overflow:visible;
-  text-overflow:clip;
-}
-.step-counter{
-  font-size:0.72rem;
-  white-space:nowrap;
-  flex-shrink:0;
-  min-width:60px;
-  text-align:center;
-}
-}
-/* â”€â”€ Extra small phones (360px and below) â”€â”€ */
-@media(max-width:360px){
-  .modal{margin:0;border-radius:0;width:100%;min-height:100vh}
-  .modal-header{border-radius:0}
-  .modal-footer{border-radius:0;padding:0.75rem 0.9rem}
-  .btn-back{padding:0.5rem 0.65rem;font-size:0.75rem}
-  .btn-fnext,.btn-fsubmit{padding:0.5rem 0.6rem;font-size:0.78rem}
-  .step-counter{font-size:0.68rem;min-width:50px}
-  .modal-body{padding:0.85rem}
-}
-
-
-/* â•â•â•â•â•â•â• NEST Lively Animations â•â•â•â•â•â•â• */
-/* Keyframes */
-@keyframes fadeInUp{from{opacity:0;transform:translateY(32px)}to{opacity:1;transform:translateY(0)}}
-@keyframes fadeInLeft{from{opacity:0;transform:translateX(-32px)}to{opacity:1;transform:translateX(0)}}
-@keyframes fadeInRight{from{opacity:0;transform:translateX(32px)}to{opacity:1;transform:translateX(0)}}
-@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
-@keyframes pulseRing{0%{transform:scale(1);opacity:.65}100%{transform:scale(1.6);opacity:0}}
-@keyframes nestShine{0%{left:-120%}100%{left:200%}}
-@keyframes nestPop{0%,100%{transform:scale(1)}50%{transform:scale(1.14)}}
-/* Scroll-reveal base classes (JS sets animationPlayState) */
-.animate-fade-up{animation:fadeInUp .72s cubic-bezier(.22,1,.36,1) both}
-.animate-fade-left{animation:fadeInLeft .72s cubic-bezier(.22,1,.36,1) both}
-.animate-fade-right{animation:fadeInRight .72s cubic-bezier(.22,1,.36,1) both}
-.anim-delay-1{animation-delay:.08s}.anim-delay-2{animation-delay:.18s}
-.anim-delay-3{animation-delay:.28s}.anim-delay-4{animation-delay:.38s}
-.anim-delay-5{animation-delay:.48s}.anim-delay-6{animation-delay:.56s}
-/* Float */
-.float-anim{animation:float 4s ease-in-out infinite!important}
-/* Hero section â€“ staggered cascade on page load */
-.hero-tag{animation:fadeInUp .65s cubic-bezier(.22,1,.36,1) .08s both}
-.hero h1{animation:fadeInUp .72s cubic-bezier(.22,1,.36,1) .22s both}
-.hero>p{animation:fadeInUp .65s cubic-bezier(.22,1,.36,1) .34s both}
-.hero-btns{animation:fadeInUp .65s cubic-bezier(.22,1,.36,1) .46s both}
-.hero-pills{animation:fadeInUp .65s cubic-bezier(.22,1,.36,1) .56s both}
-.hero-card{animation:fadeInRight .7s cubic-bezier(.22,1,.36,1) .3s both}
-/* Navbar scroll state */
-nav{transition:box-shadow .28s ease,background .28s ease}
-nav.scrolled{box-shadow:0 4px 28px rgba(0,0,0,0.11)!important}
-/* Icon-3D spring-bounce + shine sweep on hover */
-.icon-3d{transition:transform .22s cubic-bezier(.34,1.56,.64,1),box-shadow .22s ease!important}
-.icon-3d:hover{transform:scale(1.22) translateY(-3px)!important}
-.icon-3d::before{content:'';position:absolute;top:0;left:-120%;width:55%;height:100%;
-  background:linear-gradient(90deg,transparent,rgba(255,255,255,.3),transparent);z-index:3;pointer-events:none}
-.icon-3d:hover::before{animation:nestShine .45s ease-in-out forwards}
-/* Card hover lift */
-.prog-card{transition:transform .28s cubic-bezier(.22,1,.36,1),box-shadow .28s ease,border-color .28s ease!important}
-.prog-card:hover{transform:translateY(-7px)!important;box-shadow:0 20px 48px rgba(0,0,0,.10)!important}
-.why-card{transition:transform .28s cubic-bezier(.22,1,.36,1),box-shadow .28s ease,border-color .28s ease!important}
-.why-card:hover{transform:translateY(-5px)!important}
-.test-card{transition:transform .28s cubic-bezier(.22,1,.36,1)!important}
-.test-card:hover{transform:translateY(-6px)!important}
-/* Gallery card image zoom on hover */
-.gallery-img-wrap,.gallery-thumb{overflow:hidden}
-.gallery-img-wrap img,.gallery-thumb img{transition:transform .5s ease}
-.gallery-card:hover .gallery-img-wrap img,.gallery-card:hover .gallery-thumb img{transform:scale(1.08)}
-/* Footer link hover shift */
-.ft-col a{transition:color .2s ease,padding-left .22s ease!important}
-.ft-col a:hover{padding-left:5px!important;color:#fff!important}
-/* Pulse ring (CTA / enroll buttons) */
-.pulse-ring{position:relative;overflow:visible}
-.pulse-ring::after{content:'';position:absolute;inset:-5px;border-radius:inherit;
-  border:2px solid rgba(249,115,22,.5);animation:pulseRing 2s ease-out infinite;pointer-events:none}
-/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
-
-/* ===== HAMBURGER â†’ X & BACKDROP ===== */
-.hamburger{border:none!important;border-radius:8px!important;transition:background .32s cubic-bezier(0.4,0,0.2,1)!important}
-.hamburger:hover{background:rgba(22,97,120,0.08)!important}
-.hamburger.open{background:none!important}
-.hamburger span{transition:all .32s cubic-bezier(0.4,0,0.2,1)!important}
+.btn-primary{background:linear-gradient(135deg,#F97316,#166178);color:#fff;padding:0.5rem 1.4rem;border-radius:100px;font-weight:800;font-size:0.88rem;text-decoration:none;box-shadow:0 4px 14px rgba(249,115,22,0.35);transition:all 0.25s;white-space:nowrap;display:inline-flex;align-items:center;gap:6px;animation:btnPulse 2.8s ease-in-out infinite}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,0.18);animation:none}
+.hamburger{display:none;flex-direction:column;align-items:center;justify-content:center;gap:5px;width:36px;height:36px;background:none;border:none;cursor:pointer;padding:4px;border-radius:8px}
+.hamburger span{display:block;width:22px;height:2.5px;background:#166178;border-radius:2px;transition:all 0.3s}
 .hamburger.open span:nth-child(1){transform:translateY(7.5px) rotate(45deg)}
 .hamburger.open span:nth-child(2){opacity:0;transform:scaleX(0)}
 .hamburger.open span:nth-child(3){transform:translateY(-7.5px) rotate(-45deg)}
 .mobile-backdrop{display:none;position:fixed;inset:0;background:rgba(14,64,80,0.35);z-index:997;backdrop-filter:blur(2px)}
 .mobile-backdrop.open{display:block}
+.mobile-menu{display:none;background:#fff;border-top:2px solid var(--border);padding:1rem 1.5rem;flex-direction:column;gap:0.35rem;position:fixed;top:72px;left:0;right:0;z-index:999;box-shadow:0 8px 24px rgba(0,0,0,0.1)}
+.mobile-menu a{text-decoration:none;color:var(--muted);font-weight:700;font-size:0.95rem;padding:0.6rem 0.9rem;border-radius:10px;transition:all 0.18s}
+.mobile-menu a:hover{color:var(--orange);background:#FFF7ED}
+.mobile-menu a.active{color:#166178;background:rgba(22,97,120,0.10)}
+.mobile-menu .mob-enroll{background:linear-gradient(135deg,#F97316,#166178)!important;color:#fff!important;text-align:center;border-radius:100px!important;margin-top:0.5rem}
+.mobile-menu.open{display:flex}
+@media(max-width:768px){#navbar{grid-template-columns:1fr auto;padding:0 1.2rem;height:62px}.nav-links{display:none}#navbar .btn-primary{display:none}.hamburger{display:flex}.mobile-menu{top:62px}}
+
+/* ===== PAGE HERO ===== */
+.page-hero{
+  position:relative;min-height:500px;display:flex;align-items:center;
+  background:url('https://images.pexels.com/photos/7447263/pexels-photo-7447263.jpeg?auto=compress&cs=tinysrgb&w=1920&fit=max') center center/cover no-repeat;
+  overflow:hidden;
+}
+.page-hero::before{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(135deg,rgba(13,79,97,0.90) 0%,rgba(22,97,120,0.82) 55%,rgba(236,72,153,0.30) 100%);
+  z-index:1;
+}
+.page-hero-inner{
+  position:relative;z-index:2;max-width:1200px;margin:0 auto;
+  padding:5.5rem 2.5rem 4.5rem;width:100%;
+}
+.page-hero-tag{
+  display:inline-flex;align-items:center;gap:6px;
+  background:rgba(251,191,36,0.18);border:1px solid rgba(251,191,36,0.35);
+  color:#FDE68A;padding:0.35rem 1rem;border-radius:20px;
+  font-size:0.78rem;font-weight:800;letter-spacing:0.05em;text-transform:uppercase;margin-bottom:1.25rem;
+}
+.page-hero h1{
+  font-family:'Fredoka One',cursive;font-size:3rem;font-weight:400;
+  color:#fff;line-height:1.15;margin-bottom:1rem;letter-spacing:0.01em;
+}
+.page-hero p{color:rgba(255,255,255,0.85);font-size:1.05rem;max-width:560px;line-height:1.75;margin-bottom:1.75rem;}
+.page-hero-btns{display:flex;gap:1rem;flex-wrap:wrap;}
+.btn-hero-main{
+  background:linear-gradient(135deg,#F97316,#166178);color:#fff;padding:0.85rem 2rem;
+  border-radius:100px;font-weight:800;font-size:0.95rem;text-decoration:none;
+  box-shadow:0 4px 16px rgba(249,115,22,0.4);transition:all 0.2s;
+  display:inline-flex;align-items:center;gap:8px;animation:btnPulse 2.8s ease-in-out infinite;
+}
+.btn-hero-main:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(249,115,22,0.5);animation:none}
+.btn-hero-ghost{
+  background:rgba(255,255,255,0.12);color:#fff;border:1.5px solid rgba(255,255,255,0.35);
+  padding:0.85rem 2rem;border-radius:100px;font-weight:700;font-size:0.95rem;text-decoration:none;transition:all 0.2s;
+}
+.btn-hero-ghost:hover{background:rgba(255,255,255,0.22)}
+
+/* ===== STATS BAND ===== */
+.stats-band{background:#166178;padding:2.5rem 2.5rem}
+.stats-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;text-align:center}
+.stat-item{display:flex;flex-direction:column;align-items:center;padding:1.5rem 1rem;border-right:1px solid rgba(255,255,255,0.15)}
+.stat-item:last-child{border-right:none}
+.stat-num{font-family:'Fredoka One',cursive;font-size:2.6rem;color:#FBBF24;line-height:1;margin-bottom:0.3rem}
+.stat-label{font-size:0.9rem;font-weight:700;color:rgba(255,255,255,0.75);letter-spacing:0.02em;text-transform:uppercase}
+
+/* ===== THERAPY ROWS ===== */
+.therapies-sec{background:#fff;padding:5rem 2.5rem}
+.therapies-inner{max-width:1200px;margin:0 auto}
+.therapy-row{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;margin-bottom:5rem}
+.therapy-row:last-child{margin-bottom:0}
+.therapy-row.reverse{direction:rtl}
+.therapy-row.reverse > *{direction:ltr}
+.therapy-img-wrap{position:relative;border-radius:24px;overflow:hidden;box-shadow:0 16px 48px rgba(22,97,120,0.18);aspect-ratio:4/3}
+.therapy-img-wrap img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.4s ease}
+.therapy-img-wrap:hover img{transform:scale(1.04)}
+.therapy-img-badge{
+  position:absolute;bottom:1.2rem;left:1.2rem;
+  background:linear-gradient(135deg,#F97316,#EC4899);color:#fff;
+  padding:0.4rem 1rem;border-radius:20px;font-size:0.78rem;font-weight:800;
+  letter-spacing:0.04em;box-shadow:0 4px 12px rgba(249,115,22,0.4);
+  display:inline-flex;align-items:center;gap:5px;
+}
+.therapy-tag{
+  display:inline-flex;align-items:center;gap:5px;padding:0.3rem 0.85rem;border-radius:20px;
+  font-size:0.75rem;font-weight:800;letter-spacing:0.06em;text-transform:uppercase;margin-bottom:0.85rem;
+}
+.tag-t-speech{background:#FFF7ED;color:#c2410c}
+.tag-t-aba{background:#F5F3FF;color:#5b21b6}
+.tag-t-ot{background:#F0FDFA;color:#0f766e}
+.tag-t-pt{background:#FDF2F8;color:#be185d}
+.tag-t-play{background:#FFFBEB;color:#92400e}
+.tag-t-parent{background:#EFF6FF;color:#1d4ed8}
+.therapy-content h2{font-family:'Fredoka One',cursive;font-size:1.8rem;font-weight:400;color:#1a1a2e;line-height:1.2;margin-bottom:0.85rem;letter-spacing:0.01em}
+.therapy-content p{color:#6b7280;font-size:0.95rem;line-height:1.78;margin-bottom:1.5rem}
+.therapy-features{display:flex;flex-wrap:wrap;gap:0.65rem;margin-bottom:1.5rem}
+.tf-badge{display:inline-flex;align-items:center;gap:5px;padding:0.38rem 0.9rem;border-radius:20px;font-size:0.8rem;font-weight:700;background:#F0FDFA;color:#0f766e;border:1.5px solid #99f6e4}
+.btn-learn{
+  display:inline-flex;align-items:center;gap:6px;
+  background:linear-gradient(135deg,#166178,#0D9488);color:#fff;
+  padding:0.7rem 1.6rem;border-radius:100px;font-weight:800;font-size:0.88rem;
+  text-decoration:none;transition:all 0.2s;box-shadow:0 4px 12px rgba(22,97,120,0.25);
+}
+.btn-learn:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(22,97,120,0.35)}
+
+/* ===== APPROACH SECTION ===== */
+.approach-sec{background:#FFF8F0;padding:5rem 2.5rem}
+.approach-inner{max-width:1200px;margin:0 auto}
+.approach-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.25rem;margin-top:2.5rem}
+.approach-card{background:#fff;border:2px solid var(--border);border-radius:20px;padding:1.75rem 1.5rem;text-align:center;transition:all 0.22s;position:relative;overflow:hidden}
+.approach-card::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;border-radius:20px 20px 0 0}
+.ac-orange::before{background:linear-gradient(90deg,#F97316,#FBBF24)}
+.ac-purple::before{background:linear-gradient(90deg,#7C3AED,#EC4899)}
+.ac-teal::before{background:linear-gradient(90deg,#0D9488,#2563EB)}
+.ac-pink::before{background:linear-gradient(90deg,#EC4899,#F97316)}
+.approach-card:hover{transform:translateY(-5px);box-shadow:0 16px 40px rgba(0,0,0,0.08);border-color:transparent}
+.ac-icon{width:56px;height:56px;border-radius:16px;display:flex;align-items:center;justify-content:center;margin:0 auto 1rem;position:relative;overflow:hidden}
+.ac-icon::after{content:'';position:absolute;top:0;left:0;right:0;height:48%;background:rgba(255,255,255,0.18);pointer-events:none;border-radius:inherit}
+.ac-icon svg{position:relative;z-index:1}
+.ac-orange .ac-icon{background:linear-gradient(145deg,#fb923c,#c2410c);box-shadow:0 6px 18px rgba(194,65,12,0.45)}
+.ac-purple .ac-icon{background:linear-gradient(145deg,#a78bfa,#5b21b6);box-shadow:0 6px 18px rgba(91,33,182,0.40)}
+.ac-teal   .ac-icon{background:linear-gradient(145deg,#22a0c0,#0d3d50);box-shadow:0 6px 18px rgba(14,64,80,0.45)}
+.ac-pink   .ac-icon{background:linear-gradient(145deg,#f472b6,#be185d);box-shadow:0 6px 18px rgba(190,24,93,0.40)}
+.ac-title{font-family:'Fredoka One',cursive;font-size:1.05rem;font-weight:400;color:#1a1a2e;margin-bottom:0.5rem}
+.ac-desc{font-size:0.84rem;color:#6b7280;line-height:1.65}
+
+/* ===== STATS CARD ===== */
+.stats-card-sec{background:#FFF8F0;padding:3rem 2.5rem 3rem}
+.stats-card{max-width:900px;margin:0 auto;background:#fff;border-radius:22px;border:1.5px solid #f0e4d4;box-shadow:0 8px 32px rgba(0,0,0,0.07);display:grid;grid-template-columns:repeat(4,1fr)}
+.sc-item{text-align:center;padding:2.2rem 1.5rem;border-right:1px solid #f0e4d4;position:relative}
+.sc-item:last-child{border-right:none}
+.sc-num{font-family:'Fredoka One',cursive;font-size:2.8rem;font-weight:400;line-height:1;margin-bottom:0.35rem}
+.sc-teal{color:#166178}.sc-orange{color:#F97316}.sc-purple{color:#7C3AED}.sc-pink{color:#EC4899}
+.sc-label{font-size:0.82rem;color:#9ca3af;font-weight:600;letter-spacing:0.01em}
+@media(max-width:600px){.stats-card{grid-template-columns:repeat(2,1fr)}.sc-item:nth-child(2){border-right:none}.sc-item:nth-child(3){border-top:1px solid #f0e4d4}}
+
+/* ===== ASSESSMENT CTA ===== */
+.assessment-cta{
+  background:linear-gradient(160deg,#0c4355 0%,#166178 50%,#0f5268 100%);
+  padding:3.5rem 2.5rem;text-align:center;position:relative;overflow:hidden;
+}
+.assessment-cta::before{
+  content:'';position:absolute;inset:0;
+  background-image:radial-gradient(circle,rgba(255,255,255,0.04) 1px,transparent 1px);
+  background-size:28px 28px;pointer-events:none;
+}
+.assessment-cta-inner{max-width:680px;margin:0 auto;position:relative;z-index:1}
+.cta-free-tag{
+  display:inline-flex;align-items:center;gap:6px;
+  border:1.5px solid rgba(255,255,255,0.35);color:rgba(255,255,255,0.88);
+  background:rgba(255,255,255,0.08);
+  padding:0.38rem 1.1rem;border-radius:100px;
+  font-size:0.72rem;font-weight:800;letter-spacing:0.1em;text-transform:uppercase;
+  margin-bottom:1.25rem;
+}
+.assessment-cta h2{
+  font-family:'Fredoka One',cursive;font-size:2.6rem;font-weight:400;
+  color:#fff;margin-bottom:1rem;letter-spacing:0.01em;line-height:1.18;
+}
+.assessment-cta p{color:rgba(255,255,255,0.78);font-size:1rem;line-height:1.75;margin-bottom:2rem;max-width:560px;margin-left:auto;margin-right:auto}
+.btn-assess-wrap{display:inline-block;margin-bottom:1.5rem}
+.btn-assess{
+  display:inline-flex;align-items:center;gap:10px;
+  background:linear-gradient(90deg,#FBBF24 0%,#F59E0B 55%,#D97706 100%);
+  color:#1a1a2e;
+  padding:0.95rem 2.6rem;
+  border-radius:100px;font-weight:900;font-size:1.05rem;
+  text-decoration:none;letter-spacing:0.01em;
+  box-shadow:0 6px 28px rgba(245,158,11,0.55),0 2px 8px rgba(0,0,0,0.2);
+  transition:all 0.22s;
+}
+.btn-assess:hover{transform:translateY(-2px);box-shadow:0 12px 40px rgba(245,158,11,0.7)}
+.btn-assess svg{flex-shrink:0}
+.assess-social{
+  display:inline-flex;align-items:center;gap:0.65rem;
+  color:rgba(255,255,255,0.65);font-size:0.82rem;font-weight:600;
+}
+.assess-social-avatar{
+  width:36px;height:36px;border-radius:50%;overflow:hidden;
+  border:2px solid rgba(255,255,255,0.25);flex-shrink:0;
+}
+.assess-social-avatar img{width:100%;height:100%;object-fit:cover;display:block}
+
+/* ===== FAQ ===== */
+.faq-sec{background:#fff;padding:5rem 2.5rem}
+.faq-inner{max-width:1100px;margin:0 auto}
+.faq-grid{display:grid;grid-template-columns:1fr 1fr;gap:0.85rem;margin-top:2.5rem;align-items:start}
+.faq-item{border:2px solid var(--border);border-radius:16px;padding:1.1rem 1.25rem;cursor:pointer;transition:all 0.2s}
+.faq-item:hover{border-color:#C4B5FD;background:#F5F3FF}
+.faq-item.open{border-color:#7C3AED;background:#F5F3FF}
+.faq-q{font-weight:800;color:#1a1a2e;font-size:0.88rem;display:flex;justify-content:space-between;align-items:center;gap:0.75rem}
+.faq-arrow{color:#6b7280;transition:transform 0.2s;flex-shrink:0;font-size:1rem}
+.faq-item.open .faq-arrow{transform:rotate(180deg);color:#7C3AED}
+.faq-a{color:#6b7280;font-size:0.84rem;margin-top:0.6rem;line-height:1.65;display:none}
+.faq-item.open .faq-a{display:block}
+
+/* ===== CTA BAND ===== */
+.cta-band{
+  background:linear-gradient(130deg,#0c3d4e 0%,#166178 50%,#1a90a8 100%);
+  padding:5.5rem 2.5rem;text-align:center;
+  position:relative;overflow:hidden;
+}
+.cta-band::before{
+  content:'';position:absolute;
+  width:580px;height:580px;border-radius:50%;
+  left:-230px;top:50%;transform:translateY(-50%);
+  background:rgba(255,255,255,0.055);
+  border:1.5px solid rgba(255,255,255,0.12);
+  box-shadow:0 0 0 90px rgba(255,255,255,0.025);
+  pointer-events:none;
+}
+.cta-band::after{
+  content:'';position:absolute;
+  width:580px;height:580px;border-radius:50%;
+  right:-230px;top:50%;transform:translateY(-50%);
+  background:rgba(255,255,255,0.055);
+  border:1.5px solid rgba(255,255,255,0.12);
+  box-shadow:0 0 0 90px rgba(255,255,255,0.025);
+  pointer-events:none;
+}
+.cta-band-inner{position:relative;z-index:1;max-width:660px;margin:0 auto}
+.cta-band h2{font-family:'Fredoka One',cursive;font-size:2.2rem;font-weight:400;color:#fff;margin-bottom:0.75rem;letter-spacing:0.01em;line-height:1.22}
+.cta-band p{color:rgba(255,255,255,0.82);font-size:1rem;margin-bottom:2rem;line-height:1.75}
+.cta-band-btns{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
+.btn-band-w{
+  background:#fff;color:#166178;padding:0.85rem 2rem;border-radius:100px;
+  font-weight:900;font-size:0.95rem;text-decoration:none;transition:all 0.2s;
+  box-shadow:0 4px 14px rgba(0,0,0,0.15);display:inline-flex;align-items:center;gap:8px;
+}
+.btn-band-w:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,0.22)}
+.btn-band-ghost{
+  background:rgba(0,0,0,0.18);color:#fff;
+  border:1.5px solid rgba(255,255,255,0.35);
+  padding:0.85rem 2rem;border-radius:100px;font-weight:800;font-size:0.95rem;
+  text-decoration:none;transition:all 0.2s;
+}
+.btn-band-ghost:hover{background:rgba(0,0,0,0.28)}
+
+/* ===== SECTION HELPERS ===== */
+.sec-tag{display:inline-flex;align-items:center;gap:5px;padding:0.3rem 0.85rem;border-radius:20px;font-size:0.75rem;font-weight:800;letter-spacing:0.06em;text-transform:uppercase;margin-bottom:0.9rem}
+.sec-title{font-family:'Fredoka One',cursive;font-size:2.1rem;font-weight:400;color:#1a1a2e;margin-bottom:0.6rem;line-height:1.25;text-align:center}
+.sec-sub{color:#6b7280;font-size:0.97rem;max-width:580px;line-height:1.7;text-align:center;margin:0 auto}
+
+/* ===== FOOTER ===== */
+footer{background:#0e4050;color:rgba(255,255,255,0.65);padding:3.5rem 2.5rem 2rem}
+.ft-inner{max-width:1200px;margin:0 auto}
+.ft-top{display:grid;grid-template-columns:2fr 1fr 1fr 1.3fr;gap:2.5rem;margin-bottom:2.5rem}
+.ft-logo{display:flex;align-items:center;gap:10px;margin-bottom:1rem;text-decoration:none}
+.ft-logo-bubble{width:38px;height:38px;border-radius:12px;background:linear-gradient(135deg,#F97316,#EC4899);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.ft-brand-name{font-family:'Fredoka One',cursive;font-weight:400;font-size:1.1rem;color:#fff}
+.ft-tagline{font-size:0.6rem;color:rgba(255,255,255,0.55);font-weight:700;letter-spacing:0.06em;text-transform:uppercase;margin-top:2px}
+.ft-desc{font-size:0.85rem;line-height:1.7;color:rgba(255,255,255,0.55)}
+.ft-social{display:flex;gap:0.6rem;margin-top:1rem}
+.ft-soc{width:34px;height:34px;border-radius:9px;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.15);display:flex;align-items:center;justify-content:center;text-decoration:none;transition:all 0.2s}
+.ft-soc:hover{background:rgba(255,255,255,0.2)}
+.ft-soc svg{display:block}
+.ft-col h5{color:#fff;font-weight:700;font-size:0.88rem;margin-bottom:0.85rem}
+.ft-col ul{list-style:none}
+.ft-col li{margin-bottom:0.45rem}
+.ft-col a{color:rgba(255,255,255,0.55);text-decoration:none;font-size:0.83rem;transition:color 0.2s,padding-left 0.22s}
+.ft-col a:hover{color:#fff;padding-left:4px}
+.ft-contact-items{display:flex;flex-direction:column;gap:0.85rem}
+.ft-contact-item{display:flex;align-items:flex-start;gap:0.75rem}
+.ft-contact-icon{display:flex;align-items:center;justify-content:center;width:34px;height:34px;border-radius:10px;flex-shrink:0}
+.ft-contact-label{color:#fff;font-size:0.8rem;font-weight:700;margin-bottom:0.1rem}
+.ft-contact-val{color:rgba(255,255,255,0.55);font-size:0.78rem;line-height:1.5}
+.ft-bottom{border-top:1px solid rgba(255,255,255,0.1);padding-top:1.5rem;display:flex;justify-content:space-between;align-items:center;font-size:0.8rem;flex-wrap:wrap;gap:0.75rem}
+.ft-bottom-links a{color:rgba(255,255,255,0.4);text-decoration:none;margin-left:1.25rem;font-size:0.8rem}
+.ft-bottom-links a:hover{color:#fff}
+.heart{display:inline-block}
+
+/* ===== RESPONSIVE ===== */
+@media(max-width:1024px){
+  .stats-inner{grid-template-columns:repeat(2,1fr)}
+  .stat-item{border-right:none;border-bottom:1px solid rgba(255,255,255,0.12)}
+  .stat-item:nth-child(odd){border-right:1px solid rgba(255,255,255,0.12)}
+  .stat-item:last-child{border-bottom:none}
+  .approach-grid{grid-template-columns:repeat(2,1fr)}
+  .therapy-row{grid-template-columns:1fr;gap:2.5rem}
+  .therapy-row.reverse{direction:ltr}
+  .ft-top{grid-template-columns:1fr 1fr;gap:2rem}
+}
+@media(max-width:768px){
+  .page-hero h1{font-size:2.2rem}
+  .page-hero-inner{padding:4rem 1.5rem 3rem}
+  .therapies-sec,.approach-sec,.assessment-cta,.faq-sec,.cta-band{padding:3rem 1.5rem}
+  .faq-grid{grid-template-columns:1fr}
+  .approach-grid{grid-template-columns:1fr 1fr}
+  .ft-top{grid-template-columns:1fr}
+  .page-hero-btns{flex-direction:column;max-width:260px}
+}
+@media(max-width:480px){
+  .page-hero h1{font-size:1.9rem}
+  .approach-grid{grid-template-columns:1fr}
+  .cta-band-btns{flex-direction:column;align-items:center}
+  .ft-bottom{flex-direction:column;align-items:flex-start}
+  .ft-bottom-links a{margin-left:0}
+}
 </style>
 </head>
 <body>
-<nav>
-  <a class="nav-logo" href="index.html">
+
+<!-- ===== NAVBAR ===== -->
+<nav id="navbar">
+  <a href="index.html" class="nav-logo">
     <img src="favicon.png" alt="NEST Logo" style="width:48px;height:48px;border-radius:50%;object-fit:cover;flex-shrink:0"/>
-    <div class="logo-name">N.E.S.T<span>Nurturing Education With School &amp; Therapy</span></div>
+    <div class="logo-name">N.E.S.T<span>Nurturing Education with School &amp; Therapy</span></div>
   </a>
   <ul class="nav-links">
     <li><a href="index.html">Home</a></li>
@@ -523,177 +343,367 @@ nav.scrolled{box-shadow:0 4px 28px rgba(0,0,0,0.11)!important}
     <li><a href="gallery.html">Gallery</a></li>
     <li><a href="contact.html">Contact</a></li>
   </ul>
-  <div class="nav-right">
-    <span class="nav-badge">ðŸ†“ Free Assessment</span>
-    <a href="#" onclick="openEnrollModal();return false;" class="nav-enroll">
-  Enroll Now â€” Free <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-</a>
-  </div>
-  <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+  <a href="contact.html" class="btn-primary">Enroll Now &#x2605;</a>
+  <button class="hamburger" onclick="toggleMenu()" aria-label="Toggle menu">
     <span></span><span></span><span></span>
   </button>
 </nav>
 <div class="mobile-backdrop" id="mobileBackdrop"></div>
 <div class="mobile-menu" id="mobileMenu">
-  <a href="index.html"><span class="icon-3d c-teal"    style="width:32px;height:32px;border-radius:9px;flex-shrink:0"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></span> Home</a>
-  <a href="programs.html"><span class="icon-3d c-orange"  style="width:32px;height:32px;border-radius:9px;flex-shrink:0"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg></span> Programs</a>
-  <a href="therapies.html" class="active"><svg width="14" height="14" viewBox="0 0 24 24" fill="#FDE68A" stroke="#FDE68A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg> Therapies</a>
-  <a href="about.html"><span class="icon-3d c-blue"    style="width:32px;height:32px;border-radius:9px;flex-shrink:0"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg></span> About Us</a>
-  <a href="gallery.html"><span class="icon-3d c-pink"    style="width:32px;height:32px;border-radius:9px;flex-shrink:0"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg></span> Gallery</a>
-  <a href="contact.html"><span class="icon-3d c-green"   style="width:32px;height:32px;border-radius:9px;flex-shrink:0"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 014.69 13a19.79 19.79 0 01-3.07-8.67A2 2 0 013.18 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9a16 16 0 006.91 6.91l.27-.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg></span> Contact</a>
-  <a href="#" onclick="openEnrollModal();return false;" class="mob-enroll">Enroll Now â€” Free <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></a>
+  <a href="index.html">Home</a>
+  <a href="programs.html">Programs</a>
+  <a href="therapies.html" class="active">Therapies</a>
+  <a href="about.html">About Us</a>
+  <a href="gallery.html">Gallery</a>
+  <a href="contact.html">Contact</a>
+  <a href="contact.html" class="mob-enroll">Enroll Now &rarr;</a>
 </div>
 
-<div style="background:#166178;padding:3.5rem 2rem 3rem;text-align:center">
-  <div style="max-width:700px;margin:0 auto">
-    <span style="display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,0.15);color:#FDE68A;border:1px solid rgba(255,255,255,0.2);padding:0.3rem 0.85rem;border-radius:20px;font-size:0.75rem;font-weight:800;letter-spacing:0.06em;text-transform:uppercase;margin-bottom:1rem"><div class="icon-3d c-teal" style="width:22px;height:22px"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></div> Therapies</span>
-    <h1 style="font-family:'Fredoka One',cursive;font-size:2.2rem;font-weight:400;color:#fff;margin-bottom:0.75rem;line-height:1.25">Expert Therapy Services</h1>
-    <p style="color:rgba(255,255,255,0.8);font-size:1rem;line-height:1.7">Our certified therapists use evidence-based approaches to unlock each child's unique potential.</p>
+<!-- ===== PAGE HERO ===== -->
+<section class="page-hero">
+  <div class="page-hero-inner">
+    <div class="page-hero-tag">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+      Certified Specialists
+    </div>
+    <h1>Expert Therapy<br>Services at N.E.S.T</h1>
+    <p>Evidence-based therapies delivered by certified specialists who truly care about every child's growth, development, and lasting potential.</p>
+    <div class="page-hero-btns">
+      <a href="contact.html" class="btn-hero-main">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="8" y="2" width="8" height="4" rx="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/></svg>
+        Book Free Assessment
+      </a>
+      <a href="#therapies" class="btn-hero-ghost">Explore Therapies &darr;</a>
+    </div>
   </div>
-</div>
-<section style="background:#FFF8F0;padding:3.5rem 2rem">
-<div style="max-width:1100px;margin:0 auto">
-
-<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:2rem">
-
-<div style="background:#fff;border-radius:20px;border:2px solid #e5e7eb;padding:2rem;display:flex;gap:1.25rem;align-items:flex-start">
-<div class="icon-3d c-teal" style="width:56px;height:56px;flex-shrink:0"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
-<div>
-<h3 style="font-family:'Fredoka One',cursive;font-weight:400;font-size:1.15rem;color:#1a1a2e;margin-bottom:0.4rem">Speech & Language</h3>
-<p style="color:#6b7280;font-size:0.87rem;line-height:1.7">Improves verbal & non-verbal communication, language comprehension, and social use of language through structured therapy sessions.</p>
-<div style="margin-top:0.75rem;display:flex;flex-wrap:wrap;gap:0.4rem">
-<span style="background:#F0FDFA;color:#0f766e;padding:0.2rem 0.6rem;border-radius:10px;font-size:0.75rem;font-weight:700">Verbal Skills</span>
-<span style="background:#F0FDFA;color:#0f766e;padding:0.2rem 0.6rem;border-radius:10px;font-size:0.75rem;font-weight:700">AAC Devices</span>
-<span style="background:#F0FDFA;color:#0f766e;padding:0.2rem 0.6rem;border-radius:10px;font-size:0.75rem;font-weight:700">Social Speech</span>
-</div>
-</div>
-</div>
-
-<div style="background:#fff;border-radius:20px;border:2px solid #e5e7eb;padding:2rem;display:flex;gap:1.25rem;align-items:flex-start">
-<div class="icon-3d c-purple" style="width:56px;height:56px;flex-shrink:0"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96-.44 2.5 2.5 0 0 1-2.96-3.08 3 3 0 0 1-.34-5.58 2.5 2.5 0 0 1 1.32-4.24 2.5 2.5 0 0 1 1.98-3A2.5 2.5 0 0 1 9.5 2"/><path d="M14.5 2A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96-.44 2.5 2.5 0 0 0 2.96-3.08 3 3 0 0 0 .34-5.58 2.5 2.5 0 0 0-1.32-4.24 2.5 2.5 0 0 0-1.98-3A2.5 2.5 0 0 0 14.5 2"/></svg></div>
-<div>
-<h3 style="font-family:'Fredoka One',cursive;font-weight:400;font-size:1.15rem;color:#1a1a2e;margin-bottom:0.4rem">ABA Therapy</h3>
-<p style="color:#6b7280;font-size:0.87rem;line-height:1.7">Applied Behavior Analysis reduces challenging behaviors and builds life skills through positive reinforcement, data tracking, and structured learning.</p>
-<div style="margin-top:0.75rem;display:flex;flex-wrap:wrap;gap:0.4rem">
-<span style="background:#F5F3FF;color:#5b21b6;padding:0.2rem 0.6rem;border-radius:10px;font-size:0.75rem;font-weight:700">Behavior Plans</span>
-<span style="background:#F5F3FF;color:#5b21b6;padding:0.2rem 0.6rem;border-radius:10px;font-size:0.75rem;font-weight:700">DTT</span>
-<span style="background:#F5F3FF;color:#5b21b6;padding:0.2rem 0.6rem;border-radius:10px;font-size:0.75rem;font-weight:700">BCBA Certified</span>
-</div>
-</div>
-</div>
-
-<div style="background:#fff;border-radius:20px;border:2px solid #e5e7eb;padding:2rem;display:flex;gap:1.25rem;align-items:flex-start">
-<div class="icon-3d c-pink" style="width:56px;height:56px;flex-shrink:0"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 11V6a2 2 0 0 0-2-2 2 2 0 0 0-2 2v0"/><path d="M14 10V4a2 2 0 0 0-2-2 2 2 0 0 0-2 2v2"/><path d="M10 10.5V6a2 2 0 0 0-2-2 2 2 0 0 0-2 2v8"/><path d="M18 8a2 2 0 1 1 4 0v6a8 8 0 0 1-8 8h-2c-2.8 0-4.5-.86-5.99-2.34l-3.6-3.6a2 2 0 0 1 2.83-2.82L7 15"/></svg></div>
-<div>
-<h3 style="font-family:'Fredoka One',cursive;font-weight:400;font-size:1.15rem;color:#1a1a2e;margin-bottom:0.4rem">Occupational Therapy</h3>
-<p style="color:#6b7280;font-size:0.87rem;line-height:1.7">OT helps children manage sensory input, develop fine motor control, and perform everyday tasks like dressing, writing, and eating independently.</p>
-<div style="margin-top:0.75rem;display:flex;flex-wrap:wrap;gap:0.4rem">
-<span style="background:#FDF2F8;color:#be185d;padding:0.2rem 0.6rem;border-radius:10px;font-size:0.75rem;font-weight:700">Sensory Integration</span>
-<span style="background:#FDF2F8;color:#be185d;padding:0.2rem 0.6rem;border-radius:10px;font-size:0.75rem;font-weight:700">Fine Motor</span>
-</div>
-</div>
-</div>
-
-<div style="background:#fff;border-radius:20px;border:2px solid #e5e7eb;padding:2rem;display:flex;gap:1.25rem;align-items:flex-start">
-<div class="icon-3d c-green" style="width:56px;height:56px;flex-shrink:0"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
-<div>
-<h3 style="font-family:'Fredoka One',cursive;font-weight:400;font-size:1.15rem;color:#1a1a2e;margin-bottom:0.4rem">Physical Therapy</h3>
-<p style="color:#6b7280;font-size:0.87rem;line-height:1.7">Targeted physical therapy programs improve posture, gait, strength, and overall physical function through fun, age-appropriate activities.</p>
-<div style="margin-top:0.75rem;display:flex;flex-wrap:wrap;gap:0.4rem">
-<span style="background:#F0FDF4;color:#166534;padding:0.2rem 0.6rem;border-radius:10px;font-size:0.75rem;font-weight:700">Gross Motor</span>
-<span style="background:#F0FDF4;color:#166534;padding:0.2rem 0.6rem;border-radius:10px;font-size:0.75rem;font-weight:700">Balance</span>
-<span style="background:#F0FDF4;color:#166534;padding:0.2rem 0.6rem;border-radius:10px;font-size:0.75rem;font-weight:700">Coordination</span>
-</div>
-</div>
-</div>
-
-<div style="background:#fff;border-radius:20px;border:2px solid #e5e7eb;padding:2rem;display:flex;gap:1.25rem;align-items:flex-start">
-<div class="icon-3d c-amber" style="width:56px;height:56px;flex-shrink:0"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="13.5" cy="6.5" r=".5" fill="white"/><circle cx="17.5" cy="10.5" r=".5" fill="white"/><circle cx="8.5" cy="7.5" r=".5" fill="white"/><circle cx="6.5" cy="12.5" r=".5" fill="white"/><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10c1.1 0 2-.9 2-2v-.5c0-.28-.22-.5-.5-.5H13c-1.1 0-2-.9-2-2 0-.55.22-1.05.59-1.41.37-.36.59-.86.59-1.41C12.18 13.1 11 11.9 11 10.38 11 6.86 13.91 4 17.43 4 20.12 4 22 5.6 22 8c0 2.21-1.79 4-4 4h-1c-1.1 0-2 .9-2 2"/></svg></div>
-<div>
-<h3 style="font-family:'Fredoka One',cursive;font-weight:400;font-size:1.15rem;color:#1a1a2e;margin-bottom:0.4rem">Play & Art Therapy</h3>
-<p style="color:#6b7280;font-size:0.87rem;line-height:1.7">Using creative play and art as therapeutic tools to help children express emotions, develop imagination, and build confidence in a fun setting.</p>
-<div style="margin-top:0.75rem;display:flex;flex-wrap:wrap;gap:0.4rem">
-<span style="background:#FFFBEB;color:#92400e;padding:0.2rem 0.6rem;border-radius:10px;font-size:0.75rem;font-weight:700">Creative Expression</span>
-<span style="background:#FFFBEB;color:#92400e;padding:0.2rem 0.6rem;border-radius:10px;font-size:0.75rem;font-weight:700">Emotional Health</span>
-</div>
-</div>
-</div>
-
-<div style="background:#fff;border-radius:20px;border:2px solid #e5e7eb;padding:2rem;display:flex;gap:1.25rem;align-items:flex-start">
-<div class="icon-3d c-blue" style="width:56px;height:56px;flex-shrink:0"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
-<div>
-<h3 style="font-family:'Fredoka One',cursive;font-weight:400;font-size:1.15rem;color:#1a1a2e;margin-bottom:0.4rem">Parent Counseling</h3>
-<p style="color:#6b7280;font-size:0.87rem;line-height:1.7">One-on-one and group counseling sessions to help parents manage stress, understand their child's needs, and become confident advocates.</p>
-<div style="margin-top:0.75rem;display:flex;flex-wrap:wrap;gap:0.4rem">
-<span style="background:#EFF6FF;color:#1d4ed8;padding:0.2rem 0.6rem;border-radius:10px;font-size:0.75rem;font-weight:700">1-on-1 Sessions</span>
-<span style="background:#EFF6FF;color:#1d4ed8;padding:0.2rem 0.6rem;border-radius:10px;font-size:0.75rem;font-weight:700">Group Workshops</span>
-</div>
-</div>
-</div>
-
-</div>
-
-<div style="background:#fff;border-radius:20px;border:2px solid #e5e7eb;padding:2rem;margin-top:2rem;display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:1.5rem;text-align:center">
-<div><div style="font-family:'Fredoka One',cursive;font-size:2rem;color:#166178">8+</div><div style="color:#6b7280;font-size:0.85rem;font-weight:600">Therapy Types</div></div>
-<div><div style="font-family:'Fredoka One',cursive;font-size:2rem;color:#F97316">25+</div><div style="color:#6b7280;font-size:0.85rem;font-weight:600">Certified Therapists</div></div>
-<div><div style="font-family:'Fredoka One',cursive;font-size:2rem;color:#7C3AED">500+</div><div style="color:#6b7280;font-size:0.85rem;font-weight:600">Children Helped</div></div>
-<div><div style="font-family:'Fredoka One',cursive;font-size:2rem;color:#EC4899">15+</div><div style="color:#6b7280;font-size:0.85rem;font-weight:600">Years Experience</div></div>
-</div>
-
-</div>
 </section>
 
-<section class="faq-sec">
-  <div class="sec-inner">
-    <span class="sec-tag tag-purple">&#10067; QUESTIONS ANSWERED</span>
-    <h2 class="sec-title">Therapy FAQs</h2>
-    <p class="sec-sub">Everything you need to know about our therapy services at N.E.S.T.</p>
-    <div class="faq-grid">
-      <div class="faq-item" onclick="toggleFaq(this)">
-        <div class="faq-q">How do I know which therapy my child needs? <span class="faq-arrow">&#9662;</span></div>
-        <p class="faq-a">We offer a free comprehensive assessment where our team of certified specialists evaluates your child's development across communication, behavior, motor skills, and emotional wellbeing. Based on the results, we recommend a tailored therapy plan — no guesswork, just expert guidance.</p>
+<!-- ===== THERAPIES ===== -->
+<section class="therapies-sec" id="therapies">
+  <div class="therapies-inner">
+
+    <!-- Speech & Language -->
+    <div class="therapy-row">
+      <div class="therapy-img-wrap">
+        <img src="https://images.unsplash.com/photo-1580582932707-520aed937b7b?w=700&auto=format&fit=crop&q=80" alt="Speech Therapy" loading="lazy"/>
+        <span class="therapy-img-badge">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg>
+          Speech Therapy
+        </span>
       </div>
-      <div class="faq-item" onclick="toggleFaq(this)">
-        <div class="faq-q">How long does each therapy session last? <span class="faq-arrow">&#9662;</span></div>
-        <p class="faq-a">Sessions typically last 45–60 minutes depending on the therapy type and your child's age and needs. Our therapists design each session to maximize engagement and measurable progress within that window.</p>
+      <div class="therapy-content">
+        <span class="therapy-tag tag-t-speech">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/></svg>
+          Communication
+        </span>
+        <h2>Speech &amp; Language Therapy</h2>
+        <p>Our certified speech-language pathologists work closely with children who face challenges in speaking, understanding language, or communicating their needs. Using evidence-based techniques such as PECS, AAC, and structured language programs, we create personalized plans that build expressive and receptive language skills in a warm, play-based environment.</p>
+        <div class="therapy-features">
+          <span class="tf-badge"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Articulation Training</span>
+          <span class="tf-badge"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> AAC &amp; PECS</span>
+          <span class="tf-badge"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Social Communication</span>
+          <span class="tf-badge"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Early Intervention</span>
+        </div>
+        <a href="contact.html" class="btn-learn">Book Assessment &rarr;</a>
       </div>
-      <div class="faq-item" onclick="toggleFaq(this)">
-        <div class="faq-q">Are your therapists certified and experienced? <span class="faq-arrow">&#9662;</span></div>
-        <p class="faq-a">Yes! All our therapists are nationally certified and have extensive hands-on experience working with children with autism, ADHD, Down Syndrome, cerebral palsy, and other developmental conditions. They undergo regular professional training to stay current with best practices.</p>
+    </div>
+
+    <!-- ABA Therapy -->
+    <div class="therapy-row reverse">
+      <div class="therapy-img-wrap">
+        <img src="https://images.unsplash.com/photo-1560707303-4e980ce876ad?w=700&auto=format&fit=crop&q=80" alt="ABA Therapy" loading="lazy"/>
+        <span class="therapy-img-badge">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
+          ABA Therapy
+        </span>
       </div>
-      <div class="faq-item" onclick="toggleFaq(this)">
-        <div class="faq-q">Can parents observe therapy sessions? <span class="faq-arrow">&#9662;</span></div>
-        <p class="faq-a">Absolutely! We encourage parent involvement and full transparency. Parents are welcome to observe sessions, and our therapists provide regular progress updates. We also offer dedicated parent training programs to extend therapy benefits at home.</p>
+      <div class="therapy-content">
+        <span class="therapy-tag tag-t-aba">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
+          Behavior
+        </span>
+        <h2>Applied Behavior Analysis (ABA)</h2>
+        <p>ABA therapy is one of the most researched and effective treatments for children with Autism Spectrum Disorder. Our BCBA-certified therapists design individualized behavior intervention plans that target learning, communication, self-care, and social skills â€” using positive reinforcement to build lasting behavioral change in natural environments.</p>
+        <div class="therapy-features">
+          <span class="tf-badge"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Individualized Behavior Plans</span>
+          <span class="tf-badge"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Discrete Trial Training</span>
+          <span class="tf-badge"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> BCBA Certified</span>
+          <span class="tf-badge"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Data-Driven Progress</span>
+        </div>
+        <a href="contact.html" class="btn-learn">Book Assessment &rarr;</a>
       </div>
-      <div class="faq-item" onclick="toggleFaq(this)">
-        <div class="faq-q">How soon will we see progress? <span class="faq-arrow">&#9662;</span></div>
-        <p class="faq-a">Progress varies by child and therapy type, but many families notice improvements within the first few weeks. Our team sets clear measurable goals and tracks progress consistently so you always know how your child is advancing.</p>
+    </div>
+
+    <!-- Occupational Therapy -->
+    <div class="therapy-row">
+      <div class="therapy-img-wrap">
+        <img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=700&auto=format&fit=crop&q=80" alt="Occupational Therapy" loading="lazy"/>
+        <span class="therapy-img-badge">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+          Occupational Therapy
+        </span>
       </div>
-      <div class="faq-item" onclick="toggleFaq(this)">
-        <div class="faq-q">Can my child receive multiple therapies simultaneously? <span class="faq-arrow">&#9662;</span></div>
-        <p class="faq-a">Yes! Many children benefit greatly from a combination of therapies. Our multidisciplinary team coordinates care across speech, occupational, ABA, and physical therapy to ensure each child receives a holistic and well-integrated treatment plan.</p>
+      <div class="therapy-content">
+        <span class="therapy-tag tag-t-ot">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+          Daily Skills
+        </span>
+        <h2>Occupational Therapy</h2>
+        <p>Occupational therapy at N.E.S.T focuses on helping children develop the fine motor, sensory processing, and self-care skills they need to thrive in daily life. Our licensed occupational therapists use sensory integration techniques, handwriting programs, and adaptive strategies to improve independence, focus, and participation at home and school.</p>
+        <div class="therapy-features">
+          <span class="tf-badge"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Sensory Integration</span>
+          <span class="tf-badge"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Fine Motor Skills</span>
+          <span class="tf-badge"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Self-Care &amp; ADL</span>
+          <span class="tf-badge"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> School Readiness</span>
+        </div>
+        <a href="contact.html" class="btn-learn">Book Assessment &rarr;</a>
+      </div>
+    </div>
+
+    <!-- Physical Therapy -->
+    <div class="therapy-row reverse">
+      <div class="therapy-img-wrap">
+        <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=700&auto=format&fit=crop&q=80" alt="Physical Therapy" loading="lazy"/>
+        <span class="therapy-img-badge">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+          Physical Therapy
+        </span>
+      </div>
+      <div class="therapy-content">
+        <span class="therapy-tag tag-t-pt">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+          Movement
+        </span>
+        <h2>Physical Therapy</h2>
+        <p>Our physical therapists specialize in supporting children with Cerebral Palsy, Developmental Delay, Down Syndrome, and other motor challenges. Through carefully designed movement programs, we build strength, balance, coordination, and gross motor skills â€” helping children achieve milestones like walking, climbing stairs, and participating fully in physical activity.</p>
+        <div class="therapy-features">
+          <span class="tf-badge"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Gross Motor Development</span>
+          <span class="tf-badge"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Balance &amp; Coordination</span>
+          <span class="tf-badge"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Mobility Training</span>
+          <span class="tf-badge"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Pediatric Specialists</span>
+        </div>
+        <a href="contact.html" class="btn-learn">Book Assessment &rarr;</a>
+      </div>
+    </div>
+
+    <!-- Play & Art Therapy -->
+    <div class="therapy-row">
+      <div class="therapy-img-wrap">
+        <img src="https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?w=700&auto=format&fit=crop&q=80" alt="Play and Art Therapy" loading="lazy"/>
+        <span class="therapy-img-badge">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          Play &amp; Art Therapy
+        </span>
+      </div>
+      <div class="therapy-content">
+        <span class="therapy-tag tag-t-play">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          Creative
+        </span>
+        <h2>Play &amp; Art Therapy</h2>
+        <p>Play and Art Therapy create a safe, expressive space where children can process emotions, develop social skills, and communicate in ways that words sometimes cannot. Our certified therapists use structured and free-play techniques, painting, clay, music, and drama to support emotional regulation, creativity, and healthy psychological development.</p>
+        <div class="therapy-features">
+          <span class="tf-badge"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Creative Expression</span>
+          <span class="tf-badge"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Emotional Health</span>
+          <span class="tf-badge"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Social Skills Play</span>
+          <span class="tf-badge"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Trauma-Informed</span>
+        </div>
+        <a href="contact.html" class="btn-learn">Book Assessment &rarr;</a>
+      </div>
+    </div>
+
+    <!-- Parent Counseling -->
+    <div class="therapy-row reverse">
+      <div class="therapy-img-wrap">
+        <img src="https://images.unsplash.com/photo-1491013516836-7db643ee125a?w=700&auto=format&fit=crop&q=80" alt="Parent Counseling" loading="lazy"/>
+        <span class="therapy-img-badge">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          Family Support
+        </span>
+      </div>
+      <div class="therapy-content">
+        <span class="therapy-tag tag-t-parent">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          Family
+        </span>
+        <h2>Parent Counseling &amp; Family Support</h2>
+        <p>Raising a child with special needs can be overwhelming, and families deserve expert guidance too. Our counseling team provides parents and caregivers with the tools, emotional support, and practical strategies they need to extend therapy into the home environment â€” from individual sessions to group support circles.</p>
+        <div class="therapy-features">
+          <span class="tf-badge"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> 1-on-1 Counseling</span>
+          <span class="tf-badge"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Group Support Sessions</span>
+          <span class="tf-badge"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Family Training</span>
+          <span class="tf-badge"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Home Program Guidance</span>
+        </div>
+        <a href="contact.html" class="btn-learn">Book Assessment &rarr;</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ===== APPROACH SECTION ===== -->
+<section class="approach-sec">
+  <div class="approach-inner">
+    <div style="text-align:center">
+      <span class="sec-tag" style="background:#FFF7ED;color:#c2410c;margin:0 auto 0.5rem">Our Philosophy</span>
+      <h2 class="sec-title">Our Therapy Approach</h2>
+      <p class="sec-sub">Every session at N.E.S.T is designed around four core principles that ensure each child receives the most effective and compassionate care.</p>
+    </div>
+    <div class="approach-grid">
+      <div class="approach-card ac-orange">
+        <div class="ac-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><polyline points="9 11 11 13 14 9"/></svg></div>
+        <div class="ac-title">Evidence-Based</div>
+        <p class="ac-desc">All therapy methods are grounded in peer-reviewed research and internationally recognised best practices for pediatric care.</p>
+      </div>
+      <div class="approach-card ac-purple">
+        <div class="ac-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
+        <div class="ac-title">Child-Led</div>
+        <p class="ac-desc">We follow each child's interests, pace, and strengths â€” making every session motivating, meaningful, and filled with confidence-building moments.</p>
+      </div>
+      <div class="approach-card ac-teal">
+        <div class="ac-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+        <div class="ac-title">Family-Inclusive</div>
+        <p class="ac-desc">Parents and caregivers are active partners in the process. We train families to reinforce skills at home so progress never stops.</p>
+      </div>
+      <div class="approach-card ac-pink">
+        <div class="ac-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/><line x1="2" y1="20" x2="22" y2="20"/></svg></div>
+        <div class="ac-title">Progress Tracked</div>
+        <p class="ac-desc">We use data-driven goal tracking and regular progress reports so families always know exactly how their child is advancing.</p>
       </div>
     </div>
   </div>
 </section>
 
-<section style="background:#166178;padding:3rem 2rem;text-align:center">
-<div style="max-width:600px;margin:0 auto">
-<h2 style="font-family:'Fredoka One',cursive;font-weight:400;font-size:1.8rem;color:#fff;margin-bottom:0.75rem">Not Sure Which Therapy?</h2>
-<p style="color:rgba(255,255,255,0.8);margin-bottom:1.75rem">Our team will assess your child and recommend the most suitable therapy combination â€” completely free.</p>
-<a href="#" onclick="openEnrollModal();return false;" style="background:linear-gradient(135deg,#FBBF24,#F97316);color:#1a1a2e;padding:0.85rem 2.2rem;border-radius:12px;font-weight:800;font-size:1rem;text-decoration:none;display:inline-flex;align-items:center;gap:10px"><div class="icon-3d c-teal" style="width:34px;height:34px"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="2" width="6" height="4" rx="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><path d="M12 11h4"/><path d="M12 16h4"/><path d="M8 11h.01"/><path d="M8 16h.01"/></svg></div> Book Free Assessment</a>
+<!-- ===== STATS CARD ===== -->
+<div class="stats-card-sec">
+  <div class="stats-card">
+    <div class="sc-item">
+      <div class="sc-num sc-teal" data-sc-target="8">0+</div>
+      <div class="sc-label">Therapy Types</div>
+    </div>
+    <div class="sc-item">
+      <div class="sc-num sc-orange" data-sc-target="25">0+</div>
+      <div class="sc-label">Certified Therapists</div>
+    </div>
+    <div class="sc-item">
+      <div class="sc-num sc-purple" data-sc-target="500">0+</div>
+      <div class="sc-label">Children Helped</div>
+    </div>
+    <div class="sc-item">
+      <div class="sc-num sc-pink" data-sc-target="15">0+</div>
+      <div class="sc-label">Years Experience</div>
+    </div>
+  </div>
 </div>
+
+<!-- ===== ASSESSMENT CTA ===== -->
+<section class="assessment-cta">
+  <div class="assessment-cta-inner">
+    <div class="cta-free-tag">&#10003;&nbsp; Free &amp; No Commitment</div>
+    <h2>Not Sure Which Therapy is<br>Right for Your Child?</h2>
+    <p>Our expert team will evaluate your child's unique needs and recommend the most effective therapy program â€” completely free, with no pressure or commitment required.</p>
+    <div class="btn-assess-wrap">
+      <a href="contact.html" class="btn-assess">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="8" y="2" width="8" height="4" rx="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/></svg>
+        Book Your Free Assessment Today
+      </a>
+    </div>
+    <div class="assess-social">
+      <div class="assess-social-avatar">
+        <img src="https://images.pexels.com/photos/5327585/pexels-photo-5327585.jpeg?auto=compress&cs=tinysrgb&w=80&h=80&fit=crop" alt="Certified Therapist"/>
+      </div>
+      <span>Evaluated by our team of certified therapists</span>
+    </div>
+  </div>
 </section>
+
+<!-- ===== FAQ ===== -->
+<section class="faq-sec">
+  <div class="faq-inner">
+    <div style="text-align:center">
+      <span class="sec-tag" style="background:#F5F3FF;color:#5b21b6;margin:0 auto 0.5rem">Questions Answered</span>
+      <h2 class="sec-title">Therapy FAQs</h2>
+      <p class="sec-sub">Everything you need to know about our therapy services at N.E.S.T.</p>
+    </div>
+    <div class="faq-grid">
+      <div class="faq-item" onclick="toggleFaq(this)">
+        <div class="faq-q">How do I know which therapy my child needs? <span class="faq-arrow">&#9662;</span></div>
+        <div class="faq-a">We offer a free comprehensive assessment where our team of certified specialists evaluates your child's development across communication, behavior, motor skills, and emotional wellbeing. Based on the results, we recommend a tailored therapy plan â€” no guesswork, just expert guidance.</div>
+      </div>
+      <div class="faq-item" onclick="toggleFaq(this)">
+        <div class="faq-q">How long does each therapy session last? <span class="faq-arrow">&#9662;</span></div>
+        <div class="faq-a">Standard individual sessions are 45â€“60 minutes. Group sessions may run 60â€“75 minutes. Session frequency varies by therapy type and the child's individual goals â€” our team will discuss the recommended schedule after the assessment.</div>
+      </div>
+      <div class="faq-item" onclick="toggleFaq(this)">
+        <div class="faq-q">Are your therapists certified and experienced? <span class="faq-arrow">&#9662;</span></div>
+        <div class="faq-a">Yes. All our therapists hold relevant certifications â€” including BCBA for ABA therapy, licensed SLPs for speech therapy, and certified OTs and PTs. Each specialist undergoes regular professional development and clinical supervision to stay current with best practices.</div>
+      </div>
+      <div class="faq-item" onclick="toggleFaq(this)">
+        <div class="faq-q">Can parents observe therapy sessions? <span class="faq-arrow">&#9662;</span></div>
+        <div class="faq-a">Yes, parental involvement is strongly encouraged at N.E.S.T. Depending on the therapy and your child's progress, parents may observe sessions or join parts of the session. We also hold regular parent feedback meetings to keep you fully informed.</div>
+      </div>
+      <div class="faq-item" onclick="toggleFaq(this)">
+        <div class="faq-q">How soon will we see progress? <span class="faq-arrow">&#9662;</span></div>
+        <div class="faq-a">Progress depends on the child's unique needs, the therapy type, and consistency of sessions. Many families notice meaningful changes within 4â€“8 weeks. We use data-driven tracking and share monthly progress reports so you can see exactly how your child is advancing.</div>
+      </div>
+      <div class="faq-item" onclick="toggleFaq(this)">
+        <div class="faq-q">Can my child receive multiple therapies simultaneously? <span class="faq-arrow">&#9662;</span></div>
+        <div class="faq-a">Absolutely. Many children benefit from a combination of therapies â€” for example, ABA paired with Speech Therapy and Occupational Therapy. Our team coordinates an integrated plan so all therapists are aligned and the child receives a holistic, consistent approach across all sessions.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CTA BAND ===== -->
+<section class="cta-band">
+  <div class="cta-band-inner">
+    <h2>Ready to Begin Your Child's Therapy Journey?</h2>
+    <p>Take the first step today. Book a free assessment with our certified specialists and discover the right path forward for your child.</p>
+    <div class="cta-band-btns">
+      <a href="contact.html" class="btn-band-w">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="8" y="2" width="8" height="4" rx="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/></svg>
+        Book Free Assessment
+      </a>
+      <a href="programs.html" class="btn-band-ghost">View All Programs</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
 <footer>
   <div class="ft-inner">
     <div class="ft-top">
       <div>
-        <a class="ft-logo" href="#"><img src="favicon.png" alt="NEST Logo" style="width:48px;height:48px;border-radius:50%;object-fit:cover;flex-shrink:0"/><span style="display:flex;flex-direction:column;margin-left:8px"><span class="ft-brand-name">N.E.S.T</span><span style="font-size:0.62rem;color:rgba(255,255,255,0.5);font-family:'Quicksand',sans-serif;font-weight:700;letter-spacing:0.04em;line-height:1.2;margin-top:1px">Nurturing Education With School &amp; Therapy</span></span></a>
+        <a href="index.html" class="ft-logo">
+          <div class="ft-logo-bubble">
+            <img src="favicon.png" alt="NEST" style="width:38px;height:38px;border-radius:50%;object-fit:cover"/>
+          </div>
+          <div>
+            <div class="ft-brand-name">N.E.S.T</div>
+            <div class="ft-tagline">Nurturing Education with School &amp; Therapy</div>
+          </div>
+        </a>
         <p class="ft-desc">Connecting children with special needs to the education and therapy they deserve â€” in a warm, expert-led, and loving environment in DHA Phase 2, Sector G, Islamabad, Pakistan.</p>
-        <div class="ft-social"><a href="#" style="display:inline-flex;align-items:center;gap:7px;padding:0.45rem 1rem;border-radius:10px;text-decoration:none;font-weight:700;font-size:0.82rem;color:#fff;background:linear-gradient(135deg,#833ab4,#fd1d1d,#fcb045);box-shadow:0 3px 10px rgba(253,29,29,0.3);transition:opacity 0.2s" onmouseover="this.style.opacity=0.85" onmouseout="this.style.opacity=1"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="2" y="2" width="20" height="20" rx="6" stroke="white" stroke-width="2"/><circle cx="12" cy="12" r="4.5" stroke="white" stroke-width="2"/><circle cx="17.5" cy="6.5" r="1.2" fill="white"/></svg></a></div>
+        <div class="ft-social">
+          <a href="#" class="ft-soc" title="Instagram"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.65)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
+          <a href="#" class="ft-soc" title="Facebook"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.65)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg></a>
+          <a href="#" class="ft-soc" title="WhatsApp"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.65)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"/></svg></a>
+        </div>
       </div>
       <div class="ft-col">
-        <h5>Programs</h5>
+        <h5>Quick Links</h5>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="#">Our Team</a></li>
+          <li><a href="gallery.html">Gallery</a></li>
+          <li><a href="#">Testimonials</a></li>
+          <li><a href="#">Blog &amp; Resources</a></li>
+          <li><a href="contact.html">Contact Us</a></li>
+        </ul>
+      </div>
+      <div class="ft-col">
+        <h5>Our Programs</h5>
         <ul>
           <li><a href="#">Special Education</a></li>
           <li><a href="#">Speech Therapy</a></li>
@@ -701,31 +711,29 @@ nav.scrolled{box-shadow:0 4px 28px rgba(0,0,0,0.11)!important}
           <li><a href="#">Occupational Therapy</a></li>
           <li><a href="#">Physical Therapy</a></li>
           <li><a href="#">Family Support</a></li>
+          <li><a href="#">Assessment Services</a></li>
         </ul>
       </div>
       <div class="ft-col">
-        <h5>Resources</h5>
-        <ul>
-          <li><a href="#">Parent Guides</a></li>
-          <li><a href="#">Articles & Tips</a></li>
-          <li><a href="#">Free Assessment</a></li>
-          <li><a href="#">Success Stories</a></li>
-          <li><a href="#">FAQ</a></li>
-        </ul>
-      </div>
-      <div class="ft-col">
-        <h5>Company</h5>
-        <ul>
-          <li><a href="#">About NEST</a></li>
-          <li><a href="#">Our Team</a></li>
-          <li><a href="#">Admissions</a></li>
-          <li><a href="#">Gallery</a></li>
-          <li><a href="#">Contact Us</a></li>
-        </ul>
+        <h5>Contact Us</h5>
+        <div class="ft-contact-items">
+          <div class="ft-contact-item">
+            <span class="ft-contact-icon" style="background:linear-gradient(135deg,#f97316,#ea580c)"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></span>
+            <div><div class="ft-contact-label">Address</div><div class="ft-contact-val">DHA 2, Sector G Islamabad</div></div>
+          </div>
+          <div class="ft-contact-item">
+            <span class="ft-contact-icon" style="background:linear-gradient(135deg,#06b6d4,#0891b2)"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.42 2 2 0 0 1 3.6 1.21h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 9a16 16 0 0 0 6.09 6.09l1.95-1.95a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span>
+            <div><div class="ft-contact-label">Phone</div><div class="ft-contact-val">+92 300 000 0000</div></div>
+          </div>
+          <div class="ft-contact-item">
+            <span class="ft-contact-icon" style="background:linear-gradient(135deg,#22c55e,#16a34a)"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></span>
+            <div><div class="ft-contact-label">Hours</div><div class="ft-contact-val">Mon - Fri 9:00 AM - 3:00 PM</div></div>
+          </div>
+        </div>
       </div>
     </div>
     <div class="ft-bottom">
-      <span>Â© 2026 N.E.S.T â€” Nurturing Education with School & Therapy. Made with <span class="heart">â¤ï¸</span> for special families.</span>
+      <span>Â© 2026 N.E.S.T â€” Nurturing Education with School &amp; Therapy. Made with <span class="heart">â¤ï¸</span> for special families.</span>
       <div class="ft-bottom-links">
         <a href="#">Privacy Policy</a>
         <a href="#">Terms</a>
@@ -734,519 +742,53 @@ nav.scrolled{box-shadow:0 4px 28px rgba(0,0,0,0.11)!important}
     </div>
   </div>
 </footer>
-<!-- ===== ENROLLMENT MODAL ===== -->
-<div class="modal-overlay" id="enrollModal">
-  <div class="modal">
-    <div class="modal-header">
-      <button class="modal-close" onclick="closeEnrollModal()">&#x2715;</button>
-      <span class="modal-icon">&#127775;</span>
-      <div class="modal-title">NEST Enrollment Form</div>
-      <div class="modal-sub-txt">Free assessment &middot; Takes 3 minutes &middot; No commitment</div>
-      <div class="modal-steps" id="stepDots">
-        <div class="step-dot active" id="dot-1"></div>
-        <div class="step-dot" id="dot-2"></div>
-        <div class="step-dot" id="dot-3"></div>
-        <div class="step-dot" id="dot-4"></div>
-      </div>
-    </div>
-    <div class="modal-body">
-      <div class="step-panel active" id="step-1">
-        <div class="step-title">&#128118; Child's Information</div>
-        <div class="step-desc">Tell us about your child so we can understand their needs.</div>
-        <div class="form-row">
-          <div class="form-group"><label>Child's First Name <span class="req">*</span></label><input type="text" id="childFirst" placeholder="e.g. Ali" autocomplete="given-name" maxlength="30" minlength="2"/><div class="err-msg">First name: 2â€“30 letters only</div></div>
-          <div class="form-group"><label>Child's Last Name <span class="req">*</span></label><input type="text" id="childLast" placeholder="e.g. Ahmed" autocomplete="family-name" maxlength="30" minlength="2"/><div class="err-msg">Last name: 2â€“30 letters only</div></div>
-        </div>
-        <div class="form-row">
-          <div class="form-group"><label>Date of Birth <span class="req">*</span></label><input type="date" id="childDob"/><div class="err-msg">Please enter date of birth</div></div>
-          <div class="form-group"><label>Gender <span class="req">*</span></label><select id="childGender"><option value="">Select gender</option><option>Male</option><option>Female</option><option>Prefer not to say</option></select><div class="err-msg">Please select gender</div></div>
-        </div>
-        <div class="form-group"><label>Primary Diagnosis / Condition <span class="req">*</span></label><select id="childDiag"><option value="">Select condition</option><option>Autism Spectrum Disorder (ASD)</option><option>ADHD</option><option>Down Syndrome</option><option>Cerebral Palsy</option><option>Speech Delay</option><option>Learning Disability</option><option>Sensory Processing Disorder</option><option>Global Developmental Delay</option><option>Not yet diagnosed</option><option>Other</option></select><div class="err-msg">Please select a condition</div></div>
-        <div class="form-group"><label>Programs Interested In <span class="req">*</span></label>
-          <div class="check-group" id="programsGroup">
-            <label class="check-item" onclick="toggleCheck(this)"><input type="checkbox" value="Special Education"/> &#128218; Special Education</label>
-            <label class="check-item" onclick="toggleCheck(this)"><input type="checkbox" value="Speech Therapy"/> &#128483;&#65039; Speech Therapy</label>
-            <label class="check-item" onclick="toggleCheck(this)"><input type="checkbox" value="ABA Therapy"/> &#129504; ABA Therapy</label>
-            <label class="check-item" onclick="toggleCheck(this)"><input type="checkbox" value="Occupational Therapy"/> &#129330; Occupational Therapy</label>
-            <label class="check-item" onclick="toggleCheck(this)"><input type="checkbox" value="Physical Therapy"/> &#127939; Physical Therapy</label>
-            <label class="check-item" onclick="toggleCheck(this)"><input type="checkbox" value="Family Support"/> &#128106; Family Support</label>
-          </div>
-        </div>
-      </div>
-      <div class="step-panel" id="step-2">
-        <div class="step-title">&#128106; Parent / Guardian Information</div>
-        <div class="step-desc">We'll use this to reach out and schedule your free assessment.</div>
-        <div class="form-row">
-          <div class="form-group"><label>Your Full Name <span class="req">*</span></label><input type="text" id="parentName" placeholder="e.g. Sara Ahmed" autocomplete="name" maxlength="50" minlength="3"/><div class="err-msg">Full name: 3â€“50 letters only</div></div>
-          <div class="form-group"><label>Relationship to Child <span class="req">*</span></label><select id="parentRel"><option value="">Select</option><option>Mother</option><option>Father</option><option>Guardian</option><option>Other</option></select><div class="err-msg">Please select relationship</div></div>
-        </div>
-        <div class="form-row">
-          <div class="form-group"><label>Phone Number <span class="req">*</span></label><input type="tel" id="parentPhone" placeholder="e.g. 0300-1234567" maxlength="15" minlength="10"/><div class="err-msg">Enter valid Pakistani number e.g. 0300-1234567</div></div>
-          <div class="form-group"><label>Email Address</label><input type="email" id="parentEmail" placeholder="e.g. sara@email.com"/></div>
-        </div>
-        <div class="form-group"><label>City / Area in Pakistan <span class="req">*</span></label><select id="parentArea">
-<option value="">Select your city / area</option>
-<optgroup label="â€• Punjab â€•">
-<option>Lahore</option><option>Faisalabad</option><option>Rawalpindi</option><option>Gujranwala</option>
-<option>Multan</option><option>Sialkot</option><option>Bahawalpur</option><option>Sargodha</option>
-<option>Sheikhupura</option><option>Jhang</option><option>Gujrat</option><option>Rahim Yar Khan</option>
-<option>Kasur</option><option>Dera Ghazi Khan</option><option>Sahiwal</option><option>Okara</option>
-<option>Wah Cantt</option><option>Attock</option><option>Chakwal</option>
-</optgroup>
-<optgroup label="â€• Sindh â€•">
-<option>Karachi â€” DHA</option><option>Karachi â€” Clifton</option><option>Karachi â€” Gulshan-e-Iqbal</option>
-<option>Karachi â€” North Nazimabad</option><option>Karachi â€” PECHS</option><option>Karachi â€” Gulistan-e-Johar</option>
-<option>Karachi â€” Nazimabad</option><option>Karachi â€” Malir</option><option>Karachi â€” Korangi</option>
-<option>Karachi â€” Orangi Town</option><option>Karachi â€” Saddar</option><option>Karachi â€” Landhi</option>
-<option>Karachi â€” Other Area</option>
-<option>Hyderabad</option><option>Sukkur</option><option>Larkana</option>
-<option>Mirpur Khas</option><option>Nawabshah</option><option>Jacobabad</option><option>Shikarpur</option>
-</optgroup>
-<optgroup label="â€• Islamabad (Federal) â€•">
-<option>Islamabad â€” F-6</option><option>Islamabad â€” F-7</option><option>Islamabad â€” G-9</option>
-<option>Islamabad â€” G-10</option><option>Islamabad â€” G-11</option><option>Islamabad â€” I-8</option>
-<option>Islamabad â€” Bahria Town</option><option>Islamabad â€” DHA</option><option>Islamabad â€” Other</option>
-</optgroup>
-<optgroup label="â€• Khyber Pakhtunkhwa (KPK) â€•">
-<option>Peshawar</option><option>Abbottabad</option><option>Mardan</option><option>Swat</option>
-<option>Kohat</option><option>Mansehra</option><option>Dera Ismail Khan</option><option>Nowshera</option>
-<option>Haripur</option><option>Charsadda</option><option>Bannu</option>
-</optgroup>
-<optgroup label="â€• Balochistan â€•">
-<option>Quetta</option><option>Turbat</option><option>Khuzdar</option>
-<option>Hub</option><option>Gwadar</option><option>Chaman</option><option>Zhob</option>
-</optgroup>
-<optgroup label="â€• Azad Kashmir â€•">
-<option>Muzaffarabad</option><option>Mirpur (AJK)</option><option>Rawalakot</option>
-</optgroup>
-<optgroup label="â€• Gilgit-Baltistan â€•">
-<option>Gilgit</option><option>Skardu</option><option>Hunza</option>
-</optgroup>
-<optgroup label="â€• Other â€•">
-<option>Other City / Town</option>
-</optgroup>
-</select><div class="err-msg">Please select your city</div></div>
-        <div class="form-group"><label>How did you hear about NEST?</label>
-          <div class="radio-group" id="hearGroup">
-            <label class="radio-item" onclick="selectRadio(this,'hearGroup')"><input type="radio" name="hear" value="Facebook"/> Facebook</label>
-            <label class="radio-item" onclick="selectRadio(this,'hearGroup')"><input type="radio" name="hear" value="Instagram"/> Instagram</label>
-            <label class="radio-item" onclick="selectRadio(this,'hearGroup')"><input type="radio" name="hear" value="Friend/Family"/> Friend/Family</label>
-            <label class="radio-item" onclick="selectRadio(this,'hearGroup')"><input type="radio" name="hear" value="Doctor"/> Doctor</label>
-            <label class="radio-item" onclick="selectRadio(this,'hearGroup')"><input type="radio" name="hear" value="Google"/> Google</label>
-            <label class="radio-item" onclick="selectRadio(this,'hearGroup')"><input type="radio" name="hear" value="Other"/> Other</label>
-          </div>
-        </div>
-      </div>
-      <div class="step-panel" id="step-3">
-        <div class="step-title">&#128197; Schedule Free Assessment</div>
-        <div class="step-desc">Choose a preferred time for your child's free assessment visit.</div>
-        <div class="info-box"><span>&#128161;</span><p>The free assessment takes 45-60 minutes. Our team will evaluate your child and recommend the best program. No fees, no commitment.</p></div>
-        <div class="form-row">
-          <div class="form-group"><label>Preferred Date <span class="req">*</span></label><input type="date" id="prefDate"/><div class="err-msg">Please select a date</div></div>
-          <div class="form-group"><label>Preferred Time Slot <span class="req">*</span></label><select id="prefTime"><option value="">Select time</option><option>9:00 AM - 10:00 AM</option><option>10:00 AM - 11:00 AM</option><option>11:00 AM - 12:00 PM</option><option>2:00 PM - 3:00 PM</option><option>3:00 PM - 4:00 PM</option></select><div class="err-msg">Please select a time slot</div></div>
-        </div>
-
-        <div class="form-group"><label>Previous Therapy Experience?</label>
-          <div class="radio-group" id="prevGroup">
-            <label class="radio-item" onclick="selectRadio(this,'prevGroup')"><input type="radio" name="prev" value="Yes"/> Yes</label>
-            <label class="radio-item" onclick="selectRadio(this,'prevGroup')"><input type="radio" name="prev" value="No"/> No</label>
-            <label class="radio-item" onclick="selectRadio(this,'prevGroup')"><input type="radio" name="prev" value="Ongoing"/> Currently ongoing</label>
-          </div>
-        </div>
-        <div class="form-group"><label>Additional Notes</label><textarea id="notes" placeholder="Anything important we should know about your child..."></textarea></div>
-      </div>
-      <div class="step-panel" id="step-4">
-        <div class="step-title">&#10003; Review &amp; Submit</div>
-        <div class="step-desc">Please review your details before submitting.</div>
-        <div class="summary-box" id="summaryBox"></div>
-        <div class="form-group">
-          <label class="check-item" style="width:100%;border-radius:12px" onclick="toggleCheck(this)" id="consentItem">
-            <input type="checkbox" id="consent"/> I agree that NEST may contact me regarding my child's enrollment and assessment.
-          </label>
-        </div>
-      </div>
-      <div class="success-screen" id="successScreen">
-        <span class="success-icon-big">&#10003;</span>
-        <div class="success-title2">Request Submitted!</div>
-        <p class="success-sub2">Our team will contact you shortly to confirm your free assessment at NEST, DHA Phase 2, Sector G, Islamabad.</p>
-        <button class="btn-fnext" style="margin:0 auto;display:flex;margin-top:1.25rem" onclick="closeEnrollModal()">Close</button>
-      </div>
-    </div>
-    <div class="modal-footer" id="modalFooter">
-      <button class="btn-back" id="btnBack" onclick="prevStep()" style="visibility:hidden">&#8592; Back</button>
-      <span class="step-counter" id="stepCounter">Step 1 of 4</span>
-      <button class="btn-fnext" id="btnNext" onclick="nextStep()">Next &#8594;</button>
-      <button class="btn-fsubmit" id="btnSubmit" style="display:none" onclick="submitForm()">Submit Enrollment &#127881;</button>
-    </div>
-  </div>
-</div>
-
-
 
 <script>
-var currentStep=1;
-
-function openEnrollModal(){
-  document.getElementById('enrollModal').classList.add('open');
-  document.body.style.overflow='hidden';
-  var today=new Date().toISOString().split('T')[0];
-  document.getElementById('prefDate').min=today;
-  document.getElementById('childDob').max=today;
-}
-function closeEnrollModal(){
-  document.getElementById('enrollModal').classList.remove('open');
-  document.body.style.overflow='';
-}
-
-document.addEventListener('DOMContentLoaded',function(){
-  document.getElementById('enrollModal').addEventListener('click',function(e){
-    if(e.target===this) closeEnrollModal();
-  });
-
-  /* â”€â”€ Alpha fields: only letters/spaces/hyphens, max enforced by HTML â”€â”€ */
-  ['childFirst','childLast','parentName'].forEach(function(id){
-    var el=document.getElementById(id);
-    if(!el) return;
-    el.addEventListener('input',function(){
-      /* strip anything that is not a letter (Latin or Urdu) space hyphen apostrophe */
-      this.value=this.value.replace(/[^a-zA-Z\u0600-\u06FF\s\-']/g,'');
-      clearError(this);
-    });
-    el.addEventListener('blur',function(){ liveAlpha(this); });
-  });
-
-  /* â”€â”€ Phone field: digits / dash / plus only, max 15 enforced by HTML â”€â”€ */
-  var phoneEl=document.getElementById('parentPhone');
-  if(phoneEl){
-    phoneEl.setAttribute('inputmode','tel');
-    phoneEl.addEventListener('input',function(){
-      this.value=this.value.replace(/[^0-9\-+\s]/g,'');
-      clearError(this);
-    });
-    phoneEl.addEventListener('blur',function(){ livePhone(this); });
-  }
-
-  /* â”€â”€ Date fields â”€â”€ */
-  ['childDob','prefDate'].forEach(function(id){
-    var el=document.getElementById(id);
-    if(el) el.addEventListener('change',function(){ if(this.value) clearError(this); });
-  });
-
-  /* â”€â”€ Select fields â”€â”€ */
-  ['childGender','childDiag','parentRel','parentArea','prefTime'].forEach(function(id){
-    var el=document.getElementById(id);
-    if(el) el.addEventListener('change',function(){ if(this.value) clearError(this); });
-  });
-
-  /* â”€â”€ Email â”€â”€ */
-  var emailEl=document.getElementById('parentEmail');
-  if(emailEl){
-    emailEl.addEventListener('input',function(){
-      if(this.value.length===0){ clearError(this); return; }
-      if(!/^[^@\s]+@[^@\s]+\.[^@\s]{2,}$/.test(this.value)) setError(this);
-      else clearError(this);
-    });
-  }
-
-  /* â”€â”€ Program checkboxes â”€â”€ */
-  document.querySelectorAll('#programsGroup input').forEach(function(cb){
-    cb.addEventListener('change',function(){
-      if(document.querySelectorAll('#programsGroup input:checked').length>0)
-        document.querySelector('#programsGroup').style.outline='none';
-    });
-  });
-
-  /* â”€â”€ Consent â”€â”€ */
-  var con=document.getElementById('consent');
-  if(con) con.addEventListener('change',function(){
-    if(this.checked) document.getElementById('consentItem').style.borderColor='';
-  });
+/* ===== NAVBAR SCROLL ===== */
+var navbar = document.getElementById('navbar');
+window.addEventListener('scroll', function(){
+  navbar.classList.toggle('scrolled', window.scrollY > 10);
 });
 
-/* â”€â”€ helpers â”€â”€ */
-function setError(el){ el.classList.add('error'); }
-function clearError(el){ el.classList.remove('error'); }
+/* ===== MOBILE MENU ===== */
+var mobileMenuEl = document.getElementById('mobileMenu');
+var mobileBackdropEl = document.getElementById('mobileBackdrop');
+var hamburgerBtn = document.querySelector('.hamburger');
+function openMenu(){ mobileMenuEl.classList.add('open'); mobileBackdropEl.classList.add('open'); hamburgerBtn.classList.add('open'); document.body.style.overflow='hidden'; }
+function closeMenu(){ mobileMenuEl.classList.remove('open'); mobileBackdropEl.classList.remove('open'); hamburgerBtn.classList.remove('open'); document.body.style.overflow=''; }
+function toggleMenu(){ mobileMenuEl.classList.contains('open') ? closeMenu() : openMenu(); }
+if(mobileBackdropEl) mobileBackdropEl.addEventListener('click', closeMenu);
+mobileMenuEl.querySelectorAll('a').forEach(function(l){ l.addEventListener('click', closeMenu); });
 
-function liveAlpha(el){
-  var v=el.value.trim();
-  if(!v || v.length<2){ setError(el); return false; }
-  if(!/^[a-zA-Z\u0600-\u06FF\s\-']+$/.test(v)){ setError(el); return false; }
-  clearError(el); return true;
-}
-function livePhone(el){
-  var v=el.value.trim();
-  /* Pakistan numbers: 10-13 digits (with optional +92 prefix) */
-  if(!v || v.length<10){ setError(el); return false; }
-  if(!/^(\+92|0)[0-9\-\s]{9,13}$/.test(v)){ setError(el); return false; }
-  clearError(el); return true;
-}
-
-/* â”€â”€ step navigation â”€â”€ */
-function goToStep(n){
-  document.querySelectorAll('.step-panel').forEach(function(p){p.classList.remove('active')});
-  var panel=document.getElementById('step-'+n);
-  if(panel) panel.classList.add('active');
-  for(var i=1;i<=4;i++){
-    var d=document.getElementById('dot-'+i);
-    if(!d) continue;
-    d.classList.remove('active','done');
-    if(i===n) d.classList.add('active');
-    else if(i<n) d.classList.add('done');
-  }
-  document.getElementById('btnBack').style.visibility=n>1?'visible':'hidden';
-  document.getElementById('btnNext').style.display=n<4?'flex':'none';
-  document.getElementById('btnSubmit').style.display=n===4?'flex':'none';
-  document.getElementById('stepCounter').textContent='Step '+n+' of 4';
-  currentStep=n;
-  if(n===4) buildSummary();
-}
-
-/* â”€â”€ full validation on Next click â”€â”€ */
-function validateStep(n){
-  var ok=true;
-
-  function reqField(id){
-    var el=document.getElementById(id);
-    if(!el) return true;
-    if(!el.value.trim()){ setError(el); ok=false; return false; }
-    clearError(el); return true;
-  }
-  function alphaField(id, min, max){
-    var el=document.getElementById(id);
-    if(!el) return true;
-    var v=el.value.trim();
-    if(!v){ setError(el); ok=false; return false; }
-    if(v.length<(min||2)){ setError(el); ok=false; return false; }
-    if(v.length>(max||50)){ setError(el); ok=false; return false; }
-    if(!/^[a-zA-Z\u0600-\u06FF\s\-']+$/.test(v)){ setError(el); ok=false; return false; }
-    clearError(el); return true;
-  }
-  function phoneField(id){
-    var el=document.getElementById(id);
-    if(!el) return true;
-    var v=el.value.trim();
-    if(!v){ setError(el); ok=false; return false; }
-    if(v.length<10||v.length>15){ setError(el); ok=false; return false; }
-    if(!/^(\+92|0)[0-9\-\s]{9,13}$/.test(v)){ setError(el); ok=false; return false; }
-    clearError(el); return true;
-  }
-
-  if(n===1){
-    alphaField('childFirst',2,30);
-    alphaField('childLast',2,30);
-    reqField('childDob');
-    reqField('childGender');
-    reqField('childDiag');
-    var checked=document.querySelectorAll('#programsGroup input:checked');
-    if(checked.length===0){
-      document.querySelector('#programsGroup').style.outline='2px solid #DC2626';
-      ok=false;
-    } else {
-      document.querySelector('#programsGroup').style.outline='none';
+/* ===== COUNTER ANIMATION ===== */
+function animateStatsCard(){
+  document.querySelectorAll('.sc-num[data-sc-target]').forEach(function(counter){
+    var target = parseInt(counter.getAttribute('data-sc-target'));
+    var startTime = null;
+    function step(ts){
+      if(!startTime) startTime = ts;
+      var progress = Math.min((ts - startTime) / 1600, 1);
+      var eased = 1 - Math.pow(1 - progress, 3);
+      counter.textContent = Math.floor(eased * target) + '+';
+      if(progress < 1) requestAnimationFrame(step);
+      else counter.textContent = target + '+';
     }
-  }
-  if(n===2){
-    alphaField('parentName',3,50);
-    reqField('parentRel');
-    phoneField('parentPhone');
-    reqField('parentArea');
-    var emailEl=document.getElementById('parentEmail');
-    if(emailEl && emailEl.value.trim().length>0){
-      if(!/^[^@\s]+@[^@\s]+\.[^@\s]{2,}$/.test(emailEl.value)){ setError(emailEl); ok=false; }
-    }
-  }
-  if(n===3){
-    reqField('prefDate');
-    reqField('prefTime');
-  }
-  return ok;
-}
-
-function nextStep(){ if(!validateStep(currentStep)) return; if(currentStep<4) goToStep(currentStep+1); }
-function prevStep(){ if(currentStep>1) goToStep(currentStep-1); }
-
-function buildSummary(){
-  var programs=[].slice.call(document.querySelectorAll('#programsGroup input:checked')).map(function(c){return c.value;}).join(', ')||'â€”';
-  var dob=document.getElementById('childDob').value;
-  var age='â€”';
-  if(dob){ var diff=Date.now()-new Date(dob); age=Math.floor(diff/31557600000)+' years'; }
-  var rows=[
-    ['Child Name',(document.getElementById('childFirst').value+' '+document.getElementById('childLast').value).trim()],
-    ['Age',age],
-    ['Gender',document.getElementById('childGender').value],
-    ['Condition',document.getElementById('childDiag').value],
-    ['Programs',programs],
-    ['Parent Name',document.getElementById('parentName').value],
-    ['Phone',document.getElementById('parentPhone').value],
-    ['City / Area',document.getElementById('parentArea').value],
-    ['Date',document.getElementById('prefDate').value||'â€”'],
-    ['Time',document.getElementById('prefTime').value||'â€”']
-  ];
-  document.getElementById('summaryBox').innerHTML=
-    '<div class="summary-title">&#128203; Your Enrollment Summary</div>'+
-    rows.map(function(r){
-      return '<div class="summary-row"><span class="summary-label">'+r[0]+'</span><span class="summary-val">'+(r[1]||'â€”')+'</span></div>';
-    }).join('');
-}
-
-function submitForm(){
-  if(!document.getElementById('consent').checked){
-    document.getElementById('consentItem').style.borderColor='#DC2626';
-    return;
-  }
-  document.querySelectorAll('.step-panel').forEach(function(p){p.classList.remove('active')});
-  document.getElementById('successScreen').classList.add('show');
-  document.getElementById('modalFooter').style.display='none';
-  document.getElementById('stepDots').style.display='none';
-}
-
-function toggleFaq(el){
-  var isOpen=el.classList.contains('open');
-  document.querySelectorAll('.faq-item').forEach(function(i){i.classList.remove('open')});
-  if(!isOpen)el.classList.add('open');
-}
-function toggleCheck(el){ el.classList.toggle('checked'); }
-function selectRadio(el,groupId){
-  document.querySelectorAll('#'+groupId+' .radio-item').forEach(function(r){r.classList.remove('selected')});
-  el.classList.add('selected');
-}
-</script>
-
-<script>
-/* NEST Lively Animations */
-(function(){
-'use strict';
-
-/* â”€â”€ 1. Navbar scrolled class (shadow + slight bg) â”€â”€ */
-var nav=document.querySelector('nav');
-if(nav){
-  var onScroll=function(){nav.classList.toggle('scrolled',window.scrollY>40);};
-  window.addEventListener('scroll',onScroll,{passive:true});
-  onScroll();
-}
-/* â”€â”€ Mobile menu â”€â”€ */
-var hamburger   = document.getElementById('hamburger');
-var mobileMenu  = document.getElementById('mobileMenu');
-var backdrop    = document.getElementById('mobileBackdrop');
-function openMobileMenu(){
-  hamburger.classList.add('open');
-  mobileMenu.classList.add('open');
-  if(backdrop) backdrop.classList.add('open');
-  document.body.style.overflow='hidden';
-}
-function closeMobileMenu(){
-  hamburger.classList.remove('open');
-  mobileMenu.classList.remove('open');
-  if(backdrop) backdrop.classList.remove('open');
-  document.body.style.overflow='';
-}
-hamburger.addEventListener('click',function(){
-  mobileMenu.classList.contains('open')?closeMobileMenu():openMobileMenu();
-});
-if(backdrop) backdrop.addEventListener('click',closeMobileMenu);
-mobileMenu.querySelectorAll('a').forEach(function(l){l.addEventListener('click',closeMobileMenu);});
-
-
-/* â”€â”€ 2. Float the logo bubble â”€â”€ */
-var lb=document.querySelector('.logo-bubble');
-if(lb) lb.classList.add('float-anim');
-
-/* â”€â”€ 3. Scroll-reveal via animationPlayState â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
-   Elements receive animate-fade-up / left / right + delay class.
-   JS sets animationPlayState:'paused' so they stay hidden.
-   IntersectionObserver sets 'running' when they enter viewport.
-â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
-var revealObs=new IntersectionObserver(function(entries){
-  entries.forEach(function(e){
-    if(e.isIntersecting){
-      e.target.style.animationPlayState='running';
-      revealObs.unobserve(e.target);
-    }
+    requestAnimationFrame(step);
   });
-},{threshold:0.1,rootMargin:'0px 0px -18px 0px'});
-
-function addReveal(el,animClass,delayIdx){
-  if(el.dataset.nr) return; // avoid double-apply
-  el.dataset.nr='1';
-  el.classList.add(animClass);
-  if(delayIdx>0) el.classList.add('anim-delay-'+Math.min(delayIdx,6));
-  el.style.animationPlayState='paused';
-  revealObs.observe(el);
 }
+var scObserver = new IntersectionObserver(function(entries){
+  if(entries[0].isIntersecting){ animateStatsCard(); scObserver.disconnect(); }
+}, {threshold:0.3});
+var scCard = document.querySelector('.stats-card');
+if(scCard) scObserver.observe(scCard);
 
-/* Named card classes â€“ staggered fade-up */
-var cardSel='.prog-card,.why-card,.test-card,.faq-item,.hero-icon-box,.ribbon-item';
-document.querySelectorAll(cardSel).forEach(function(el,i){addReveal(el,'animate-fade-up',i%6+1);});
-
-/* Section meta â€“ fade up no stagger */
-document.querySelectorAll('.sec-tag,.sec-title,.sec-sub').forEach(function(el,i){addReveal(el,'animate-fade-up',i%3+1);});
-document.querySelectorAll('.cta-tag,.cta-title,.cta-sub').forEach(function(el,i){addReveal(el,'animate-fade-up',i%3+1);});
-
-/* Grid children (inline-styled pages: about, gallery, therapies, contact) */
-document.querySelectorAll('.prog-grid,.why-cards,.test-grid,.faq-grid,.hero-icons-grid').forEach(function(g){
-  Array.from(g.children).forEach(function(child,i){addReveal(child,'animate-fade-up',i%6+1);});
-});
-
-/* Inline content sections â€“ direct div children of <section> divs */
-document.querySelectorAll('section>div>div').forEach(function(el,i){
-  /* Only apply if clearly a "card" (has border or background styling) */
-  var s=el.getAttribute('style')||'';
-  if((s.includes('border-radius')||s.includes('background'))&&!el.dataset.nr){
-    addReveal(el,'animate-fade-up',i%6+1);
-  }
-});
-
-/* â”€â”€ 4. Counter animation â€“ RAF + ease-out-cubic â”€â”€ */
-function easeOutCubic(t){return 1-Math.pow(1-t,3);}
-function countUp(el,target,suffix){
-  var start=null,dur=1800;
-  function step(ts){
-    if(!start) start=ts;
-    var p=Math.min((ts-start)/dur,1);
-    el.textContent=Math.round(easeOutCubic(p)*target)+suffix;
-    if(p<1){requestAnimationFrame(step);}
-    else{el.textContent=target+suffix;el.style.animation='nestPop .32s ease';}
-  }
-  requestAnimationFrame(step);
+/* ===== FAQ ===== */
+function toggleFaq(item){
+  var isOpen = item.classList.contains('open');
+  document.querySelectorAll('.faq-item').forEach(function(el){ el.classList.remove('open'); });
+  if(!isOpen) item.classList.add('open');
 }
-function initCount(el){
-  var t=el.textContent.trim(),m=t.match(/^(d+)([+%]*)$/);
-  if(m&&+m[1]>0&&!el.dataset.nc){el.dataset.nc=t;el.textContent='0'+(m[2]||'');cObs.observe(el);}
-}
-var cObs=new IntersectionObserver(function(entries){
-  entries.forEach(function(e){
-    if(e.isIntersecting){
-      var d=e.target.dataset.nc,m=d&&d.match(/^(d+)([+%]*)$/);
-      if(m) countUp(e.target,+m[1],m[2]);
-      cObs.unobserve(e.target);
-    }
-  });
-},{threshold:0.55});
-/* Named stat classes */
-document.querySelectorAll('.wv-num,.hb-num').forEach(initCount);
-/* Inline Fredoka stat numbers (contact, gallery, about pages) */
-document.querySelectorAll('[style*="Fredoka"]').forEach(function(el){
-  if(!el.children.length) initCount(el);
-});
-
-/* â”€â”€ 5. Enhanced card hover (smooth pointer transitions) â”€â”€ */
-document.querySelectorAll('.prog-card,.why-card,.test-card').forEach(function(el){
-  el.style.willChange='transform';
-});
-
-/* â”€â”€ 6. Gallery: add overlay + zoom wrapper if not already set â”€â”€ */
-document.querySelectorAll('[style*="height:160px"][style*="justify-content:center"]').forEach(function(el){
-  el.style.transition='background .25s ease';
-  el.addEventListener('mouseenter',function(){el.style.background='rgba(22,97,120,0.08)';});
-  el.addEventListener('mouseleave',function(){el.style.background='rgba(255,255,255,0.5)';});
-});
-
-/* â”€â”€ 7. Stagger ribbon items (already handled by cardSel but ensure order) â”€â”€ */
-document.querySelectorAll('.ribbon-item').forEach(function(el,i){
-  if(!el.dataset.nr) addReveal(el,'animate-fade-up',i%6+1);
-});
-
-})();
 </script>
 </body>
 </html>
+

@@ -98,6 +98,59 @@ nav{
 .hb-lbl{font-size:0.7rem;color:rgba(255,255,255,0.6);font-weight:600}
 .hb-div{width:1px;height:32px;background:rgba(255,255,255,0.15)}
 
+/* ===== PROGRAMS HERO ===== */
+.pg-hero{position:relative;overflow:hidden;min-height:460px;display:flex;align-items:center;justify-content:center;background:#0b3040}
+.pg-hero-bg{
+  position:absolute;inset:0;
+  background:url('https://images.unsplash.com/photo-1588072432836-e10032774350?w=1920&auto=format&fit=crop&q=80') center/cover no-repeat;
+  animation:pgZoom 30s ease-in-out infinite alternate;
+  will-change:transform;
+}
+@keyframes pgZoom{0%{transform:scale(1.0)}100%{transform:scale(1.11) translate(1.2%,-0.8%)}}
+.pg-hero-ov{
+  position:absolute;inset:0;
+  background:linear-gradient(135deg,rgba(22,97,120,0.88) 0%,rgba(14,64,80,0.82) 100%);
+}
+.pg-hero-glow{
+  position:absolute;inset:0;pointer-events:none;
+  background:
+    radial-gradient(ellipse 900px 500px at 0% 60%,rgba(249,115,22,0.11) 0%,transparent 55%),
+    radial-gradient(ellipse 700px 400px at 100% 10%,rgba(236,72,153,0.09) 0%,transparent 50%),
+    radial-gradient(ellipse 600px 350px at 50% 110%,rgba(13,148,136,0.14) 0%,transparent 50%);
+  animation:pgGlow 10s ease-in-out infinite alternate;
+}
+@keyframes pgGlow{0%{opacity:.65}100%{opacity:1.05}}
+.pg-hero-pts{position:absolute;inset:0;overflow:hidden;pointer-events:none;z-index:1}
+.php{position:absolute;border-radius:50%;animation:phpUp linear infinite;opacity:0}
+@keyframes phpUp{
+  0%  {transform:translateY(0) translateX(0);opacity:0}
+  8%  {opacity:1}
+  88% {opacity:.5}
+  100%{transform:translateY(-110vh) translateX(var(--dx,0px));opacity:0}
+}
+.pg-hero-inner{
+  position:relative;z-index:3;
+  text-align:center;max-width:800px;
+  padding:4.5rem 2rem 6rem;margin:0 auto;
+}
+.pg-hero-inner h1{
+  font-family:'Fredoka One',cursive;font-size:3.2rem;font-weight:400;
+  color:#fff;margin-bottom:1rem;line-height:1.15;letter-spacing:0.01em;
+  text-shadow:0 3px 24px rgba(0,0,0,0.30);
+}
+.pg-hero-inner>p{
+  color:rgba(255,255,255,0.80);font-size:1.05rem;line-height:1.78;
+  max-width:580px;margin:0 auto;
+  text-shadow:0 1px 8px rgba(0,0,0,0.20);
+}
+.pg-hero-wave{position:absolute;bottom:-1px;left:0;right:0;z-index:4;line-height:0;pointer-events:none}
+.pg-hero-wave svg{display:block;width:100%;height:70px}
+@media(max-width:768px){
+  .pg-hero-inner h1{font-size:2.15rem}
+  .pg-hero-inner{padding:3rem 1.25rem 4.5rem}
+  .pg-hero{min-height:380px}
+}
+
 /* ===== RIBBON ===== */
 .ribbon{background:var(--white);border-bottom:2px solid var(--border);padding:1rem 2.5rem}
 .ribbon-inner{max-width:1100px;margin:0 auto;display:flex;flex-wrap:nowrap;align-items:center;justify-content:center;gap:0}
@@ -190,7 +243,7 @@ section{padding:4rem 2.5rem}
 /* ===== FOOTER ===== */
 footer{background:#0e4050;color:rgba(255,255,255,0.65);padding:3.5rem 2.5rem 2rem}
 .ft-inner{max-width:1200px;margin:0 auto}
-.ft-top{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:2.5rem;margin-bottom:2.5rem}
+.ft-top{display:grid;grid-template-columns:2fr 1fr 1fr 1.3fr;gap:2.5rem;margin-bottom:2.5rem}
 .ft-logo{display:flex;align-items:center;gap:10px;margin-bottom:1rem;text-decoration:none}
 .ft-logo-bubble{width:38px;height:38px;border-radius:12px;background:linear-gradient(135deg,#F97316,#EC4899);display:flex;align-items:center;justify-content:center;font-size:1.1rem}
 .ft-brand-name{font-family:'Fredoka One',cursive;font-weight:400;font-size:1.1rem;color:#fff}
@@ -206,6 +259,7 @@ footer{background:#0e4050;color:rgba(255,255,255,0.65);padding:3.5rem 2.5rem 2re
 .ft-bottom{border-top:1px solid rgba(255,255,255,0.1);padding-top:1.5rem;display:flex;justify-content:space-between;align-items:center;font-size:0.8rem;flex-wrap:wrap;gap:0.75rem}
 .ft-bottom-links a{color:rgba(255,255,255,0.4);text-decoration:none;margin-left:1.25rem;font-size:0.8rem}
 .ft-bottom-links a:hover{color:#fff}
+.ft-contact-items{display:flex;flex-direction:column;gap:0.85rem}.ft-contact-item{display:flex;align-items:flex-start;gap:0.75rem}.ft-contact-icon{display:flex;align-items:center;justify-content:center;width:34px;height:34px;border-radius:10px;flex-shrink:0}.ft-contact-label{color:#fff;font-size:0.8rem;font-weight:700;margin-bottom:0.1rem}.ft-contact-val{color:rgba(255,255,255,0.55);font-size:0.78rem;line-height:1.5}
 .heart{color:#EC4899}
 .icon-3d{border-radius:12px;display:flex;align-items:center;justify-content:center;flex-shrink:0;position:relative;overflow:hidden}
 .icon-3d::after{content:'';position:absolute;top:0;left:0;right:0;height:50%;background:rgba(255,255,255,0.18);border-radius:12px 12px 40% 40%/8px 8px 4px 4px}
@@ -335,6 +389,16 @@ footer{background:#0e4050;color:rgba(255,255,255,0.65);padding:3.5rem 2.5rem 2re
 .modal-close{position:absolute;top:1rem;right:1rem;width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,0.15);border:none;color:#fff;font-size:1.1rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background 0.2s}
 .modal-close:hover{background:rgba(255,255,255,0.3)}
 .modal-icon{font-size:2.5rem;display:block;margin-bottom:0.5rem}
+.icon-3d.xs{width:26px;height:26px;border-radius:7px;flex-shrink:0;display:inline-flex;align-self:center}
+.icon-3d.xs::after{border-radius:6px 6px 40% 40%/4px 4px 2px 2px}
+.icon-3d.sm{width:34px;height:34px;border-radius:10px;flex-shrink:0}
+.icon-3d.sm::after{border-radius:10px 10px 40% 40%/7px 7px 3px 3px}
+.modal-icon-3d{width:64px;height:64px;border-radius:18px;display:inline-flex;align-items:center;justify-content:center;background:linear-gradient(145deg,rgba(255,255,255,0.24),rgba(255,255,255,0.06));border:1.5px solid rgba(255,255,255,0.22);margin:0 auto 0.75rem;position:relative;overflow:hidden;box-shadow:0 6px 20px rgba(0,0,0,0.18),inset 0 1px 0 rgba(255,255,255,0.25)}
+.modal-icon-3d::after{content:'';position:absolute;top:0;left:0;right:0;height:50%;background:rgba(255,255,255,0.16);border-radius:18px 18px 40% 40%/10px 10px 5px 5px}
+.modal-icon-3d svg{position:relative;z-index:1}
+.btn-icon{width:22px;height:22px;border-radius:6px;background:rgba(255,255,255,0.18);border:1px solid rgba(255,255,255,0.28);display:inline-flex;align-items:center;justify-content:center;flex-shrink:0;position:relative;overflow:hidden}
+.btn-icon::after{content:'';position:absolute;top:0;left:0;right:0;height:50%;background:rgba(255,255,255,0.22);border-radius:6px 6px 40% 40%/4px 4px 2px 2px;pointer-events:none}
+.btn-icon svg{position:relative;z-index:1}
 .modal-title{font-family:"Fredoka One",cursive;font-size:1.7rem;color:#fff;margin-bottom:0.3rem}
 .modal-sub-txt{color:rgba(255,255,255,0.8);font-size:0.88rem}
 .modal-steps{display:flex;justify-content:center;gap:0.5rem;margin-top:1.2rem}
@@ -342,7 +406,7 @@ footer{background:#0e4050;color:rgba(255,255,255,0.65);padding:3.5rem 2.5rem 2re
 .step-dot.active{background:#FBBF24}.step-dot.done{background:rgba(255,255,255,0.6)}
 .modal-body{padding:2rem;overflow-y:auto;flex:1;max-height:65vh}
 .step-panel{display:none}.step-panel.active{display:block}
-.step-title{font-family:"Fredoka One",cursive;font-size:1.2rem;color:#1a1a2e;margin-bottom:0.3rem}
+.step-title{font-family:"Fredoka One",cursive;font-size:1.2rem;color:#1a1a2e;margin-bottom:0.3rem;display:flex;align-items:center;gap:10px}
 .step-desc{color:#6b7280;font-size:0.85rem;margin-bottom:1.5rem}
 .form-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem}
 .form-group{margin-bottom:1rem}
@@ -356,9 +420,14 @@ footer{background:#0e4050;color:rgba(255,255,255,0.65);padding:3.5rem 2.5rem 2re
 .form-group textarea{resize:vertical;min-height:90px}
 .form-group select{-webkit-appearance:none;appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%236b7280' d='M1 1l5 5 5-5'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 1rem center;padding-right:2.5rem}
 .check-group{display:grid;grid-template-columns:1fr 1fr;gap:0.6rem;margin-top:0.4rem}
-.check-item{display:flex;align-items:flex-start;gap:8px;padding:0.6rem 0.85rem;border-radius:10px;border:2px solid #e5e7eb;cursor:pointer;transition:all 0.18s;font-size:0.85rem;font-weight:600;color:#1a1a2e;line-height:1.5}
+.check-item{display:flex!important;flex-direction:row;flex-wrap:nowrap;align-items:center;gap:14px;padding:0.7rem 1rem;border-radius:10px;border:2px solid #e5e7eb;cursor:pointer;transition:all 0.18s;font-size:0.85rem;font-weight:600;color:#1a1a2e;line-height:1.2}
 .check-item:hover,.check-item.checked{border-color:#166178;background:#F0FDFA}
-.check-item input{width:16px;height:16px;accent-color:#166178;cursor:pointer}
+.check-item{margin-bottom:0!important}
+.check-item input{width:16px;height:16px;accent-color:#166178;cursor:pointer;flex-shrink:0;align-self:center}
+.check-label{display:flex;align-items:center;gap:8px;flex:1;line-height:1.2}
+#consentItem{display:flex!important;flex-direction:row!important;align-items:flex-start!important;gap:10px!important;margin-bottom:0!important}
+#consentItem input[type="checkbox"]{flex-shrink:0!important;margin-top:3px!important;align-self:flex-start!important}
+#consentItem>span{flex:1!important;min-width:0!important;line-height:1.5!important}
 .radio-group{display:flex;gap:0.75rem;flex-wrap:wrap;margin-top:0.4rem}
 .radio-item{display:flex;align-items:center;gap:0;padding:0.55rem 1.1rem;border-radius:20px;border:2px solid #e5e7eb;cursor:pointer;transition:all 0.18s;font-size:0.85rem;font-weight:600;color:#6b7280;position:relative}
 .radio-item:hover{border-color:#166178}.radio-item.selected{border-color:#166178;background:#F0FDFA;color:#1a1a2e}
@@ -379,9 +448,9 @@ footer{background:#0e4050;color:rgba(255,255,255,0.65);padding:3.5rem 2.5rem 2re
 .modal-footer{display:flex;justify-content:space-between;align-items:center;padding:1.1rem 2rem;border-top:2px solid #e5e7eb;background:#FFF8F0;border-radius:0 0 24px 24px;gap:0.75rem;flex-wrap:nowrap;flex-shrink:0;position:sticky;bottom:0;z-index:10}
 .btn-back{background:#fff;color:#6b7280;border:2px solid #e5e7eb;padding:0.65rem 1rem;border-radius:10px;font-family:"Quicksand",sans-serif;font-weight:700;font-size:0.9rem;cursor:pointer;transition:all 0.2s;white-space:nowrap}
 .btn-back:hover{border-color:#1a1a2e;color:#1a1a2e}
-.btn-fnext{background:linear-gradient(135deg,#166178,#0D9488);color:#fff;border:none;padding:0.65rem 1.5rem;border-radius:10px;font-family:"Quicksand",sans-serif;font-weight:800;font-size:0.9rem;cursor:pointer;transition:all 0.2s;display:flex;align-items:center;gap:6px;white-space:nowrap}
+.btn-fnext{background:linear-gradient(135deg,#166178,#0D9488);color:#fff;border:none;padding:0.65rem 1.5rem;border-radius:10px;font-family:"Quicksand",sans-serif;font-weight:800;font-size:0.9rem;cursor:pointer;transition:all 0.2s;display:flex;align-items:center;gap:8px;white-space:nowrap}
 .btn-fnext:hover{transform:translateY(-1px);box-shadow:0 6px 18px rgba(22,97,120,0.35)}
-.btn-fsubmit{background:linear-gradient(135deg,#F97316,#EC4899);color:#fff;border:none;padding:0.65rem 1.5rem;border-radius:10px;font-family:"Quicksand",sans-serif;font-weight:800;font-size:0.9rem;cursor:pointer;transition:all 0.2s;display:flex;align-items:center;gap:6px;white-space:nowrap}
+.btn-fsubmit{background:linear-gradient(135deg,#166178,#0D9488);color:#fff;border:none;padding:0.65rem 1.5rem;border-radius:10px;font-family:"Quicksand",sans-serif;font-weight:800;font-size:0.9rem;cursor:pointer;transition:all 0.25s cubic-bezier(0.4,0,0.2,1);display:flex;align-items:center;gap:8px;white-space:nowrap;box-shadow:0 4px 14px rgba(22,97,120,0.28);animation:btnPulse 2.8s ease-in-out infinite}
 .btn-fsubmit:hover{transform:translateY(-1px);box-shadow:0 6px 18px rgba(249,115,22,0.35)}
 .step-counter{font-size:0.8rem;color:#6b7280;font-weight:700;white-space:nowrap;flex-shrink:0}
 @media(max-width:600px){
@@ -507,6 +576,29 @@ nav.scrolled{box-shadow:0 4px 28px rgba(0,0,0,0.11)!important}
 .hamburger.open span:nth-child(3){transform:translateY(-7.5px) rotate(-45deg)}
 .mobile-backdrop{display:none;position:fixed;inset:0;background:rgba(14,64,80,0.35);z-index:997;backdrop-filter:blur(2px)}
 .mobile-backdrop.open{display:block}
+
+/* ===== PROGRAMS CARDS ===== */
+.prog-cards-sec{background:#FFF8F0;padding:5rem 2rem 4.5rem}
+.prog-cards-inner{max-width:1200px;margin:0 auto}
+.prog-cards-head{text-align:center;margin-bottom:3rem}
+.prog-cards-head h2{font-family:'Fredoka One',cursive;font-weight:400;font-size:2.2rem;color:#1a1a2e;line-height:1.2;margin-bottom:0.75rem}
+.prog-cards-head p{color:#6b7280;font-size:1rem;max-width:560px;margin:0 auto;line-height:1.7}
+.prog-cards-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.75rem}
+.pcard{background:#fff;border-radius:22px;border:2px solid #e5e7eb;overflow:hidden;transition:transform 0.28s cubic-bezier(0.4,0,0.2,1),box-shadow 0.28s cubic-bezier(0.4,0,0.2,1)}
+.pcard:hover{transform:translateY(-7px);box-shadow:0 18px 52px rgba(22,97,120,0.14);border-color:rgba(22,97,120,0.14)}
+.pcard-img{height:200px;overflow:hidden}
+.pcard-img img{width:100%;height:100%;object-fit:cover;transition:transform 0.45s ease;display:block}
+.pcard:hover .pcard-img img{transform:scale(1.07)}
+.pcard-body{padding:1.5rem 1.5rem 1.25rem}
+.pcard-hd{display:flex;align-items:center;gap:0.75rem;margin-bottom:0.8rem}
+.pcard-hd h3{font-family:'Fredoka One',cursive;font-weight:400;font-size:1.15rem;color:#1a1a2e;line-height:1.2}
+.pcard-desc{color:#6b7280;font-size:0.86rem;line-height:1.72;margin-bottom:0.9rem}
+.pcard-chks{list-style:none;padding:0;margin:0 0 1rem;display:flex;flex-direction:column;gap:0.42rem}
+.pcard-chks li{display:flex;align-items:flex-start;gap:0.5rem;color:#374151;font-size:0.82rem;line-height:1.5}
+.pcard-chks li svg{flex-shrink:0;margin-top:2px}
+.pcard-tag{display:inline-block;padding:0.25rem 0.8rem;border-radius:20px;font-size:0.77rem;font-weight:700}
+@media(max-width:960px){.prog-cards-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:600px){.prog-cards-grid{grid-template-columns:1fr}.prog-cards-sec{padding:3.5rem 1.25rem 3rem}}
 </style>
 </head>
 <body>
@@ -544,93 +636,177 @@ nav.scrolled{box-shadow:0 4px 28px rgba(0,0,0,0.11)!important}
   <a href="#" onclick="openEnrollModal();return false;" class="mob-enroll">Enroll Now — Free <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></a>
 </div>
 
-<div style="background:#166178;padding:3.5rem 2rem 3rem;text-align:center">
-  <div style="max-width:700px;margin:0 auto">
-    <span style="display:inline-flex;align-items:center;gap:5px;background:rgba(255,255,255,0.15);color:#FDE68A;border:1px solid rgba(255,255,255,0.2);padding:0.3rem 0.85rem;border-radius:20px;font-size:0.75rem;font-weight:800;letter-spacing:0.06em;text-transform:uppercase;margin-bottom:1rem"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#FDE68A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg> Our Programs</span>
-    <h1 style="font-family:'Fredoka One',cursive;font-size:2.2rem;font-weight:400;color:#fff;margin-bottom:0.75rem;line-height:1.25">Complete Programs at NEST</h1>
-    <p style="color:rgba(255,255,255,0.8);font-size:1rem;line-height:1.7">Every child is different. Our programs are individually tailored to help each child grow, learn, and thrive.</p>
+<div class="pg-hero">
+  <div class="pg-hero-bg"></div>
+  <div class="pg-hero-ov"></div>
+  <div class="pg-hero-glow"></div>
+
+  <div class="pg-hero-pts">
+    <div class="php" style="left:3%;bottom:0;width:3px;height:3px;background:rgba(255,255,255,0.45);animation-duration:15s;animation-delay:-2s;--dx:14px"></div>
+    <div class="php" style="left:9%;bottom:0;width:2px;height:2px;background:rgba(251,191,36,0.60);animation-duration:19s;animation-delay:-5s;--dx:-10px"></div>
+    <div class="php" style="left:16%;bottom:0;width:4px;height:4px;background:rgba(255,255,255,0.28);animation-duration:13s;animation-delay:-9s;--dx:20px"></div>
+    <div class="php" style="left:23%;bottom:0;width:2px;height:2px;background:rgba(13,148,136,0.55);animation-duration:21s;animation-delay:-3s;--dx:-16px"></div>
+    <div class="php" style="left:30%;bottom:0;width:3px;height:3px;background:rgba(255,255,255,0.40);animation-duration:17s;animation-delay:-12s;--dx:11px"></div>
+    <div class="php" style="left:38%;bottom:0;width:5px;height:5px;background:rgba(255,255,255,0.16);animation-duration:24s;animation-delay:-7s;--dx:-22px"></div>
+    <div class="php" style="left:44%;bottom:0;width:2px;height:2px;background:rgba(251,191,36,0.52);animation-duration:14s;animation-delay:-16s;--dx:9px"></div>
+    <div class="php" style="left:51%;bottom:0;width:3px;height:3px;background:rgba(255,255,255,0.38);animation-duration:18s;animation-delay:-4s;--dx:-13px"></div>
+    <div class="php" style="left:59%;bottom:0;width:2px;height:2px;background:rgba(13,148,136,0.50);animation-duration:16s;animation-delay:-10s;--dx:24px"></div>
+    <div class="php" style="left:66%;bottom:0;width:4px;height:4px;background:rgba(255,255,255,0.26);animation-duration:20s;animation-delay:-8s;--dx:-20px"></div>
+    <div class="php" style="left:73%;bottom:0;width:2px;height:2px;background:rgba(251,191,36,0.58);animation-duration:12s;animation-delay:-14s;--dx:16px"></div>
+    <div class="php" style="left:79%;bottom:0;width:3px;height:3px;background:rgba(255,255,255,0.36);animation-duration:22s;animation-delay:-6s;--dx:-11px"></div>
+    <div class="php" style="left:86%;bottom:0;width:2px;height:2px;background:rgba(255,255,255,0.44);animation-duration:17s;animation-delay:-17s;--dx:18px"></div>
+    <div class="php" style="left:93%;bottom:0;width:4px;height:4px;background:rgba(13,148,136,0.42);animation-duration:15s;animation-delay:-11s;--dx:-9px"></div>
+    <div class="php" style="left:6%;bottom:0;width:6px;height:6px;background:rgba(255,255,255,0.12);animation-duration:26s;animation-delay:-13s;--dx:17px"></div>
+    <div class="php" style="left:19%;bottom:0;width:2px;height:2px;background:rgba(251,191,36,0.48);animation-duration:13s;animation-delay:-19s;--dx:-24px"></div>
+    <div class="php" style="left:46%;bottom:0;width:3px;height:3px;background:rgba(255,255,255,0.34);animation-duration:18s;animation-delay:-15s;--dx:7px"></div>
+    <div class="php" style="left:63%;bottom:0;width:2px;height:2px;background:rgba(13,148,136,0.48);animation-duration:21s;animation-delay:-9s;--dx:-17px"></div>
+    <div class="php" style="left:76%;bottom:0;width:4px;height:4px;background:rgba(255,255,255,0.22);animation-duration:16s;animation-delay:-3s;--dx:12px"></div>
+    <div class="php" style="left:89%;bottom:0;width:2px;height:2px;background:rgba(251,191,36,0.52);animation-duration:14s;animation-delay:-8s;--dx:-15px"></div>
+  </div>
+
+  <div class="pg-hero-inner">
+    <span style="display:inline-flex;align-items:center;gap:5px;background:rgba(255,255,255,0.15);color:#FDE68A;border:1px solid rgba(255,255,255,0.22);padding:0.35rem 1rem;border-radius:20px;font-size:0.75rem;font-weight:800;letter-spacing:0.06em;text-transform:uppercase;margin-bottom:1.1rem;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#FDE68A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg> Our Programs</span>
+    <h1>Complete Programs at NEST</h1>
+    <p>Every child is different. Our programs are individually tailored to help each child grow, learn, and thrive.</p>
+  </div>
+
+  <div class="pg-hero-wave" aria-hidden="true">
+    <svg viewBox="0 0 1440 70" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+      <path d="M0,35 C360,70 1080,0 1440,35 L1440,70 L0,70 Z" fill="#FFF8F0"/>
+    </svg>
   </div>
 </div>
-<section style="background:#FFF8F0;padding:3.5rem 2rem">
-<div style="max-width:1100px;margin:0 auto">
+<section class="prog-cards-sec">
+  <div class="prog-cards-inner">
 
-<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.5rem;margin-top:1rem">
+    <div class="prog-cards-head">
+      <span class="sec-tag tag-orange" style="margin-bottom:1rem">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#c2410c" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+        All Programs
+      </span>
+      <h2>Six Pathways to Every Child's Best Life</h2>
+      <p>Each program combines clinical expertise with genuine warmth — because the best therapy always feels like play.</p>
+    </div>
 
-<div style="background:#fff;border-radius:20px;border:2px solid #e5e7eb;padding:1.75rem;position:relative;overflow:hidden">
-<div style="position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,#F97316,#FBBF24);border-radius:20px 20px 0 0"></div>
-<div class="icon-3d c-orange" style="width:46px;height:46px;margin-bottom:1rem"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg></div>
-<h2 style="font-family:'Fredoka One',cursive;font-weight:400;font-size:1.3rem;color:#1a1a2e;margin-bottom:0.5rem">Special Education</h2>
-<p style="color:#6b7280;font-size:0.9rem;line-height:1.7;margin-bottom:1rem">Our special education program offers individualized learning plans crafted for each child. With small class sizes of 4–6 students, certified special educators give focused attention to every learner.</p>
-<ul style="color:#6b7280;font-size:0.87rem;line-height:1.8;padding-left:1.2rem">
-<li>Ages 2–20 years</li><li>Individual Education Plans (IEP)</li><li>Literacy, numeracy & life skills</li><li>Regular progress assessments</li>
-</ul>
-<span style="display:inline-block;margin-top:1rem;background:#FFF7ED;color:#c2410c;padding:0.25rem 0.75rem;border-radius:20px;font-size:0.78rem;font-weight:700">Ages 2–20</span>
-</div>
+    <div class="prog-cards-grid">
 
-<div style="background:#fff;border-radius:20px;border:2px solid #e5e7eb;padding:1.75rem;position:relative;overflow:hidden">
-<div style="position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,#7C3AED,#EC4899);border-radius:20px 20px 0 0"></div>
-<div class="icon-3d c-purple" style="width:46px;height:46px;margin-bottom:1rem"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
-<h2 style="font-family:'Fredoka One',cursive;font-weight:400;font-size:1.3rem;color:#1a1a2e;margin-bottom:0.5rem">Speech Therapy</h2>
-<p style="color:#6b7280;font-size:0.9rem;line-height:1.7;margin-bottom:1rem">Our licensed speech-language pathologists work one-on-one with children to improve communication, language processing, and social interaction skills.</p>
-<ul style="color:#6b7280;font-size:0.87rem;line-height:1.8;padding-left:1.2rem">
-<li>Expressive & receptive language</li><li>Articulation therapy</li><li>Augmentative communication (AAC)</li><li>Social communication skills</li>
-</ul>
-<span style="display:inline-block;margin-top:1rem;background:#F5F3FF;color:#5b21b6;padding:0.25rem 0.75rem;border-radius:20px;font-size:0.78rem;font-weight:700">1-on-1 & Group</span>
-</div>
+      <!-- Special Education -->
+      <div class="pcard">
+        <div class="pcard-img"><img src="https://images.unsplash.com/photo-1588072432836-e10032774350?w=600&auto=format&fit=crop&q=80" alt="Special Education" loading="lazy"></div>
+        <div class="pcard-body">
+          <div class="pcard-hd">
+            <div class="icon-3d c-orange" style="width:40px;height:40px;flex-shrink:0"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg></div>
+            <h3>Special Education</h3>
+          </div>
+          <p class="pcard-desc">Our flagship academic program delivers individualized instruction using structured teaching, sensory integration, and adaptive curriculum frameworks. Every child receives a personalized IEP built by our M.Ed qualified educators.</p>
+          <ul class="pcard-chks">
+            <li><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#0D9488" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Individualized Education Plans (IEP) reviewed quarterly</li>
+            <li><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#0D9488" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Small classes (max 4 students) for focused attention</li>
+            <li><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#0D9488" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Functional academics &amp; life-skills integration</li>
+          </ul>
+          <span class="pcard-tag" style="background:#FFF7ED;color:#c2410c">Ages 3–18 · Daily Sessions</span>
+        </div>
+      </div>
 
-<div style="background:#fff;border-radius:20px;border:2px solid #e5e7eb;padding:1.75rem;position:relative;overflow:hidden">
-<div style="position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,#0D9488,#2563EB);border-radius:20px 20px 0 0"></div>
-<div class="icon-3d c-teal" style="width:46px;height:46px;margin-bottom:1rem"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96-.44 2.5 2.5 0 0 1-2.96-3.08 3 3 0 0 1-.34-5.58 2.5 2.5 0 0 1 1.32-4.24 2.5 2.5 0 0 1 1.98-3A2.5 2.5 0 0 1 9.5 2"/><path d="M14.5 2A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96-.44 2.5 2.5 0 0 0 2.96-3.08 3 3 0 0 0 .34-5.58 2.5 2.5 0 0 0-1.32-4.24 2.5 2.5 0 0 0-1.98-3A2.5 2.5 0 0 0 14.5 2"/></svg></div>
-<h2 style="font-family:'Fredoka One',cursive;font-weight:400;font-size:1.3rem;color:#1a1a2e;margin-bottom:0.5rem">ABA Therapy</h2>
-<p style="color:#6b7280;font-size:0.9rem;line-height:1.7;margin-bottom:1rem">Applied Behavior Analysis is a scientifically validated therapy for autism and developmental delays. Our certified BCBAs design structured programs to build essential skills.</p>
-<ul style="color:#6b7280;font-size:0.87rem;line-height:1.8;padding-left:1.2rem">
-<li>Discrete Trial Training (DTT)</li><li>Natural Environment Teaching</li><li>Behavior intervention planning</li><li>Parent training included</li>
-</ul>
-<span style="display:inline-block;margin-top:1rem;background:#F0FDFA;color:#0f766e;padding:0.25rem 0.75rem;border-radius:20px;font-size:0.78rem;font-weight:700">Evidence-Based</span>
-</div>
+      <!-- Speech & Language Therapy -->
+      <div class="pcard">
+        <div class="pcard-img"><img src="https://images.unsplash.com/photo-1580582932707-520aed937b7b?w=600&auto=format&fit=crop&q=80" alt="Speech & Language Therapy" loading="lazy"></div>
+        <div class="pcard-body">
+          <div class="pcard-hd">
+            <div class="icon-3d c-pink" style="width:40px;height:40px;flex-shrink:0"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
+            <h3>Speech &amp; Language Therapy</h3>
+          </div>
+          <p class="pcard-desc">MS-qualified Speech-Language Pathologists help children develop expressive and receptive language skills, articulation, fluency, and AAC for non-verbal children.</p>
+          <ul class="pcard-chks">
+            <li><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#0D9488" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> AAC device training &amp; PECS implementation</li>
+            <li><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#0D9488" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Oral-motor &amp; feeding therapy integration</li>
+            <li><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#0D9488" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Social communication &amp; pragmatics groups</li>
+          </ul>
+          <span class="pcard-tag" style="background:#FDF2F8;color:#be185d">Ages 2–16 · 45-min Sessions</span>
+        </div>
+      </div>
 
-<div style="background:#fff;border-radius:20px;border:2px solid #e5e7eb;padding:1.75rem;position:relative;overflow:hidden">
-<div style="position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,#EC4899,#F97316);border-radius:20px 20px 0 0"></div>
-<div class="icon-3d c-pink" style="width:46px;height:46px;margin-bottom:1rem"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 11V6a2 2 0 0 0-2-2 2 2 0 0 0-2 2v0"/><path d="M14 10V4a2 2 0 0 0-2-2 2 2 0 0 0-2 2v2"/><path d="M10 10.5V6a2 2 0 0 0-2-2 2 2 0 0 0-2 2v8"/><path d="M18 8a2 2 0 1 1 4 0v6a8 8 0 0 1-8 8h-2c-2.8 0-4.5-.86-5.99-2.34l-3.6-3.6a2 2 0 0 1 2.83-2.82L7 15"/></svg></div>
-<h2 style="font-family:'Fredoka One',cursive;font-weight:400;font-size:1.3rem;color:#1a1a2e;margin-bottom:0.5rem">Occupational Therapy</h2>
-<p style="color:#6b7280;font-size:0.9rem;line-height:1.7;margin-bottom:1rem">OT helps children develop the fine motor skills, sensory processing abilities, and daily living skills needed for greater independence and quality of life.</p>
-<ul style="color:#6b7280;font-size:0.87rem;line-height:1.8;padding-left:1.2rem">
-<li>Sensory integration therapy</li><li>Fine & gross motor skills</li><li>Self-care & daily routines</li><li>Handwriting & pencil grip</li>
-</ul>
-<span style="display:inline-block;margin-top:1rem;background:#FDF2F8;color:#be185d;padding:0.25rem 0.75rem;border-radius:20px;font-size:0.78rem;font-weight:700">Sensory Focus</span>
-</div>
+      <!-- ABA Therapy -->
+      <div class="pcard">
+        <div class="pcard-img"><img src="https://images.unsplash.com/photo-1560707303-4e980ce876ad?w=600&auto=format&fit=crop&q=80" alt="ABA Therapy" loading="lazy"></div>
+        <div class="pcard-body">
+          <div class="pcard-hd">
+            <div class="icon-3d c-purple" style="width:40px;height:40px;flex-shrink:0"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg></div>
+            <h3>ABA Therapy</h3>
+          </div>
+          <p class="pcard-desc">Applied Behavior Analysis delivered by BCBA-certified therapists. Naturalistic, play-based ABA builds communication, social, adaptive, and academic skills while reducing challenging behaviors compassionately.</p>
+          <ul class="pcard-chks">
+            <li><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#0D9488" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> BCBA-designed &amp; supervised programs</li>
+            <li><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#0D9488" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> VB-MAPP &amp; ABLLS-R assessments included</li>
+            <li><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#0D9488" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Intensive &amp; maintenance programming options</li>
+          </ul>
+          <span class="pcard-tag" style="background:#F5F3FF;color:#5b21b6">Ages 2–12 · 1–4 hrs/day</span>
+        </div>
+      </div>
 
-<div style="background:#fff;border-radius:20px;border:2px solid #e5e7eb;padding:1.75rem;position:relative;overflow:hidden">
-<div style="position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,#16A34A,#0D9488);border-radius:20px 20px 0 0"></div>
-<div class="icon-3d c-green" style="width:46px;height:46px;margin-bottom:1rem"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
-<h2 style="font-family:'Fredoka One',cursive;font-weight:400;font-size:1.3rem;color:#1a1a2e;margin-bottom:0.5rem">Physical Therapy</h2>
-<p style="color:#6b7280;font-size:0.9rem;line-height:1.7;margin-bottom:1rem">Our physical therapists use play-based activities to improve mobility, balance, coordination, and overall physical development in children.</p>
-<ul style="color:#6b7280;font-size:0.87rem;line-height:1.8;padding-left:1.2rem">
-<li>Gross motor development</li><li>Balance & coordination</li><li>Strength & mobility</li><li>Therapeutic exercise programs</li>
-</ul>
-<span style="display:inline-block;margin-top:1rem;background:#F0FDF4;color:#166534;padding:0.25rem 0.75rem;border-radius:20px;font-size:0.78rem;font-weight:700">Play-Based</span>
-</div>
+      <!-- Occupational Therapy -->
+      <div class="pcard">
+        <div class="pcard-img"><img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=600&auto=format&fit=crop&q=80" alt="Occupational Therapy" loading="lazy"></div>
+        <div class="pcard-body">
+          <div class="pcard-hd">
+            <div class="icon-3d c-teal" style="width:40px;height:40px;flex-shrink:0"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 11V6a2 2 0 0 0-2-2 2 2 0 0 0-2 2v0"/><path d="M14 10V4a2 2 0 0 0-2-2 2 2 0 0 0-2 2v2"/><path d="M10 10.5V6a2 2 0 0 0-2-2 2 2 0 0 0-2 2v8"/><path d="M18 8a2 2 0 1 1 4 0v6a8 8 0 0 1-8 8h-2c-2.8 0-4.5-.86-5.99-2.34l-3.6-3.6a2 2 0 0 1 2.83-2.82L7 15"/></svg></div>
+            <h3>Occupational Therapy</h3>
+          </div>
+          <p class="pcard-desc">Certified OTs address sensory processing, fine-motor development, self-care independence, handwriting, and school readiness in a fully equipped sensory gym and fine-motor lab.</p>
+          <ul class="pcard-chks">
+            <li><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#0D9488" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Sensory Integration Therapy (SI) certified therapists</li>
+            <li><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#0D9488" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Full sensory gym with swing, crash pad, climbing wall</li>
+            <li><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#0D9488" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> School-readiness &amp; daily living skills training</li>
+          </ul>
+          <span class="pcard-tag" style="background:#F0FDFA;color:#0f766e">Ages 18mo–16 · 45-min Sessions</span>
+        </div>
+      </div>
 
-<div style="background:#fff;border-radius:20px;border:2px solid #e5e7eb;padding:1.75rem;position:relative;overflow:hidden">
-<div style="position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,#2563EB,#7C3AED);border-radius:20px 20px 0 0"></div>
-<div class="icon-3d c-blue" style="width:46px;height:46px;margin-bottom:1rem"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
-<h2 style="font-family:'Fredoka One',cursive;font-weight:400;font-size:1.3rem;color:#1a1a2e;margin-bottom:0.5rem">Family Support</h2>
-<p style="color:#6b7280;font-size:0.9rem;line-height:1.7;margin-bottom:1rem">We believe parents are the most important therapists. Our family program equips parents with the tools, knowledge, and emotional support to continue progress at home.</p>
-<ul style="color:#6b7280;font-size:0.87rem;line-height:1.8;padding-left:1.2rem">
-<li>Parent training workshops</li><li>Home activity guides</li><li>Individual counseling sessions</li><li>Monthly parent review meetings</li>
-</ul>
-<span style="display:inline-block;margin-top:1rem;background:#EFF6FF;color:#1d4ed8;padding:0.25rem 0.75rem;border-radius:20px;font-size:0.78rem;font-weight:700">For Parents</span>
-</div>
+      <!-- Physical Therapy -->
+      <div class="pcard">
+        <div class="pcard-img"><img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=600&auto=format&fit=crop&q=80" alt="Physical Therapy" loading="lazy"></div>
+        <div class="pcard-body">
+          <div class="pcard-hd">
+            <div class="icon-3d c-green" style="width:40px;height:40px;flex-shrink:0"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
+            <h3>Physical Therapy</h3>
+          </div>
+          <p class="pcard-desc">Targeted physiotherapy for children with motor delays, cerebral palsy, hypotonia, or post-surgical rehabilitation needs. DPT-qualified therapists focus on gross motor skills, balance, and functional mobility.</p>
+          <ul class="pcard-chks">
+            <li><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#0D9488" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Neurodevelopmental Treatment (NDT) approach</li>
+            <li><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#0D9488" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Gait analysis &amp; orthotics recommendations</li>
+            <li><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#0D9488" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Hydrotherapy &amp; theraband exercise programs</li>
+          </ul>
+          <span class="pcard-tag" style="background:#F0FDF4;color:#166534">Ages 0–18 · 45-min Sessions</span>
+        </div>
+      </div>
 
-</div>
-</div>
+      <!-- Family Support Program -->
+      <div class="pcard">
+        <div class="pcard-img"><img src="https://images.unsplash.com/photo-1491013516836-7db643ee125a?w=600&auto=format&fit=crop&q=80" alt="Family Support Program" loading="lazy"></div>
+        <div class="pcard-body">
+          <div class="pcard-hd">
+            <div class="icon-3d c-blue" style="width:40px;height:40px;flex-shrink:0"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+            <h3>Family Support Program</h3>
+          </div>
+          <p class="pcard-desc">Dedicated program equipping parents, siblings, and caregivers with practical skills, emotional resilience, and community connections to thrive together.</p>
+          <ul class="pcard-chks">
+            <li><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#0D9488" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Weekly parent training &amp; coaching sessions</li>
+            <li><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#0D9488" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Home program guides customized per child</li>
+            <li><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#0D9488" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Monthly parent support group &amp; workshops</li>
+          </ul>
+          <span class="pcard-tag" style="background:#EFF6FF;color:#1d4ed8">All Ages · Flexible Schedule</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
 </section>
 
 <section style="background:#166178;padding:3rem 2rem;text-align:center">
 <div style="max-width:600px;margin:0 auto">
 <h2 style="font-family:'Fredoka One',cursive;font-weight:400;font-size:1.8rem;color:#fff;margin-bottom:0.75rem">Ready to Get Started?</h2>
 <p style="color:rgba(255,255,255,0.8);margin-bottom:1.75rem;font-size:0.97rem">Book a free assessment and let our team recommend the right program for your child.</p>
-<a href="#" onclick="openEnrollModal();return false;" style="background:linear-gradient(135deg,#FBBF24,#F97316);color:#1a1a2e;padding:0.85rem 2.2rem;border-radius:12px;font-weight:800;font-size:1rem;text-decoration:none;display:inline-flex;align-items:center;gap:10px"><div class="icon-3d c-teal" style="width:34px;height:34px"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="2" width="6" height="4" rx="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><path d="M12 11h4"/><path d="M12 16h4"/><path d="M8 11h.01"/><path d="M8 16h.01"/></svg></div> Book Free Assessment</a>
+<a href="#" onclick="openEnrollModal();return false;" style="background:linear-gradient(135deg,#F97316,#166178);color:#fff;padding:0.85rem 2.4rem;border-radius:100px;font-weight:800;font-size:1rem;text-decoration:none;display:inline-flex;align-items:center;gap:10px;box-shadow:0 4px 20px rgba(249,115,22,0.38);animation:btnPulse 2.8s ease-in-out infinite;transition:all 0.25s cubic-bezier(0.4,0,0.2,1)"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0"><rect x="9" y="2" width="6" height="4" rx="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><path d="M12 11h4"/><path d="M12 16h4"/><path d="M8 11h.01"/><path d="M8 16h.01"/></svg> Book Free Assessment</a>
 </div>
 </section>
 <footer>
@@ -642,7 +818,19 @@ nav.scrolled{box-shadow:0 4px 28px rgba(0,0,0,0.11)!important}
         <div class="ft-social"><a href="#" style="display:inline-flex;align-items:center;gap:7px;padding:0.45rem 1rem;border-radius:10px;text-decoration:none;font-weight:700;font-size:0.82rem;color:#fff;background:linear-gradient(135deg,#833ab4,#fd1d1d,#fcb045);box-shadow:0 3px 10px rgba(253,29,29,0.3);transition:opacity 0.2s" onmouseover="this.style.opacity=0.85" onmouseout="this.style.opacity=1"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="2" y="2" width="20" height="20" rx="6" stroke="white" stroke-width="2"/><circle cx="12" cy="12" r="4.5" stroke="white" stroke-width="2"/><circle cx="17.5" cy="6.5" r="1.2" fill="white"/></svg></a></div>
       </div>
       <div class="ft-col">
-        <h5>Programs</h5>
+        <h5>Quick Links</h5>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="#">Our Team</a></li>
+          <li><a href="gallery.html">Gallery</a></li>
+          <li><a href="#">Testimonials</a></li>
+          <li><a href="#">Blog &amp; Resources</a></li>
+          <li><a href="contact.html">Contact Us</a></li>
+        </ul>
+      </div>
+      <div class="ft-col">
+        <h5>Our Programs</h5>
         <ul>
           <li><a href="#">Special Education</a></li>
           <li><a href="#">Speech Therapy</a></li>
@@ -650,27 +838,25 @@ nav.scrolled{box-shadow:0 4px 28px rgba(0,0,0,0.11)!important}
           <li><a href="#">Occupational Therapy</a></li>
           <li><a href="#">Physical Therapy</a></li>
           <li><a href="#">Family Support</a></li>
+          <li><a href="#">Assessment Services</a></li>
         </ul>
       </div>
       <div class="ft-col">
-        <h5>Resources</h5>
-        <ul>
-          <li><a href="#">Parent Guides</a></li>
-          <li><a href="#">Articles & Tips</a></li>
-          <li><a href="#">Free Assessment</a></li>
-          <li><a href="#">Success Stories</a></li>
-          <li><a href="#">FAQ</a></li>
-        </ul>
-      </div>
-      <div class="ft-col">
-        <h5>Company</h5>
-        <ul>
-          <li><a href="#">About NEST</a></li>
-          <li><a href="#">Our Team</a></li>
-          <li><a href="#">Admissions</a></li>
-          <li><a href="#">Gallery</a></li>
-          <li><a href="#">Contact Us</a></li>
-        </ul>
+        <h5>Contact Us</h5>
+        <div class="ft-contact-items">
+          <div class="ft-contact-item">
+            <span class="ft-contact-icon" style="background:linear-gradient(135deg,#f97316,#ea580c)"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></span>
+            <div><div class="ft-contact-label">Address</div><div class="ft-contact-val">DHA 2, Sector G Islamabad</div></div>
+          </div>
+          <div class="ft-contact-item">
+            <span class="ft-contact-icon" style="background:linear-gradient(135deg,#06b6d4,#0891b2)"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.42 2 2 0 0 1 3.6 1.21h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 9a16 16 0 0 0 6.09 6.09l1.95-1.95a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span>
+            <div><div class="ft-contact-label">Phone</div><div class="ft-contact-val">+92 300 000 0000</div></div>
+          </div>
+          <div class="ft-contact-item">
+            <span class="ft-contact-icon" style="background:linear-gradient(135deg,#22c55e,#16a34a)"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></span>
+            <div><div class="ft-contact-label">Hours</div><div class="ft-contact-val">Mon - Fri 9:00 AM - 3:00 PM</div></div>
+          </div>
+        </div>
       </div>
     </div>
     <div class="ft-bottom">
@@ -688,7 +874,7 @@ nav.scrolled{box-shadow:0 4px 28px rgba(0,0,0,0.11)!important}
   <div class="modal">
     <div class="modal-header">
       <button class="modal-close" onclick="closeEnrollModal()">&#x2715;</button>
-      <span class="modal-icon">&#127775;</span>
+      <span class="modal-icon-3d"><svg width="30" height="30" viewBox="0 0 24 24" fill="rgba(255,218,40,0.95)" stroke="rgba(255,255,255,0.35)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></span>
       <div class="modal-title">NEST Enrollment Form</div>
       <div class="modal-sub-txt">Free assessment &middot; Takes 3 minutes &middot; No commitment</div>
       <div class="modal-steps" id="stepDots">
@@ -700,7 +886,7 @@ nav.scrolled{box-shadow:0 4px 28px rgba(0,0,0,0.11)!important}
     </div>
     <div class="modal-body">
       <div class="step-panel active" id="step-1">
-        <div class="step-title">&#128118; Child's Information</div>
+        <div class="step-title"><span class="icon-3d sm c-teal"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></span>Child's Information</div>
         <div class="step-desc">Tell us about your child so we can understand their needs.</div>
         <div class="form-row">
           <div class="form-group"><label>Child's First Name <span class="req">*</span></label><input type="text" id="childFirst" placeholder="e.g. Ali" autocomplete="given-name" maxlength="30" minlength="2"/><div class="err-msg">First name: 2–30 letters only</div></div>
@@ -713,17 +899,17 @@ nav.scrolled{box-shadow:0 4px 28px rgba(0,0,0,0.11)!important}
         <div class="form-group"><label>Primary Diagnosis / Condition <span class="req">*</span></label><select id="childDiag"><option value="">Select condition</option><option>Autism Spectrum Disorder (ASD)</option><option>ADHD</option><option>Down Syndrome</option><option>Cerebral Palsy</option><option>Speech Delay</option><option>Learning Disability</option><option>Sensory Processing Disorder</option><option>Global Developmental Delay</option><option>Not yet diagnosed</option><option>Other</option></select><div class="err-msg">Please select a condition</div></div>
         <div class="form-group"><label>Programs Interested In <span class="req">*</span></label>
           <div class="check-group" id="programsGroup">
-            <label class="check-item" onclick="toggleCheck(this)"><input type="checkbox" value="Special Education"/> &#128218; Special Education</label>
-            <label class="check-item" onclick="toggleCheck(this)"><input type="checkbox" value="Speech Therapy"/> &#128483;&#65039; Speech Therapy</label>
-            <label class="check-item" onclick="toggleCheck(this)"><input type="checkbox" value="ABA Therapy"/> &#129504; ABA Therapy</label>
-            <label class="check-item" onclick="toggleCheck(this)"><input type="checkbox" value="Occupational Therapy"/> &#129330; Occupational Therapy</label>
-            <label class="check-item" onclick="toggleCheck(this)"><input type="checkbox" value="Physical Therapy"/> &#127939; Physical Therapy</label>
-            <label class="check-item" onclick="toggleCheck(this)"><input type="checkbox" value="Family Support"/> &#128106; Family Support</label>
-          </div>
+  <label class="check-item" onclick="toggleCheck(this)"><input type="checkbox" value="Special Education"/><span class="check-label"><span class="icon-3d xs c-teal"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg></span>Special Education</span></label>
+  <label class="check-item" onclick="toggleCheck(this)"><input type="checkbox" value="Speech Therapy"/><span class="check-label"><span class="icon-3d xs c-blue"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg></span>Speech Therapy</span></label>
+  <label class="check-item" onclick="toggleCheck(this)"><input type="checkbox" value="ABA Therapy"/><span class="check-label"><span class="icon-3d xs c-purple"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg></span>ABA Therapy</span></label>
+  <label class="check-item" onclick="toggleCheck(this)"><input type="checkbox" value="Occupational Therapy"/><span class="check-label"><span class="icon-3d xs c-orange"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></span>Occupational Therapy</span></label>
+  <label class="check-item" onclick="toggleCheck(this)"><input type="checkbox" value="Physical Therapy"/><span class="check-label"><span class="icon-3d xs c-green"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></span>Physical Therapy</span></label>
+  <label class="check-item" onclick="toggleCheck(this)"><input type="checkbox" value="Family Support"/><span class="check-label"><span class="icon-3d xs c-pink"><svg width="13" height="13" viewBox="0 0 24 24" fill="rgba(255,255,255,0.9)" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></span>Family Support</span></label>
+</div>
         </div>
       </div>
       <div class="step-panel" id="step-2">
-        <div class="step-title">&#128106; Parent / Guardian Information</div>
+        <div class="step-title"><span class="icon-3d sm c-orange"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></span>Parent / Guardian Information</div>
         <div class="step-desc">We'll use this to reach out and schedule your free assessment.</div>
         <div class="form-row">
           <div class="form-group"><label>Your Full Name <span class="req">*</span></label><input type="text" id="parentName" placeholder="e.g. Sara Ahmed" autocomplete="name" maxlength="50" minlength="3"/><div class="err-msg">Full name: 3–50 letters only</div></div>
@@ -787,9 +973,9 @@ nav.scrolled{box-shadow:0 4px 28px rgba(0,0,0,0.11)!important}
         </div>
       </div>
       <div class="step-panel" id="step-3">
-        <div class="step-title">&#128197; Schedule Free Assessment</div>
+        <div class="step-title"><span class="icon-3d sm c-blue"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></span>Schedule Free Assessment</div>
         <div class="step-desc">Choose a preferred time for your child's free assessment visit.</div>
-        <div class="info-box"><span>&#128161;</span><p>The free assessment takes 45-60 minutes. Our team will evaluate your child and recommend the best program. No fees, no commitment.</p></div>
+        <div class="info-box"><span class="icon-3d xs c-blue"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg></span><p>The free assessment takes 45-60 minutes. Our team will evaluate your child and recommend the best program. No fees, no commitment.</p></div>
         <div class="form-row">
           <div class="form-group"><label>Preferred Date <span class="req">*</span></label><input type="date" id="prefDate"/><div class="err-msg">Please select a date</div></div>
           <div class="form-group"><label>Preferred Time Slot <span class="req">*</span></label><select id="prefTime"><option value="">Select time</option><option>9:00 AM - 10:00 AM</option><option>10:00 AM - 11:00 AM</option><option>11:00 AM - 12:00 PM</option><option>2:00 PM - 3:00 PM</option><option>3:00 PM - 4:00 PM</option></select><div class="err-msg">Please select a time slot</div></div>
@@ -805,13 +991,11 @@ nav.scrolled{box-shadow:0 4px 28px rgba(0,0,0,0.11)!important}
         <div class="form-group"><label>Additional Notes</label><textarea id="notes" placeholder="Anything important we should know about your child..."></textarea></div>
       </div>
       <div class="step-panel" id="step-4">
-        <div class="step-title">&#10003; Review &amp; Submit</div>
+        <div class="step-title"><span class="icon-3d sm c-green"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></span>Review &amp; Submit</div>
         <div class="step-desc">Please review your details before submitting.</div>
         <div class="summary-box" id="summaryBox"></div>
         <div class="form-group">
-          <label class="check-item" style="width:100%;border-radius:12px" onclick="toggleCheck(this)" id="consentItem">
-            <input type="checkbox" id="consent"/> I agree that NEST may contact me regarding my child's enrollment and assessment.
-          </label>
+          <label class="check-item" style="width:100%;border-radius:12px" onclick="toggleCheck(this)" id="consentItem"><input type="checkbox" id="consent"/><span>I agree that NEST may contact me regarding my child's enrollment and assessment.</span></label>
         </div>
       </div>
       <div class="success-screen" id="successScreen">
@@ -824,8 +1008,8 @@ nav.scrolled{box-shadow:0 4px 28px rgba(0,0,0,0.11)!important}
     <div class="modal-footer" id="modalFooter">
       <button class="btn-back" id="btnBack" onclick="prevStep()" style="visibility:hidden">&#8592; Back</button>
       <span class="step-counter" id="stepCounter">Step 1 of 4</span>
-      <button class="btn-fnext" id="btnNext" onclick="nextStep()">Next &#8594;</button>
-      <button class="btn-fsubmit" id="btnSubmit" style="display:none" onclick="submitForm()">Submit Enrollment &#127881;</button>
+      <button class="btn-fnext" id="btnNext" onclick="nextStep()">Next <span class="btn-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span></button>
+      <button class="btn-fsubmit" id="btnSubmit" style="display:none" onclick="submitForm()">Submit Enrollment <span class="btn-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2" fill="white" stroke="none"/></svg></span></button>
     </div>
   </div>
 </div>

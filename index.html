@@ -63,8 +63,17 @@ nav{
 .mobile-menu.open{display:flex}
 
 /* ===== HERO ===== */
-.hero-wrap{background:#166178}
+.hero-wrap{background:#166178;position:relative;overflow:hidden}
+.hero-wrap-pts{position:absolute;inset:0;overflow:hidden;pointer-events:none;z-index:1}
+.hp{position:absolute;border-radius:50%;animation:hpUp linear infinite;opacity:0}
+@keyframes hpUp{
+  0%  {transform:translateY(0) translateX(0);opacity:0}
+  8%  {opacity:1}
+  88% {opacity:.5}
+  100%{transform:translateY(-110vh) translateX(var(--dx,0px));opacity:0}
+}
 .hero{
+  position:relative;z-index:2;
   padding:4.5rem 2.5rem 3.5rem;
   display:grid;grid-template-columns:1.1fr 0.9fr;
   gap:3rem;align-items:center;
@@ -119,20 +128,17 @@ section{padding:4rem 2.5rem}
 .sec-sub{color:var(--muted);font-size:0.97rem;max-width:580px;line-height:1.7;text-align:center;margin-left:auto;margin-right:auto}
 
 /* ===== PROGRAMS ===== */
-.prog-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;margin-top:2.5rem}
-.prog-card{background:var(--white);border:2px solid var(--border);border-radius:20px;padding:1.5rem;transition:all 0.22s;position:relative;overflow:hidden}
-.prog-card::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;border-radius:20px 20px 0 0}
-.pc-orange::before{background:linear-gradient(90deg,#F97316,#FBBF24)}
-.pc-purple::before{background:linear-gradient(90deg,#7C3AED,#EC4899)}
-.pc-teal::before{background:linear-gradient(90deg,#0D9488,#2563EB)}
-.pc-pink::before{background:linear-gradient(90deg,#EC4899,#F97316)}
-.pc-green::before{background:linear-gradient(90deg,#16A34A,#0D9488)}
-.pc-blue::before{background:linear-gradient(90deg,#2563EB,#7C3AED)}
-.prog-card:hover{transform:translateY(-5px);box-shadow:0 16px 40px rgba(0,0,0,0.08);border-color:transparent}
-.prog-emoji{font-size:2.2rem;margin-bottom:0.9rem;display:block}
-.prog-card h3{font-family:'Fredoka One',cursive;font-size:1.05rem;font-weight:400;color:var(--navy);margin-bottom:0.4rem;letter-spacing:0.01em}
-.prog-card p{font-size:0.85rem;color:var(--muted);line-height:1.6}
-.prog-tag{display:inline-block;margin-top:0.85rem;padding:0.22rem 0.7rem;border-radius:20px;font-size:0.75rem;font-weight:800}
+.prog-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:2.5rem}
+.prog-card{background:var(--white);border:2px solid var(--border);border-radius:20px;overflow:hidden;transition:all 0.25s;position:relative}
+.prog-card:hover{transform:translateY(-6px);box-shadow:0 16px 48px rgba(22,97,120,0.15);border-color:transparent}
+.prog-card-img{width:100%;height:200px;overflow:hidden}
+.prog-card-img img{width:100%;height:100%;object-fit:cover;transition:transform 0.35s ease;display:block}
+.prog-card:hover .prog-card-img img{transform:scale(1.06)}
+.prog-card-body{padding:1.5rem}
+.prog-card h3{font-family:'Nunito',sans-serif;font-size:1.1rem;font-weight:800;color:#166178;margin-bottom:0.5rem;letter-spacing:0.01em}
+.prog-card p{font-size:0.85rem;color:var(--muted);line-height:1.65;margin-bottom:1rem}
+.prog-discover{color:var(--orange);font-weight:700;font-size:0.85rem;text-decoration:none;display:inline-flex;align-items:center;gap:5px;transition:gap 0.2s}
+.prog-discover:hover{gap:10px}
 
 /* ===== WHY ===== */
 .why-left-head{text-align:center}
@@ -177,22 +183,100 @@ section{padding:4rem 2.5rem}
 .faq-a{color:var(--muted);font-size:0.84rem;margin-top:0.5rem;margin-bottom:0;line-height:1.6;display:none}
 .faq-item.open .faq-a{display:block}
 
+/* ===== TEAM ===== */
+.team-sec{background:var(--bg)}
+.team-slider-wrap{position:relative;overflow:visible;margin-top:2.75rem}
+.team-track-clip{overflow:hidden;padding:14px 0;margin:-14px 0}
+.team-track{display:flex;align-items:stretch;transition:transform .55s cubic-bezier(0.4,0,0.2,1);will-change:transform}
+.team-slide{margin:0 8px;flex-shrink:0;display:flex;flex-direction:column;align-items:stretch}
+.team-controls{display:flex;align-items:center;justify-content:center;gap:18px;margin-top:36px}
+.team-arrow{width:44px;height:44px;border-radius:50%;background:var(--white);border:2px solid var(--border);color:#166178;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .25s,border-color .25s,transform .2s,color .2s;flex-shrink:0;box-shadow:0 2px 12px rgba(22,97,120,0.12);font-size:1.15rem;line-height:1}
+.team-arrow:hover{background:#166178;border-color:#166178;color:#fff;transform:scale(1.1)}
+.team-dots{display:flex;align-items:center;justify-content:center;gap:8px}
+.team-dot{width:10px;height:10px;border-radius:5px;background:var(--border);border:none;cursor:pointer;padding:0;transition:background .3s,width .3s}
+.team-dot.active{background:var(--orange);width:28px}
+.team-card{
+  background:var(--white);border:2px solid var(--border);border-radius:20px;
+  padding:2.25rem 1.5rem 1.75rem;text-align:center;
+  transition:transform 0.28s cubic-bezier(0.22,1,0.36,1),box-shadow 0.28s ease,border-color 0.28s ease;
+  position:relative;overflow:hidden
+}
+.team-card::after{
+  content:'';position:absolute;top:0;left:0;right:0;height:3px;
+  background:linear-gradient(90deg,#F97316,#166178);
+  opacity:0;transition:opacity 0.28s
+}
+.team-card:hover{transform:translateY(-7px);box-shadow:0 18px 52px rgba(22,97,120,0.15);border-color:rgba(22,97,120,0.14)}
+.team-card:hover::after{opacity:1}
+.team-avatar-wrap{
+  width:130px;height:130px;border-radius:50%;margin:0 auto 1.25rem;
+  padding:3px;
+  background:linear-gradient(135deg,#F97316 0%,#166178 100%);
+  box-shadow:0 4px 18px rgba(22,97,120,0.22)
+}
+.team-avatar-inner{width:100%;height:100%;border-radius:50%;overflow:hidden;background:#fff;-webkit-mask-image:-webkit-radial-gradient(circle,white 100%,black 100%);mask-image:radial-gradient(circle,white 100%,black 100%)}
+.team-avatar{width:100%;height:100%;object-fit:cover;object-position:top center;display:block;border-radius:50%;transition:transform 0.35s ease}
+.team-card:hover .team-avatar{transform:scale(1.08)}
+.team-name{font-family:'Nunito',sans-serif;font-weight:800;font-size:1.02rem;color:#166178;margin-bottom:0.3rem}
+.team-role{color:var(--orange);font-weight:700;font-size:0.82rem;margin-bottom:0.75rem}
+.team-creds{color:var(--muted);font-size:0.77rem;line-height:1.7;margin-bottom:1.25rem}
+.team-divider{width:36px;height:2px;background:linear-gradient(90deg,#F97316,#166178);border-radius:2px;margin:0 auto 1.1rem}
+.team-socials{display:flex;justify-content:center;gap:0.5rem}
+.team-soc{
+  width:34px;height:34px;border-radius:9px;
+  border:1.5px solid var(--border);
+  display:flex;align-items:center;justify-content:center;
+  color:var(--muted);text-decoration:none;
+  transition:all 0.2s;flex-shrink:0
+}
+.team-soc:hover{border-color:#166178;color:#166178;background:var(--teal-l);transform:translateY(-2px)}
+
 /* ===== CTA ===== */
-.cta-sec{background:#166178;text-align:center}
-.cta-icon{font-size:3.5rem;display:block;margin-bottom:1rem}
-.cta-btns{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;margin-top:1.75rem}
-.btn-cta-main{background:linear-gradient(135deg,var(--orange),var(--pink));color:#fff;padding:0.85rem 2rem;border-radius:12px;font-weight:900;font-size:1rem;text-decoration:none;box-shadow:0 6px 20px rgba(249,115,22,0.35);transition:all 0.2s;display:inline-flex;align-items:center;gap:8px}
-.btn-cta-main:hover{transform:translateY(-2px);box-shadow:0 10px 28px rgba(249,115,22,0.5)}
-.btn-cta-out{background:rgba(255,255,255,0.12);color:#fff;border:2px solid rgba(255,255,255,0.35);padding:0.85rem 2rem;border-radius:12px;font-weight:800;font-size:1rem;text-decoration:none;transition:all 0.2s;display:inline-flex;align-items:center;gap:8px}
-.btn-cta-out:hover{background:rgba(255,255,255,0.22);border-color:rgba(255,255,255,0.6)}
-.cta-title{font-family:'Fredoka One',cursive;font-size:2.1rem;font-weight:400;color:#fff;margin-bottom:0.6rem;line-height:1.25;letter-spacing:0.01em}
-.cta-sub{color:rgba(255,255,255,0.8);font-size:0.97rem;max-width:580px;line-height:1.7;margin:0 auto}
-.cta-tag{display:inline-flex;align-items:center;gap:5px;background:rgba(255,255,255,0.15);color:#FDE68A;border:1px solid rgba(255,255,255,0.2);padding:0.3rem 0.85rem;border-radius:20px;font-size:0.75rem;font-weight:800;letter-spacing:0.06em;text-transform:uppercase;margin-bottom:0.9rem}
+.cta-sec{
+  background:linear-gradient(135deg,#0b3040 0%,#104f65 35%,#166178 65%,#1a7a96 100%);
+  text-align:center;position:relative;overflow:hidden
+}
+.cta-blob{position:absolute;border-radius:50%;pointer-events:none}
+.cta-blob-1{
+  width:480px;height:480px;
+  top:-120px;left:-140px;
+  background:radial-gradient(circle,rgba(255,255,255,0.07) 0%,rgba(255,255,255,0.02) 55%,transparent 70%);
+  border:1.5px solid rgba(255,255,255,0.06)
+}
+.cta-blob-2{
+  width:360px;height:360px;
+  bottom:-100px;right:-80px;
+  background:radial-gradient(circle,rgba(249,115,22,0.12) 0%,rgba(249,115,22,0.03) 55%,transparent 70%);
+  border:1.5px solid rgba(249,115,22,0.08)
+}
+.cta-blob-3{
+  width:200px;height:200px;
+  top:50%;right:8%;
+  transform:translateY(-50%);
+  background:radial-gradient(circle,rgba(255,255,255,0.05) 0%,transparent 70%);
+  border:1px solid rgba(255,255,255,0.05)
+}
+.cta-blob-4{
+  width:120px;height:120px;
+  bottom:10%;left:12%;
+  background:radial-gradient(circle,rgba(249,115,22,0.08) 0%,transparent 70%);
+  border:1px solid rgba(249,115,22,0.06)
+}
+.cta-icon{font-size:3.5rem;display:block;margin-bottom:1rem;position:relative;z-index:1}
+.cta-btns{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;margin-top:1.75rem;position:relative;z-index:1}
+.btn-cta-main{background:linear-gradient(135deg,#F97316,#166178);color:#fff;padding:0.85rem 2.2rem;border-radius:100px;font-weight:800;font-size:1rem;text-decoration:none;box-shadow:0 4px 16px rgba(249,115,22,0.30);transition:all 0.25s cubic-bezier(0.4,0,0.2,1);display:inline-flex;align-items:center;gap:8px;animation:btnPulse 2.8s ease-in-out infinite}
+.btn-cta-main:hover{transform:translateY(-3px);box-shadow:0 8px 28px rgba(0,0,0,0.22);animation:none}
+.btn-cta-main:active{transform:translateY(-1px)}
+.btn-cta-out{background:rgba(255,255,255,0.10);color:#fff;border:2px solid rgba(255,255,255,0.38);padding:0.85rem 2.2rem;border-radius:100px;font-weight:800;font-size:1rem;text-decoration:none;transition:all 0.25s cubic-bezier(0.4,0,0.2,1);display:inline-flex;align-items:center;gap:8px}
+.btn-cta-out:hover{background:rgba(255,255,255,0.2);border-color:rgba(255,255,255,0.65);transform:translateY(-3px)}
+.cta-title{font-family:'Fredoka One',cursive;font-size:2.2rem;font-weight:400;color:#fff;margin-bottom:0.6rem;line-height:1.25;letter-spacing:0.01em;position:relative;z-index:1}
+.cta-sub{color:rgba(255,255,255,0.82);font-size:0.97rem;max-width:560px;line-height:1.75;margin:0 auto;position:relative;z-index:1}
+.cta-tag{display:inline-flex;align-items:center;gap:5px;background:rgba(255,255,255,0.12);color:#FDE68A;border:1px solid rgba(255,255,255,0.18);padding:0.3rem 0.85rem;border-radius:20px;font-size:0.75rem;font-weight:800;letter-spacing:0.06em;text-transform:uppercase;margin-bottom:0.9rem;position:relative;z-index:1;backdrop-filter:blur(6px)}
 
 /* ===== FOOTER ===== */
 footer{background:#0e4050;color:rgba(255,255,255,0.65);padding:3.5rem 2.5rem 2rem}
 .ft-inner{max-width:1200px;margin:0 auto}
-.ft-top{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:2.5rem;margin-bottom:2.5rem}
+.ft-top{display:grid;grid-template-columns:2fr 1fr 1fr 1.3fr;gap:2.5rem;margin-bottom:2.5rem}
 .ft-logo{display:flex;align-items:center;gap:10px;margin-bottom:1rem;text-decoration:none}
 .ft-logo-bubble{width:38px;height:38px;border-radius:12px;background:linear-gradient(135deg,#F97316,#EC4899);display:flex;align-items:center;justify-content:center;font-size:1.1rem}
 .ft-brand-name{font-family:'Fredoka One',cursive;font-weight:400;font-size:1.1rem;color:#fff}
@@ -208,6 +292,7 @@ footer{background:#0e4050;color:rgba(255,255,255,0.65);padding:3.5rem 2.5rem 2re
 .ft-bottom{border-top:1px solid rgba(255,255,255,0.1);padding-top:1.5rem;display:flex;justify-content:space-between;align-items:center;font-size:0.8rem;flex-wrap:wrap;gap:0.75rem}
 .ft-bottom-links a{color:rgba(255,255,255,0.4);text-decoration:none;margin-left:1.25rem;font-size:0.8rem}
 .ft-bottom-links a:hover{color:#fff}
+.ft-contact-items{display:flex;flex-direction:column;gap:0.85rem}.ft-contact-item{display:flex;align-items:flex-start;gap:0.75rem}.ft-contact-icon{display:flex;align-items:center;justify-content:center;width:34px;height:34px;border-radius:10px;flex-shrink:0}.ft-contact-label{color:#fff;font-size:0.8rem;font-weight:700;margin-bottom:0.1rem}.ft-contact-val{color:rgba(255,255,255,0.55);font-size:0.78rem;line-height:1.5}
 .heart{color:#EC4899}
 
 /* ===== 3D ICON BOXES ===== */
@@ -220,6 +305,13 @@ footer{background:#0e4050;color:rgba(255,255,255,0.65);padding:3.5rem 2.5rem 2re
 .c-purple{background:linear-gradient(145deg,#a855f7,#7e22ce);box-shadow:0 4px 12px rgba(168,85,247,0.45),inset 0 1px 0 rgba(255,255,255,0.2)}
 .c-pink{background:linear-gradient(145deg,#f472b6,#be185d);box-shadow:0 4px 12px rgba(244,114,182,0.45),inset 0 1px 0 rgba(255,255,255,0.2)}
 .c-blue{background:linear-gradient(145deg,#3b82f6,#1d4ed8);box-shadow:0 4px 12px rgba(59,130,246,0.45),inset 0 1px 0 rgba(255,255,255,0.2)}
+.icon-3d.xs{width:26px;height:26px;border-radius:7px;flex-shrink:0;display:inline-flex;align-self:center}
+.icon-3d.xs::after{border-radius:6px 6px 40% 40%/4px 4px 2px 2px}
+.icon-3d.sm{width:34px;height:34px;border-radius:10px;flex-shrink:0}
+.icon-3d.sm::after{border-radius:10px 10px 40% 40%/7px 7px 3px 3px}
+.modal-icon-3d{width:64px;height:64px;border-radius:18px;display:inline-flex;align-items:center;justify-content:center;background:linear-gradient(145deg,rgba(255,255,255,0.24),rgba(255,255,255,0.06));border:1.5px solid rgba(255,255,255,0.22);margin:0 auto 0.75rem;position:relative;overflow:hidden;box-shadow:0 6px 20px rgba(0,0,0,0.18),inset 0 1px 0 rgba(255,255,255,0.25)}
+.modal-icon-3d::after{content:'';position:absolute;top:0;left:0;right:0;height:50%;background:rgba(255,255,255,0.16);border-radius:18px 18px 40% 40%/10px 10px 5px 5px}
+.modal-icon-3d svg{position:relative;z-index:1}
 .c-amber{background:linear-gradient(145deg,#fbbf24,#d97706);box-shadow:0 4px 12px rgba(251,191,36,0.45),inset 0 1px 0 rgba(255,255,255,0.2)}
 
 /* ===================================================
@@ -237,7 +329,7 @@ footer{background:#0e4050;color:rgba(255,255,255,0.65);padding:3.5rem 2.5rem 2re
 @media(max-width:1280px){
   .hero{max-width:100%;padding:4rem 2rem 3rem}
   .prog-grid{grid-template-columns:repeat(3,1fr)}
-  .ft-top{grid-template-columns:1.5fr 1fr 1fr 1fr}
+  .ft-top{grid-template-columns:1.5fr 1fr 1fr 1.3fr}
 }
 
 /* ===================================================
@@ -318,7 +410,9 @@ footer{background:#0e4050;color:rgba(255,255,255,0.65);padding:3.5rem 2.5rem 2re
   .sec-title{font-size:1.65rem}
   .sec-sub{font-size:0.9rem}
   .prog-grid{grid-template-columns:1fr;gap:1rem}
-  .prog-card{padding:1.25rem}
+  .prog-card-body{padding:1.25rem}
+  .team-card{padding:1.75rem 1.25rem 1.5rem}
+  .team-avatar-wrap{width:100px;height:100px}
 
   .why-grid{grid-template-columns:1fr}
   .why-cards{grid-template-columns:1fr 1fr;gap:0.75rem}
@@ -352,6 +446,7 @@ footer{background:#0e4050;color:rgba(255,255,255,0.65);padding:3.5rem 2.5rem 2re
   .ribbon-item{font-size:0.75rem;padding:0.28rem 0.5rem}
   .sec-title{font-size:1.5rem}
   .prog-grid{gap:0.85rem}
+  .prog-card-body{padding:1.1rem}
   .wv-stats{grid-template-columns:1fr 1fr}
   .ft-social{flex-wrap:wrap}
 }
@@ -376,7 +471,9 @@ footer{background:#0e4050;color:rgba(255,255,255,0.65);padding:3.5rem 2.5rem 2re
   .ribbon-item{font-size:0.72rem;padding:0.25rem 0.4rem}
   .sec-title{font-size:1.35rem}
   .sec-sub{font-size:0.85rem}
-  .prog-card{padding:1.1rem}
+  .prog-card-img{height:180px}
+  .team-card{padding:1.75rem 1.25rem 1.5rem}
+  .team-avatar-wrap{width:110px;height:110px}
   .why-cards{grid-template-columns:1fr}
   .btn-cta-main,.btn-cta-out{font-size:0.85rem;padding:0.65rem 1rem}
   .cta-title{font-size:1.5rem}
@@ -400,7 +497,7 @@ footer{background:#0e4050;color:rgba(255,255,255,0.65);padding:3.5rem 2.5rem 2re
 .step-dot.active{background:#FBBF24}.step-dot.done{background:rgba(255,255,255,0.6)}
 .modal-body{padding:2rem;overflow-y:auto;flex:1;max-height:65vh}
 .step-panel{display:none}.step-panel.active{display:block}
-.step-title{font-family:"Fredoka One",cursive;font-size:1.2rem;color:#1a1a2e;margin-bottom:0.3rem}
+.step-title{font-family:"Fredoka One",cursive;font-size:1.2rem;color:#1a1a2e;margin-bottom:0.3rem;display:flex;align-items:center;gap:10px}
 .step-desc{color:#6b7280;font-size:0.85rem;margin-bottom:1.5rem}
 .form-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem}
 .form-group{margin-bottom:1rem}
@@ -414,9 +511,14 @@ footer{background:#0e4050;color:rgba(255,255,255,0.65);padding:3.5rem 2.5rem 2re
 .form-group textarea{resize:vertical;min-height:90px}
 .form-group select{-webkit-appearance:none;appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%236b7280' d='M1 1l5 5 5-5'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 1rem center;padding-right:2.5rem}
 .check-group{display:grid;grid-template-columns:1fr 1fr;gap:0.6rem;margin-top:0.4rem}
-.check-item{display:flex;align-items:flex-start;gap:8px;padding:0.6rem 0.85rem;border-radius:10px;border:2px solid #e5e7eb;cursor:pointer;transition:all 0.18s;font-size:0.85rem;font-weight:600;color:#1a1a2e;line-height:1.5}
+.check-item{display:flex!important;flex-direction:row;flex-wrap:nowrap;align-items:center;gap:14px;padding:0.7rem 1rem;border-radius:10px;border:2px solid #e5e7eb;cursor:pointer;transition:all 0.18s;font-size:0.85rem;font-weight:600;color:#1a1a2e;line-height:1.2}
 .check-item:hover,.check-item.checked{border-color:#166178;background:#F0FDFA}
-.check-item input{width:16px;height:16px;accent-color:#166178;cursor:pointer}
+.check-item{margin-bottom:0!important}
+.check-item input{width:16px;height:16px;accent-color:#166178;cursor:pointer;flex-shrink:0;align-self:center}
+.check-label{display:flex;align-items:center;gap:8px;flex:1;line-height:1.2}
+#consentItem{display:flex!important;flex-direction:row!important;align-items:flex-start!important;gap:10px!important;margin-bottom:0!important}
+#consentItem input[type="checkbox"]{flex-shrink:0!important;margin-top:3px!important;align-self:flex-start!important}
+#consentItem>span{flex:1!important;min-width:0!important;line-height:1.5!important}
 .radio-group{display:flex;gap:0.75rem;flex-wrap:wrap;margin-top:0.4rem}
 .radio-item{display:flex;align-items:center;gap:0;padding:0.55rem 1.1rem;border-radius:20px;border:2px solid #e5e7eb;cursor:pointer;transition:all 0.18s;font-size:0.85rem;font-weight:600;color:#6b7280;position:relative}
 .radio-item:hover{border-color:#166178}.radio-item.selected{border-color:#166178;background:#F0FDFA;color:#1a1a2e}
@@ -437,10 +539,13 @@ footer{background:#0e4050;color:rgba(255,255,255,0.65);padding:3.5rem 2.5rem 2re
 .modal-footer{display:flex;justify-content:space-between;align-items:center;padding:1.1rem 2rem;border-top:2px solid #e5e7eb;background:#FFF8F0;border-radius:0 0 24px 24px;gap:0.75rem;flex-wrap:nowrap;flex-shrink:0;position:sticky;bottom:0;z-index:10}
 .btn-back{background:#fff;color:#6b7280;border:2px solid #e5e7eb;padding:0.65rem 1rem;border-radius:10px;font-family:"Quicksand",sans-serif;font-weight:700;font-size:0.9rem;cursor:pointer;transition:all 0.2s;white-space:nowrap}
 .btn-back:hover{border-color:#1a1a2e;color:#1a1a2e}
-.btn-fnext{background:linear-gradient(135deg,#166178,#0D9488);color:#fff;border:none;padding:0.65rem 1.5rem;border-radius:10px;font-family:"Quicksand",sans-serif;font-weight:800;font-size:0.9rem;cursor:pointer;transition:all 0.2s;display:flex;align-items:center;gap:6px;white-space:nowrap}
-.btn-fnext:hover{transform:translateY(-1px);box-shadow:0 6px 18px rgba(22,97,120,0.35)}
-.btn-fsubmit{background:linear-gradient(135deg,#F97316,#EC4899);color:#fff;border:none;padding:0.65rem 1.5rem;border-radius:10px;font-family:"Quicksand",sans-serif;font-weight:800;font-size:0.9rem;cursor:pointer;transition:all 0.2s;display:flex;align-items:center;gap:6px;white-space:nowrap}
-.btn-fsubmit:hover{transform:translateY(-1px);box-shadow:0 6px 18px rgba(249,115,22,0.35)}
+.btn-fnext{background:linear-gradient(135deg,#166178,#0D9488);color:#fff;border:none;padding:0.65rem 1.5rem;border-radius:10px;font-family:"Quicksand",sans-serif;font-weight:800;font-size:0.9rem;cursor:pointer;transition:all 0.2s;display:flex;align-items:center;gap:8px;white-space:nowrap}
+.btn-fnext:hover{transform:translateY(-2px);box-shadow:0 8px 22px rgba(22,97,120,0.38)}
+.btn-fsubmit{background:linear-gradient(135deg,#166178,#0D9488);color:#fff;border:none;padding:0.65rem 1.5rem;border-radius:10px;font-family:"Quicksand",sans-serif;font-weight:800;font-size:0.9rem;cursor:pointer;transition:all 0.25s cubic-bezier(0.4,0,0.2,1);display:flex;align-items:center;gap:8px;white-space:nowrap;box-shadow:0 4px 14px rgba(22,97,120,0.28);animation:btnPulse 2.8s ease-in-out infinite}
+.btn-fsubmit:hover{transform:translateY(-2px);box-shadow:0 10px 28px rgba(22,97,120,0.42);animation:none}
+.btn-icon{width:22px;height:22px;border-radius:6px;background:rgba(255,255,255,0.18);border:1px solid rgba(255,255,255,0.28);display:inline-flex;align-items:center;justify-content:center;flex-shrink:0;position:relative;overflow:hidden}
+.btn-icon::after{content:'';position:absolute;top:0;left:0;right:0;height:50%;background:rgba(255,255,255,0.22);border-radius:6px 6px 40% 40%/4px 4px 2px 2px;pointer-events:none}
+.btn-icon svg{position:relative;z-index:1}
 .step-counter{font-size:0.8rem;color:#6b7280;font-weight:700;white-space:nowrap;flex-shrink:0}
 @media(max-width:600px){
 .modal{
@@ -637,6 +742,28 @@ nav.scrolled{box-shadow:0 4px 28px rgba(0,0,0,0.11)!important}
 
 <!-- ===== HERO ===== -->
 <div class="hero-wrap">
+  <div class="hero-wrap-pts">
+    <div class="hp" style="left:3%;bottom:0;width:3px;height:3px;background:rgba(255,255,255,0.45);animation-duration:15s;animation-delay:-2s;--dx:14px"></div>
+    <div class="hp" style="left:9%;bottom:0;width:2px;height:2px;background:rgba(251,191,36,0.60);animation-duration:19s;animation-delay:-5s;--dx:-10px"></div>
+    <div class="hp" style="left:16%;bottom:0;width:4px;height:4px;background:rgba(255,255,255,0.28);animation-duration:13s;animation-delay:-9s;--dx:20px"></div>
+    <div class="hp" style="left:23%;bottom:0;width:2px;height:2px;background:rgba(13,148,136,0.55);animation-duration:21s;animation-delay:-3s;--dx:-16px"></div>
+    <div class="hp" style="left:30%;bottom:0;width:3px;height:3px;background:rgba(255,255,255,0.40);animation-duration:17s;animation-delay:-12s;--dx:11px"></div>
+    <div class="hp" style="left:38%;bottom:0;width:5px;height:5px;background:rgba(255,255,255,0.16);animation-duration:24s;animation-delay:-7s;--dx:-22px"></div>
+    <div class="hp" style="left:44%;bottom:0;width:2px;height:2px;background:rgba(251,191,36,0.52);animation-duration:14s;animation-delay:-16s;--dx:9px"></div>
+    <div class="hp" style="left:51%;bottom:0;width:3px;height:3px;background:rgba(255,255,255,0.38);animation-duration:18s;animation-delay:-4s;--dx:-13px"></div>
+    <div class="hp" style="left:59%;bottom:0;width:2px;height:2px;background:rgba(13,148,136,0.50);animation-duration:16s;animation-delay:-10s;--dx:24px"></div>
+    <div class="hp" style="left:66%;bottom:0;width:4px;height:4px;background:rgba(255,255,255,0.26);animation-duration:20s;animation-delay:-8s;--dx:-20px"></div>
+    <div class="hp" style="left:73%;bottom:0;width:2px;height:2px;background:rgba(251,191,36,0.58);animation-duration:12s;animation-delay:-14s;--dx:16px"></div>
+    <div class="hp" style="left:79%;bottom:0;width:3px;height:3px;background:rgba(255,255,255,0.36);animation-duration:22s;animation-delay:-6s;--dx:-11px"></div>
+    <div class="hp" style="left:86%;bottom:0;width:2px;height:2px;background:rgba(255,255,255,0.44);animation-duration:17s;animation-delay:-17s;--dx:18px"></div>
+    <div class="hp" style="left:93%;bottom:0;width:4px;height:4px;background:rgba(13,148,136,0.42);animation-duration:15s;animation-delay:-11s;--dx:-9px"></div>
+    <div class="hp" style="left:6%;bottom:0;width:6px;height:6px;background:rgba(255,255,255,0.12);animation-duration:26s;animation-delay:-13s;--dx:17px"></div>
+    <div class="hp" style="left:19%;bottom:0;width:2px;height:2px;background:rgba(251,191,36,0.48);animation-duration:13s;animation-delay:-19s;--dx:-24px"></div>
+    <div class="hp" style="left:46%;bottom:0;width:3px;height:3px;background:rgba(255,255,255,0.34);animation-duration:18s;animation-delay:-15s;--dx:7px"></div>
+    <div class="hp" style="left:63%;bottom:0;width:2px;height:2px;background:rgba(13,148,136,0.48);animation-duration:21s;animation-delay:-9s;--dx:-17px"></div>
+    <div class="hp" style="left:76%;bottom:0;width:4px;height:4px;background:rgba(255,255,255,0.22);animation-duration:16s;animation-delay:-3s;--dx:12px"></div>
+    <div class="hp" style="left:89%;bottom:0;width:2px;height:2px;background:rgba(251,191,36,0.52);animation-duration:14s;animation-delay:-8s;--dx:-15px"></div>
+  </div>
   <div class="hero">
     <div>
       <div class="hero-tag"><svg width="14" height="14" viewBox="0 0 24 24" fill="#FDE68A" style="flex-shrink:0"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg> Trusted by 500+ Families Across Pakistan</div>
@@ -703,46 +830,77 @@ nav.scrolled{box-shadow:0 4px 28px rgba(0,0,0,0.11)!important}
 <!-- ===== PROGRAMS ===== -->
 <section style="background:var(--bg)">
   <div class="sec-inner">
-    <span class="sec-tag tag-orange"><svg width="13" height="13" viewBox="0 0 24 24" fill="#c2410c"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg> Our Programs</span>
-    <h2 class="sec-title">Programs Built Around Your Child</h2>
-    <p class="sec-sub">Every program is personalized — because no two children are the same. We combine school and therapy under one loving roof.</p>
+    <span class="sec-tag tag-orange"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#c2410c" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg> What We Offer</span>
+    <h2 class="sec-title">Our Specialized Programs</h2>
+    <p class="sec-sub">We offer a comprehensive range of therapy and educational services, each tailored to your child's unique needs and learning style.</p>
     <div class="prog-grid">
-      <div class="prog-card pc-orange">
-        <div class="icon-3d c-orange" style="margin-bottom:0.9rem;width:46px;height:46px"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg></div>
-        <h3>Special Education</h3>
-        <p>Individualized learning plans with small class sizes and trained educators who understand every learning style.</p>
-        <span class="prog-tag" style="background:#FFF7ED;color:#c2410c">Ages 2–20</span>
+
+      <div class="prog-card">
+        <div class="prog-card-img">
+          <img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=600&h=300&auto=format&fit=crop&q=80" alt="Special Education classroom" loading="lazy"/>
+        </div>
+        <div class="prog-card-body">
+          <h3>Special Education</h3>
+          <p>Our certified special educators design individualized education programs (IEPs) that meet each child where they are and guide them forward with patience, creativity, and proven strategies.</p>
+          <a href="programs.html" class="prog-discover">Discover Program <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+        </div>
       </div>
-      <div class="prog-card pc-purple">
-        <div class="icon-3d c-purple" style="margin-bottom:0.9rem;width:46px;height:46px"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg></div>
-        <h3>Speech Therapy</h3>
-        <p>Expert speech-language pathologists helping children communicate, build vocabulary, and gain confidence.</p>
-        <span class="prog-tag" style="background:#F5F3FF;color:#5b21b6">1-on-1 & Group</span>
+
+      <div class="prog-card">
+        <div class="prog-card-img">
+          <img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=600&h=300&auto=format&fit=crop&q=80" alt="Speech Therapy session" loading="lazy"/>
+        </div>
+        <div class="prog-card-body">
+          <h3>Speech Therapy</h3>
+          <p>Our licensed speech-language pathologists work closely with children to improve articulation, language comprehension, social communication, and overall speech fluency through play-based sessions.</p>
+          <a href="programs.html" class="prog-discover">Discover Program <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+        </div>
       </div>
-      <div class="prog-card pc-teal">
-        <div class="icon-3d c-teal" style="margin-bottom:0.9rem;width:46px;height:46px"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96-.44 2.5 2.5 0 0 1-2.96-3.08 3 3 0 0 1-.34-5.58 2.5 2.5 0 0 1 1.32-4.24 2.5 2.5 0 0 1 1.98-3A2.5 2.5 0 0 1 9.5 2Z"/><path d="M14.5 2A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96-.44 2.5 2.5 0 0 0 2.96-3.08 3 3 0 0 0 .34-5.58 2.5 2.5 0 0 0-1.32-4.24 2.5 2.5 0 0 0-1.98-3A2.5 2.5 0 0 0 14.5 2Z"/></svg></div>
-        <h3>ABA Therapy</h3>
-        <p>Applied Behavior Analysis using proven methods to build social, communication, and daily living skills.</p>
-        <span class="prog-tag" style="background:#F0FDFA;color:#0f766e">Evidence-Based</span>
+
+      <div class="prog-card">
+        <div class="prog-card-img">
+          <img src="https://images.unsplash.com/photo-1587614382346-4ec70e388b28?w=600&h=300&auto=format&fit=crop&q=80" alt="ABA Therapy session" loading="lazy"/>
+        </div>
+        <div class="prog-card-body">
+          <h3>ABA Therapy</h3>
+          <p>Applied Behavior Analysis at NEST uses structured, evidence-based techniques to build positive behaviors, reduce challenges, and develop meaningful life skills for children on the autism spectrum.</p>
+          <a href="programs.html" class="prog-discover">Discover Program <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+        </div>
       </div>
-      <div class="prog-card pc-pink">
-        <div class="icon-3d c-pink" style="margin-bottom:0.9rem;width:46px;height:46px"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 11V6a2 2 0 0 0-2-2a2 2 0 0 0-2 2"/><path d="M14 10V4a2 2 0 0 0-2-2a2 2 0 0 0-2 2v2"/><path d="M10 10.5V6a2 2 0 0 0-2-2a2 2 0 0 0-2 2v8"/><path d="M18 8a2 2 0 1 1 4 0v6a8 8 0 0 1-8 8h-2c-2.8 0-4.5-.86-5.99-2.34l-3.6-3.6a2 2 0 0 1 2.83-2.82L7 15"/></svg></div>
-        <h3>Occupational Therapy</h3>
-        <p>Sensory integration, fine motor skills, and life skills training to help children become independent.</p>
-        <span class="prog-tag" style="background:#FDF2F8;color:#be185d">Sensory Focus</span>
+
+      <div class="prog-card">
+        <div class="prog-card-img">
+          <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=600&h=300&auto=format&fit=crop&q=80" alt="Occupational Therapy" loading="lazy"/>
+        </div>
+        <div class="prog-card-body">
+          <h3>Occupational Therapy</h3>
+          <p>Sensory integration, fine motor skills, and daily life skills training to help children gain independence and participate fully in school and home activities.</p>
+          <a href="programs.html" class="prog-discover">Discover Program <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+        </div>
       </div>
-      <div class="prog-card pc-green">
-        <div class="icon-3d c-green" style="margin-bottom:0.9rem;width:46px;height:46px"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="13" cy="4" r="2"/><path d="m7 22 3-6 2 2 3-5 4 9"/><path d="M5 12s2.3-1 5.8.4c3.6 1.4 5.2-1.4 5.2-1.4"/></svg></div>
-        <h3>Physical Therapy</h3>
-        <p>Fun, child-friendly exercises to improve mobility, balance, strength, and physical development.</p>
-        <span class="prog-tag" style="background:#F0FDF4;color:#166534">Play-Based</span>
+
+      <div class="prog-card">
+        <div class="prog-card-img">
+          <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=600&h=300&auto=format&fit=crop&q=80" alt="Physical Therapy" loading="lazy"/>
+        </div>
+        <div class="prog-card-body">
+          <h3>Physical Therapy</h3>
+          <p>Fun, child-friendly exercises designed to improve mobility, balance, strength, and coordination — helping every child move through the world with confidence and ease.</p>
+          <a href="programs.html" class="prog-discover">Discover Program <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+        </div>
       </div>
-      <div class="prog-card pc-blue">
-        <div class="icon-3d c-blue" style="margin-bottom:0.9rem;width:46px;height:46px"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
-        <h3>Family Support</h3>
-        <p>Workshops, counseling, and guidance for families to actively support their child's growth at home.</p>
-        <span class="prog-tag" style="background:#EFF6FF;color:#1d4ed8">For Parents</span>
+
+      <div class="prog-card">
+        <div class="prog-card-img">
+          <img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=600&h=300&auto=format&fit=crop&q=80" alt="Family Support program" loading="lazy"/>
+        </div>
+        <div class="prog-card-body">
+          <h3>Family Support</h3>
+          <p>Workshops, counseling, and hands-on guidance for families — because your involvement is the most powerful therapy of all. We walk this journey together, every step of the way.</p>
+          <a href="programs.html" class="prog-discover">Discover Program <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+        </div>
       </div>
+
     </div>
   </div>
 </section>
@@ -898,13 +1056,147 @@ nav.scrolled{box-shadow:0 4px 28px rgba(0,0,0,0.11)!important}
   </div>
 </section>
 
+<!-- ===== TEAM ===== -->
+<section class="team-sec">
+  <div class="sec-inner">
+    <span class="sec-tag tag-orange">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#c2410c" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+      Our Specialists
+    </span>
+    <h2 class="sec-title">Meet Our Dedicated Team</h2>
+    <p class="sec-sub">Our therapists and educators bring heart, skill, and expertise to every session. Each one is passionate about helping your child succeed.</p>
+
+    <div class="team-slider-wrap">
+      <div class="team-track-clip">
+        <div class="team-track" id="team-track">
+
+          <div class="team-slide"><div class="team-card">
+            <div class="team-avatar-wrap"><div class="team-avatar-inner">
+              <picture><source srcset="images/team/hina-haroon.avif" type="image/avif"/><img class="team-avatar" src="images/team/hina-haroon.jpeg" alt="Hina Haroon" loading="lazy"/></picture>
+            </div></div>
+            <h3 class="team-name">Hina Haroon</h3>
+            <p class="team-role">CEO</p>
+            <p class="team-creds">PhD Child Psychology &middot; 18 yrs experience &middot; Certified ABA Analyst</p>
+            <div class="team-divider"></div>
+            <div class="team-socials">
+              <a href="#" class="team-soc" aria-label="LinkedIn"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a>
+              <a href="#" class="team-soc" aria-label="Email"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></a>
+              <a href="about.html" class="team-soc" aria-label="Profile"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></a>
+            </div>
+          </div></div>
+
+          <div class="team-slide"><div class="team-card">
+            <div class="team-avatar-wrap"><div class="team-avatar-inner">
+              <picture><source srcset="images/team/summaira-tariq.avif" type="image/avif"/><img class="team-avatar" src="images/team/summaira-tariq.jpeg" alt="Summaira Tariq" loading="lazy"/></picture>
+            </div></div>
+            <h3 class="team-name">Summaira Tariq</h3>
+            <p class="team-role">Director &amp; Administration</p>
+            <p class="team-creds">M.Sc. Speech-Language Pathology &middot; 12 yrs experience &middot; AAC Specialist</p>
+            <div class="team-divider"></div>
+            <div class="team-socials">
+              <a href="#" class="team-soc" aria-label="LinkedIn"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a>
+              <a href="#" class="team-soc" aria-label="Email"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></a>
+              <a href="about.html" class="team-soc" aria-label="Profile"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></a>
+            </div>
+          </div></div>
+
+          <div class="team-slide"><div class="team-card">
+            <div class="team-avatar-wrap"><div class="team-avatar-inner">
+              <picture><source srcset="images/team/sidra-simaab.avif" type="image/avif"/><img class="team-avatar" src="images/team/sidra-simaab.jpeg" alt="Sidra Simaab" loading="lazy"/></picture>
+            </div></div>
+            <h3 class="team-name">Sidra Simaab</h3>
+            <p class="team-role">Director &amp; Behavior Therapist</p>
+            <p class="team-creds">B.Sc. OT &middot; Sensory Integration Cert. &middot; 10 yrs experience</p>
+            <div class="team-divider"></div>
+            <div class="team-socials">
+              <a href="#" class="team-soc" aria-label="LinkedIn"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a>
+              <a href="#" class="team-soc" aria-label="Email"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></a>
+              <a href="about.html" class="team-soc" aria-label="Profile"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></a>
+            </div>
+          </div></div>
+
+          <div class="team-slide"><div class="team-card">
+            <div class="team-avatar-wrap"><div class="team-avatar-inner">
+              <picture><source srcset="images/team/harmain-fatima.avif" type="image/avif"/><img class="team-avatar" src="images/team/harmain-fatima.jpeg" alt="Harmain Fatima" loading="lazy"/></picture>
+            </div></div>
+            <h3 class="team-name">Harmain Fatima</h3>
+            <p class="team-role">Speech Therapist</p>
+            <p class="team-creds">M.Ed. Special Education &middot; IEP Specialist &middot; 14 yrs experience</p>
+            <div class="team-divider"></div>
+            <div class="team-socials">
+              <a href="#" class="team-soc" aria-label="LinkedIn"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a>
+              <a href="#" class="team-soc" aria-label="Email"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></a>
+              <a href="about.html" class="team-soc" aria-label="Profile"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></a>
+            </div>
+          </div></div>
+
+          <div class="team-slide"><div class="team-card">
+            <div class="team-avatar-wrap"><div class="team-avatar-inner">
+              <picture><source srcset="images/team/hajra-abbasi.avif" type="image/avif"/><img class="team-avatar" src="images/team/hajra-abbasi.jpeg" alt="Hajra Abbasi" loading="lazy"/></picture>
+            </div></div>
+            <h3 class="team-name">Hajra Abbasi</h3>
+            <p class="team-role">Teacher</p>
+            <p class="team-creds">M.Phil Applied Behavior Analysis &middot; BCBA Certified &middot; 9 yrs experience</p>
+            <div class="team-divider"></div>
+            <div class="team-socials">
+              <a href="#" class="team-soc" aria-label="LinkedIn"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a>
+              <a href="#" class="team-soc" aria-label="Email"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></a>
+              <a href="about.html" class="team-soc" aria-label="Profile"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></a>
+            </div>
+          </div></div>
+
+          <div class="team-slide"><div class="team-card">
+            <div class="team-avatar-wrap"><div class="team-avatar-inner">
+              <picture><source srcset="images/team/sana-waheed.avif" type="image/avif"/><img class="team-avatar" src="images/team/sana-waheed.jpeg" alt="Sana Waheed" loading="lazy"/></picture>
+            </div></div>
+            <h3 class="team-name">Sana Waheed</h3>
+            <p class="team-role">Physiotherapist &amp; Occupational Therapist</p>
+            <p class="team-creds">DPT &middot; Pediatric Rehabilitation Cert. &middot; 11 yrs experience</p>
+            <div class="team-divider"></div>
+            <div class="team-socials">
+              <a href="#" class="team-soc" aria-label="LinkedIn"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a>
+              <a href="#" class="team-soc" aria-label="Email"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></a>
+              <a href="about.html" class="team-soc" aria-label="Profile"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></a>
+            </div>
+          </div></div>
+
+          <div class="team-slide"><div class="team-card">
+            <div class="team-avatar-wrap"><div class="team-avatar-inner">
+              <picture><source srcset="images/team/wajeeha-majid.avif" type="image/avif"/><img class="team-avatar" src="images/team/wajeeha-majid.jpeg" alt="Wajeeha Majid" loading="lazy"/></picture>
+            </div></div>
+            <h3 class="team-name">Wajeeha Majid</h3>
+            <p class="team-role">Special Educator</p>
+            <p class="team-creds">M.Phil Child Psychology &middot; CBT Specialist &middot; 8 yrs experience</p>
+            <div class="team-divider"></div>
+            <div class="team-socials">
+              <a href="#" class="team-soc" aria-label="LinkedIn"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a>
+              <a href="#" class="team-soc" aria-label="Email"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></a>
+              <a href="about.html" class="team-soc" aria-label="Profile"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></a>
+            </div>
+          </div></div>
+
+        </div><!-- /team-track -->
+      </div><!-- /team-track-clip -->
+
+      <div class="team-controls">
+        <button class="team-arrow" id="team-prev" aria-label="Previous">&#8592;</button>
+        <div class="team-dots" id="team-dots"></div>
+        <button class="team-arrow" id="team-next" aria-label="Next">&#8594;</button>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ===== CTA ===== -->
 <section class="cta-sec">
-  <div class="sec-inner" style="text-align:center;max-width:700px;margin:0 auto">
-    <span class="cta-icon"><svg width="52" height="52" viewBox="0 0 24 24" fill="rgba(255,230,50,0.85)" stroke="rgba(255,255,255,0.5)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></span>
+  <div class="cta-blob cta-blob-1"></div>
+  <div class="cta-blob cta-blob-2"></div>
+  <div class="cta-blob cta-blob-3"></div>
+  <div class="cta-blob cta-blob-4"></div>
+  <div class="sec-inner" style="text-align:center;max-width:700px;margin:0 auto;position:relative;z-index:1">
     <span class="cta-tag"><svg width="13" height="13" viewBox="0 0 24 24" fill="#FDE68A"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg> Get Started Today</span>
-    <h2 class="cta-title">Your Child's Bright Future Begins Here</h2>
-    <p class="cta-sub">Take the first step. Our caring team is ready to listen, understand, and create the perfect path for your child's unique journey.</p>
+    <h2 class="cta-title">Ready to Give Your Child the Best Start?</h2>
+    <p class="cta-sub">Book a free 30-minute assessment with one of our specialists today. No waiting lists, no complicated process — just a warm conversation about your child's future.</p>
     <div class="cta-btns">
       <a href="#" onclick="openEnrollModal();return false;" class="btn-cta-main"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><rect x="8" y="2" width="8" height="4" rx="1" ry="1"/></svg> Schedule Free Assessment</a>
       <a href="contact.html" class="btn-cta-out"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.42 2 2 0 0 1 3.6 1.21h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 9a16 16 0 0 0 6.09 6.09l1.95-1.95a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg> Talk to Our Team</a>
@@ -922,7 +1214,19 @@ nav.scrolled{box-shadow:0 4px 28px rgba(0,0,0,0.11)!important}
         <div class="ft-social"><a href="#" style="display:inline-flex;align-items:center;gap:7px;padding:0.45rem 1rem;border-radius:10px;text-decoration:none;font-weight:700;font-size:0.82rem;color:#fff;background:linear-gradient(135deg,#833ab4,#fd1d1d,#fcb045);box-shadow:0 3px 10px rgba(253,29,29,0.3);transition:opacity 0.2s" onmouseover="this.style.opacity=0.85" onmouseout="this.style.opacity=1"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="2" y="2" width="20" height="20" rx="6" stroke="white" stroke-width="2"/><circle cx="12" cy="12" r="4.5" stroke="white" stroke-width="2"/><circle cx="17.5" cy="6.5" r="1.2" fill="white"/></svg></a></div>
       </div>
       <div class="ft-col">
-        <h5>Programs</h5>
+        <h5>Quick Links</h5>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="#">Our Team</a></li>
+          <li><a href="gallery.html">Gallery</a></li>
+          <li><a href="#">Testimonials</a></li>
+          <li><a href="#">Blog &amp; Resources</a></li>
+          <li><a href="contact.html">Contact Us</a></li>
+        </ul>
+      </div>
+      <div class="ft-col">
+        <h5>Our Programs</h5>
         <ul>
           <li><a href="#">Special Education</a></li>
           <li><a href="#">Speech Therapy</a></li>
@@ -930,27 +1234,25 @@ nav.scrolled{box-shadow:0 4px 28px rgba(0,0,0,0.11)!important}
           <li><a href="#">Occupational Therapy</a></li>
           <li><a href="#">Physical Therapy</a></li>
           <li><a href="#">Family Support</a></li>
+          <li><a href="#">Assessment Services</a></li>
         </ul>
       </div>
       <div class="ft-col">
-        <h5>Resources</h5>
-        <ul>
-          <li><a href="#">Parent Guides</a></li>
-          <li><a href="#">Articles & Tips</a></li>
-          <li><a href="#">Free Assessment</a></li>
-          <li><a href="#">Success Stories</a></li>
-          <li><a href="#">FAQ</a></li>
-        </ul>
-      </div>
-      <div class="ft-col">
-        <h5>Company</h5>
-        <ul>
-          <li><a href="#">About NEST</a></li>
-          <li><a href="#">Our Team</a></li>
-          <li><a href="#">Admissions</a></li>
-          <li><a href="gallery.html">Gallery</a></li>
-          <li><a href="#">Contact Us</a></li>
-        </ul>
+        <h5>Contact Us</h5>
+        <div class="ft-contact-items">
+          <div class="ft-contact-item">
+            <span class="ft-contact-icon" style="background:linear-gradient(135deg,#f97316,#ea580c)"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></span>
+            <div><div class="ft-contact-label">Address</div><div class="ft-contact-val">DHA 2, Sector G Islamabad</div></div>
+          </div>
+          <div class="ft-contact-item">
+            <span class="ft-contact-icon" style="background:linear-gradient(135deg,#06b6d4,#0891b2)"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.42 2 2 0 0 1 3.6 1.21h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 9a16 16 0 0 0 6.09 6.09l1.95-1.95a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span>
+            <div><div class="ft-contact-label">Phone</div><div class="ft-contact-val">+92 300 000 0000</div></div>
+          </div>
+          <div class="ft-contact-item">
+            <span class="ft-contact-icon" style="background:linear-gradient(135deg,#22c55e,#16a34a)"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></span>
+            <div><div class="ft-contact-label">Hours</div><div class="ft-contact-val">Mon - Fri 9:00 AM - 3:00 PM</div></div>
+          </div>
+        </div>
       </div>
     </div>
     <div class="ft-bottom">
@@ -990,7 +1292,7 @@ function toggleFaq(el){
   <div class="modal">
     <div class="modal-header">
       <button class="modal-close" onclick="closeEnrollModal()">&#x2715;</button>
-      <span class="modal-icon">&#127775;</span>
+      <span class="modal-icon-3d"><svg width="30" height="30" viewBox="0 0 24 24" fill="rgba(255,218,40,0.95)" stroke="rgba(255,255,255,0.35)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></span>
       <div class="modal-title">NEST Enrollment Form</div>
       <div class="modal-sub-txt">Free assessment &middot; Takes 3 minutes &middot; No commitment</div>
       <div class="modal-steps" id="stepDots">
@@ -1002,7 +1304,7 @@ function toggleFaq(el){
     </div>
     <div class="modal-body">
       <div class="step-panel active" id="step-1">
-        <div class="step-title">&#128118; Child's Information</div>
+        <div class="step-title"><span class="icon-3d sm c-teal"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></span>Child's Information</div>
         <div class="step-desc">Tell us about your child so we can understand their needs.</div>
         <div class="form-row">
           <div class="form-group"><label>Child's First Name <span class="req">*</span></label><input type="text" id="childFirst" placeholder="e.g. Ali" autocomplete="given-name" maxlength="30" minlength="2"/><div class="err-msg">First name: 2–30 letters only</div></div>
@@ -1015,17 +1317,17 @@ function toggleFaq(el){
         <div class="form-group"><label>Primary Diagnosis / Condition <span class="req">*</span></label><select id="childDiag"><option value="">Select condition</option><option>Autism Spectrum Disorder (ASD)</option><option>ADHD</option><option>Down Syndrome</option><option>Cerebral Palsy</option><option>Speech Delay</option><option>Learning Disability</option><option>Sensory Processing Disorder</option><option>Global Developmental Delay</option><option>Not yet diagnosed</option><option>Other</option></select><div class="err-msg">Please select a condition</div></div>
         <div class="form-group"><label>Programs Interested In <span class="req">*</span></label>
           <div class="check-group" id="programsGroup">
-            <label class="check-item" onclick="toggleCheck(this)"><input type="checkbox" value="Special Education"/> &#128218; Special Education</label>
-            <label class="check-item" onclick="toggleCheck(this)"><input type="checkbox" value="Speech Therapy"/> &#128483;&#65039; Speech Therapy</label>
-            <label class="check-item" onclick="toggleCheck(this)"><input type="checkbox" value="ABA Therapy"/> &#129504; ABA Therapy</label>
-            <label class="check-item" onclick="toggleCheck(this)"><input type="checkbox" value="Occupational Therapy"/> &#129330; Occupational Therapy</label>
-            <label class="check-item" onclick="toggleCheck(this)"><input type="checkbox" value="Physical Therapy"/> &#127939; Physical Therapy</label>
-            <label class="check-item" onclick="toggleCheck(this)"><input type="checkbox" value="Family Support"/> &#128106; Family Support</label>
+            <label class="check-item" onclick="toggleCheck(this)"><input type="checkbox" value="Special Education"/><span class="check-label"><span class="icon-3d xs c-teal"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg></span>Special Education</span></label>
+            <label class="check-item" onclick="toggleCheck(this)"><input type="checkbox" value="Speech Therapy"/><span class="check-label"><span class="icon-3d xs c-blue"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg></span>Speech Therapy</span></label>
+            <label class="check-item" onclick="toggleCheck(this)"><input type="checkbox" value="ABA Therapy"/><span class="check-label"><span class="icon-3d xs c-purple"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg></span>ABA Therapy</span></label>
+            <label class="check-item" onclick="toggleCheck(this)"><input type="checkbox" value="Occupational Therapy"/><span class="check-label"><span class="icon-3d xs c-orange"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></span>Occupational Therapy</span></label>
+            <label class="check-item" onclick="toggleCheck(this)"><input type="checkbox" value="Physical Therapy"/><span class="check-label"><span class="icon-3d xs c-green"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></span>Physical Therapy</span></label>
+            <label class="check-item" onclick="toggleCheck(this)"><input type="checkbox" value="Family Support"/><span class="check-label"><span class="icon-3d xs c-pink"><svg width="13" height="13" viewBox="0 0 24 24" fill="rgba(255,255,255,0.9)" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></span>Family Support</span></label>
           </div>
         </div>
       </div>
       <div class="step-panel" id="step-2">
-        <div class="step-title">&#128106; Parent / Guardian Information</div>
+        <div class="step-title"><span class="icon-3d sm c-orange"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></span>Parent / Guardian Information</div>
         <div class="step-desc">We'll use this to reach out and schedule your free assessment.</div>
         <div class="form-row">
           <div class="form-group"><label>Your Full Name <span class="req">*</span></label><input type="text" id="parentName" placeholder="e.g. Sara Ahmed" autocomplete="name" maxlength="50" minlength="3"/><div class="err-msg">Full name: 3–50 letters only</div></div>
@@ -1089,9 +1391,9 @@ function toggleFaq(el){
         </div>
       </div>
       <div class="step-panel" id="step-3">
-        <div class="step-title">&#128197; Schedule Free Assessment</div>
+        <div class="step-title"><span class="icon-3d sm c-blue"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></span>Schedule Free Assessment</div>
         <div class="step-desc">Choose a preferred time for your child's free assessment visit.</div>
-        <div class="info-box"><span>&#128161;</span><p>The free assessment takes 45-60 minutes. Our team will evaluate your child and recommend the best program. No fees, no commitment.</p></div>
+        <div class="info-box"><span class="icon-3d xs c-blue" style="flex-shrink:0"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="2" x2="12" y2="6"/><line x1="12" y1="18" x2="12" y2="22"/><line x1="4.93" y1="4.93" x2="7.76" y2="7.76"/><line x1="16.24" y1="16.24" x2="19.07" y2="19.07"/><line x1="2" y1="12" x2="6" y2="12"/><line x1="18" y1="12" x2="22" y2="12"/><line x1="4.93" y1="19.07" x2="7.76" y2="16.24"/><line x1="16.24" y1="7.76" x2="19.07" y2="4.93"/></svg></span><p>The free assessment takes 45-60 minutes. Our team will evaluate your child and recommend the best program. No fees, no commitment.</p></div>
         <div class="form-row">
           <div class="form-group"><label>Preferred Date <span class="req">*</span></label><input type="date" id="prefDate"/><div class="err-msg">Please select a date</div></div>
           <div class="form-group"><label>Preferred Time Slot <span class="req">*</span></label><select id="prefTime"><option value="">Select time</option><option>9:00 AM - 10:00 AM</option><option>10:00 AM - 11:00 AM</option><option>11:00 AM - 12:00 PM</option><option>2:00 PM - 3:00 PM</option><option>3:00 PM - 4:00 PM</option></select><div class="err-msg">Please select a time slot</div></div>
@@ -1107,12 +1409,12 @@ function toggleFaq(el){
         <div class="form-group"><label>Additional Notes</label><textarea id="notes" placeholder="Anything important we should know about your child..."></textarea></div>
       </div>
       <div class="step-panel" id="step-4">
-        <div class="step-title">&#10003; Review &amp; Submit</div>
+        <div class="step-title"><span class="icon-3d sm c-green"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></span>Review &amp; Submit</div>
         <div class="step-desc">Please review your details before submitting.</div>
         <div class="summary-box" id="summaryBox"></div>
         <div class="form-group">
           <label class="check-item" style="width:100%;border-radius:12px" onclick="toggleCheck(this)" id="consentItem">
-            <input type="checkbox" id="consent"/> I agree that NEST may contact me regarding my child's enrollment and assessment.
+            <input type="checkbox" id="consent"/><span>I agree that NEST may contact me regarding my child's enrollment and assessment.</span>
           </label>
         </div>
       </div>
@@ -1126,8 +1428,8 @@ function toggleFaq(el){
     <div class="modal-footer" id="modalFooter">
       <button class="btn-back" id="btnBack" onclick="prevStep()" style="visibility:hidden">&#8592; Back</button>
       <span class="step-counter" id="stepCounter">Step 1 of 4</span>
-      <button class="btn-fnext" id="btnNext" onclick="nextStep()">Next &#8594;</button>
-      <button class="btn-fsubmit" id="btnSubmit" style="display:none" onclick="submitForm()">Submit Enrollment &#127881;</button>
+      <button class="btn-fnext" id="btnNext" onclick="nextStep()">Next <span class="btn-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span></button>
+      <button class="btn-fsubmit" id="btnSubmit" style="display:none" onclick="submitForm()">Submit Enrollment <span class="btn-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2" fill="white" stroke="none"/></svg></span></button>
     </div>
   </div>
 </div>
@@ -1499,7 +1801,7 @@ document.querySelectorAll('.sec-tag,.sec-title,.sec-sub').forEach(function(el,i)
 document.querySelectorAll('.cta-tag,.cta-title,.cta-sub').forEach(function(el,i){addReveal(el,'animate-fade-up',i%3+1);});
 
 /* Grid children (inline-styled pages: about, gallery, therapies, contact) */
-document.querySelectorAll('.prog-grid,.why-cards,.test-grid,.faq-grid,.hero-icons-grid').forEach(function(g){
+document.querySelectorAll('.prog-grid,.why-cards,.test-grid,.faq-grid,.team-grid,.hero-icons-grid').forEach(function(g){
   Array.from(g.children).forEach(function(child,i){addReveal(child,'animate-fade-up',i%6+1);});
 });
 
@@ -1674,6 +1976,98 @@ document.querySelectorAll('.ribbon-item').forEach(function(el,i){
   recalcSlides();
   buildDots();
   resetProgress();
+  startAuto();
+})();
+
+/* ── Team Slider ─────────────────────────────────────── */
+(function(){
+  var track   = document.getElementById('team-track');
+  if(!track) return;
+  var prevBtn = document.getElementById('team-prev');
+  var nextBtn = document.getElementById('team-next');
+  var dotsWrap= document.getElementById('team-dots');
+  var slides  = track.querySelectorAll('.team-slide');
+  var total   = slides.length;
+  var current = 0;
+  var AUTO_MS = 4800;
+  var autoTimer;
+
+  function visibleCount(){
+    var w = track.parentElement.offsetWidth;
+    return w >= 1024 ? 4 : w >= 640 ? 2 : 1;
+  }
+  function slideWidth(){
+    return Math.floor(track.parentElement.offsetWidth / visibleCount());
+  }
+  function recalcSlides(){
+    var vis = visibleCount();
+    var sw  = Math.floor(track.parentElement.offsetWidth / vis) - 16;
+    slides.forEach(function(s){
+      s.style.width    = sw + 'px';
+      s.style.minWidth = sw + 'px';
+    });
+    var maxH = 0;
+    slides.forEach(function(s){ maxH = Math.max(maxH, s.firstElementChild.scrollHeight); });
+    slides.forEach(function(s){ s.firstElementChild.style.minHeight = maxH + 'px'; });
+  }
+  function buildDots(){
+    if(!dotsWrap) return;
+    dotsWrap.innerHTML = '';
+    var pages = Math.max(1, total - visibleCount() + 1);
+    for(var i = 0; i < pages; i++){
+      (function(idx){
+        var d = document.createElement('button');
+        d.className = 'team-dot' + (idx === 0 ? ' active' : '');
+        d.setAttribute('aria-label', 'Go to slide ' + (idx + 1));
+        d.addEventListener('click', function(){ stopAuto(); goTo(idx); startAuto(); });
+        dotsWrap.appendChild(d);
+      })(i);
+    }
+  }
+  function updateDots(){
+    if(!dotsWrap) return;
+    var dots = dotsWrap.querySelectorAll('.team-dot');
+    dots.forEach(function(d, i){ d.classList.toggle('active', i === current); });
+  }
+  function goTo(idx){
+    var maxIdx = Math.max(0, total - visibleCount());
+    current = Math.max(0, Math.min(idx, maxIdx));
+    track.style.transform = 'translateX(-' + (current * slideWidth()) + 'px)';
+    updateDots();
+  }
+  function startAuto(){
+    autoTimer = setInterval(function(){
+      var maxIdx = Math.max(0, total - visibleCount());
+      goTo(current < maxIdx ? current + 1 : 0);
+    }, AUTO_MS);
+  }
+  function stopAuto(){ clearInterval(autoTimer); }
+
+  if(prevBtn) prevBtn.addEventListener('click', function(){ stopAuto(); goTo(current - 1); startAuto(); });
+  if(nextBtn) nextBtn.addEventListener('click', function(){ stopAuto(); goTo(current + 1); startAuto(); });
+
+  /* Touch / swipe */
+  var tsX = 0;
+  track.addEventListener('touchstart', function(e){ tsX = e.touches[0].clientX; }, {passive:true});
+  track.addEventListener('touchend',   function(e){
+    var dx = e.changedTouches[0].clientX - tsX;
+    if(Math.abs(dx) > 40){ stopAuto(); goTo(dx < 0 ? current + 1 : current - 1); startAuto(); }
+  }, {passive:true});
+
+  /* Pause on hover */
+  track.parentElement.addEventListener('mouseenter', stopAuto);
+  track.parentElement.addEventListener('mouseleave', startAuto);
+
+  /* Resize */
+  var resizeTimer;
+  window.addEventListener('resize', function(){
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(function(){ recalcSlides(); buildDots(); goTo(0); }, 200);
+  });
+
+  recalcSlides();
+  buildDots();
+  goTo(0);
   startAuto();
 })();
 </script>
