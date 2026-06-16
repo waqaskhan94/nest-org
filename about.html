@@ -100,40 +100,49 @@ nav{
 
 /* ===== ABOUT HERO ANIMATED ===== */
 .about-hero-wrap{
-  position:relative;overflow:hidden;padding:5.5rem 2.5rem 6rem;text-align:center;
-  background:url('https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=1600&auto=format&fit=crop&q=85') center/cover no-repeat #071e2a;
+  position:relative;overflow:hidden;
+  min-height:640px;display:flex;align-items:center;justify-content:center;
+  padding:7rem 2.5rem 7.5rem;text-align:center;background:#071e2a;
 }
-/* dark tinted overlay — photo bleeds through ~10% at edges for depth */
+/* Ken Burns zooming photo layer */
+.ahero-photo-bg{
+  position:absolute;inset:-8%;z-index:0;
+  background:url('https://images.unsplash.com/photo-1576765608535-5f04d1e3f289?w=1800&auto=format&fit=crop&q=88') center 38%/cover no-repeat;
+  animation:aheroZoom 26s ease-in-out infinite alternate;
+  will-change:transform;
+}
+@keyframes aheroZoom{0%{transform:scale(1) translateY(0)}100%{transform:scale(1.10) translateY(-2%)}}
+/* dark tinted overlay — ~82% opacity so photo breathes through */
 .about-hero-wrap::before{
-  content:'';position:absolute;inset:0;z-index:0;pointer-events:none;
-  background:
-    radial-gradient(ellipse 52% 46% at 88% 8%,rgba(249,115,22,0.22) 0%,transparent 68%),
-    radial-gradient(ellipse 58% 52% at 6% 74%,rgba(13,148,136,0.24) 0%,transparent 64%),
-    radial-gradient(ellipse 42% 36% at 94% 90%,rgba(236,72,153,0.14) 0%,transparent 58%),
-    radial-gradient(ellipse 68% 58% at 46% 44%,rgba(22,97,120,0.32) 0%,transparent 78%),
-    linear-gradient(155deg,rgba(4,18,28,0.93) 0%,rgba(7,30,42,0.91) 38%,rgba(10,44,64,0.90) 70%,rgba(6,24,36,0.94) 100%)}
-/* film grain on top */
-.about-hero-wrap::after{
   content:'';position:absolute;inset:0;z-index:1;pointer-events:none;
+  background:
+    radial-gradient(ellipse 52% 46% at 88% 8%,rgba(249,115,22,0.26) 0%,transparent 65%),
+    radial-gradient(ellipse 58% 52% at 6% 76%,rgba(13,148,136,0.28) 0%,transparent 62%),
+    radial-gradient(ellipse 42% 36% at 94% 90%,rgba(236,72,153,0.16) 0%,transparent 56%),
+    radial-gradient(ellipse 68% 58% at 46% 44%,rgba(22,97,120,0.22) 0%,transparent 76%),
+    linear-gradient(155deg,rgba(4,18,28,0.87) 0%,rgba(7,30,42,0.82) 40%,rgba(10,44,64,0.80) 68%,rgba(6,24,36,0.88) 100%)}
+/* film grain */
+.about-hero-wrap::after{
+  content:'';position:absolute;inset:0;z-index:2;pointer-events:none;
   background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.72' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
   opacity:0.05}
-.ahero-bokeh{position:absolute;border-radius:50%;pointer-events:none;filter:blur(80px);z-index:2}
-.ahero-b1{width:400px;height:400px;background:rgba(249,115,22,0.14);top:-140px;right:3%}
-.ahero-b2{width:340px;height:340px;background:rgba(13,148,136,0.17);bottom:-100px;left:1%}
-.ahero-b3{width:280px;height:280px;background:rgba(251,191,36,0.10);top:22%;right:0%}
-.ahero-b4{width:320px;height:320px;background:rgba(22,97,120,0.24);top:10%;left:16%}
-@keyframes aheroFloat{0%,100%{transform:translateY(0) rotate(var(--r,0deg))}50%{transform:translateY(-14px) rotate(var(--r,0deg))}}
-@keyframes aheroFloatD{0%,100%{transform:translateY(0) rotate(var(--r,0deg))}50%{transform:translateY(12px) rotate(var(--r,0deg))}}
-.ahero-deco{position:absolute;pointer-events:none;z-index:3;opacity:var(--op,0.18);animation:var(--anim,aheroFloat) var(--dur,6s) ease-in-out infinite;animation-delay:var(--delay,0s);--r:0deg}
+.ahero-bokeh{position:absolute;border-radius:50%;pointer-events:none;filter:blur(88px);z-index:3}
+.ahero-b1{width:440px;height:440px;background:rgba(249,115,22,0.16);top:-150px;right:2%}
+.ahero-b2{width:380px;height:380px;background:rgba(13,148,136,0.18);bottom:-110px;left:0%}
+.ahero-b3{width:300px;height:300px;background:rgba(251,191,36,0.11);top:20%;right:0%}
+.ahero-b4{width:360px;height:360px;background:rgba(22,97,120,0.20);top:8%;left:14%}
+@keyframes aheroFloat{0%,100%{transform:translateY(0) rotate(var(--r,0deg))}50%{transform:translateY(-16px) rotate(var(--r,0deg))}}
+@keyframes aheroFloatD{0%,100%{transform:translateY(0) rotate(var(--r,0deg))}50%{transform:translateY(13px) rotate(var(--r,0deg))}}
+.ahero-deco{position:absolute;pointer-events:none;z-index:4;opacity:var(--op,0.18);animation:var(--anim,aheroFloat) var(--dur,6s) ease-in-out infinite;animation-delay:var(--delay,0s);--r:0deg}
 .ahero-deco svg{display:block;width:var(--sz,56px);height:var(--sz,56px)}
-.ahero-d1{top:12%;left:3.5%;--sz:72px;--r:-20deg;--op:0.20;--dur:7.5s;--delay:0s}
-.ahero-d2{top:8%;right:5%;--sz:64px;--r:15deg;--op:0.17;--dur:8.8s;--delay:-2s;--anim:aheroFloatD}
-.ahero-d3{bottom:22%;left:6%;--sz:50px;--r:8deg;--op:0.22;--dur:6.4s;--delay:-1s}
-.ahero-d4{top:42%;right:3.5%;--sz:80px;--r:36deg;--op:0.13;--dur:9.6s;--delay:-3.5s;--anim:aheroFloatD}
-.ahero-d5{bottom:11%;right:8%;--sz:56px;--r:-12deg;--op:0.18;--dur:8.2s;--delay:-0.5s}
-.ahero-d6{top:60%;left:2%;--sz:44px;--r:0deg;--op:0.20;--dur:5.6s;--delay:-4s}
-.ahero-inner{position:relative;z-index:4;max-width:700px;margin:0 auto}
-@media(max-width:768px){.ahero-d1,.ahero-d2,.ahero-d4{display:none}.about-hero-wrap{padding:4.5rem 1.5rem 5rem}}
+.ahero-d1{top:11%;left:3%;--sz:74px;--r:-22deg;--op:0.22;--dur:7.5s;--delay:0s}
+.ahero-d2{top:7%;right:4.5%;--sz:66px;--r:16deg;--op:0.18;--dur:8.8s;--delay:-2s;--anim:aheroFloatD}
+.ahero-d3{bottom:20%;left:5.5%;--sz:52px;--r:8deg;--op:0.24;--dur:6.4s;--delay:-1s}
+.ahero-d4{top:40%;right:3%;--sz:84px;--r:36deg;--op:0.14;--dur:9.6s;--delay:-3.5s;--anim:aheroFloatD}
+.ahero-d5{bottom:10%;right:7.5%;--sz:58px;--r:-12deg;--op:0.20;--dur:8.2s;--delay:-0.5s}
+.ahero-d6{top:58%;left:1.5%;--sz:46px;--r:0deg;--op:0.22;--dur:5.6s;--delay:-4s}
+.ahero-inner{position:relative;z-index:5;max-width:700px;margin:0 auto;width:100%}
+@media(max-width:768px){.ahero-d1,.ahero-d2,.ahero-d4{display:none}.about-hero-wrap{padding:5rem 1.5rem 5.5rem;min-height:480px}}
 
 /* ===== RIBBON ===== */
 .ribbon{background:var(--white);border-bottom:2px solid var(--border);padding:1rem 2.5rem}
@@ -661,6 +670,8 @@ nav.scrolled{box-shadow:0 4px 28px rgba(0,0,0,0.11)!important}
 </div>
 
 <div class="about-hero-wrap">
+  <!-- Ken Burns therapy photo background -->
+  <div class="ahero-photo-bg"></div>
   <!-- bokeh lights -->
   <div class="ahero-bokeh ahero-b1"></div>
   <div class="ahero-bokeh ahero-b2"></div>
