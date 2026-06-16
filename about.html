@@ -366,6 +366,20 @@ footer{background:#0e4050;color:rgba(255,255,255,0.65);padding:3.5rem 2.5rem 2re
 .step-desc,.step-desc *{font-size:0.88rem;line-height:1.7;color:#6b7280!important;background:none!important;-webkit-text-fill-color:#6b7280!important;background-clip:border-box!important;-webkit-background-clip:border-box!important}
 @media(max-width:1024px){.approach-inner{grid-template-columns:1fr;gap:2.5rem}.approach-section{padding:4rem 1.5rem}.approach-img{max-height:380px}}
 @media(max-width:540px){.approach-section{padding:3rem 1.2rem}.approach-title{font-size:2rem}}
+/* ===== TEAM CTA SECTION ===== */
+.team-cta{position:relative;overflow:hidden;background:linear-gradient(135deg,#0b3544 0%,#166178 55%,#1a8a9e 100%);padding:5.5rem 2.5rem;text-align:center}
+.team-cta::before{content:'';position:absolute;left:-160px;top:50%;transform:translateY(-50%);width:520px;height:520px;border-radius:50%;background:rgba(255,255,255,0.05);pointer-events:none}
+.team-cta::after{content:'';position:absolute;right:-100px;bottom:-120px;width:340px;height:340px;border-radius:50%;background:rgba(255,255,255,0.04);pointer-events:none}
+.team-cta-inner{position:relative;z-index:1;max-width:640px;margin:0 auto}
+.team-cta-tag{display:inline-flex;align-items:center;gap:7px;background:rgba(255,255,255,0.1);color:#fff;border:1.5px solid rgba(255,255,255,0.25);padding:0.35rem 1rem;border-radius:100px;font-size:0.73rem;font-weight:800;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:1.4rem}
+.team-cta-title{font-family:'Quicksand',sans-serif;font-size:2.8rem;font-weight:800;color:#fff;line-height:1.15;margin-bottom:1rem;letter-spacing:-0.01em}
+.team-cta-sub{color:rgba(255,255,255,0.75);font-size:1rem;line-height:1.75;margin-bottom:2.2rem}
+.team-cta-btns{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
+.btn-cta-primary{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,#F97316,#EA580C);color:#fff;font-family:'Quicksand',sans-serif;font-weight:800;font-size:0.95rem;padding:0.85rem 1.8rem;border-radius:100px;text-decoration:none;border:none;cursor:pointer;box-shadow:0 6px 24px rgba(249,115,22,0.45);transition:transform 0.25s cubic-bezier(0.34,1.56,0.64,1),box-shadow 0.25s ease}
+.btn-cta-primary:hover{transform:translateY(-3px);box-shadow:0 12px 32px rgba(249,115,22,0.55)}
+.btn-cta-outline{display:inline-flex;align-items:center;gap:8px;background:transparent;color:#fff;font-family:'Quicksand',sans-serif;font-weight:800;font-size:0.95rem;padding:0.85rem 1.8rem;border-radius:100px;text-decoration:none;border:2px solid rgba(255,255,255,0.5);cursor:pointer;transition:background 0.22s ease,border-color 0.22s ease}
+.btn-cta-outline:hover{background:rgba(255,255,255,0.1);border-color:rgba(255,255,255,0.8)}
+@media(max-width:540px){.team-cta{padding:4rem 1.5rem}.team-cta-title{font-size:2rem}.team-cta-btns{flex-direction:column;align-items:center}}
 /* ===== ENROLLMENT MODAL ===== */
 .modal-overlay{display:none;position:fixed;inset:0;background:rgba(22,97,120,0.55);z-index:9999;align-items:flex-start;justify-content:center;padding:0.5rem;backdrop-filter:blur(3px);overflow-y:auto}
 .modal-overlay.open{display:flex}
@@ -839,6 +853,25 @@ nav.scrolled{box-shadow:0 4px 28px rgba(0,0,0,0.11)!important}
       </div>
     </div>
 
+  </div>
+</section>
+
+<!-- ===== TEAM CTA SECTION ===== -->
+<section class="team-cta">
+  <div class="team-cta-inner">
+    <div class="team-cta-tag">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="#FBBF24" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+      Free Consultation Available
+    </div>
+    <h2 class="team-cta-title">Ready to Meet Our Team?</h2>
+    <p class="team-cta-sub">Book a free 30-minute consultation with our Clinical Director. We'll review your child's needs, answer every question, and help you take the first confident step forward.</p>
+    <div class="team-cta-btns">
+      <a href="#" class="btn-cta-primary" onclick="openEnrollModal();return false;">
+        Book Free Consultation
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </a>
+      <a href="programs.html" class="btn-cta-outline">Explore Our Programs</a>
+    </div>
   </div>
 </section>
 
