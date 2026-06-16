@@ -298,6 +298,105 @@ footer{background:#0e4050;color:rgba(255,255,255,0.65);padding:3.5rem 2.5rem 2re
 .ft-bottom-links a:hover{color:#fff}
 .heart{display:inline-block}
 
+/* ===== ICON-3D ===== */
+.icon-3d{border-radius:12px;display:flex;align-items:center;justify-content:center;flex-shrink:0;position:relative;overflow:hidden}
+.icon-3d::after{content:'';position:absolute;top:0;left:0;right:0;height:50%;background:rgba(255,255,255,0.18);border-radius:12px 12px 40% 40%/8px 8px 4px 4px}
+.icon-3d svg{position:relative;z-index:1}
+.c-teal{background:linear-gradient(145deg,#1a8ca8,#0e5268);box-shadow:0 4px 12px rgba(14,82,104,0.45),inset 0 1px 0 rgba(255,255,255,0.2)}
+.c-orange{background:linear-gradient(145deg,#fb923c,#c2410c);box-shadow:0 4px 12px rgba(249,115,22,0.45),inset 0 1px 0 rgba(255,255,255,0.2)}
+.c-green{background:linear-gradient(145deg,#22c55e,#15803d);box-shadow:0 4px 12px rgba(34,197,94,0.45),inset 0 1px 0 rgba(255,255,255,0.2)}
+.c-purple{background:linear-gradient(145deg,#a855f7,#7e22ce);box-shadow:0 4px 12px rgba(168,85,247,0.45),inset 0 1px 0 rgba(255,255,255,0.2)}
+.c-pink{background:linear-gradient(145deg,#f472b6,#be185d);box-shadow:0 4px 12px rgba(244,114,182,0.45),inset 0 1px 0 rgba(255,255,255,0.2)}
+.c-blue{background:linear-gradient(145deg,#3b82f6,#1d4ed8);box-shadow:0 4px 12px rgba(59,130,246,0.45),inset 0 1px 0 rgba(255,255,255,0.2)}
+.icon-3d.xs{width:26px;height:26px;border-radius:7px;flex-shrink:0;display:inline-flex;align-self:center}
+.icon-3d.xs::after{border-radius:6px 6px 40% 40%/4px 4px 2px 2px}
+.icon-3d.sm{width:34px;height:34px;border-radius:10px;flex-shrink:0}
+.icon-3d.sm::after{border-radius:10px 10px 40% 40%/7px 7px 3px 3px}
+.modal-icon-3d{width:64px;height:64px;border-radius:18px;display:inline-flex;align-items:center;justify-content:center;background:linear-gradient(145deg,rgba(255,255,255,0.24),rgba(255,255,255,0.06));border:1.5px solid rgba(255,255,255,0.22);margin:0 auto 0.75rem;position:relative;overflow:hidden;box-shadow:0 6px 20px rgba(0,0,0,0.18),inset 0 1px 0 rgba(255,255,255,0.25)}
+.modal-icon-3d::after{content:'';position:absolute;top:0;left:0;right:0;height:50%;background:rgba(255,255,255,0.16);border-radius:18px 18px 40% 40%/10px 10px 5px 5px}
+.modal-icon-3d svg{position:relative;z-index:1}
+/* ===== ENROLLMENT MODAL ===== */
+.modal-overlay{display:none;position:fixed;inset:0;background:rgba(22,97,120,0.55);z-index:9999;align-items:flex-start;justify-content:center;padding:0.5rem;backdrop-filter:blur(3px);overflow-y:auto;overflow-x:hidden}
+.modal-overlay.open{display:flex}
+.modal{background:#fff;border-radius:24px;width:100%;max-width:680px;max-height:none;position:relative;box-shadow:0 24px 64px rgba(22,97,120,0.25);animation:slideUp 0.3s ease;display:flex;flex-direction:column}
+@keyframes slideUp{from{transform:translateY(30px);opacity:0}to{transform:translateY(0);opacity:1}}
+.modal-header{background:#166178;padding:2rem 2rem 1.5rem;border-radius:24px 24px 0 0;position:relative;text-align:center}
+.modal-close{position:absolute;top:1rem;right:1rem;width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,0.15);border:none;color:#fff;font-size:1.1rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background 0.2s}
+.modal-close:hover{background:rgba(255,255,255,0.3)}
+.modal-icon{font-size:2.5rem;display:block;margin-bottom:0.5rem}
+.modal-title{font-family:"Fredoka One",cursive;font-size:1.7rem;color:#fff;margin-bottom:0.3rem}
+.modal-sub-txt{color:rgba(255,255,255,0.8);font-size:0.88rem}
+.modal-steps{display:flex;justify-content:center;gap:0.5rem;margin-top:1.2rem}
+.step-dot{width:28px;height:6px;border-radius:3px;background:rgba(255,255,255,0.25);transition:background 0.3s}
+.step-dot.active{background:#FBBF24}.step-dot.done{background:rgba(255,255,255,0.6)}
+.modal-body{padding:2rem;overflow-y:auto;flex:1;max-height:65vh}
+.step-panel{display:none}.step-panel.active{display:block}
+.step-title{font-family:"Fredoka One",cursive;font-size:1.2rem;color:#1a1a2e;margin-bottom:0.3rem;display:flex;align-items:center;gap:10px}
+.step-desc{color:#6b7280;font-size:0.85rem;margin-bottom:1.5rem}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem}
+.form-group{margin-bottom:1rem}
+.form-group label{display:block;font-weight:700;font-size:0.85rem;color:#1a1a2e;margin-bottom:0.4rem}
+.form-group label span.req{color:#DC2626;margin-left:2px}
+.form-group input,.form-group select,.form-group textarea{width:100%;padding:0.7rem 1rem;border:2px solid #d1d5db;border-radius:12px;font-family:"Quicksand",sans-serif;font-size:0.9rem;color:#1a1a2e;background:#fff;transition:border-color 0.2s,box-shadow 0.2s;outline:none}
+.form-group input:focus,.form-group select:focus,.form-group textarea:focus{border-color:#166178;box-shadow:0 0 0 3px rgba(22,97,120,0.1)}
+.form-group input.error,.form-group select.error{border-color:#DC2626}
+.form-group .err-msg{color:#DC2626;font-size:0.78rem;margin-top:4px;display:none}
+.form-group input.error~.err-msg,.form-group select.error~.err-msg{display:block}
+.form-group textarea{resize:vertical;min-height:90px}
+.form-group select{-webkit-appearance:none;appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%236b7280' d='M1 1l5 5 5-5'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 1rem center;padding-right:2.5rem}
+.check-group{display:grid;grid-template-columns:1fr 1fr;gap:0.6rem;margin-top:0.4rem}
+.check-item{display:flex!important;flex-direction:row;flex-wrap:nowrap;align-items:center;gap:14px;padding:0.7rem 1rem;border-radius:10px;border:2px solid #e5e7eb;cursor:pointer;transition:all 0.18s;font-size:0.85rem;font-weight:600;color:#1a1a2e;line-height:1.2}
+.check-item:hover,.check-item.checked{border-color:#166178;background:#F0FDFA}
+.check-item{margin-bottom:0!important}
+.check-item input{width:16px;height:16px;accent-color:#166178;cursor:pointer;flex-shrink:0;align-self:center}
+.check-label{display:flex;align-items:center;gap:8px;flex:1;line-height:1.2}
+#consentItem{display:flex!important;flex-direction:row!important;align-items:flex-start!important;gap:10px!important;margin-bottom:0!important}
+#consentItem input[type="checkbox"]{flex-shrink:0!important;margin-top:3px!important;align-self:flex-start!important}
+#consentItem>span{flex:1!important;min-width:0!important;line-height:1.5!important}
+.radio-group{display:flex;gap:0.75rem;flex-wrap:wrap;margin-top:0.4rem}
+.radio-item{display:flex;align-items:center;gap:0;padding:0.55rem 1.1rem;border-radius:20px;border:2px solid #e5e7eb;cursor:pointer;transition:all 0.18s;font-size:0.85rem;font-weight:600;color:#6b7280;position:relative}
+.radio-item:hover{border-color:#166178}.radio-item.selected{border-color:#166178;background:#F0FDFA;color:#1a1a2e}
+.radio-item input{accent-color:#166178;cursor:pointer;appearance:none;-webkit-appearance:none;width:0;height:0;margin:0;padding:0;opacity:0;position:absolute}
+.info-box{background:#F0FDFA;border:1.5px solid #99f6e4;border-radius:12px;padding:0.9rem 1rem;display:flex;gap:10px;align-items:flex-start;margin-bottom:1.25rem}
+.info-box span{font-size:1.1rem;flex-shrink:0;margin-top:1px}.info-box p{font-size:0.82rem;color:#0f766e;font-weight:600;line-height:1.5}
+.summary-box{background:#FFF8F0;border:2px solid #e5e7eb;border-radius:16px;padding:1.25rem;margin-bottom:1.5rem}
+.summary-title{font-family:"Fredoka One",cursive;font-size:1rem;font-weight:400;color:#1a1a2e;margin-bottom:0.75rem}
+.summary-row{display:flex;justify-content:space-between;align-items:center;padding:0.4rem 0;border-bottom:1px solid #e5e7eb;font-size:0.85rem}
+.summary-row:last-child{border:none}.summary-label{color:#6b7280;font-weight:600}
+.summary-val{color:#1a1a2e;font-weight:700;text-align:right;max-width:60%;word-break:break-word}
+.success-screen{display:none;text-align:center;padding:1.5rem 1rem}.success-screen.show{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:300px}
+.success-icon-big{width:64px;height:64px;background:#166178;color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:2rem;margin:0 auto 1.25rem;animation:bounce2 0.4s ease}
+@keyframes bounce2{0%,100%{transform:scale(1)}50%{transform:scale(1.2)}}
+.success-title2{font-family:"Fredoka One",cursive;font-size:1.4rem;color:#1a1a2e;margin-bottom:0.5rem}
+.success-sub2{color:#6b7280;font-size:0.88rem;line-height:1.6;max-width:320px;margin:0 auto;text-align:center}
+.modal-footer{display:flex;justify-content:space-between;align-items:center;padding:1.1rem 2rem;border-top:2px solid #e5e7eb;background:#FFF8F0;border-radius:0 0 24px 24px;gap:0.75rem;flex-wrap:nowrap;flex-shrink:0;position:sticky;bottom:0;z-index:10}
+.btn-back{background:#fff;color:#6b7280;border:2px solid #e5e7eb;padding:0.65rem 1rem;border-radius:10px;font-family:"Quicksand",sans-serif;font-weight:700;font-size:0.9rem;cursor:pointer;transition:all 0.2s;white-space:nowrap}
+.btn-back:hover{border-color:#1a1a2e;color:#1a1a2e}
+.btn-fnext{background:linear-gradient(135deg,#166178,#0D9488);color:#fff;border:none;padding:0.65rem 1.5rem;border-radius:10px;font-family:"Quicksand",sans-serif;font-weight:800;font-size:0.9rem;cursor:pointer;transition:all 0.2s;display:flex;align-items:center;gap:8px;white-space:nowrap}
+.btn-fnext:hover{transform:translateY(-2px);box-shadow:0 8px 22px rgba(22,97,120,0.38)}
+.btn-fsubmit{background:linear-gradient(135deg,#166178,#0D9488);color:#fff;border:none;padding:0.65rem 1.5rem;border-radius:10px;font-family:"Quicksand",sans-serif;font-weight:800;font-size:0.9rem;cursor:pointer;transition:all 0.25s cubic-bezier(0.4,0,0.2,1);display:flex;align-items:center;gap:8px;white-space:nowrap;box-shadow:0 4px 14px rgba(22,97,120,0.28);animation:btnPulse 2.8s ease-in-out infinite}
+.btn-fsubmit:hover{transform:translateY(-2px);box-shadow:0 10px 28px rgba(22,97,120,0.42);animation:none}
+.btn-icon{width:22px;height:22px;border-radius:6px;background:rgba(255,255,255,0.18);border:1px solid rgba(255,255,255,0.28);display:inline-flex;align-items:center;justify-content:center;flex-shrink:0;position:relative;overflow:hidden}
+.btn-icon::after{content:'';position:absolute;top:0;left:0;right:0;height:50%;background:rgba(255,255,255,0.22);border-radius:6px 6px 40% 40%/4px 4px 2px 2px;pointer-events:none}
+.btn-icon svg{position:relative;z-index:1}
+.step-counter{font-size:0.8rem;color:#6b7280;font-weight:700;white-space:nowrap;flex-shrink:0}
+@media(max-width:600px){
+.modal{border-radius:16px;max-height:94vh;margin:0.5rem;width:calc(100% - 1rem)}
+.modal-header{padding:1.4rem 1.1rem 1.1rem;border-radius:16px 16px 0 0}
+.modal-title{font-size:1.3rem}.modal-sub-txt{font-size:0.8rem}
+.modal-body{padding:1rem 1.1rem}.form-row{grid-template-columns:1fr}.check-group{grid-template-columns:1fr}
+.modal-footer{padding:0.9rem 1.1rem;border-radius:0 0 16px 16px;flex-wrap:nowrap;gap:0.5rem;align-items:center;min-height:60px;overflow:visible}
+.btn-back{padding:0.55rem 0.85rem;font-size:0.8rem;flex-shrink:0;white-space:nowrap;min-width:60px}
+.btn-fnext,.btn-fsubmit{flex:1;justify-content:center;padding:0.6rem 0.75rem;font-size:0.82rem;white-space:nowrap;min-width:0}
+.step-counter{font-size:0.72rem;white-space:nowrap;flex-shrink:0;min-width:60px;text-align:center}
+}
+@media(max-width:360px){
+.modal{margin:0;border-radius:0;width:100%;min-height:100vh}
+.modal-header{border-radius:0}.modal-footer{border-radius:0;padding:0.75rem 0.9rem}
+.btn-back{padding:0.5rem 0.65rem;font-size:0.75rem}
+.btn-fnext,.btn-fsubmit{padding:0.5rem 0.6rem;font-size:0.78rem}
+.step-counter{font-size:0.68rem;min-width:50px}.modal-body{padding:0.85rem}
+}
 /* ===== RESPONSIVE ===== */
 @media(max-width:1024px){
   .stats-inner{grid-template-columns:repeat(2,1fr)}
@@ -369,7 +468,7 @@ footer{background:#0e4050;color:rgba(255,255,255,0.65);padding:3.5rem 2.5rem 2re
     <h1>Expert Therapy<br>Services at N.E.S.T</h1>
     <p>Evidence-based therapies delivered by certified specialists who truly care about every child's growth, development, and lasting potential.</p>
     <div class="page-hero-btns">
-      <a href="contact.html" class="btn-hero-main">
+      <a href="#" onclick="openEnrollModal();return false;" class="btn-hero-main">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="8" y="2" width="8" height="4" rx="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/></svg>
         Book Free Assessment
       </a>
@@ -404,7 +503,7 @@ footer{background:#0e4050;color:rgba(255,255,255,0.65);padding:3.5rem 2.5rem 2re
           <span class="tf-badge"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Social Communication</span>
           <span class="tf-badge"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Early Intervention</span>
         </div>
-        <a href="contact.html" class="btn-learn">Book Assessment &rarr;</a>
+        <a href="#" onclick="openEnrollModal();return false;" class="btn-learn">Book Assessment &rarr;</a>
       </div>
     </div>
 
@@ -430,7 +529,7 @@ footer{background:#0e4050;color:rgba(255,255,255,0.65);padding:3.5rem 2.5rem 2re
           <span class="tf-badge"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> BCBA Certified</span>
           <span class="tf-badge"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Data-Driven Progress</span>
         </div>
-        <a href="contact.html" class="btn-learn">Book Assessment &rarr;</a>
+        <a href="#" onclick="openEnrollModal();return false;" class="btn-learn">Book Assessment &rarr;</a>
       </div>
     </div>
 
@@ -456,7 +555,7 @@ footer{background:#0e4050;color:rgba(255,255,255,0.65);padding:3.5rem 2.5rem 2re
           <span class="tf-badge"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Self-Care &amp; ADL</span>
           <span class="tf-badge"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> School Readiness</span>
         </div>
-        <a href="contact.html" class="btn-learn">Book Assessment &rarr;</a>
+        <a href="#" onclick="openEnrollModal();return false;" class="btn-learn">Book Assessment &rarr;</a>
       </div>
     </div>
 
@@ -482,7 +581,7 @@ footer{background:#0e4050;color:rgba(255,255,255,0.65);padding:3.5rem 2.5rem 2re
           <span class="tf-badge"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Mobility Training</span>
           <span class="tf-badge"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Pediatric Specialists</span>
         </div>
-        <a href="contact.html" class="btn-learn">Book Assessment &rarr;</a>
+        <a href="#" onclick="openEnrollModal();return false;" class="btn-learn">Book Assessment &rarr;</a>
       </div>
     </div>
 
@@ -508,7 +607,7 @@ footer{background:#0e4050;color:rgba(255,255,255,0.65);padding:3.5rem 2.5rem 2re
           <span class="tf-badge"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Social Skills Play</span>
           <span class="tf-badge"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Trauma-Informed</span>
         </div>
-        <a href="contact.html" class="btn-learn">Book Assessment &rarr;</a>
+        <a href="#" onclick="openEnrollModal();return false;" class="btn-learn">Book Assessment &rarr;</a>
       </div>
     </div>
 
@@ -534,7 +633,7 @@ footer{background:#0e4050;color:rgba(255,255,255,0.65);padding:3.5rem 2.5rem 2re
           <span class="tf-badge"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Family Training</span>
           <span class="tf-badge"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Home Program Guidance</span>
         </div>
-        <a href="contact.html" class="btn-learn">Book Assessment &rarr;</a>
+        <a href="#" onclick="openEnrollModal();return false;" class="btn-learn">Book Assessment &rarr;</a>
       </div>
     </div>
 
@@ -603,7 +702,7 @@ footer{background:#0e4050;color:rgba(255,255,255,0.65);padding:3.5rem 2.5rem 2re
     <h2>Not Sure Which Therapy is<br>Right for Your Child?</h2>
     <p>Our expert team will evaluate your child's unique needs and recommend the most effective therapy program â€” completely free, with no pressure or commitment required.</p>
     <div class="btn-assess-wrap">
-      <a href="contact.html" class="btn-assess">
+      <a href="#" onclick="openEnrollModal();return false;" class="btn-assess">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="8" y="2" width="8" height="4" rx="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/></svg>
         Book Your Free Assessment Today
       </a>
@@ -660,7 +759,7 @@ footer{background:#0e4050;color:rgba(255,255,255,0.65);padding:3.5rem 2.5rem 2re
     <h2>Ready to Begin Your Child's Therapy Journey?</h2>
     <p>Take the first step today. Book a free assessment with our certified specialists and discover the right path forward for your child.</p>
     <div class="cta-band-btns">
-      <a href="contact.html" class="btn-band-w">
+      <a href="#" onclick="openEnrollModal();return false;" class="btn-band-w">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="8" y="2" width="8" height="4" rx="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/></svg>
         Book Free Assessment
       </a>
