@@ -533,23 +533,49 @@ nav.scrolled{box-shadow:0 4px 28px rgba(0,0,0,0.11)!important}
   min-height:640px;display:flex;align-items:center;justify-content:center;
   padding:7rem 2.5rem 7.5rem;background:#071e2a;
 }
-/* Ken Burns zooming photo */
-.ghero-photo-bg{
-  position:absolute;inset:-8%;z-index:0;
-  background:url('https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?w=1800&auto=format&fit=crop&q=88') center 42%/cover no-repeat;
-  animation:gheroZoom 28s ease-in-out infinite alternate;
-  will-change:transform;
+/* 4×2 children photo mosaic grid — each cell Ken Burns in a different direction */
+.ghero-grid-bg{
+  position:absolute;inset:0;z-index:0;
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  grid-template-rows:repeat(2,1fr);
+  gap:3px;background:#071e2a;
 }
-@keyframes gheroZoom{0%{transform:scale(1) translateY(0)}100%{transform:scale(1.09) translateY(-2%)}}
-/* dark tinted overlay ~82% — photo breathes through */
+.ghero-cell{overflow:hidden;position:relative}
+.ghero-cell::after{
+  content:'';position:absolute;inset:-12%;
+  background-size:cover;background-position:center;
+  animation-name:var(--kb,gcKBtl);
+  animation-duration:var(--dur,24s);
+  animation-delay:var(--delay,0s);
+  animation-timing-function:ease-in-out;
+  animation-iteration-count:infinite;
+  animation-direction:alternate;
+  will-change:transform;
+  filter:brightness(0.80) saturate(0.85);
+}
+@keyframes gcKBtl{0%{transform:scale(1) translate(0,0)}100%{transform:scale(1.22) translate(-4%,-3%)}}
+@keyframes gcKBtr{0%{transform:scale(1) translate(0,0)}100%{transform:scale(1.22) translate(4%,-3%)}}
+@keyframes gcKBbl{0%{transform:scale(1) translate(0,0)}100%{transform:scale(1.22) translate(-4%,3%)}}
+@keyframes gcKBbr{0%{transform:scale(1) translate(0,0)}100%{transform:scale(1.22) translate(4%,3%)}}
+/* 8 cute children / school / therapy photos */
+.gc-1::after{background-image:url('https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=600&auto=format&fit=crop&q=82');--kb:gcKBtl;--dur:22s;--delay:0s}
+.gc-2::after{background-image:url('https://images.unsplash.com/photo-1516627145497-ae6968895b74?w=600&auto=format&fit=crop&q=82');--kb:gcKBbr;--dur:27s;--delay:-6s}
+.gc-3::after{background-image:url('https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?w=600&auto=format&fit=crop&q=82');--kb:gcKBtr;--dur:20s;--delay:-11s}
+.gc-4::after{background-image:url('https://images.unsplash.com/photo-1509062522246-3755977927d7?w=600&auto=format&fit=crop&q=82');--kb:gcKBbl;--dur:25s;--delay:-4s}
+.gc-5::after{background-image:url('https://images.unsplash.com/photo-1576765608535-5f04d1e3f289?w=600&auto=format&fit=crop&q=82');--kb:gcKBbr;--dur:23s;--delay:-8s}
+.gc-6::after{background-image:url('https://images.unsplash.com/photo-1580582932707-520aed937b7b?w=600&auto=format&fit=crop&q=82');--kb:gcKBtl;--dur:29s;--delay:-2s}
+.gc-7::after{background-image:url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=600&auto=format&fit=crop&q=82');--kb:gcKBtr;--dur:21s;--delay:-7s}
+.gc-8::after{background-image:url('https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=600&auto=format&fit=crop&q=82');--kb:gcKBbl;--dur:26s;--delay:-3s}
+/* dark tinted overlay — ~76% so the photo grid shows through */
 .gallery-hero::before{
   content:'';position:absolute;inset:0;z-index:1;pointer-events:none;
   background:
-    radial-gradient(ellipse 48% 44% at 84% 12%,rgba(251,191,36,0.22) 0%,transparent 66%),
-    radial-gradient(ellipse 56% 52% at 9% 68%,rgba(13,148,136,0.26) 0%,transparent 63%),
-    radial-gradient(ellipse 40% 34% at 90% 88%,rgba(124,58,237,0.14) 0%,transparent 58%),
-    radial-gradient(ellipse 68% 58% at 48% 46%,rgba(22,97,120,0.22) 0%,transparent 76%),
-    linear-gradient(148deg,rgba(4,18,28,0.87) 0%,rgba(7,30,42,0.82) 38%,rgba(10,44,64,0.80) 68%,rgba(5,22,34,0.88) 100%)}
+    radial-gradient(ellipse 48% 44% at 84% 12%,rgba(251,191,36,0.18) 0%,transparent 66%),
+    radial-gradient(ellipse 56% 52% at 9% 68%,rgba(13,148,136,0.22) 0%,transparent 63%),
+    radial-gradient(ellipse 40% 34% at 90% 88%,rgba(124,58,237,0.12) 0%,transparent 58%),
+    radial-gradient(ellipse 68% 58% at 48% 46%,rgba(22,97,120,0.18) 0%,transparent 76%),
+    linear-gradient(148deg,rgba(4,18,28,0.80) 0%,rgba(7,30,42,0.74) 38%,rgba(10,44,64,0.72) 68%,rgba(5,22,34,0.82) 100%)}
 /* film grain */
 .gallery-hero::after{
   content:'';position:absolute;inset:0;z-index:2;pointer-events:none;
@@ -574,8 +600,8 @@ nav.scrolled{box-shadow:0 4px 28px rgba(0,0,0,0.11)!important}
 .ghero-d6{top:55%;left:3%;--sz:44px;--r:0deg;--op:0.20;--dur:5.8s;--delay:-4s}
 .gallery-hero-inner{position:relative;z-index:5;max-width:680px;margin:0 auto;width:100%}
 .ghero-tag{display:inline-flex;align-items:center;gap:7px;background:rgba(255,255,255,0.12);color:#FDE68A;border:1.5px solid rgba(255,255,255,0.22);padding:0.38rem 1rem;border-radius:100px;font-size:0.75rem;font-weight:800;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:1.4rem}
-.ghero-title{font-family:'Quicksand',sans-serif;font-size:3rem;font-weight:800;color:#fff;line-height:1.1;margin-bottom:1rem;letter-spacing:-0.01em}
-.ghero-sub{color:rgba(255,255,255,0.75);font-size:1rem;line-height:1.75;margin-bottom:2rem}
+.ghero-title{font-family:'Quicksand',sans-serif;font-size:3rem;font-weight:800;color:#fff;line-height:1.1;margin-bottom:1rem;letter-spacing:-0.01em;text-shadow:0 2px 28px rgba(0,0,0,0.75),0 0 60px rgba(0,0,0,0.45)}
+.ghero-sub{color:rgba(255,255,255,0.88);font-size:1rem;line-height:1.75;margin-bottom:2rem;text-shadow:0 1px 18px rgba(0,0,0,0.65)}
 .ghero-pills{display:flex;gap:0.75rem;flex-wrap:wrap;justify-content:center}
 .ghero-pill{display:inline-flex;align-items:center;gap:7px;background:rgba(255,255,255,0.1);border:1.5px solid rgba(255,255,255,0.22);color:rgba(255,255,255,0.88);padding:0.45rem 1.1rem;border-radius:100px;font-family:'Quicksand',sans-serif;font-size:0.83rem;font-weight:700;cursor:pointer;transition:background 0.2s,border-color 0.2s,transform 0.22s cubic-bezier(0.34,1.56,0.64,1)}
 .ghero-pill:hover{background:rgba(255,255,255,0.2);border-color:rgba(255,255,255,0.5);transform:translateY(-2px)}
@@ -618,8 +644,17 @@ nav.scrolled{box-shadow:0 4px 28px rgba(0,0,0,0.11)!important}
 </div>
 
 <div class="gallery-hero">
-  <!-- Ken Burns children activities photo -->
-  <div class="ghero-photo-bg"></div>
+  <!-- 4×2 children photo mosaic grid -->
+  <div class="ghero-grid-bg">
+    <div class="ghero-cell gc-1"></div>
+    <div class="ghero-cell gc-2"></div>
+    <div class="ghero-cell gc-3"></div>
+    <div class="ghero-cell gc-4"></div>
+    <div class="ghero-cell gc-5"></div>
+    <div class="ghero-cell gc-6"></div>
+    <div class="ghero-cell gc-7"></div>
+    <div class="ghero-cell gc-8"></div>
+  </div>
   <!-- Bokeh classroom-light blobs -->
   <div class="ghero-bokeh ghero-bokeh-1"></div>
   <div class="ghero-bokeh ghero-bokeh-2"></div>
