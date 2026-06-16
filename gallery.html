@@ -7,7 +7,7 @@
 <link rel="icon" type="image/png" href="/favicon.png"/>
 <link rel="shortcut icon" href="/favicon.png"/>
 <link rel="canonical" href="https://nest-org.pages.dev/gallery"/>
-<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&family=Fredoka+One&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700;800&family=Fredoka+One&display=swap" rel="stylesheet"/>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
@@ -526,6 +526,19 @@ nav.scrolled{box-shadow:0 4px 28px rgba(0,0,0,0.11)!important}
 .hamburger.open span:nth-child(3){transform:translateY(-7.5px) rotate(-45deg)}
 .mobile-backdrop{display:none;position:fixed;inset:0;background:rgba(14,64,80,0.35);z-index:997;backdrop-filter:blur(2px)}
 .mobile-backdrop.open{display:block}
+
+/* ===== GALLERY HERO ===== */
+.gallery-hero{position:relative;background:linear-gradient(145deg,#0b3544 0%,#0e5268 45%,#0f3f55 100%);padding:5rem 2.5rem 5.5rem;text-align:center;overflow:hidden}
+.gallery-hero::before{content:'';position:absolute;left:-200px;top:50%;transform:translateY(-50%);width:600px;height:600px;border-radius:50%;background:rgba(255,255,255,0.03);pointer-events:none}
+.gallery-hero::after{content:'';position:absolute;right:-120px;bottom:-150px;width:420px;height:420px;border-radius:50%;background:rgba(13,148,136,0.07);pointer-events:none}
+.gallery-hero-inner{position:relative;z-index:1;max-width:680px;margin:0 auto}
+.ghero-tag{display:inline-flex;align-items:center;gap:7px;background:rgba(255,255,255,0.12);color:#FDE68A;border:1.5px solid rgba(255,255,255,0.22);padding:0.38rem 1rem;border-radius:100px;font-size:0.75rem;font-weight:800;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:1.4rem}
+.ghero-title{font-family:'Quicksand',sans-serif;font-size:3rem;font-weight:800;color:#fff;line-height:1.1;margin-bottom:1rem;letter-spacing:-0.01em}
+.ghero-sub{color:rgba(255,255,255,0.75);font-size:1rem;line-height:1.75;margin-bottom:2rem}
+.ghero-pills{display:flex;gap:0.75rem;flex-wrap:wrap;justify-content:center}
+.ghero-pill{display:inline-flex;align-items:center;gap:7px;background:rgba(255,255,255,0.1);border:1.5px solid rgba(255,255,255,0.22);color:rgba(255,255,255,0.88);padding:0.45rem 1.1rem;border-radius:100px;font-family:'Quicksand',sans-serif;font-size:0.83rem;font-weight:700;cursor:pointer;transition:background 0.2s,border-color 0.2s,transform 0.22s cubic-bezier(0.34,1.56,0.64,1)}
+.ghero-pill:hover{background:rgba(255,255,255,0.2);border-color:rgba(255,255,255,0.5);transform:translateY(-2px)}
+@media(max-width:768px){.gallery-hero{padding:3.5rem 1.5rem 4rem}.ghero-title{font-size:2.2rem}.ghero-pills{gap:0.5rem}}
 </style>
 </head>
 <body>
@@ -563,11 +576,32 @@ nav.scrolled{box-shadow:0 4px 28px rgba(0,0,0,0.11)!important}
   <a href="#" onclick="openEnrollModal();return false;" class="mob-enroll">Enroll Now — Free <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></a>
 </div>
 
-<div style="background:#166178;padding:3.5rem 2rem 3rem;text-align:center">
-  <div style="max-width:700px;margin:0 auto">
-    <span style="display:inline-flex;align-items:center;gap:5px;background:rgba(255,255,255,0.15);color:#FDE68A;border:1px solid rgba(255,255,255,0.2);padding:0.3rem 0.85rem;border-radius:20px;font-size:0.75rem;font-weight:800;letter-spacing:0.06em;text-transform:uppercase;margin-bottom:1rem"><div class="icon-3d c-teal" style="width:22px;height:22px"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg></div> Gallery</span>
-    <h1 style="font-family:'Fredoka One',cursive;font-size:2.2rem;font-weight:400;color:#fff;margin-bottom:0.75rem;line-height:1.25">Life at NEST</h1>
-    <p style="color:rgba(255,255,255,0.8);font-size:1rem;line-height:1.7">A glimpse into the warm, vibrant, and nurturing environment we have created for our children.</p>
+<div class="gallery-hero">
+  <div class="gallery-hero-inner">
+    <div class="ghero-tag">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+      Our Environment
+    </div>
+    <h1 class="ghero-title">Life at N.E.S.T</h1>
+    <p class="ghero-sub">A glimpse into our warm, nurturing environment where every child is celebrated, supported, and empowered to shine.</p>
+    <div class="ghero-pills">
+      <button class="ghero-pill" onclick="heroFilter('classroom')">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg>
+        Classrooms
+      </button>
+      <button class="ghero-pill" onclick="heroFilter('therapy')">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+        Therapy Rooms
+      </button>
+      <button class="ghero-pill" onclick="heroFilter('activity')">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></polygon></svg>
+        Activities
+      </button>
+      <button class="ghero-pill" onclick="heroFilter('events')">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        Events
+      </button>
+    </div>
   </div>
 </div>
 <section style="background:#FFF8F0;padding:3.5rem 2rem">
@@ -692,6 +726,14 @@ function filterGallery(btn, cat){
   document.querySelectorAll('#galleryGrid > div').forEach(function(item){
     item.style.display=(cat==='all'||item.dataset.cat===cat)?'block':'none';
   });
+}
+function heroFilter(cat){
+  var map={classroom:'Classrooms',therapy:'Therapy Rooms',activity:'Activities',events:'Events'};
+  var found;
+  document.querySelectorAll('.gfilter').forEach(function(b){if(b.textContent.trim()===map[cat])found=b;});
+  if(found){filterGallery(found,cat);}
+  var grid=document.getElementById('galleryGrid');
+  if(grid){setTimeout(function(){grid.scrollIntoView({behavior:'smooth',block:'start'});},50);}
 }
 </script>
 <footer>
