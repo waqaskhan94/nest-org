@@ -209,6 +209,12 @@ body{font-family:'Quicksand',sans-serif;background:#FFF8F0;color:#1a1a2e;line-he
   border:2px solid rgba(255,255,255,0.25);flex-shrink:0;
 }
 .assess-social-avatar img{width:100%;height:100%;object-fit:cover;display:block}
+.assess-social-group{display:inline-flex;align-items:center;flex-shrink:0}
+.assess-social-group .assess-social-avatar{
+  border:2px solid #1a6076;background:#1a6076;
+}
+.assess-social-group .assess-social-avatar:not(:first-child){margin-left:-12px}
+.assess-social-group .assess-social-avatar img{object-position:top center}
 
 /* ===== FAQ ===== */
 .faq-sec{background:#fff;padding:5rem 2.5rem}
@@ -708,8 +714,16 @@ footer{background:#0e4050;color:rgba(255,255,255,0.65);padding:3.5rem 2.5rem 2re
       </a>
     </div>
     <div class="assess-social">
-      <div class="assess-social-avatar">
-        <img src="https://images.pexels.com/photos/5327585/pexels-photo-5327585.jpeg?auto=compress&cs=tinysrgb&w=80&h=80&fit=crop" alt="Certified Therapist"/>
+      <div class="assess-social-group">
+        <div class="assess-social-avatar">
+          <picture><source srcset="images/team/sidra-simaab.avif" type="image/avif"/><img src="images/team/sidra-simaab.jpeg" alt="Sidra Simaab" loading="lazy"/></picture>
+        </div>
+        <div class="assess-social-avatar">
+          <picture><source srcset="images/team/harmain-fatima.avif" type="image/avif"/><img src="images/team/harmain-fatima.jpeg" alt="Harmain Fatima" loading="lazy"/></picture>
+        </div>
+        <div class="assess-social-avatar">
+          <picture><source srcset="images/team/sana-waheed.avif" type="image/avif"/><img src="images/team/sana-waheed.jpeg" alt="Sana Waheed" loading="lazy"/></picture>
+        </div>
       </div>
       <span>Evaluated by our team of certified therapists</span>
     </div>
