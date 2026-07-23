@@ -131,11 +131,12 @@ section{padding:4rem 2.5rem}
 .prog-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:2.5rem}
 .prog-card{background:var(--white);border:2px solid var(--border);border-radius:20px;overflow:hidden;transition:all 0.25s;position:relative}
 .prog-card:hover{transform:translateY(-6px);box-shadow:0 16px 48px rgba(22,97,120,0.15);border-color:transparent}
-.prog-card-img{width:100%;height:200px;overflow:hidden}
+.prog-card-img{width:100%;height:320px;overflow:hidden}
 .prog-card-img picture{display:block;width:100%;height:100%}
 .prog-card-img img{width:100%;height:100%;object-fit:cover;transition:transform 0.35s ease;display:block}
 .prog-card:hover .prog-card-img img{transform:scale(1.06)}
-.prog-card-img.pc-aba img{object-position:center 40%}
+.prog-card-img.pc-aba img{object-position:center 50%}
+.prog-card-img.pc-speech img{object-position:center 50%}
 .prog-card-body{padding:1.5rem}
 .prog-card h3{font-family:'Nunito',sans-serif;font-size:1.1rem;font-weight:800;color:#166178;margin-bottom:0.5rem;letter-spacing:0.01em}
 .prog-card p{font-size:0.85rem;color:var(--muted);line-height:1.65;margin-bottom:1rem}
@@ -473,7 +474,7 @@ footer{background:#0e4050;color:rgba(255,255,255,0.65);padding:3.5rem 2.5rem 2re
   .ribbon-item{font-size:0.72rem;padding:0.25rem 0.4rem}
   .sec-title{font-size:1.35rem}
   .sec-sub{font-size:0.85rem}
-  .prog-card-img{height:180px}
+  .prog-card-img{height:260px}
   .team-card{padding:1.75rem 1.25rem 1.5rem}
   .team-avatar-wrap{width:110px;height:110px}
   .why-cards{grid-template-columns:1fr}
@@ -860,8 +861,8 @@ nav.scrolled{box-shadow:0 4px 28px rgba(0,0,0,0.11)!important}
       </div>
 
       <div class="prog-card">
-        <div class="prog-card-img">
-          <img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=600&h=300&auto=format&fit=crop&q=80" alt="Speech Therapy session" loading="lazy"/>
+        <div class="prog-card-img pc-speech">
+          <picture><source srcset="images/speech-therapy.avif" type="image/avif"/><img src="images/speech-therapy.jpeg" alt="Speech Therapy session at NEST" loading="lazy"/></picture>
         </div>
         <div class="prog-card-body">
           <h3>Speech Therapy</h3>
