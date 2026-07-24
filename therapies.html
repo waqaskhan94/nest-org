@@ -100,10 +100,11 @@ body{font-family:'Quicksand',sans-serif;background:#FFF8F0;color:#1a1a2e;line-he
 .therapy-row:last-child{margin-bottom:0}
 .therapy-row.reverse{direction:rtl}
 .therapy-row.reverse > *{direction:ltr}
-.therapy-img-wrap{position:relative;border-radius:24px;overflow:hidden;box-shadow:0 16px 48px rgba(22,97,120,0.18);aspect-ratio:4/3}
+.therapy-img-wrap{position:relative;border-radius:24px;overflow:hidden;box-shadow:0 16px 48px rgba(22,97,120,0.18);aspect-ratio:1/1}
 .therapy-img-wrap picture{display:block;width:100%;height:100%}
 .therapy-img-wrap img{width:100%;height:100%;object-fit:cover;object-position:center 35%;display:block;transition:transform 0.4s ease}
 .therapy-img-wrap:hover img{transform:scale(1.04)}
+.therapy-img-wrap.pa-img img{object-position:center 62%}
 .therapy-img-badge{
   position:absolute;bottom:1.2rem;left:1.2rem;
   background:linear-gradient(135deg,#F97316,#EC4899);color:#fff;
@@ -595,7 +596,7 @@ footer{background:#0e4050;color:rgba(255,255,255,0.65);padding:3.5rem 2.5rem 2re
 
     <!-- Play & Art Therapy -->
     <div class="therapy-row">
-      <div class="therapy-img-wrap">
+      <div class="therapy-img-wrap pa-img">
         <picture><source srcset="images/play-art-therapy.avif" type="image/avif"/><img src="images/play-art-therapy.jpeg" alt="Play and Art Therapy at NEST" loading="lazy"/></picture>
         <span class="therapy-img-badge">
           <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
