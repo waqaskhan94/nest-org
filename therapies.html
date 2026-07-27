@@ -82,6 +82,7 @@ body{font-family:'Quicksand',sans-serif;background:#FFF8F0;color:#1a1a2e;line-he
 .btn-hero-ghost{
   background:rgba(255,255,255,0.12);color:#fff;border:1.5px solid rgba(255,255,255,0.35);
   padding:0.85rem 2rem;border-radius:100px;font-weight:700;font-size:0.95rem;text-decoration:none;transition:all 0.2s;
+  display:inline-flex;align-items:center;justify-content:center;text-align:center;
 }
 .btn-hero-ghost:hover{background:rgba(255,255,255,0.22)}
 
@@ -162,7 +163,7 @@ body{font-family:'Quicksand',sans-serif;background:#FFF8F0;color:#1a1a2e;line-he
 .sc-item:last-child{border-right:none}
 .sc-num{font-family:'Fredoka One',cursive;font-size:2.8rem;font-weight:400;line-height:1;margin-bottom:0.35rem}
 .sc-teal{color:#166178}.sc-orange{color:#F97316}.sc-purple{color:#7C3AED}.sc-pink{color:#EC4899}
-.sc-label{font-size:0.82rem;color:#9ca3af;font-weight:600;letter-spacing:0.01em}
+.sc-label{font-size:0.82rem;color:#9ca3af;font-weight:600;letter-spacing:0.01em;white-space:nowrap}
 @media(max-width:600px){.stats-card{grid-template-columns:repeat(2,1fr)}.sc-item:nth-child(2){border-right:none}.sc-item:nth-child(3){border-top:1px solid #f0e4d4}}
 
 /* ===== ASSESSMENT CTA ===== */
@@ -423,7 +424,8 @@ footer{background:#0e4050;color:rgba(255,255,255,0.65);padding:3.5rem 2.5rem 2re
   .faq-grid{grid-template-columns:1fr}
   .approach-grid{grid-template-columns:1fr 1fr}
   .ft-top{grid-template-columns:1fr}
-  .page-hero-btns{flex-direction:column;max-width:260px}
+  .page-hero-btns{flex-direction:column;max-width:260px;margin-left:auto;margin-right:auto;align-items:center}
+  .btn-hero-main,.btn-hero-ghost{width:100%;justify-content:center}
 }
 @media(max-width:480px){
   .page-hero h1{font-size:1.9rem}
