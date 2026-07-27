@@ -107,7 +107,8 @@ nav{
 /* Ken Burns zooming photo layer */
 .ahero-photo-bg{
   position:absolute;inset:-8%;z-index:0;
-  background:url('https://images.unsplash.com/photo-1509062522246-3755977927d7?w=1800&auto=format&fit=crop&q=88') center 45%/cover no-repeat;
+  background:url('images/about-hero-bg.jpeg') center 40%/cover no-repeat;
+  background:image-set(url('images/about-hero-bg.avif') type('image/avif'),url('images/about-hero-bg.jpeg') type('image/jpeg')) center 40%/cover no-repeat;
   animation:aheroZoom 26s ease-in-out infinite alternate;
   will-change:transform;
 }
@@ -426,7 +427,7 @@ footer{background:#0e4050;color:rgba(255,255,255,0.65);padding:3.5rem 2.5rem 2re
 .step-body{}
 .step-title{font-family:'Quicksand',sans-serif;font-weight:500;font-size:1rem;color:#1a1a2e;margin-bottom:0.3rem;letter-spacing:0}
 .step-desc,.step-desc *{font-size:0.88rem;line-height:1.7;color:#6b7280!important;background:none!important;-webkit-text-fill-color:#6b7280!important;background-clip:border-box!important;-webkit-background-clip:border-box!important}
-@media(max-width:1024px){.approach-inner{grid-template-columns:1fr;gap:2.5rem}.approach-section{padding:4rem 1.5rem}.approach-img{max-height:380px}}
+@media(max-width:1024px){.approach-inner{grid-template-columns:1fr;gap:2.5rem}.approach-section{padding:4rem 1.5rem}.approach-img{max-height:none}.approach-img img{height:auto;object-fit:contain}.approach-title{white-space:nowrap;font-size:2.2rem}}
 @media(max-width:540px){.approach-section{padding:3rem 1.2rem}.approach-title{font-size:2rem}}
 /* ===== TEAM CTA SECTION ===== */
 .team-cta{position:relative;overflow:hidden;background:linear-gradient(135deg,#0b3544 0%,#166178 55%,#1a8a9e 100%);padding:5.5rem 2.5rem;text-align:center}
