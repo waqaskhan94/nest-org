@@ -57,7 +57,7 @@ nav{
 .nav-enroll:active{transform:translateY(-1px);box-shadow:0 4px 12px rgba(0,0,0,0.14)}
 .hamburger{display:none;background:none;border:none;cursor:pointer;flex-direction:column;gap:5px;padding:4px}
 .hamburger span{display:block;width:24px;height:2.5px;background:var(--navy);border-radius:2px;transition:all 0.3s}
-.mobile-menu{display:none;background:var(--white);border-top:2px solid var(--border);padding:1rem 1.5rem;flex-direction:column;gap:0.35rem;position:fixed;top:62px;left:0;right:0;z-index:1500;box-shadow:0 8px 24px rgba(0,0,0,0.1)}
+.mobile-menu{display:none;background:var(--white);border-top:2px solid var(--border);padding:1rem 1.5rem;flex-direction:column;gap:0.35rem;position:fixed;top:62px;left:0;right:0;z-index:1500;box-shadow:0 8px 24px rgba(0,0,0,0.1);overflow:hidden}
 .mobile-menu a{text-decoration:none;color:var(--muted);font-weight:700;font-size:0.95rem;padding:0.6rem 0.9rem;border-radius:10px;transition:all 0.18s;display:flex;align-items:center;gap:12px}
 .mobile-menu a:hover{color:#F97316;background:rgba(249,115,22,0.07)}.mobile-menu a.active{color:#166178!important;background:rgba(22,97,120,0.12)!important;font-weight:800!important}
 .mobile-menu .mob-enroll{background:linear-gradient(135deg,#F97316,#166178)!important;color:#fff!important;text-align:center;justify-content:center;border-radius:100px!important;margin-top:0.75rem;padding:0.75rem 1.5rem!important;box-shadow:0 4px 16px rgba(249,115,22,0.35);transition:all .25s cubic-bezier(0.4,0,0.2,1)!important;display:flex!important;align-items:center;gap:8px;font-size:0.92rem;font-weight:800!important;letter-spacing:0.01em}.mobile-menu .mob-enroll:hover{transform:translateY(-3px)!important;box-shadow:0 8px 24px rgba(0,0,0,0.18)!important}
@@ -431,7 +431,7 @@ footer{background:#0e4050;color:rgba(255,255,255,0.65);padding:3.5rem 2.5rem 2re
 .step-title{font-family:'Quicksand',sans-serif;font-weight:500;font-size:1rem;color:#1a1a2e;margin-bottom:0.3rem;letter-spacing:0}
 .step-desc,.step-desc *{font-size:0.88rem;line-height:1.7;color:#6b7280!important;background:none!important;-webkit-text-fill-color:#6b7280!important;background-clip:border-box!important;-webkit-background-clip:border-box!important}
 @media(max-width:1024px){.approach-inner{grid-template-columns:1fr;gap:2.5rem}.approach-section{padding:4rem 1.5rem}.approach-img{max-height:none}.approach-img img{height:auto;object-fit:contain}.approach-title{white-space:nowrap;font-size:2.2rem}}
-@media(max-width:540px){.approach-section{padding:3rem 1.2rem}.approach-title{font-size:2rem}}
+@media(max-width:540px){.approach-section{padding:3rem 1.2rem}.approach-title{font-size:1.75rem;white-space:nowrap}}
 /* ===== TEAM CTA SECTION ===== */
 .team-cta{position:relative;overflow:hidden;background:linear-gradient(135deg,#0b3544 0%,#166178 55%,#1a8a9e 100%);padding:5.5rem 2.5rem;text-align:center}
 .team-cta::before{content:'';position:absolute;left:-160px;top:50%;transform:translateY(-50%);width:520px;height:520px;border-radius:50%;background:rgba(255,255,255,0.05);pointer-events:none}
@@ -973,7 +973,7 @@ nav.scrolled{box-shadow:0 4px 28px rgba(0,0,0,0.11)!important}
         <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22V12M12 12L8 16M12 12L16 16"/><circle cx="12" cy="7" r="4"/></svg>
         How We Work
       </div>
-      <h2 class="approach-title">Our Holistic<br>Approach</h2>
+      <h2 class="approach-title">Our Holistic Approach</h2>
       <p class="approach-sub">We don't just offer therapy, we build a complete ecosystem of support around each child and family. Here's our proven five-step process that delivers real, lasting results.</p>
 
       <div class="step-list">
@@ -1258,14 +1258,14 @@ var currentStep=1;
 
 function openEnrollModal(){
   document.getElementById('enrollModal').classList.add('open');
-  document.body.style.overflow='hidden';
+  document.body.style.overflow='hidden';document.documentElement.style.overflow='hidden';
   var today=new Date().toISOString().split('T')[0];
   document.getElementById('prefDate').min=today;
   document.getElementById('childDob').max=today;
 }
 function closeEnrollModal(){
   document.getElementById('enrollModal').classList.remove('open');
-  document.body.style.overflow='';
+  document.body.style.overflow='';document.documentElement.style.overflow='';
 }
 
 document.addEventListener('DOMContentLoaded',function(){
@@ -1497,13 +1497,13 @@ function openMobileMenu(){
   hamburger.classList.add('open');
   mobileMenu.classList.add('open');
   if(backdrop) backdrop.classList.add('open');
-  document.body.style.overflow='hidden';
+  document.body.style.overflow='hidden';document.documentElement.style.overflow='hidden';
 }
 function closeMobileMenu(){
   hamburger.classList.remove('open');
   mobileMenu.classList.remove('open');
   if(backdrop) backdrop.classList.remove('open');
-  document.body.style.overflow='';
+  document.body.style.overflow='';document.documentElement.style.overflow='';
 }
 hamburger.addEventListener('click',function(){
   mobileMenu.classList.contains('open')?closeMobileMenu():openMobileMenu();
