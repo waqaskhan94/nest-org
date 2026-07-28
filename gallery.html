@@ -607,6 +607,37 @@ nav.scrolled{box-shadow:0 4px 28px rgba(0,0,0,0.11)!important}
 .ghero-pill{display:inline-flex;align-items:center;gap:7px;background:rgba(255,255,255,0.1);border:1.5px solid rgba(255,255,255,0.22);color:rgba(255,255,255,0.88);padding:0.45rem 1.1rem;border-radius:100px;font-family:'Quicksand',sans-serif;font-size:0.83rem;font-weight:700;cursor:pointer;transition:background 0.2s,border-color 0.2s,transform 0.22s cubic-bezier(0.34,1.56,0.64,1)}
 .ghero-pill:hover{background:rgba(255,255,255,0.2);border-color:rgba(255,255,255,0.5);transform:translateY(-2px)}
 @media(max-width:768px){.gallery-hero{padding:5rem 1.5rem 5.5rem;min-height:480px}.ghero-title{font-size:2.2rem}.ghero-pills{gap:0.5rem}.ghero-d1,.ghero-d2,.ghero-d4{display:none}}
+
+/* ===== Cinematic "Photos Coming Soon" placeholder ===== */
+.coming-soon{
+  background:linear-gradient(135deg,#0f4f61 0%,#166178 45%,#0d9488 100%);
+  background-size:200% 200%;
+  animation:csGradient 8s ease infinite;
+}
+@keyframes csGradient{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
+.coming-soon .cs-icon{
+  color:#FBBF24;display:flex;align-items:center;justify-content:center;
+  width:56px;height:56px;border-radius:50%;
+  background:rgba(255,255,255,0.10);border:1.5px solid rgba(251,191,36,0.35);
+  animation:csFloat 3.2s ease-in-out infinite;
+  box-shadow:0 0 22px rgba(251,191,36,0.28);
+}
+@keyframes csFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}
+.coming-soon .cs-text{
+  font-family:'Quicksand',sans-serif;font-weight:800;font-size:0.9rem;letter-spacing:0.14em;text-transform:uppercase;
+  background:linear-gradient(90deg,rgba(255,255,255,0.55),#fff,rgba(255,255,255,0.55));
+  background-size:200% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;
+  animation:csTextShine 3s linear infinite;
+}
+@keyframes csTextShine{0%{background-position:200% 0}100%{background-position:-200% 0}}
+/* sweeping light streak */
+.coming-soon .cs-shimmer{
+  position:absolute;top:0;left:-60%;width:45%;height:100%;pointer-events:none;
+  background:linear-gradient(100deg,transparent,rgba(255,255,255,0.16),transparent);
+  transform:skewX(-18deg);
+  animation:csSweep 4.5s ease-in-out infinite;
+}
+@keyframes csSweep{0%{left:-60%}55%{left:130%}100%{left:130%}}
 </style>
 </head>
 <body>
@@ -708,14 +739,21 @@ nav.scrolled{box-shadow:0 4px 28px rgba(0,0,0,0.11)!important}
 
 <div id="galleryGrid" style="display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem"></div>
 
-<!-- ===== LIGHTBOX MODAL ===== -->
+<!-- ===== LIGHTBOX MODAL (carousel) ===== -->
 <div id="galleryLightbox" style="display:none;position:fixed;inset:0;z-index:9999;background:rgba(8,24,34,0.94);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)">
-  <button onclick="closeLightbox()" aria-label="Close" style="position:absolute;top:18px;right:22px;z-index:2;width:44px;height:44px;border-radius:50%;border:none;background:rgba(255,255,255,0.14);color:#fff;font-size:1.5rem;cursor:pointer;line-height:1">&times;</button>
-  <div style="position:absolute;top:20px;left:50%;transform:translateX(-50%);color:#fff;text-align:center;z-index:2">
+  <button onclick="closeLightbox()" aria-label="Close" style="position:absolute;top:18px;right:22px;z-index:3;width:44px;height:44px;border-radius:50%;border:none;background:rgba(255,255,255,0.14);color:#fff;font-size:1.5rem;cursor:pointer;line-height:1">&times;</button>
+  <div style="position:absolute;top:20px;left:50%;transform:translateX(-50%);color:#fff;text-align:center;z-index:3">
     <div id="lbTitle" style="font-family:'Fredoka One',cursive;font-weight:400;font-size:1.15rem"></div>
     <div id="lbCount" style="font-size:0.8rem;color:rgba(255,255,255,0.6);margin-top:2px"></div>
   </div>
-  <div id="lbScroll" style="position:absolute;inset:76px 0 24px;overflow-y:auto;display:flex;flex-direction:column;align-items:center;gap:1rem;padding:0 1rem;scroll-behavior:smooth"></div>
+  <button id="lbPrev" onclick="lbNav(-1)" aria-label="Previous" style="position:absolute;top:50%;left:2%;transform:translateY(-50%);z-index:3;width:52px;height:52px;border-radius:50%;border:none;background:rgba(255,255,255,0.16);color:#fff;font-size:1.6rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .2s" onmouseover="this.style.background='rgba(255,255,255,0.3)'" onmouseout="this.style.background='rgba(255,255,255,0.16)'">&#8249;</button>
+  <button id="lbNext" onclick="lbNav(1)" aria-label="Next" style="position:absolute;top:50%;right:2%;transform:translateY(-50%);z-index:3;width:52px;height:52px;border-radius:50%;border:none;background:rgba(255,255,255,0.16);color:#fff;font-size:1.6rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .2s" onmouseover="this.style.background='rgba(255,255,255,0.3)'" onmouseout="this.style.background='rgba(255,255,255,0.16)'">&#8250;</button>
+  <div id="lbStage" style="position:absolute;inset:76px 8% 78px;display:flex;align-items:center;justify-content:center;overflow:hidden"></div>
+  <div id="lbZoomCtrl" style="position:absolute;bottom:20px;left:50%;transform:translateX(-50%);z-index:3;display:flex;gap:10px;align-items:center;background:rgba(255,255,255,0.12);padding:6px 10px;border-radius:100px">
+    <button onclick="lbZoomOut(event)" aria-label="Zoom out" style="width:38px;height:38px;border-radius:50%;border:none;background:rgba(255,255,255,0.18);color:#fff;font-size:1.4rem;cursor:pointer;line-height:1;display:flex;align-items:center;justify-content:center">&minus;</button>
+    <span style="color:rgba(255,255,255,0.75);font-size:0.78rem;font-weight:700;min-width:46px;text-align:center">Zoom</span>
+    <button onclick="lbZoomIn(event)" aria-label="Zoom in" style="width:38px;height:38px;border-radius:50%;border:none;background:rgba(255,255,255,0.18);color:#fff;font-size:1.35rem;cursor:pointer;line-height:1;display:flex;align-items:center;justify-content:center">+</button>
+  </div>
 </div>
 
 <div style="background:#166178;border-radius:20px;padding:2rem;margin-top:3rem;text-align:center">
@@ -756,7 +794,7 @@ function heroFilter(cat){
    To add photos to a card, put file basenames (in images/) in its `images` array.
    Each entry can be 'name' (uses images/name.jpeg + images/name.avif) or a full path. */
 var GALLERY_DATA=[
-  {cat:'classroom',bg:'#FFF7ED',title:'Special Education Class',desc:'Children engaged in interactive learning activities',images:['special-education']},
+  {cat:'classroom',bg:'#FFF7ED',title:'Special Education Class',desc:'Children engaged in interactive learning activities',images:['special-education','se-classroom','se-education2']},
   {cat:'therapy',bg:'#F0FDFA',title:'Speech Therapy Session',desc:'One-on-one speech session with a certified therapist',images:[]},
   {cat:'therapy',bg:'#F5F3FF',title:'ABA Therapy Room',desc:'Structured ABA sessions in a calm, focused environment',images:[]},
   {cat:'activity',bg:'#FFFBEB',title:'Art & Play Therapy',desc:'Creative art activities to boost expression and confidence',images:[]},
@@ -795,12 +833,19 @@ function renderGallery(){
   var grid=document.getElementById('galleryGrid');
   grid.innerHTML=GALLERY_DATA.map(function(c,i){
     var hasImgs=c.images&&c.images.length;
-    var coverIsVid=hasImgs&&isVideo(c.images[0]);
-    var playIcon=coverIsVid?'<span style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:56px;height:56px;border-radius:50%;background:rgba(0,0,0,0.5);display:flex;align-items:center;justify-content:center;pointer-events:none"><svg width="24" height="24" viewBox="0 0 24 24" fill="#fff"><polygon points="6 4 20 12 6 20 6 4"/></svg></span>':'';
+    var slides=hasImgs?c.images.map(function(n,k){
+      var base='width:100%;height:100%;object-fit:cover;object-position:center 35%;display:block';
+      var op=(k===0?'1':'0');
+      return '<div class="cover-slide" data-k="'+k+'" style="position:absolute;inset:0;opacity:'+op+';transition:opacity .8s ease">'
+        +mediaTag(n,c.title,'style="'+base+'"',{cover:true})+'</div>';
+    }).join(''):'';
     var cover=hasImgs
-      ? '<div style="height:230px;overflow:hidden;position:relative">'+mediaTag(c.images[0],c.title,'style="width:100%;height:100%;object-fit:cover;object-position:center 35%;display:block"',{cover:true})+playIcon+'</div>'
-      : '<div style="height:230px;display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,0.5);color:#9aa5ad;font-size:0.8rem;font-weight:700">Photos coming soon</div>';
-    var badge=hasImgs?'<span style="position:absolute;top:12px;right:12px;background:rgba(14,64,80,0.9);color:#fff;font-size:0.72rem;font-weight:700;padding:0.25rem 0.7rem;border-radius:20px">'+c.images.length+' item'+(c.images.length>1?'s':'')+'</span>':'';
+      ? '<div class="cover-rotator" data-count="'+c.images.length+'" style="height:230px;overflow:hidden;position:relative;background:#eef2f4">'+slides+'</div>'
+      : '<div class="coming-soon" style="height:230px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;position:relative;overflow:hidden">'
+        +'<span class="cs-icon"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg></span>'
+        +'<span class="cs-text">Photos Coming Soon</span>'
+        +'<span class="cs-shimmer"></span></div>';
+    var badge=hasImgs?'<span style="position:absolute;top:12px;right:12px;background:rgba(14,64,80,0.9);color:#fff;font-size:0.72rem;font-weight:700;padding:0.25rem 0.7rem;border-radius:20px;z-index:2">'+c.images.length+' item'+(c.images.length>1?'s':'')+'</span>':'';
     return '<div data-cat="'+c.cat+'">'
       +'<div onclick="openLightbox('+i+')" style="background:'+c.bg+';border-radius:18px;overflow:hidden;border:2px solid #e5e7eb;cursor:'+(hasImgs?'pointer':'default')+';position:relative;transition:transform .25s,box-shadow .25s" onmouseover="if('+hasImgs+'){this.style.transform=\'translateY(-6px)\';this.style.boxShadow=\'0 16px 40px rgba(22,97,120,0.16)\'}" onmouseout="this.style.transform=\'\';this.style.boxShadow=\'\'">'
       +cover+badge
@@ -809,26 +854,108 @@ function renderGallery(){
       +'<p style="color:#6b7280;font-size:0.84rem;text-align:center;line-height:1.55">'+c.desc+'</p>'
       +'</div></div></div>';
   }).join('');
+  startCoverRotators();
 }
 
+/* Auto-rotate card covers: images swap every ~3.5s; videos play muted for their length (or ~6s) then advance. */
+function startCoverRotators(){
+  document.querySelectorAll('.cover-rotator').forEach(function(rot){
+    var slides=rot.querySelectorAll('.cover-slide');
+    if(slides.length<=1){
+      // single item: if it's a video, just play it muted looping
+      var v=rot.querySelector('video');
+      if(v){v.muted=true;v.play().catch(function(){});}
+      return;
+    }
+    var idx=0, timer=null;
+    function show(k){
+      slides.forEach(function(s,j){s.style.opacity=(j===k?'1':'0');});
+      var vids=rot.querySelectorAll('video');
+      vids.forEach(function(v){try{v.pause();v.currentTime=0;}catch(e){}});
+      var cur=slides[k], curVid=cur.querySelector('video');
+      if(curVid){ curVid.muted=true; curVid.play().catch(function(){}); }
+    }
+    function advance(){
+      idx=(idx+1)%slides.length;
+      show(idx);
+      schedule();
+    }
+    function schedule(){
+      clearTimeout(timer);
+      var cur=slides[idx], curVid=cur.querySelector('video');
+      var delay=3500;
+      if(curVid){
+        // let a muted video play a bit longer before advancing
+        var dur=curVid.duration&&isFinite(curVid.duration)?Math.min(curVid.duration*1000,8000):6000;
+        delay=Math.max(delay,dur);
+      }
+      timer=setTimeout(advance,delay);
+    }
+    show(0); schedule();
+  });
+}
+
+var lbCard=null, lbIndex=0, lbZoom=1;
+function lbSetZoom(z){
+  lbZoom=Math.max(1,Math.min(4,z));
+  var m=document.querySelector('#lbStage .lb-media');
+  if(m){ m.style.transform='scale('+lbZoom+')'; m.style.cursor=lbZoom>1?'grab':'zoom-in'; }
+  var zc=document.getElementById('lbZoomCtrl');
+  if(zc) zc.style.display=(lbCard&&!isVideo(lbCard.images[lbIndex]))?'flex':'none';
+}
+function lbZoomIn(e){if(e)e.stopPropagation();lbSetZoom(lbZoom+0.5);}
+function lbZoomOut(e){if(e)e.stopPropagation();lbSetZoom(lbZoom-0.5);}
+function lbShow(){
+  var c=lbCard; if(!c) return;
+  var n=c.images.length; lbZoom=1;
+  document.getElementById('lbCount').textContent=(lbIndex+1)+' / '+n;
+  var stage=document.getElementById('lbStage');
+  stage.querySelectorAll('video').forEach(function(v){try{v.pause();}catch(e){}});
+  var vid=isVideo(c.images[lbIndex]);
+  var media=mediaTag(c.images[lbIndex],c.title,'class="lb-media" style="max-width:100%;width:auto;max-height:100%;object-fit:contain;border-radius:14px;box-shadow:0 10px 40px rgba(0,0,0,0.5);display:block;transition:transform .2s ease;transform-origin:center center;cursor:'+(vid?'default':'zoom-in')+'"',{cover:false});
+  stage.innerHTML=media;
+  var mEl=stage.querySelector('.lb-media');
+  if(mEl && !vid){
+    mEl.addEventListener('click',function(ev){ev.stopPropagation();lbSetZoom(lbZoom>1?1:2);});
+    // drag to pan when zoomed
+    var down=false,sx,sy,ox=0,oy=0;
+    mEl.addEventListener('mousedown',function(ev){if(lbZoom<=1)return;down=true;sx=ev.clientX;sy=ev.clientY;mEl.style.cursor='grabbing';ev.preventDefault();});
+    window.addEventListener('mousemove',function(ev){if(!down)return;var nx=ox+(ev.clientX-sx),ny=oy+(ev.clientY-sy);mEl.style.transform='translate('+nx+'px,'+ny+'px) scale('+lbZoom+')';});
+    window.addEventListener('mouseup',function(ev){if(!down)return;down=false;ox+=(ev.clientX-sx);oy+=(ev.clientY-sy);mEl.style.cursor='grab';});
+  }
+  var single=n<=1;
+  document.getElementById('lbPrev').style.display=single?'none':'flex';
+  document.getElementById('lbNext').style.display=single?'none':'flex';
+  var zc=document.getElementById('lbZoomCtrl');
+  if(zc) zc.style.display=vid?'none':'flex';
+}
+function lbNav(dir){
+  if(!lbCard) return;
+  var n=lbCard.images.length;
+  lbIndex=(lbIndex+dir+n)%n;
+  lbShow();
+}
 function openLightbox(i){
   var c=GALLERY_DATA[i];
   if(!c.images||!c.images.length) return;
+  lbCard=c; lbIndex=0;
   document.getElementById('lbTitle').textContent=c.title;
-  document.getElementById('lbCount').textContent=c.images.length+' item'+(c.images.length>1?'s':'');
-  document.getElementById('lbScroll').innerHTML=c.images.map(function(n){
-    return mediaTag(n,c.title,'style="max-width:min(900px,94%);width:auto;max-height:82vh;border-radius:14px;box-shadow:0 10px 40px rgba(0,0,0,0.5);display:block"',{cover:false});
-  }).join('');
-  document.getElementById('lbScroll').scrollTop=0;
+  lbShow();
   document.getElementById('galleryLightbox').style.display='block';
   document.body.style.overflow='hidden';
 }
 function closeLightbox(){
-  document.querySelectorAll('#lbScroll video').forEach(function(v){try{v.pause();}catch(e){}});
+  document.querySelectorAll('#lbStage video').forEach(function(v){try{v.pause();}catch(e){}});
   document.getElementById('galleryLightbox').style.display='none';
   document.body.style.overflow='';
+  lbCard=null;
 }
-document.addEventListener('keydown',function(e){if(e.key==='Escape')closeLightbox();});
+document.addEventListener('keydown',function(e){
+  if(document.getElementById('galleryLightbox').style.display!=='block') return;
+  if(e.key==='Escape')closeLightbox();
+  else if(e.key==='ArrowLeft')lbNav(-1);
+  else if(e.key==='ArrowRight')lbNav(1);
+});
 document.getElementById('galleryLightbox').addEventListener('click',function(e){if(e.target===this)closeLightbox();});
 renderGallery();
 </script>
