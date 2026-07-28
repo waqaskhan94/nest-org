@@ -11,7 +11,10 @@
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{font-family:'Quicksand',sans-serif;background:#FFF8F0;color:#1a1a2e;line-height:1.75;letter-spacing:0.01em}
+html{overflow-x:clip}
+body{font-family:'Quicksand',sans-serif;background:#FFF8F0;color:#1a1a2e;line-height:1.75;letter-spacing:0.01em;overflow-x:clip;max-width:100%}
+body{padding-top:72px}
+@media(max-width:768px){body{padding-top:62px}}
 :root{
   --navy:#1a1a2e;
   --dark-bg:#166178;
@@ -32,7 +35,7 @@ nav{
   padding:0 2.5rem;
   display:grid;grid-template-columns:auto 1fr auto;
   align-items:center;height:72px;gap:1rem;
-  position:sticky;top:0;z-index:1000;
+  position:fixed;top:0;z-index:1600;width:100%;box-sizing:border-box;left:0;right:0;
 }
 .nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none}
 .logo-bubble{
@@ -54,7 +57,7 @@ nav{
 .nav-enroll:active{transform:translateY(-1px);box-shadow:0 4px 12px rgba(0,0,0,0.14)}
 .hamburger{display:none;background:none;border:none;cursor:pointer;flex-direction:column;gap:5px;padding:4px}
 .hamburger span{display:block;width:24px;height:2.5px;background:var(--navy);border-radius:2px;transition:all 0.3s}
-.mobile-menu{display:none;background:var(--white);border-top:2px solid var(--border);padding:1rem 1.5rem;flex-direction:column;gap:0.35rem;position:sticky;top:62px;z-index:999;box-shadow:0 8px 24px rgba(0,0,0,0.1)}
+.mobile-menu{display:none;background:var(--white);border-top:2px solid var(--border);padding:1rem 1.5rem;flex-direction:column;gap:0.35rem;position:fixed;top:62px;left:0;right:0;z-index:1500;box-shadow:0 8px 24px rgba(0,0,0,0.1)}
 .mobile-menu a{text-decoration:none;color:var(--muted);font-weight:700;font-size:0.95rem;padding:0.6rem 0.9rem;border-radius:10px;transition:all 0.18s;display:flex;align-items:center;gap:12px}
 .mobile-menu a:hover{color:#F97316;background:rgba(249,115,22,0.07)}.mobile-menu a.active{color:#166178!important;background:rgba(22,97,120,0.12)!important;font-weight:800!important}
 .mobile-menu .mob-enroll{background:linear-gradient(135deg,#F97316,#166178)!important;color:#fff!important;text-align:center;justify-content:center;border-radius:100px!important;margin-top:0.75rem;padding:0.75rem 1.5rem!important;box-shadow:0 4px 16px rgba(249,115,22,0.35);transition:all .25s cubic-bezier(0.4,0,0.2,1)!important;display:flex!important;align-items:center;gap:8px;font-size:0.92rem;font-weight:800!important;letter-spacing:0.01em}.mobile-menu .mob-enroll:hover{transform:translateY(-3px)!important;box-shadow:0 8px 24px rgba(0,0,0,0.18)!important}
