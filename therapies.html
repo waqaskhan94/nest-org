@@ -43,7 +43,7 @@ body{font-family:'Quicksand',sans-serif;background:#FFF8F0;color:#1a1a2e;line-he
 .mobile-menu a.active{color:#166178;background:rgba(22,97,120,0.10)}
 .mobile-menu .mob-enroll{background:linear-gradient(135deg,#F97316,#166178)!important;color:#fff!important;text-align:center;border-radius:100px!important;margin-top:0.5rem}
 .mobile-menu.open{display:flex}
-@media(max-width:768px){#navbar{grid-template-columns:1fr auto;padding:0 1.2rem;height:62px}.nav-links{display:none}#navbar .btn-primary{display:none}.hamburger{display:flex}.mobile-menu{top:62px}}
+@media(max-width:768px){#navbar{grid-template-columns:1fr auto;padding:0 1.2rem;height:62px}.nav-links{display:none}#navbar .btn-primary{display:none}.hamburger{display:flex}.mobile-menu{top:62px}.logo-name span{display:none}}
 
 /* ===== PAGE HERO ===== */
 .page-hero{
@@ -159,13 +159,13 @@ body{font-family:'Quicksand',sans-serif;background:#FFF8F0;color:#1a1a2e;line-he
 
 /* ===== STATS CARD ===== */
 .stats-card-sec{background:#FFF8F0;padding:3rem 2.5rem 3rem}
-.stats-card{max-width:900px;margin:0 auto;background:#fff;border-radius:22px;border:1.5px solid #f0e4d4;box-shadow:0 8px 32px rgba(0,0,0,0.07);display:grid;grid-template-columns:repeat(4,1fr)}
+.stats-card{max-width:900px;margin:0 auto;background:#fff;border-radius:22px;border:1.5px solid #f0e4d4;box-shadow:0 8px 32px rgba(0,0,0,0.07);display:grid;grid-template-columns:repeat(4,1fr);overflow:hidden}
 .sc-item{text-align:center;padding:2.2rem 1.5rem;border-right:1px solid #f0e4d4;position:relative}
 .sc-item:last-child{border-right:none}
 .sc-num{font-family:'Fredoka One',cursive;font-size:2.8rem;font-weight:400;line-height:1;margin-bottom:0.35rem}
 .sc-teal{color:#166178}.sc-orange{color:#F97316}.sc-purple{color:#7C3AED}.sc-pink{color:#EC4899}
 .sc-label{font-size:0.82rem;color:#9ca3af;font-weight:600;letter-spacing:0.01em;white-space:nowrap}
-@media(max-width:600px){.stats-card{grid-template-columns:repeat(2,1fr)}.sc-item:nth-child(2){border-right:none}.sc-item:nth-child(3){border-top:1px solid #f0e4d4}}
+@media(max-width:600px){.stats-card{grid-template-columns:1fr 1fr;grid-auto-rows:1fr}.sc-item{display:flex;flex-direction:column;align-items:center;justify-content:center;padding:2rem 0.75rem;min-width:0}.sc-label{white-space:normal}.sc-item:nth-child(2){border-right:none}.sc-item:nth-child(3),.sc-item:nth-child(4){border-top:1px solid #f0e4d4}}
 
 /* ===== ASSESSMENT CTA ===== */
 .assessment-cta{
@@ -420,6 +420,11 @@ footer{background:#0e4050;color:rgba(255,255,255,0.65);padding:3.5rem 2.5rem 2re
 }
 @media(max-width:768px){
   .page-hero h1{font-size:2.2rem}
+  .sec-title{font-size:1.7rem}
+  /* assessment CTA: button text one line, avatars stack above centered text */
+  .btn-assess{font-size:0.92rem;padding:0.9rem 1.4rem;white-space:nowrap}
+  .assess-social{flex-direction:column;gap:0.6rem;text-align:center;justify-content:center;width:100%}
+  .assess-social>span{display:block;text-align:center}
   .page-hero-inner{padding:4rem 1.5rem 3rem}
   .therapies-sec,.approach-sec,.assessment-cta,.faq-sec,.cta-band{padding:3rem 1.5rem}
   .faq-grid{grid-template-columns:1fr}
