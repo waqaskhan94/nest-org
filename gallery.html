@@ -11,7 +11,8 @@
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{font-family:'Quicksand',sans-serif;background:#FFF8F0;color:#1a1a2e;line-height:1.75;letter-spacing:0.01em}
+html{overflow-x:hidden}
+body{font-family:'Quicksand',sans-serif;background:#FFF8F0;color:#1a1a2e;line-height:1.75;letter-spacing:0.01em;overflow-x:hidden;max-width:100%;position:relative}
 :root{
   --navy:#1a1a2e;
   --dark-bg:#166178;
@@ -638,6 +639,10 @@ nav.scrolled{box-shadow:0 4px 28px rgba(0,0,0,0.11)!important}
   animation:csSweep 4.5s ease-in-out infinite;
 }
 @keyframes csSweep{0%{left:-60%}55%{left:130%}100%{left:130%}}
+
+/* ===== Gallery grid responsive columns ===== */
+@media(max-width:960px){#galleryGrid{grid-template-columns:repeat(2,1fr)!important;gap:1.1rem!important}}
+@media(max-width:560px){#galleryGrid{grid-template-columns:1fr!important;gap:1rem!important}}
 </style>
 </head>
 <body>
@@ -737,7 +742,7 @@ nav.scrolled{box-shadow:0 4px 28px rgba(0,0,0,0.11)!important}
 <button onclick="filterGallery(this,'events')" class="gfilter" style="padding:0.45rem 1.1rem;border-radius:20px;border:2px solid #e5e7eb;background:#fff;color:#6b7280;font-family:Quicksand,sans-serif;font-weight:700;font-size:0.85rem;cursor:pointer">Events</button>
 </div>
 
-<div id="galleryGrid" style="display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem"></div>
+<div id="galleryGrid" style="display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;width:100%"></div>
 
 <!-- ===== LIGHTBOX MODAL (carousel) ===== -->
 <div id="galleryLightbox" style="display:none;position:fixed;inset:0;z-index:9999;background:rgba(8,24,34,0.94);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)">
