@@ -536,6 +536,11 @@ nav.scrolled{box-shadow:0 4px 28px rgba(0,0,0,0.11)!important}
 .hamburger.open span:nth-child(3){transform:translateY(-7.5px) rotate(-45deg)}
 .mobile-backdrop{display:none;position:fixed;inset:0;background:rgba(14,64,80,0.35);z-index:997;backdrop-filter:blur(2px)}
 .mobile-backdrop.open{display:block}
+/* Center "Follow Us" heading + icon on mobile */
+@media(max-width:768px){
+  .follow-box{text-align:center}
+  .follow-box .follow-icons{justify-content:center}
+}
 </style>
 </head>
 <body>
@@ -611,9 +616,9 @@ nav.scrolled{box-shadow:0 4px 28px rgba(0,0,0,0.11)!important}
 </div>
 </div>
 
-<div style="background:#166178;border-radius:16px;padding:1.5rem">
+<div class="follow-box" style="background:#166178;border-radius:16px;padding:1.5rem">
 <h4 style="font-family:'Fredoka One',cursive;font-weight:400;color:#fff;font-size:1.1rem;margin-bottom:0.75rem">Follow Us</h4>
-<div style="display:flex;gap:0.6rem;flex-wrap:wrap">
+<div class="follow-icons" style="display:flex;gap:0.6rem;flex-wrap:wrap">
 <a href="https://www.instagram.com/nestdha?igsh=YmxwMTJkMHNuYmgw" target="_blank" rel="noopener" aria-label="Instagram" style="display:inline-flex;align-items:center;gap:8px;padding:0.5rem 1.1rem;border-radius:12px;text-decoration:none;font-weight:700;font-size:0.88rem;color:#fff;background:linear-gradient(135deg,#833ab4,#fd1d1d,#fcb045);border:none;box-shadow:0 3px 10px rgba(253,29,29,0.35);transition:opacity 0.2s" onmouseover="this.style.opacity=0.88" onmouseout="this.style.opacity=1">
   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
     <rect x="2" y="2" width="20" height="20" rx="6" stroke="white" stroke-width="2"/>
