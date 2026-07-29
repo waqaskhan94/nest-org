@@ -422,7 +422,41 @@ footer{background:#0e4050;color:rgba(255,255,255,0.65);padding:3.5rem 2.5rem 2re
 .form-group input.error~.err-msg,.form-group select.error~.err-msg{display:block}
 .form-group textarea{resize:vertical;min-height:90px}
 .form-group select{-webkit-appearance:none;appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%236b7280' d='M1 1l5 5 5-5'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 1rem center;padding-right:2.5rem}
-.check-group{display:grid;grid-template-columns:1fr 1fr;gap:0.6rem;margin-top:0.4rem}
+/* ===== Custom rounded dropdown (replaces native select popup) ===== */
+.cs-dd{position:relative;width:100%}
+.cs-dd-btn{width:100%;padding:0.7rem 2.5rem 0.7rem 1rem;border:2px solid #d1d5db;border-radius:12px;font-family:"Quicksand",sans-serif;font-size:0.9rem;color:#1a1a2e;background:#fff;text-align:left;cursor:pointer;transition:border-color 0.2s,box-shadow 0.2s;position:relative;outline:none}
+.cs-dd-btn.placeholder{color:#9ca3af}
+.cs-dd-btn:focus,.cs-dd.open .cs-dd-btn{border-color:#166178;box-shadow:0 0 0 3px rgba(22,97,120,0.12)}
+.cs-dd-btn.error{border-color:#DC2626}
+.cs-dd-btn::after{content:'';position:absolute;right:1rem;top:50%;width:8px;height:8px;border-right:2px solid #6b7280;border-bottom:2px solid #6b7280;transform:translateY(-70%) rotate(45deg);transition:transform 0.2s}
+.cs-dd.open .cs-dd-btn::after{transform:translateY(-30%) rotate(-135deg)}
+.cs-dd-panel{position:absolute;top:calc(100% + 6px);left:0;right:0;background:#fff;border:1.5px solid #e5e7eb;border-radius:14px;box-shadow:0 12px 32px rgba(22,97,120,0.16);padding:0.35rem;z-index:50;max-height:240px;overflow-y:auto;display:none}
+.cs-dd.open .cs-dd-panel{display:block}
+.cs-dd-opt{padding:0.6rem 0.85rem;border-radius:10px;font-size:0.9rem;color:#374151;cursor:pointer;transition:background 0.15s,color 0.15s}
+.cs-dd-opt:hover,.cs-dd-opt.active{background:#F0FDFA;color:#166178;font-weight:700}
+.cs-dd-optgroup{padding:0.5rem 0.85rem 0.2rem;font-size:0.7rem;font-weight:800;letter-spacing:0.06em;text-transform:uppercase;color:#9ca3af}
+/* ===== Custom rounded date picker ===== */
+.cs-dp{position:relative;width:100%}
+.cs-dp-btn{width:100%;padding:0.7rem 2.5rem 0.7rem 1rem;border:2px solid #d1d5db;border-radius:12px;font-family:"Quicksand",sans-serif;font-size:0.9rem;color:#1a1a2e;background:#fff;text-align:left;cursor:pointer;transition:border-color 0.2s,box-shadow 0.2s;position:relative;outline:none}
+.cs-dp-btn.placeholder{color:#9ca3af}
+.cs-dp-btn.error{border-color:#DC2626}
+.cs-dp-btn:focus,.cs-dp.open .cs-dp-btn{border-color:#166178;box-shadow:0 0 0 3px rgba(22,97,120,0.12)}
+.cs-dp-btn svg{position:absolute;right:1rem;top:50%;transform:translateY(-50%);stroke:#6b7280}
+.cs-dp-cal{position:absolute;top:calc(100% + 6px);left:0;background:#fff;border:1.5px solid #e5e7eb;border-radius:16px;box-shadow:0 14px 36px rgba(22,97,120,0.18);padding:0.85rem;z-index:60;width:290px;display:none}
+.cs-dp.open .cs-dp-cal{display:block}
+.cs-dp-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:0.6rem}
+.cs-dp-title{font-weight:800;color:#166178;font-size:0.92rem}
+.cs-dp-nav{width:30px;height:30px;border:none;border-radius:50%;background:#F0FDFA;color:#166178;cursor:pointer;font-size:1rem;display:flex;align-items:center;justify-content:center;transition:background 0.15s}
+.cs-dp-nav:hover{background:#cdeeea}
+.cs-dp-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:2px}
+.cs-dp-dow{font-size:0.66rem;font-weight:800;color:#9ca3af;text-align:center;padding:4px 0}
+.cs-dp-day{aspect-ratio:1;display:flex;align-items:center;justify-content:center;font-size:0.82rem;color:#374151;border-radius:8px;cursor:pointer;transition:background 0.12s}
+.cs-dp-day:hover{background:#F0FDFA;color:#166178}
+.cs-dp-day.sel{background:#166178;color:#fff;font-weight:700}
+.cs-dp-day.disabled{color:#d1d5db;cursor:not-allowed;pointer-events:none}
+.cs-dp-day.empty{cursor:default;pointer-events:none}
+.cs-dp-foot{display:flex;justify-content:space-between;margin-top:0.5rem;padding-top:0.5rem;border-top:1px solid #f0f0f0}
+.cs-dp-foot button{border:none;background:none;color:#166178;font-weight:700;font-size:0.8rem;cursor:pointer}.check-group{display:grid;grid-template-columns:1fr 1fr;gap:0.6rem;margin-top:0.4rem}
 .check-item{display:flex!important;flex-direction:row;flex-wrap:nowrap;align-items:center;gap:14px;padding:0.7rem 1rem;border-radius:10px;border:2px solid #e5e7eb;cursor:pointer;transition:all 0.18s;font-size:0.85rem;font-weight:600;color:#1a1a2e;line-height:1.2}
 .check-item:hover,.check-item.checked{border-color:#166178;background:#F0FDFA}
 .check-item{margin-bottom:0!important}
@@ -915,6 +949,7 @@ nav.scrolled{box-shadow:0 4px 28px rgba(0,0,0,0.11)!important}
   <label class="check-item" onclick="toggleCheck(this)"><input type="checkbox" value="Physical Therapy"/><span class="check-label"><span class="icon-3d xs c-green"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></span>Physical Therapy</span></label>
   <label class="check-item" onclick="toggleCheck(this)"><input type="checkbox" value="Family Support"/><span class="check-label"><span class="icon-3d xs c-pink"><svg width="13" height="13" viewBox="0 0 24 24" fill="rgba(255,255,255,0.9)" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></span>Family Support</span></label>
 </div>
+          <div class="err-msg" id="programsErr" style="display:none">Please select at least one program</div>
         </div>
       </div>
       <div class="step-panel" id="step-2">
@@ -972,7 +1007,6 @@ nav.scrolled{box-shadow:0 4px 28px rgba(0,0,0,0.11)!important}
 </select><div class="err-msg">Please select your city</div></div>
         <div class="form-group"><label>How did you hear about NEST?</label>
           <div class="radio-group" id="hearGroup">
-            <label class="radio-item" onclick="selectRadio(this,'hearGroup')"><input type="radio" name="hear" value="Facebook"/> Facebook</label>
             <label class="radio-item" onclick="selectRadio(this,'hearGroup')"><input type="radio" name="hear" value="Instagram"/> Instagram</label>
             <label class="radio-item" onclick="selectRadio(this,'hearGroup')"><input type="radio" name="hear" value="Friend/Family"/> Friend/Family</label>
             <label class="radio-item" onclick="selectRadio(this,'hearGroup')"><input type="radio" name="hear" value="Doctor"/> Doctor</label>
@@ -1028,12 +1062,81 @@ nav.scrolled{box-shadow:0 4px 28px rgba(0,0,0,0.11)!important}
 <script>
 var currentStep=1;
 
+function enhanceSelects(){
+  var modal=document.getElementById('enrollModal');
+  if(!modal||modal.dataset.csDone) return;
+  modal.dataset.csDone='1';
+  modal.querySelectorAll('select').forEach(function(sel){
+    sel.style.display='none';
+    var dd=document.createElement('div'); dd.className='cs-dd';
+    var btn=document.createElement('button'); btn.type='button'; btn.className='cs-dd-btn';
+    var panel=document.createElement('div'); panel.className='cs-dd-panel';
+    function refreshBtn(){ var o=sel.options[sel.selectedIndex]; btn.textContent=o?o.textContent:''; btn.classList.toggle('placeholder',!sel.value); btn.classList.toggle('error',sel.classList.contains('error')); }
+    function mkOpt(op){ var el=document.createElement('div'); el.className='cs-dd-opt'; el.textContent=op.textContent; el.dataset.val=op.value||op.textContent; el.addEventListener('click',function(e){ e.stopPropagation(); sel.value=op.value||op.textContent; sel.dispatchEvent(new Event('change',{bubbles:true})); dd.classList.remove('open'); panel.querySelectorAll('.cs-dd-opt').forEach(function(x){x.classList.remove('active');}); el.classList.add('active'); refreshBtn(); }); return el; }
+    Array.from(sel.children).forEach(function(node){
+      if(node.tagName==='OPTGROUP'){ var gl=document.createElement('div'); gl.className='cs-dd-optgroup'; gl.textContent=node.label; panel.appendChild(gl); Array.from(node.children).forEach(function(op){ panel.appendChild(mkOpt(op)); }); }
+      else if(node.tagName==='OPTION'){ if(node.disabled&&node.hidden) return; panel.appendChild(mkOpt(node)); }
+    });
+    btn.addEventListener('click',function(e){ e.stopPropagation(); document.querySelectorAll('.cs-dd.open').forEach(function(x){ if(x!==dd) x.classList.remove('open'); }); dd.classList.toggle('open'); });
+    sel.addEventListener('change',refreshBtn);
+    dd.appendChild(btn); dd.appendChild(panel);
+    sel.parentNode.insertBefore(dd,sel.nextSibling);
+    refreshBtn();
+  });
+  document.addEventListener('click',function(){ document.querySelectorAll('.cs-dd.open').forEach(function(x){x.classList.remove('open');}); });
+}
+function enhanceDates(){
+  var modal=document.getElementById('enrollModal');
+  if(!modal||modal.dataset.dpDone) return;
+  modal.dataset.dpDone='1';
+  var MON=['January','February','March','April','May','June','July','August','September','October','November','December'];
+  var DOW=['Su','Mo','Tu','We','Th','Fr','Sa'];
+  modal.querySelectorAll('input[type="date"]').forEach(function(inp){
+    inp.style.display='none';
+    var dp=document.createElement('div'); dp.className='cs-dp';
+    var btn=document.createElement('button'); btn.type='button'; btn.className='cs-dp-btn placeholder';
+    btn.innerHTML='<span class="cs-dp-txt">Select date</span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="3"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>';
+    var cal=document.createElement('div'); cal.className='cs-dp-cal';
+    var view=new Date(); view.setDate(1);
+    function parseAttr(a){ return a?new Date(a+'T00:00:00'):null; }
+    var minD=parseAttr(inp.getAttribute('min')), maxD=parseAttr(inp.getAttribute('max'));
+    function fmt(d){ return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0'); }
+    function label(d){ return MON[d.getMonth()].slice(0,3)+' '+d.getDate()+', '+d.getFullYear(); }
+    function refreshBtn(){ var tx=btn.querySelector('.cs-dp-txt'); if(inp.value){ var dv=new Date(inp.value+'T00:00:00'); tx.textContent=label(dv); btn.classList.remove('placeholder'); } else { tx.textContent='Select date'; btn.classList.add('placeholder'); } btn.classList.toggle('error',inp.classList.contains('error')); }
+    function render(){
+      minD=parseAttr(inp.getAttribute('min')); maxD=parseAttr(inp.getAttribute('max'));
+      var y=view.getFullYear(), m=view.getMonth();
+      var first=new Date(y,m,1).getDay(), dim=new Date(y,m+1,0).getDate();
+      var sel=inp.value?new Date(inp.value+'T00:00:00'):null;
+      var h='<div class="cs-dp-head"><button type="button" class="cs-dp-nav" data-d="-1">&#8249;</button><span class="cs-dp-title">'+MON[m]+' '+y+'</span><button type="button" class="cs-dp-nav" data-d="1">&#8250;</button></div><div class="cs-dp-grid">';
+      DOW.forEach(function(d){ h+='<div class="cs-dp-dow">'+d+'</div>'; });
+      for(var i=0;i<first;i++) h+='<div class="cs-dp-day empty"></div>';
+      for(var day=1;day<=dim;day++){ var cur=new Date(y,m,day); var dis=(minD&&cur<minD)||(maxD&&cur>maxD); var isSel=sel&&sel.getFullYear()===y&&sel.getMonth()===m&&sel.getDate()===day; h+='<div class="cs-dp-day'+(dis?' disabled':'')+(isSel?' sel':'')+'" data-day="'+day+'">'+day+'</div>'; }
+      h+='</div><div class="cs-dp-foot"><button type="button" data-act="clear">Clear</button><button type="button" data-act="today">Today</button></div>';
+      cal.innerHTML=h;
+    }
+    cal.addEventListener('click',function(e){
+      e.stopPropagation();
+      var nav=e.target.closest('.cs-dp-nav'); if(nav){ view.setMonth(view.getMonth()+parseInt(nav.dataset.d,10)); render(); return; }
+      var act=e.target.closest('[data-act]'); if(act){ if(act.dataset.act==='clear'){ inp.value=''; } else { var td=new Date(); if((!minD||td>=minD)&&(!maxD||td<=maxD)){ inp.value=fmt(td); view=new Date(td); view.setDate(1);} } inp.dispatchEvent(new Event('change',{bubbles:true})); refreshBtn(); render(); if(act.dataset.act!=='clear') dp.classList.remove('open'); return; }
+      var day=e.target.closest('.cs-dp-day'); if(day&&day.dataset.day){ inp.value=fmt(new Date(view.getFullYear(),view.getMonth(),parseInt(day.dataset.day,10))); inp.dispatchEvent(new Event('change',{bubbles:true})); refreshBtn(); render(); dp.classList.remove('open'); }
+    });
+    btn.addEventListener('click',function(e){ e.stopPropagation(); document.querySelectorAll('.cs-dp.open').forEach(function(x){ if(x!==dp) x.classList.remove('open'); }); if(inp.value){view=new Date(inp.value+'T00:00:00');view.setDate(1);} render(); dp.classList.toggle('open'); });
+    inp.addEventListener('change',refreshBtn);
+    dp.appendChild(btn); dp.appendChild(cal);
+    inp.parentNode.insertBefore(dp,inp.nextSibling);
+    render(); refreshBtn();
+  });
+  document.addEventListener('click',function(){ document.querySelectorAll('.cs-dp.open').forEach(function(x){x.classList.remove('open');}); });
+}
 function openEnrollModal(){
   document.getElementById('enrollModal').classList.add('open');
   document.body.style.overflow='hidden';document.documentElement.style.overflow='hidden';
+  enhanceSelects();
   var today=new Date().toISOString().split('T')[0];
   document.getElementById('prefDate').min=today;
   document.getElementById('childDob').max=today;
+  enhanceDates();
 }
 function closeEnrollModal(){
   document.getElementById('enrollModal').classList.remove('open');
@@ -1094,7 +1197,7 @@ document.addEventListener('DOMContentLoaded',function(){
   document.querySelectorAll('#programsGroup input').forEach(function(cb){
     cb.addEventListener('change',function(){
       if(document.querySelectorAll('#programsGroup input:checked').length>0)
-        document.querySelector('#programsGroup').style.outline='none';
+        var pErr2=document.getElementById('programsErr'); if(pErr2) pErr2.style.display='none';
     });
   });
 
@@ -1181,10 +1284,10 @@ function validateStep(n){
     reqField('childDiag');
     var checked=document.querySelectorAll('#programsGroup input:checked');
     if(checked.length===0){
-      document.querySelector('#programsGroup').style.outline='2px solid #DC2626';
+      var pErr=document.getElementById('programsErr'); if(pErr) pErr.style.display='block';
       ok=false;
     } else {
-      document.querySelector('#programsGroup').style.outline='none';
+      var pErr2=document.getElementById('programsErr'); if(pErr2) pErr2.style.display='none';
     }
   }
   if(n===2){
