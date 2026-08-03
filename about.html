@@ -1839,9 +1839,18 @@ document.querySelectorAll('.ribbon-item').forEach(function(el,i){
     if(idx < 0) return false;
     // land the card's slide into the visible window (respecting maxIndex)
     goTo(Math.min(idx, maxIndex()));
-    // scroll the whole team section into view below the fixed navbar
-    var sec = document.getElementById('team') || track.closest('.tteam-slider') || track;
-    if(sec && sec.scrollIntoView) sec.scrollIntoView({behavior: smooth ? 'smooth' : 'auto', block: 'start'});
+    // Scroll so the whole team section header + cards clear the fixed navbar.
+    // Compute target manually (scrollIntoView ignores our offset inconsistently).
+    function doScroll(){
+      var navH = (document.querySelector('nav') || {}).offsetHeight || 72;
+      var gap = 24;
+      var sec = document.getElementById('team') || track.closest('.team-section') || track;
+      var top = sec.getBoundingClientRect().top + window.pageYOffset - navH - gap;
+      if(top < 0) top = 0;
+      window.scrollTo({top: top, behavior: smooth ? 'smooth' : 'auto'});
+    }
+    // wait one frame so the slider transform/layout settles before measuring
+    requestAnimationFrame(function(){ requestAnimationFrame(doScroll); });
     // brief highlight so the parent immediately sees which person
     card.classList.remove('tcard-flash'); void card.offsetWidth; card.classList.add('tcard-flash');
     startAuto();
