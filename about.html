@@ -283,6 +283,12 @@ footer{background:#0e4050;color:rgba(255,255,255,0.65);padding:3.5rem 2.5rem 2re
 .ft-bottom-links a:hover{color:#fff}
 .ft-contact-items{display:flex;flex-direction:column;gap:0.85rem}.ft-contact-item{display:flex;align-items:flex-start;gap:0.75rem}.ft-contact-icon{display:flex;align-items:center;justify-content:center;width:34px;height:34px;border-radius:10px;flex-shrink:0}.ft-contact-label{color:#fff;font-size:0.8rem;font-weight:700;margin-bottom:0.1rem}.ft-contact-val{color:rgba(255,255,255,0.55);font-size:0.78rem;line-height:1.5}
 .heart{color:#EC4899}
+/* Animated "Coming Soon" badge (footer placeholder links) */
+.soon-link{display:inline-flex;align-items:center;gap:6px;cursor:default;pointer-events:none;animation:soonFade 2.2s ease-in-out infinite}.soon-link .soon-badge{font-size:0.5rem;font-weight:800;letter-spacing:0.05em;text-transform:uppercase;color:#0d2f3d;background:linear-gradient(135deg,#FBBF24,#F59E0B);padding:1px 6px;border-radius:20px;line-height:1.5;white-space:nowrap}@keyframes soonFade{0%,100%{opacity:1}50%{opacity:0.55}}
+
+
+
+
 .icon-3d{border-radius:12px;display:flex;align-items:center;justify-content:center;flex-shrink:0;position:relative;overflow:hidden}
 .icon-3d::after{content:'';position:absolute;top:0;left:0;right:0;height:50%;background:rgba(255,255,255,0.18);border-radius:12px 12px 40% 40%/8px 8px 4px 4px}
 .icon-3d svg{position:relative;z-index:1}
@@ -1118,23 +1124,23 @@ nav.scrolled{box-shadow:0 4px 28px rgba(0,0,0,0.11)!important}
         <ul>
           <li><a href="/">Home</a></li>
           <li><a href="about">About Us</a></li>
-          <li><a href="#">Our Team</a></li>
+          <li><a href="/#team">Our Team</a></li>
           <li><a href="gallery">Gallery</a></li>
-          <li><a href="#">Testimonials</a></li>
-          <li><a href="#">Blog &amp; Resources</a></li>
+          <li><a href="/#testimonials">Testimonials</a></li>
+          <li><a href="#" class="soon-link">Blog &amp; Resources <span class="soon-badge">Coming Soon</span></a></li>
           <li><a href="contact">Contact Us</a></li>
         </ul>
       </div>
       <div class="ft-col">
         <h5>Our Programs</h5>
         <ul>
-          <li><a href="#">Special Education</a></li>
-          <li><a href="#">Speech Therapy</a></li>
-          <li><a href="#">ABA Therapy</a></li>
-          <li><a href="#">Occupational Therapy</a></li>
-          <li><a href="#">Physical Therapy</a></li>
-          <li><a href="#">Family Support</a></li>
-          <li><a href="#">Assessment Services</a></li>
+          <li><a href="programs">Special Education</a></li>
+          <li><a href="therapies">Speech Therapy</a></li>
+          <li><a href="therapies">ABA Therapy</a></li>
+          <li><a href="therapies">Occupational Therapy</a></li>
+          <li><a href="therapies">Physical Therapy</a></li>
+          <li><a href="programs">Family Support</a></li>
+          <li><a href="contact">Assessment Services</a></li>
         </ul>
       </div>
       <div class="ft-col">
@@ -1158,9 +1164,9 @@ nav.scrolled{box-shadow:0 4px 28px rgba(0,0,0,0.11)!important}
     <div class="ft-bottom">
       <span>© 2026 N.E.S.T, Nurturing Education with School & Therapy. Made with <span class="heart">❤️</span> for special families.</span>
       <div class="ft-bottom-links">
-        <a href="#">Privacy Policy</a>
-        <a href="#">Terms</a>
-        <a href="#">Accessibility</a>
+        <a href="#" class="soon-link">Privacy Policy <span class="soon-badge">Coming Soon</span></a>
+        <a href="#" class="soon-link">Terms <span class="soon-badge">Coming Soon</span></a>
+        <a href="#" class="soon-link">Accessibility <span class="soon-badge">Coming Soon</span></a>
       </div>
     </div>
   </div>
