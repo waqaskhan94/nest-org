@@ -158,6 +158,9 @@ body{padding-top:72px}
 .therapies-sec{background:#fff;padding:5rem 2.5rem}
 .therapies-inner{max-width:1200px;margin:0 auto}
 .therapy-row{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;margin-bottom:5rem}
+/* Offset anchored sections so the fixed navbar doesn't cover them */
+.therapy-row[id]{scroll-margin-top:100px}
+@media(max-width:768px){.therapy-row[id]{scroll-margin-top:80px}}
 .therapy-row:last-child{margin-bottom:0}
 .therapy-row.reverse{direction:rtl}
 .therapy-row.reverse > *{direction:ltr}
@@ -722,7 +725,7 @@ footer{background:#0e4050;color:rgba(255,255,255,0.65);padding:3.5rem 2.5rem 2re
     </div>
 
     <!-- Parent Counseling -->
-    <div class="therapy-row reverse">
+    <div class="therapy-row reverse" id="family-support">
       <div class="therapy-img-wrap">
         <picture><source srcset="images/family-support.avif" type="image/avif"/><img src="images/family-support.jpeg" alt="Parent Counseling & Family Support at NEST" loading="lazy"/></picture>
         <span class="therapy-img-badge">
@@ -915,7 +918,7 @@ footer{background:#0e4050;color:rgba(255,255,255,0.65);padding:3.5rem 2.5rem 2re
           <li><a href="therapies#aba">ABA Therapy</a></li>
           <li><a href="therapies#occupational">Occupational Therapy</a></li>
           <li><a href="therapies#physical">Physical Therapy</a></li>
-          <li><a href="programs#family-support">Family Support</a></li>
+          <li><a href="therapies#family-support">Family Support</a></li>
           <li><a href="contact">Assessment Services</a></li>
         </ul>
       </div>
