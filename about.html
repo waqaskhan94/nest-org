@@ -431,6 +431,10 @@ footer{background:#0e4050;color:rgba(255,255,255,0.65);padding:3.5rem 2.5rem 2re
 .tcard-photo picture{display:block;width:100%;height:100%}
 /* ===== Team slider (About) ===== */
 .tteam-slider{position:relative;margin-top:2.75rem}
+#team{scroll-margin-top:90px}
+@media(max-width:768px){#team{scroll-margin-top:74px}}
+.tcard-flash{animation:tcardFlash 1.8s ease-out}
+@keyframes tcardFlash{0%{box-shadow:0 0 0 0 rgba(249,115,22,0)}18%{box-shadow:0 0 0 4px rgba(249,115,22,0.55)}100%{box-shadow:0 0 0 0 rgba(249,115,22,0)}}
 .tteam-clip{overflow:hidden;padding:14px 4px;margin:-14px -4px}
 .tteam-track{display:flex;align-items:stretch;transition:transform .55s cubic-bezier(0.4,0,0.2,1);will-change:transform}
 .tteam-slide{flex-shrink:0;box-sizing:border-box;padding:0 12px;display:flex}
@@ -867,7 +871,7 @@ nav.scrolled{box-shadow:0 4px 28px rgba(0,0,0,0.11)!important}
 </section>
 
 <!-- ===== EXPERT TEAM SECTION ===== -->
-<section class="team-section">
+<section class="team-section" id="team">
   <div class="team-inner">
     <div class="team-header">
       <div class="team-tag">
@@ -882,7 +886,7 @@ nav.scrolled{box-shadow:0 4px 28px rgba(0,0,0,0.11)!important}
       <div class="tteam-track" id="tteam-track">
 
       <!-- Card 1: Hina Haroon (CEO) -->
-      <div class="tteam-slide"><div class="tcard">
+      <div class="tteam-slide"><div class="tcard" id="hina-haroon">
         <div class="tcard-photo">
           <picture><source srcset="images/team/hina-haroon.avif" type="image/avif"/><img src="images/team/hina-haroon.jpeg" alt="Hina Haroon, CEO at NEST, Islamabad" loading="lazy"></picture>
           <span class="tcard-badge" style="background:linear-gradient(135deg,#166178,#0D9488)">
@@ -901,7 +905,7 @@ nav.scrolled{box-shadow:0 4px 28px rgba(0,0,0,0.11)!important}
       </div></div>
 
       <!-- Card 2: Summaira Tariq -->
-      <div class="tteam-slide"><div class="tcard">
+      <div class="tteam-slide"><div class="tcard" id="summaira-tariq">
         <div class="tcard-photo">
           <picture><source srcset="images/team/summaira-tariq.avif" type="image/avif"/><img src="images/team/summaira-tariq.jpeg" alt="Summaira Tariq, Director and Administration at NEST, Islamabad" loading="lazy"></picture>
           <span class="tcard-badge" style="background:linear-gradient(135deg,#F97316,#EA580C)">
@@ -920,7 +924,7 @@ nav.scrolled{box-shadow:0 4px 28px rgba(0,0,0,0.11)!important}
       </div></div>
 
       <!-- Card 3: Sidra Simaab -->
-      <div class="tteam-slide"><div class="tcard">
+      <div class="tteam-slide"><div class="tcard" id="sidra-simaab">
         <div class="tcard-photo">
           <picture><source srcset="images/team/sidra-simaab.avif" type="image/avif"/><img src="images/team/sidra-simaab.jpeg" alt="Sidra Simaab, Director and Behavior Therapist at NEST, Islamabad" loading="lazy"></picture>
           <span class="tcard-badge" style="background:linear-gradient(135deg,#EC4899,#BE185D)">
@@ -939,7 +943,7 @@ nav.scrolled{box-shadow:0 4px 28px rgba(0,0,0,0.11)!important}
       </div></div>
 
       <!-- Card 4: Harmain Fatima -->
-      <div class="tteam-slide"><div class="tcard">
+      <div class="tteam-slide"><div class="tcard" id="harmain-fatima">
         <div class="tcard-photo">
           <picture><source srcset="images/team/harmain-fatima.avif" type="image/avif"/><img src="images/team/harmain-fatima.jpeg" alt="Harmain Fatima, Speech Therapist at NEST, Islamabad" loading="lazy"></picture>
           <span class="tcard-badge" style="background:linear-gradient(135deg,#F97316,#EC4899)">
@@ -958,7 +962,7 @@ nav.scrolled{box-shadow:0 4px 28px rgba(0,0,0,0.11)!important}
       </div></div>
 
       <!-- Card 5: Hajra Abbasi -->
-      <div class="tteam-slide"><div class="tcard">
+      <div class="tteam-slide"><div class="tcard" id="hajra-abbasi">
         <div class="tcard-photo">
           <picture><source srcset="images/team/hajra-abbasi.avif" type="image/avif"/><img src="images/team/hajra-abbasi.jpeg" alt="Hajra Abbasi, Teacher at NEST, Islamabad" loading="lazy"></picture>
           <span class="tcard-badge" style="background:linear-gradient(135deg,#166178,#0D9488)">
@@ -977,7 +981,7 @@ nav.scrolled{box-shadow:0 4px 28px rgba(0,0,0,0.11)!important}
       </div></div>
 
       <!-- Card 6: Sana Waheed -->
-      <div class="tteam-slide"><div class="tcard">
+      <div class="tteam-slide"><div class="tcard" id="sana-waheed">
         <div class="tcard-photo">
           <picture><source srcset="images/team/sana-waheed.avif" type="image/avif"/><img src="images/team/sana-waheed.jpeg" alt="Sana Waheed, Physiotherapist and Occupational Therapist at NEST, Islamabad" loading="lazy"></picture>
           <span class="tcard-badge" style="background:linear-gradient(135deg,#F97316,#EA580C)">
@@ -996,7 +1000,7 @@ nav.scrolled{box-shadow:0 4px 28px rgba(0,0,0,0.11)!important}
       </div></div>
 
       <!-- Card 7: Wajeeha Majid -->
-      <div class="tteam-slide"><div class="tcard">
+      <div class="tteam-slide"><div class="tcard" id="wajeeha-majid">
         <div class="tcard-photo">
           <picture><source srcset="images/team/wajeeha-majid.avif" type="image/avif"/><img src="images/team/wajeeha-majid.jpeg" alt="Wajeeha Majid, Special Educator at NEST, Islamabad" loading="lazy"></picture>
           <span class="tcard-badge" style="background:linear-gradient(135deg,#EC4899,#BE185D)">
@@ -1820,9 +1824,36 @@ document.querySelectorAll('.ribbon-item').forEach(function(el,i){
     if(Math.abs(dx) > 45){ stopAuto(); goTo(current + (dx < 0 ? 1 : -1)); startAuto(); }
   }, {passive:true});
 
+  // Deep-link: jump to a specific team member's card via #slug (from homepage Profile icons)
+  function slideIndexOf(el){
+    var slide = el.closest('.tteam-slide');
+    return Array.prototype.indexOf.call(slides, slide);
+  }
+  function goToHash(smooth){
+    var id = (location.hash || '').replace('#','');
+    if(!id) return false;
+    var card = document.getElementById(id);
+    if(!card || !card.classList.contains('tcard')) return false;
+    stopAuto();
+    var idx = slideIndexOf(card);
+    if(idx < 0) return false;
+    // land the card's slide into the visible window (respecting maxIndex)
+    goTo(Math.min(idx, maxIndex()));
+    // scroll the whole team section into view below the fixed navbar
+    var sec = document.getElementById('team') || track.closest('.tteam-slider') || track;
+    if(sec && sec.scrollIntoView) sec.scrollIntoView({behavior: smooth ? 'smooth' : 'auto', block: 'start'});
+    // brief highlight so the parent immediately sees which person
+    card.classList.remove('tcard-flash'); void card.offsetWidth; card.classList.add('tcard-flash');
+    startAuto();
+    return true;
+  }
+
   function init(){ recalcSlides(); buildDots(); goTo(current); }
   init();
   startAuto();
+  // run after layout settles so slideWidth() is accurate
+  setTimeout(function(){ goToHash(false); }, 60);
+  window.addEventListener('hashchange', function(){ goToHash(true); });
 
   var rz;
   window.addEventListener('resize', function(){
