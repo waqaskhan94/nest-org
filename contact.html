@@ -463,7 +463,23 @@ footer{background:#0e4050;color:rgba(255,255,255,0.65);padding:3.5rem 2.5rem 2re
 .cs-dp-day.disabled{color:#d1d5db;cursor:not-allowed;pointer-events:none}
 .cs-dp-day.empty{cursor:default;pointer-events:none}
 .cs-dp-foot{display:flex;justify-content:space-between;margin-top:0.5rem;padding-top:0.5rem;border-top:1px solid #f0f0f0}
-.cs-dp-foot button{border:none;background:none;color:#166178;font-weight:700;font-size:0.8rem;cursor:pointer}.check-group{display:grid;grid-template-columns:1fr 1fr;gap:0.6rem;margin-top:0.4rem}
+.cs-dp-foot button{border:none;background:none;color:#166178;font-weight:700;font-size:0.8rem;cursor:pointer}
+/* typable date input */
+.cs-dp-input{width:100%;padding:0.7rem 2.5rem 0.7rem 1rem;border:2px solid #d1d5db;border-radius:12px;font-family:"Quicksand",sans-serif;font-size:0.9rem;color:#1a1a2e;background:#fff;outline:none;transition:border-color 0.2s,box-shadow 0.2s}
+.cs-dp-input::placeholder{color:#9ca3af}
+.cs-dp-input.error{border-color:#DC2626}
+.cs-dp-input:focus,.cs-dp.open .cs-dp-input{border-color:#166178;box-shadow:0 0 0 3px rgba(22,97,120,0.12)}
+.cs-dp-icon{position:absolute;right:1rem;top:50%;transform:translateY(-50%);stroke:#6b7280;cursor:pointer;background:none;border:none;padding:0;display:flex}
+/* clickable month/year title */
+.cs-dp-title{font-weight:800;color:#166178;font-size:0.92rem;cursor:pointer;padding:3px 8px;border-radius:8px;transition:background 0.15s}
+.cs-dp-title:hover{background:#F0FDFA}
+.cs-dp-title::after{content:" \25BE";font-size:0.7rem;color:#9ca3af}
+/* year picker grid */
+.cs-dp-years{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;max-height:216px;overflow-y:auto;padding:4px 2px}
+.cs-dp-yr{padding:8px 0;text-align:center;font-size:0.82rem;color:#374151;border-radius:8px;cursor:pointer;transition:background 0.12s}
+.cs-dp-yr:hover{background:#F0FDFA;color:#166178}
+.cs-dp-yr.sel{background:#166178;color:#fff;font-weight:700}
+.cs-dp-yr.disabled{color:#d1d5db;cursor:not-allowed;pointer-events:none}.check-group{display:grid;grid-template-columns:1fr 1fr;gap:0.6rem;margin-top:0.4rem}
 .check-item{display:flex;align-items:flex-start;gap:8px;padding:0.6rem 0.85rem;border-radius:10px;border:2px solid #e5e7eb;cursor:pointer;transition:all 0.18s;font-size:0.85rem;font-weight:600;color:#1a1a2e;line-height:1.5}
 .check-item:hover,.check-item.checked{border-color:#166178;background:#F0FDFA}
 .check-item input{width:16px;height:16px;accent-color:#166178;cursor:pointer}
@@ -1045,38 +1061,99 @@ function enhanceDates(){
   modal.querySelectorAll('input[type="date"]').forEach(function(inp){
     inp.style.display='none';
     var dp=document.createElement('div'); dp.className='cs-dp';
-    var btn=document.createElement('button'); btn.type='button'; btn.className='cs-dp-btn placeholder';
-    btn.innerHTML='<span class="cs-dp-txt">Select date</span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="3"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>';
+    // typable text field (users can key the date in directly) + calendar icon
+    var field=document.createElement('input'); field.type='text'; field.className='cs-dp-input';
+    field.setAttribute('placeholder','DD/MM/YYYY'); field.setAttribute('inputmode','numeric'); field.setAttribute('autocomplete','off');
+    var iconBtn=document.createElement('button'); iconBtn.type='button'; iconBtn.className='cs-dp-icon'; iconBtn.setAttribute('aria-label','Open calendar');
+    iconBtn.innerHTML='<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="3"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>';
     var cal=document.createElement('div'); cal.className='cs-dp-cal';
     var view=new Date(); view.setDate(1);
+    var mode='days'; // 'days' | 'years'
     function parseAttr(a){ return a?new Date(a+'T00:00:00'):null; }
     var minD=parseAttr(inp.getAttribute('min')), maxD=parseAttr(inp.getAttribute('max'));
     function fmt(d){ return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0'); }
-    function label(d){ return MON[d.getMonth()].slice(0,3)+' '+d.getDate()+', '+d.getFullYear(); }
-    function refreshBtn(){ var tx=btn.querySelector('.cs-dp-txt'); if(inp.value){ var dv=new Date(inp.value+'T00:00:00'); tx.textContent=label(dv); btn.classList.remove('placeholder'); } else { tx.textContent='Select date'; btn.classList.add('placeholder'); } btn.classList.toggle('error',inp.classList.contains('error')); }
-    function render(){
+    function disp(d){ return String(d.getDate()).padStart(2,'0')+'/'+String(d.getMonth()+1).padStart(2,'0')+'/'+d.getFullYear(); }
+    // Parse typed text: accepts DD/MM/YYYY, D-M-YYYY, D.M.YYYY, or YYYY-MM-DD
+    function parseTyped(s){
+      s=(s||'').trim(); if(!s) return null;
+      var m=s.match(/^(\d{4})[-\/.](\d{1,2})[-\/.](\d{1,2})$/); // ISO YYYY-MM-DD
+      var d,mo,y;
+      if(m){ y=+m[1]; mo=+m[2]; d=+m[3]; }
+      else { m=s.match(/^(\d{1,2})[-\/.](\d{1,2})[-\/.](\d{4})$/); if(!m) return null; d=+m[1]; mo=+m[2]; y=+m[3]; }
+      if(mo<1||mo>12||d<1||d>31) return null;
+      var dt=new Date(y,mo-1,d);
+      if(dt.getFullYear()!==y||dt.getMonth()!==mo-1||dt.getDate()!==d) return null; // rejects e.g. 31/02
+      return dt;
+    }
+    function refreshField(){
       minD=parseAttr(inp.getAttribute('min')); maxD=parseAttr(inp.getAttribute('max'));
+      if(inp.value){ field.value=disp(new Date(inp.value+'T00:00:00')); }
+      field.classList.toggle('error',inp.classList.contains('error'));
+    }
+    function commitTyped(){
+      var dt=parseTyped(field.value);
+      if(!field.value.trim()){ inp.value=''; inp.dispatchEvent(new Event('change',{bubbles:true})); return; }
+      if(dt && (!minD||dt>=minD) && (!maxD||dt<=maxD)){
+        inp.value=fmt(dt); view=new Date(dt); view.setDate(1);
+        field.classList.remove('error'); inp.classList.remove('error');
+        field.value=disp(dt);
+      } else {
+        // invalid or out of range: mark error, restore last valid value
+        field.classList.add('error');
+        if(inp.value) field.value=disp(new Date(inp.value+'T00:00:00'));
+      }
+      inp.dispatchEvent(new Event('change',{bubbles:true}));
+    }
+    function renderDays(){
       var y=view.getFullYear(), m=view.getMonth();
       var first=new Date(y,m,1).getDay(), dim=new Date(y,m+1,0).getDate();
       var sel=inp.value?new Date(inp.value+'T00:00:00'):null;
-      var h='<div class="cs-dp-head"><button type="button" class="cs-dp-nav" data-d="-1">&#8249;</button><span class="cs-dp-title">'+MON[m]+' '+y+'</span><button type="button" class="cs-dp-nav" data-d="1">&#8250;</button></div><div class="cs-dp-grid">';
+      var h='<div class="cs-dp-head"><button type="button" class="cs-dp-nav" data-d="-1">&#8249;</button><span class="cs-dp-title" data-yearview="1">'+MON[m]+' '+y+'</span><button type="button" class="cs-dp-nav" data-d="1">&#8250;</button></div><div class="cs-dp-grid">';
       DOW.forEach(function(d){ h+='<div class="cs-dp-dow">'+d+'</div>'; });
       for(var i=0;i<first;i++) h+='<div class="cs-dp-day empty"></div>';
-      for(var day=1;day<=dim;day++){ var cur=new Date(y,m,day); var dis=(minD&&cur<minD)||(maxD&&cur>maxD); var isSel=sel&&sel.getFullYear()===y&&sel.getMonth()===m&&sel.getDate()===day; h+='<div class="cs-dp-day'+(dis?' disabled':'')+(isSel?' sel':'')+'" data-day="'+day+'">'+day+'</div>'; }
+      for(var day=1;day<=dim;day++){
+        var cur=new Date(y,m,day); var dis=(minD&&cur<minD)||(maxD&&cur>maxD);
+        var isSel=sel&&sel.getFullYear()===y&&sel.getMonth()===m&&sel.getDate()===day;
+        h+='<div class="cs-dp-day'+(dis?' disabled':'')+(isSel?' sel':'')+'" data-day="'+day+'">'+day+'</div>';
+      }
       h+='</div><div class="cs-dp-foot"><button type="button" data-act="clear">Clear</button><button type="button" data-act="today">Today</button></div>';
       cal.innerHTML=h;
     }
+    function renderYears(){
+      var y=view.getFullYear();
+      var minY=minD?minD.getFullYear():1950;
+      var maxY=maxD?maxD.getFullYear():(new Date().getFullYear());
+      var selY=inp.value?new Date(inp.value+'T00:00:00').getFullYear():null;
+      var h='<div class="cs-dp-head"><span class="cs-dp-title" data-dayview="1">'+MON[view.getMonth()]+' '+y+'</span></div><div class="cs-dp-years">';
+      // newest year first so recent birth years are at the top
+      for(var yr=maxY; yr>=minY; yr--){
+        h+='<div class="cs-dp-yr'+(yr===selY?' sel':'')+'" data-yr="'+yr+'">'+yr+'</div>';
+      }
+      h+='</div>';
+      cal.innerHTML=h;
+      // scroll selected year into view
+      var s=cal.querySelector('.cs-dp-yr.sel'); if(s) s.scrollIntoView({block:'center'});
+    }
+    function render(){ minD=parseAttr(inp.getAttribute('min')); maxD=parseAttr(inp.getAttribute('max')); if(mode==='years') renderYears(); else renderDays(); }
     cal.addEventListener('click',function(e){
       e.stopPropagation();
+      var titleY=e.target.closest('[data-yearview]'); if(titleY){ mode='years'; render(); return; }
+      var titleD=e.target.closest('[data-dayview]'); if(titleD){ mode='days'; render(); return; }
+      var yr=e.target.closest('.cs-dp-yr'); if(yr&&yr.dataset.yr){ view.setFullYear(parseInt(yr.dataset.yr,10)); mode='days'; render(); return; }
       var nav=e.target.closest('.cs-dp-nav'); if(nav){ view.setMonth(view.getMonth()+parseInt(nav.dataset.d,10)); render(); return; }
-      var act=e.target.closest('[data-act]'); if(act){ if(act.dataset.act==='clear'){ inp.value=''; } else { var td=new Date(); if((!minD||td>=minD)&&(!maxD||td<=maxD)){ inp.value=fmt(td); view=new Date(td); view.setDate(1);} } inp.dispatchEvent(new Event('change',{bubbles:true})); refreshBtn(); render(); if(act.dataset.act!=='clear') dp.classList.remove('open'); return; }
-      var day=e.target.closest('.cs-dp-day'); if(day&&day.dataset.day){ inp.value=fmt(new Date(view.getFullYear(),view.getMonth(),parseInt(day.dataset.day,10))); inp.dispatchEvent(new Event('change',{bubbles:true})); refreshBtn(); render(); dp.classList.remove('open'); }
+      var act=e.target.closest('[data-act]'); if(act){ if(act.dataset.act==='clear'){ inp.value=''; field.value=''; field.classList.remove('error'); } else { var td=new Date(); if((!minD||td>=minD)&&(!maxD||td<=maxD)){ inp.value=fmt(td); view=new Date(td); view.setDate(1);} } inp.dispatchEvent(new Event('change',{bubbles:true})); refreshField(); render(); if(act.dataset.act!=='clear') dp.classList.remove('open'); return; }
+      var day=e.target.closest('.cs-dp-day'); if(day&&day.dataset.day){ inp.value=fmt(new Date(view.getFullYear(),view.getMonth(),parseInt(day.dataset.day,10))); inp.dispatchEvent(new Event('change',{bubbles:true})); refreshField(); render(); dp.classList.remove('open'); }
     });
-    btn.addEventListener('click',function(e){ e.stopPropagation(); document.querySelectorAll('.cs-dp.open').forEach(function(x){ if(x!==dp) x.classList.remove('open'); }); if(inp.value){view=new Date(inp.value+'T00:00:00');view.setDate(1);} render(); dp.classList.toggle('open'); });
-    inp.addEventListener('change',refreshBtn);
-    dp.appendChild(btn); dp.appendChild(cal);
+    function openCal(){ document.querySelectorAll('.cs-dp.open').forEach(function(x){ if(x!==dp) x.classList.remove('open'); }); if(inp.value){view=new Date(inp.value+'T00:00:00');view.setDate(1);} mode='days'; render(); dp.classList.add('open'); }
+    iconBtn.addEventListener('click',function(e){ e.stopPropagation(); if(dp.classList.contains('open')) dp.classList.remove('open'); else openCal(); });
+    field.addEventListener('focus',function(){ openCal(); });
+    field.addEventListener('click',function(e){ e.stopPropagation(); });
+    field.addEventListener('keydown',function(e){ if(e.key==='Enter'){ e.preventDefault(); commitTyped(); dp.classList.remove('open'); } });
+    field.addEventListener('blur',function(e){ if(cal.contains(e.relatedTarget)) return; commitTyped(); });
+    inp.addEventListener('change',refreshField);
+    dp.appendChild(field); dp.appendChild(iconBtn); dp.appendChild(cal);
     inp.parentNode.insertBefore(dp,inp.nextSibling);
-    render(); refreshBtn();
+    render(); refreshField();
   });
   document.addEventListener('click',function(){ document.querySelectorAll('.cs-dp.open').forEach(function(x){x.classList.remove('open');}); });
 }
