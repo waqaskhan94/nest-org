@@ -434,6 +434,7 @@ footer{background:#0e4050;color:rgba(255,255,255,0.65);padding:3.5rem 2.5rem 2re
 .cs-dp-title{font-weight:800;color:#166178;font-size:0.92rem}
 .cs-dp-nav{width:30px;height:30px;border:none;border-radius:50%;background:#F0FDFA;color:#166178;cursor:pointer;font-size:1rem;display:flex;align-items:center;justify-content:center;transition:background 0.15s}
 .cs-dp-nav:hover{background:#cdeeea}
+.cs-dp-nav.disabled{opacity:0.32;cursor:not-allowed;pointer-events:none}
 .cs-dp-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:2px}
 .cs-dp-dow{font-size:0.66rem;font-weight:800;color:#9ca3af;text-align:center;padding:4px 0}
 .cs-dp-day{aspect-ratio:1;display:flex;align-items:center;justify-content:center;font-size:0.82rem;color:#374151;border-radius:8px;cursor:pointer;transition:background 0.12s}
@@ -1346,7 +1347,11 @@ function enhanceDates(){
       var y=view.getFullYear(), m=view.getMonth();
       var first=new Date(y,m,1).getDay(), dim=new Date(y,m+1,0).getDate();
       var sel=inp.value?new Date(inp.value+'T00:00:00'):null;
-      var h='<div class="cs-dp-head"><button type="button" class="cs-dp-nav" data-d="-1">&#8249;</button><span class="cs-dp-title" data-yearview="1">'+MON[m]+' '+y+'</span><button type="button" class="cs-dp-nav" data-d="1">&#8250;</button></div><div class="cs-dp-grid">';
+      // disable prev arrow if the whole previous month is before min; next arrow if whole next month is after max
+      var prevLast=new Date(y,m,0);       // last day of previous month
+      var nextFirst=new Date(y,m+1,1);    // first day of next month
+      var prevDis=minD&&prevLast<minD, nextDis=maxD&&nextFirst>maxD;
+      var h='<div class="cs-dp-head"><button type="button" class="cs-dp-nav'+(prevDis?' disabled':'')+'" data-d="-1"'+(prevDis?' disabled':'')+'>&#8249;</button><span class="cs-dp-title" data-yearview="1">'+MON[m]+' '+y+'</span><button type="button" class="cs-dp-nav'+(nextDis?' disabled':'')+'" data-d="1"'+(nextDis?' disabled':'')+'>&#8250;</button></div><div class="cs-dp-grid">';
       DOW.forEach(function(d){ h+='<div class="cs-dp-dow">'+d+'</div>'; });
       for(var i=0;i<first;i++) h+='<div class="cs-dp-day empty"></div>';
       for(var day=1;day<=dim;day++){
@@ -1378,7 +1383,7 @@ function enhanceDates(){
       var titleY=e.target.closest('[data-yearview]'); if(titleY){ mode='years'; render(); return; }
       var titleD=e.target.closest('[data-dayview]'); if(titleD){ mode='days'; render(); return; }
       var yr=e.target.closest('.cs-dp-yr'); if(yr&&yr.dataset.yr){ view.setFullYear(parseInt(yr.dataset.yr,10)); mode='days'; render(); return; }
-      var nav=e.target.closest('.cs-dp-nav'); if(nav){ view.setMonth(view.getMonth()+parseInt(nav.dataset.d,10)); render(); return; }
+      var nav=e.target.closest('.cs-dp-nav'); if(nav){ if(nav.classList.contains('disabled')) return; view.setMonth(view.getMonth()+parseInt(nav.dataset.d,10)); render(); return; }
       var act=e.target.closest('[data-act]'); if(act){ if(act.dataset.act==='clear'){ inp.value=''; field.value=''; field.classList.remove('error'); } else { var td=new Date(); if((!minD||td>=minD)&&(!maxD||td<=maxD)){ inp.value=fmt(td); view=new Date(td); view.setDate(1);} } inp.dispatchEvent(new Event('change',{bubbles:true})); refreshField(); render(); if(act.dataset.act!=='clear') dp.classList.remove('open'); return; }
       var day=e.target.closest('.cs-dp-day'); if(day&&day.dataset.day){ inp.value=fmt(new Date(view.getFullYear(),view.getMonth(),parseInt(day.dataset.day,10))); inp.dispatchEvent(new Event('change',{bubbles:true})); refreshField(); render(); dp.classList.remove('open'); }
     });
@@ -1386,6 +1391,18 @@ function enhanceDates(){
     iconBtn.addEventListener('click',function(e){ e.stopPropagation(); if(dp.classList.contains('open')) dp.classList.remove('open'); else openCal(); });
     field.addEventListener('focus',function(){ openCal(); });
     field.addEventListener('click',function(e){ e.stopPropagation(); });
+    // auto-insert the "/" separators as the user types (DD/MM/YYYY)
+    field.addEventListener('input',function(e){
+      // leave ISO-style typing (with a dash) alone; only auto-format digit entry
+      if(field.value.indexOf('-')!==-1) return;
+      var atEnd=(field.selectionStart===field.value.length);
+      var digits=field.value.replace(/\D/g,'').slice(0,8);
+      var out=digits;
+      if(digits.length>4){ out=digits.slice(0,2)+'/'+digits.slice(2,4)+'/'+digits.slice(4); }
+      else if(digits.length>2){ out=digits.slice(0,2)+'/'+digits.slice(2); }
+      field.value=out;
+      if(atEnd){ field.setSelectionRange(out.length,out.length); }
+    });
     field.addEventListener('keydown',function(e){ if(e.key==='Enter'){ e.preventDefault(); commitTyped(); dp.classList.remove('open'); } });
     field.addEventListener('blur',function(e){ if(cal.contains(e.relatedTarget)) return; commitTyped(); });
     inp.addEventListener('change',refreshField);
