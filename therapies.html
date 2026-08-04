@@ -1238,10 +1238,14 @@ function enhanceDates(){
         inp.value=fmt(dt); view=new Date(dt); view.setDate(1);
         field.classList.remove('error'); inp.classList.remove('error');
         field.value=disp(dt);
+        if(typeof clearError==='function') clearError(inp);
       } else {
-        // invalid or out of range: mark error, restore last valid value
+        // decide a helpful, specific message
+        var msg='Please enter a valid date (DD/MM/YYYY)';
+        if(dt && maxD && dt>maxD) msg='Date of birth cannot be in the future';
+        else if(dt && minD && dt<minD) msg='Please enter a more recent date';
         field.classList.add('error');
-        if(inp.value) field.value=disp(new Date(inp.value+'T00:00:00'));
+        if(typeof setError==='function') setError(inp,msg);
       }
       inp.dispatchEvent(new Event('change',{bubbles:true}));
     }
@@ -1386,8 +1390,17 @@ document.addEventListener('DOMContentLoaded',function(){
     if(this.checked) document.getElementById('consentItem').style.borderColor='';
   });
 });
-function setError(el){ el.classList.add('error'); }
-function clearError(el){ el.classList.remove('error'); }
+function errMsgEl(el){ var w=el.parentNode; return w?w.querySelector('.err-msg'):null; }
+function setError(el,msg){
+  el.classList.add('error');
+  var m=errMsgEl(el);
+  if(m){ if(!m.dataset.default) m.dataset.default=m.textContent; if(msg) m.textContent=msg; }
+}
+function clearError(el){
+  el.classList.remove('error');
+  var m=errMsgEl(el);
+  if(m && m.dataset.default) m.textContent=m.dataset.default;
+}
 function liveAlpha(el){
   var v=el.value.trim();
   if(!v || v.length<2){ setError(el); return false; }
@@ -1422,9 +1435,20 @@ function validateStep(n){
   var ok=true;
   function reqField(id){ var el=document.getElementById(id); if(!el) return true; if(!el.value.trim()){ setError(el); ok=false; return false; } clearError(el); return true; }
   function alphaField(id,min,max){ var el=document.getElementById(id); if(!el) return true; var v=el.value.trim(); if(!v){ setError(el); ok=false; return false; } if(v.length<(min||2)){ setError(el); ok=false; return false; } if(v.length>(max||50)){ setError(el); ok=false; return false; } if(!/^[a-zA-Z؀-ۿ\s\-']+$/.test(v)){ setError(el); ok=false; return false; } clearError(el); return true; }
+  function dobField(id){
+    var el=document.getElementById(id);
+    if(!el) return true;
+    // the visible typed field sits inside the .cs-dp wrapper that follows the hidden input
+    var wrap=el.nextSibling;
+    var typed=(wrap&&wrap.querySelector)?wrap.querySelector('.cs-dp-input'):null;
+    var typedTxt=typed?typed.value.trim():'';
+    if(el.value.trim()){ clearError(el); return true; }           // valid date committed
+    if(typedTxt){ setError(el,'Please enter a valid date (DD/MM/YYYY)'); ok=false; return false; } // typed but invalid
+    setError(el,'Please enter date of birth'); ok=false; return false;                              // truly empty
+  }
   function phoneField(id){ var el=document.getElementById(id); if(!el) return true; var v=el.value.trim(); if(!v){ setError(el); ok=false; return false; } if(v.length<10||v.length>15){ setError(el); ok=false; return false; } if(!/^(\+92|0)[0-9\-\s]{9,13}$/.test(v)){ setError(el); ok=false; return false; } clearError(el); return true; }
   if(n===1){
-    alphaField('childFirst',2,30); alphaField('childLast',2,30); reqField('childDob'); reqField('childGender'); reqField('childDiag');
+    alphaField('childFirst',2,30); alphaField('childLast',2,30); dobField('childDob'); reqField('childGender'); reqField('childDiag');
     var checked=document.querySelectorAll('#programsGroup input:checked');
     if(checked.length===0){ var pErr=document.getElementById('programsErr'); if(pErr) pErr.style.display='block'; ok=false; }
     else { var pErr2=document.getElementById('programsErr'); if(pErr2) pErr2.style.display='none'; }
