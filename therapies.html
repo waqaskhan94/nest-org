@@ -1523,22 +1523,60 @@ function selectRadio(el,groupId){
 }
 </script>
 
-<!-- Floating WhatsApp button -->
+
+
+
+<!-- Floating WhatsApp button + choice popup -->
 <style>
-.wa-float{position:fixed;bottom:22px;right:22px;z-index:1400;width:58px;height:58px;border-radius:50%;background:#25D366;box-shadow:0 6px 20px rgba(37,211,102,0.45),0 2px 8px rgba(0,0,0,0.2);display:flex;align-items:center;justify-content:center;transition:transform .2s,box-shadow .2s;animation:waPulse 2.6s ease-in-out infinite}
+.wa-float{position:fixed;bottom:22px;right:22px;z-index:1400;width:58px;height:58px;border-radius:50%;background:#25D366;box-shadow:0 6px 20px rgba(37,211,102,0.45),0 2px 8px rgba(0,0,0,0.2);display:flex;align-items:center;justify-content:center;transition:transform .2s,box-shadow .2s;animation:waPulse 2.6s ease-in-out infinite;border:none;cursor:pointer}
 .wa-float:hover{transform:scale(1.08);box-shadow:0 8px 26px rgba(37,211,102,0.55)}
 .wa-float svg{width:32px;height:32px}
-.wa-float .wa-tip{position:absolute;right:70px;background:#0e4050;color:#fff;font-family:'Quicksand',sans-serif;font-weight:700;font-size:0.82rem;padding:0.5rem 0.85rem;border-radius:10px;white-space:nowrap;opacity:0;pointer-events:none;transition:opacity .2s;box-shadow:0 4px 14px rgba(0,0,0,0.18)}
-.wa-float:hover .wa-tip{opacity:1}
-.wa-float .wa-tip::after{content:'';position:absolute;right:-6px;top:50%;transform:translateY(-50%);border:6px solid transparent;border-left-color:#0e4050}
 @keyframes waPulse{0%,100%{box-shadow:0 6px 20px rgba(37,211,102,0.45),0 0 0 0 rgba(37,211,102,0.5)}50%{box-shadow:0 6px 20px rgba(37,211,102,0.45),0 0 0 10px rgba(37,211,102,0)}}
-@media(max-width:600px){.wa-float{width:52px;height:52px;bottom:16px;right:16px}.wa-float svg{width:28px;height:28px}.wa-float .wa-tip{display:none}}
+.wa-modal{display:none;position:fixed;inset:0;z-index:1401;background:rgba(8,24,34,0.55);backdrop-filter:blur(3px);-webkit-backdrop-filter:blur(3px);align-items:flex-end;justify-content:flex-end;padding:0 22px 92px}
+.wa-modal.open{display:flex}
+.wa-card{background:#fff;border-radius:18px;box-shadow:0 16px 44px rgba(0,0,0,0.28);width:320px;max-width:calc(100vw - 44px);overflow:hidden;animation:waSlide .22s ease}
+@keyframes waSlide{from{transform:translateY(12px);opacity:0}to{transform:translateY(0);opacity:1}}
+.wa-head{background:#075E54;color:#fff;padding:0.95rem 1.1rem;display:flex;align-items:center;gap:10px;font-family:'Fredoka One',cursive;font-weight:400;font-size:1.02rem}
+.wa-head svg{width:22px;height:22px;flex-shrink:0}
+.wa-head .wa-x{margin-left:auto;background:none;border:none;color:rgba(255,255,255,0.85);font-size:1.4rem;line-height:1;cursor:pointer;padding:0}
+.wa-body{padding:0.85rem}
+.wa-opt{display:flex;align-items:center;gap:12px;padding:0.8rem 0.9rem;border-radius:12px;text-decoration:none;transition:background .15s;margin-bottom:0.5rem}
+.wa-opt:last-child{margin-bottom:0}
+.wa-opt:hover{background:#f0fdf4}
+.wa-opt .wa-ic{width:40px;height:40px;border-radius:50%;background:#25D366;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.wa-opt .wa-ic svg{width:22px;height:22px}
+.wa-opt .wa-txt{display:flex;flex-direction:column}
+.wa-opt .wa-name{font-family:'Quicksand',sans-serif;font-weight:800;font-size:0.9rem;color:#0e4050;line-height:1.25}
+.wa-opt .wa-num{font-family:'Quicksand',sans-serif;font-weight:600;font-size:0.78rem;color:#6b7280;margin-top:2px}
+@media(max-width:600px){.wa-float{width:52px;height:52px;bottom:16px;right:16px}.wa-float svg{width:28px;height:28px}.wa-modal{padding:0 16px 80px}}
 </style>
-<a class="wa-float" href="https://wa.me/923005347304?text=Hi%2C%20I%27d%20like%20to%20know%20more%20about%20NEST%27s%20programs%20for%20my%20child." target="_blank" rel="noopener" aria-label="Chat with NEST on WhatsApp" onclick="if(typeof gtag==='function'){gtag('event','whatsapp_click',{event_category:'contact',event_label:'Floating WhatsApp Button'});}">
-  <span class="wa-tip">Chat with us on WhatsApp</span>
+<button class="wa-float" onclick="openWaModal()" aria-label="Chat with NEST on WhatsApp">
   <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M16 3C9.373 3 4 8.373 4 15c0 2.35.676 4.542 1.844 6.393L4 29l7.807-1.82A11.94 11.94 0 0 0 16 27c6.627 0 12-5.373 12-12S22.627 3 16 3z" fill="#fff"/><path d="M16.02 5.2c-5.41 0-9.8 4.39-9.8 9.8 0 1.94.57 3.75 1.55 5.27l-1.02 3.72 3.82-1a9.75 9.75 0 0 0 5.45 1.66h.004c5.41 0 9.8-4.39 9.8-9.8 0-2.62-1.02-5.08-2.87-6.93A9.74 9.74 0 0 0 16.02 5.2z" fill="#25D366"/><path d="M21.4 18.03c-.29-.15-1.73-.85-2-.95-.27-.1-.46-.15-.66.15-.19.29-.75.94-.92 1.14-.17.19-.34.22-.63.07-.29-.15-1.23-.45-2.35-1.45-.87-.78-1.46-1.73-1.63-2.02-.17-.29-.02-.45.13-.6.13-.13.29-.34.44-.51.15-.17.19-.29.29-.48.1-.19.05-.36-.02-.51-.07-.15-.66-1.59-.9-2.18-.24-.57-.48-.49-.66-.5l-.56-.01c-.19 0-.51.07-.77.36-.27.29-1.01.99-1.01 2.42s1.04 2.81 1.18 3c.15.19 2.04 3.12 4.95 4.38.69.3 1.23.48 1.65.61.69.22 1.32.19 1.82.12.56-.08 1.73-.71 1.97-1.39.24-.68.24-1.27.17-1.39-.07-.12-.26-.19-.55-.34z" fill="#fff"/></svg>
-</a>
-
+</button>
+<div class="wa-modal" id="waModal" onclick="if(event.target===this)closeWaModal()">
+  <div class="wa-card" role="dialog" aria-label="Chat with NEST on WhatsApp">
+    <div class="wa-head">
+      <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M16 3C9.373 3 4 8.373 4 15c0 2.35.676 4.542 1.844 6.393L4 29l7.807-1.82A11.94 11.94 0 0 0 16 27c6.627 0 12-5.373 12-12S22.627 3 16 3z" fill="#25D366"/><path d="M21.4 18.03c-.29-.15-1.73-.85-2-.95-.27-.1-.46-.15-.66.15-.19.29-.75.94-.92 1.14-.17.19-.34.22-.63.07-.29-.15-1.23-.45-2.35-1.45-.87-.78-1.46-1.73-1.63-2.02-.17-.29-.02-.45.13-.6.13-.13.29-.34.44-.51.15-.17.19-.29.29-.48.1-.19.05-.36-.02-.51-.07-.15-.66-1.59-.9-2.18-.24-.57-.48-.49-.66-.5l-.56-.01c-.19 0-.51.07-.77.36-.27.29-1.01.99-1.01 2.42s1.04 2.81 1.18 3c.15.19 2.04 3.12 4.95 4.38.69.3 1.23.48 1.65.61.69.22 1.32.19 1.82.12.56-.08 1.73-.71 1.97-1.39.24-.68.24-1.27.17-1.39-.07-.12-.26-.19-.55-.34z" fill="#fff"/></svg>
+      Chat with NEST
+      <button class="wa-x" onclick="closeWaModal()" aria-label="Close">&times;</button>
+    </div>
+    <div class="wa-body">
+      <a class="wa-opt" href="https://wa.me/923005347304?text=Hi%2C%20I%27d%20like%20to%20know%20more%20about%20NEST%27s%20programs%20for%20my%20child." target="_blank" rel="noopener" onclick="if(typeof gtag==='function'){gtag('event','whatsapp_click',{event_category:'contact',event_label:'CEO'});}">
+        <span class="wa-ic"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></span>
+        <span class="wa-txt"><span class="wa-name">Chat with CEO</span><span class="wa-num">+92 300 5347304</span></span>
+      </a>
+      <a class="wa-opt" href="https://wa.me/923156289892?text=Hi%2C%20I%27d%20like%20to%20know%20more%20about%20NEST%27s%20programs%20for%20my%20child." target="_blank" rel="noopener" onclick="if(typeof gtag==='function'){gtag('event','whatsapp_click',{event_category:'contact',event_label:'Administration Director'});}">
+        <span class="wa-ic"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></span>
+        <span class="wa-txt"><span class="wa-name">Chat with Administration Director</span><span class="wa-num">+92 315 6289892</span></span>
+      </a>
+    </div>
+  </div>
+</div>
+<script>
+function openWaModal(){document.getElementById('waModal').classList.add('open');}
+function closeWaModal(){document.getElementById('waModal').classList.remove('open');}
+document.addEventListener('keydown',function(e){if(e.key==='Escape')closeWaModal();});
+</script>
 </body>
 </html>
 
