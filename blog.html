@@ -630,7 +630,7 @@ nav.scrolled{box-shadow:0 4px 28px rgba(0,0,0,0.11)!important}
 /* ===== GALLERY HERO ===== */
 .gallery-hero{
   position:relative;text-align:center;overflow:hidden;
-  min-height:820px;display:flex;align-items:center;justify-content:center;
+  min-height:560px;display:flex;align-items:center;justify-content:center;
   padding:7rem 2.5rem 7.5rem;background:#071e2a;
 }
 /* 4×2 children photo mosaic grid, each cell Ken Burns in a different direction */
@@ -784,9 +784,31 @@ nav.scrolled{box-shadow:0 4px 28px rgba(0,0,0,0.11)!important}
 </div>
 
 <!-- ===== BLOG HERO ===== -->
-<section style="background:linear-gradient(135deg,#0d3c4d,#166178);padding:4.5rem 6% 3.5rem;text-align:center;position:relative;overflow:hidden">
-  <div style="position:absolute;width:360px;height:360px;border-radius:50%;background:rgba(251,191,36,0.10);filter:blur(90px);top:-120px;right:-40px"></div>
-  <div style="position:relative;z-index:1;max-width:760px;margin:0 auto">
+<style>
+.blog-hero{position:relative;overflow:hidden;padding:4.5rem 6% 3.5rem;text-align:center;background:#0b3040;min-height:720px;display:flex;align-items:center;justify-content:center}
+.blog-hero-bg{position:absolute;inset:0;z-index:0;display:grid;grid-template-columns:0.85fr 1.5fr 0.85fr;grid-template-rows:repeat(2,1fr);gap:3px;background:#0b3040}
+.blog-cell{overflow:hidden;position:relative}
+.blog-cell::after{content:'';position:absolute;inset:0;background-size:cover;background-position:center;animation-name:var(--kb,bgKB1);animation-duration:var(--dur,26s);animation-delay:var(--delay,0s);animation-timing-function:ease-in-out;animation-iteration-count:infinite;animation-direction:alternate;will-change:transform}
+@keyframes bgKB1{0%{transform:scale(1)}100%{transform:scale(1.02) translate(-1%,-0.7%)}}
+@keyframes bgKB2{0%{transform:scale(1)}100%{transform:scale(1.02) translate(1%,-0.7%)}}
+@keyframes bgKB3{0%{transform:scale(1)}100%{transform:scale(1.02) translate(-1%,0.7%)}}
+@keyframes bgKB4{0%{transform:scale(1)}100%{transform:scale(1.02) translate(1%,0.7%)}}
+.bc-1::after{background-image:image-set(url('images/bg-read.avif') type('image/avif'),url('images/bg-read.jpeg') type('image/jpeg'));background-position:center 18%;--kb:bgKB1;--dur:24s;--delay:0s}
+.bc-2::after{background-image:image-set(url('images/bg-group.avif') type('image/avif'),url('images/bg-group.jpeg') type('image/jpeg'));background-position:center 68%;--kb:bgKB2;--dur:28s;--delay:-6s}
+.bc-3::after{background-image:image-set(url('images/bg-blocks.avif') type('image/avif'),url('images/bg-blocks.jpeg') type('image/jpeg'));background-position:center 22%;--kb:bgKB3;--dur:22s;--delay:-10s}
+.bc-4::after{background-image:image-set(url('images/bg-peace.avif') type('image/avif'),url('images/bg-peace.jpeg') type('image/jpeg'));background-position:center 30%;--kb:bgKB4;--dur:26s;--delay:-4s}
+.bc-5::after{background-image:image-set(url('images/bg-art.avif') type('image/avif'),url('images/bg-art.jpeg') type('image/jpeg'));background-position:center 45%;--kb:bgKB2;--dur:27s;--delay:-8s}
+.bc-6::after{background-image:image-set(url('images/bg-flower.avif') type('image/avif'),url('images/bg-flower.jpeg') type('image/jpeg'));background-position:center 30%;--kb:bgKB3;--dur:23s;--delay:-2s}
+.blog-hero-ov{position:absolute;inset:0;z-index:1;background:linear-gradient(135deg,rgba(13,60,77,0.9) 0%,rgba(22,97,120,0.85) 100%)}
+@media(max-width:600px){.blog-hero{min-height:620px}}
+</style>
+<section class="blog-hero">
+  <div class="blog-hero-bg" aria-hidden="true">
+    <div class="blog-cell bc-1"></div><div class="blog-cell bc-2"></div><div class="blog-cell bc-3"></div>
+    <div class="blog-cell bc-4"></div><div class="blog-cell bc-5"></div><div class="blog-cell bc-6"></div>
+  </div>
+  <div class="blog-hero-ov" aria-hidden="true"></div>
+  <div style="position:relative;z-index:2;max-width:760px;margin:0 auto">
     <span style="display:inline-flex;align-items:center;gap:7px;background:rgba(255,255,255,0.14);border:1.5px solid rgba(255,255,255,0.25);color:#fff;font-weight:700;font-size:0.8rem;padding:0.4rem 1rem;border-radius:100px;margin-bottom:1.1rem"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#FBBF24" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg> Blog &amp; Resources</span>
     <h1 style="font-family:'Fredoka One',cursive;font-weight:400;color:#fff;font-size:clamp(2rem,5vw,2.8rem);line-height:1.2;margin-bottom:0.6rem">Guidance for Every Parent's Journey</h1>
     <p style="color:rgba(255,255,255,0.82);font-size:1.05rem;max-width:640px;margin:0 auto">Practical articles and resources on special education, autism, ADHD, speech and child development from the NEST team, written for families in Islamabad and across Pakistan.</p>
