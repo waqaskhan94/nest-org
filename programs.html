@@ -158,14 +158,30 @@ nav{
 .hb-div{width:1px;height:32px;background:rgba(255,255,255,0.15)}
 
 /* ===== PROGRAMS HERO ===== */
-.pg-hero{position:relative;overflow:hidden;min-height:460px;display:flex;align-items:center;justify-content:center;background:#0b3040}
+.pg-hero{position:relative;overflow:hidden;min-height:820px;display:flex;align-items:center;justify-content:center;background:#0b3040}
 .pg-hero-bg{
   position:absolute;inset:0;
-  background:url('https://images.unsplash.com/photo-1588072432836-e10032774350?w=1920&auto=format&fit=crop&q=80') center/cover no-repeat;
-  animation:pgZoom 30s ease-in-out infinite alternate;
+  display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:repeat(2,1fr);gap:3px;background:#0b3040;
+}
+.pg-cell{overflow:hidden;position:relative}
+.pg-cell::after{
+  content:'';position:absolute;inset:0;
+  background-size:cover;background-position:center;
+  animation-name:var(--kb,pgKB1);animation-duration:var(--dur,26s);animation-delay:var(--delay,0s);
+  animation-timing-function:ease-in-out;animation-iteration-count:infinite;animation-direction:alternate;
   will-change:transform;
 }
-@keyframes pgZoom{0%{transform:scale(1.0)}100%{transform:scale(1.11) translate(1.2%,-0.8%)}}
+@keyframes pgKB1{0%{transform:scale(1)}100%{transform:scale(1.045) translate(-1%,-0.8%)}}
+@keyframes pgKB2{0%{transform:scale(1)}100%{transform:scale(1.045) translate(1%,-0.8%)}}
+@keyframes pgKB3{0%{transform:scale(1)}100%{transform:scale(1.045) translate(-1%,0.8%)}}
+@keyframes pgKB4{0%{transform:scale(1)}100%{transform:scale(1.045) translate(1%,0.8%)}}
+.pgc-1::after{background-image:image-set(url('images/ph-education.avif') type('image/avif'),url('images/ph-education.jpeg') type('image/jpeg'));background-position:center 42%;--kb:pgKB1;--dur:24s;--delay:0s}
+.pgc-2::after{background-image:image-set(url('images/ph-aba.avif') type('image/avif'),url('images/ph-aba.jpeg') type('image/jpeg'));background-position:center 58%;--kb:pgKB2;--dur:28s;--delay:-5s}
+.pgc-3::after{background-image:image-set(url('images/ph-speech.avif') type('image/avif'),url('images/ph-speech.jpeg') type('image/jpeg'));background-position:center 22%;--kb:pgKB3;--dur:22s;--delay:-9s}
+.pgc-4::after{background-image:image-set(url('images/ph-ot.avif') type('image/avif'),url('images/ph-ot.jpeg') type('image/jpeg'));background-position:center 48%;--kb:pgKB4;--dur:26s;--delay:-3s}
+.pgc-5::after{background-image:image-set(url('images/ph-highfive.avif') type('image/avif'),url('images/ph-highfive.jpeg') type('image/jpeg'));background-position:center 40%;--kb:pgKB2;--dur:27s;--delay:-7s}
+.pgc-6::after{background-image:image-set(url('images/ph-yoga.avif') type('image/avif'),url('images/ph-yoga.jpeg') type('image/jpeg'));background-position:center 42%;--kb:pgKB3;--dur:23s;--delay:-2s}
+@media(max-width:600px){.pg-hero-bg{gap:2px}}
 .pg-hero-ov{
   position:absolute;inset:0;
   background:linear-gradient(135deg,rgba(22,97,120,0.88) 0%,rgba(14,64,80,0.82) 100%);
@@ -207,7 +223,7 @@ nav{
 @media(max-width:768px){
   .pg-hero-inner h1{font-size:2.15rem}
   .pg-hero-inner{padding:3rem 1.25rem 4.5rem}
-  .pg-hero{min-height:380px}
+  .pg-hero{min-height:680px}
 }
 
 /* ===== RIBBON ===== */
@@ -762,7 +778,14 @@ nav.scrolled{box-shadow:0 4px 28px rgba(0,0,0,0.11)!important}
 </div>
 
 <div class="pg-hero">
-  <div class="pg-hero-bg"></div>
+  <div class="pg-hero-bg" aria-hidden="true">
+    <div class="pg-cell pgc-1"></div>
+    <div class="pg-cell pgc-2"></div>
+    <div class="pg-cell pgc-3"></div>
+    <div class="pg-cell pgc-4"></div>
+    <div class="pg-cell pgc-5"></div>
+    <div class="pg-cell pgc-6"></div>
+  </div>
   <div class="pg-hero-ov"></div>
   <div class="pg-hero-glow"></div>
 
