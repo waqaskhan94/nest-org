@@ -13,26 +13,26 @@
 </script>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>About Us | NEST Special Education School & Therapy Center, Islamabad</title>
-<meta name="description" content="Meet the certified therapists and special educators behind NEST, a trusted special education school & therapy center serving 100+ families in DHA Phase 2, Islamabad."/>
+<title>ARTICLE HEADLINE | N.E.S.T Blog, Islamabad</title>
+<meta name="description" content="150-160 character summary of the article for Google search results."/>
 <link rel="icon" type="image/png" href="/favicon.png"/>
 <link rel="shortcut icon" href="/favicon.png"/>
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"/>
 <link rel="manifest" href="/site.webmanifest"/>
 <meta name="theme-color" content="#166178"/>
-<link rel="canonical" href="https://nest-org.pages.dev/about"/>
+<link rel="canonical" href="https://nest-org.pages.dev/blog-ARTICLE-SLUG"/>
 <!-- Open Graph / social sharing -->
 <meta property="og:type" content="website"/>
 <meta property="og:site_name" content="N.E.S.T"/>
-<meta property="og:title" content="About Us | NEST Special Education School & Therapy Center, Islamabad"/>
-<meta property="og:description" content="Meet the certified therapists and special educators behind NEST, a trusted special education school & therapy center serving 100+ families in DHA Phase 2, Islamabad."/>
-<meta property="og:url" content="https://nest-org.pages.dev/about"/>
+<meta property="og:title" content="ARTICLE HEADLINE | N.E.S.T Blog"/>
+<meta property="og:description" content="See NEST's classrooms, therapy sessions & activities at our special education school & therapy center in DHA Phase 2, Islamabad, supporting children with Autism, ADHD & more."/>
+<meta property="og:url" content="https://nest-org.pages.dev/blog-ARTICLE-SLUG"/>
 <meta property="og:image" content="https://nest-org.pages.dev/images/og-image.jpg"/>
 <meta property="og:image:width" content="1200"/>
 <meta property="og:image:height" content="630"/>
 <meta name="twitter:card" content="summary_large_image"/>
-<meta name="twitter:title" content="About Us | NEST Special Education School & Therapy Center, Islamabad"/>
-<meta name="twitter:description" content="Meet the certified therapists and special educators behind NEST, a trusted special education school & therapy center serving 100+ families in DHA Phase 2, Islamabad."/>
+<meta name="twitter:title" content="Gallery | NEST Special Education School & Therapy Center, Islamabad"/>
+<meta name="twitter:description" content="See NEST's classrooms, therapy sessions & activities at our special education school & therapy center in DHA Phase 2, Islamabad, supporting children with Autism, ADHD & more."/>
 <meta name="twitter:image" content="https://nest-org.pages.dev/images/og-image.jpg"/>
 <!-- Breadcrumb structured data -->
 <script type="application/ld+json">
@@ -41,7 +41,7 @@
   "@type": "BreadcrumbList",
   "itemListElement": [
     {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://nest-org.pages.dev/"},
-    {"@type": "ListItem", "position": 2, "name": "About Us", "item": "https://nest-org.pages.dev/about"}
+    {"@type": "ListItem", "position": 2, "name": "Gallery", "item": "https://nest-org.pages.dev/gallery"}
   ]
 }
 </script>
@@ -140,53 +140,6 @@ nav{
 .hb-num{font-family:'Fredoka One',cursive;font-weight:400;font-size:1.2rem;color:#FBBF24;letter-spacing:0.01em}
 .hb-lbl{font-size:0.7rem;color:rgba(255,255,255,0.6);font-weight:600}
 .hb-div{width:1px;height:32px;background:rgba(255,255,255,0.15)}
-
-/* ===== ABOUT HERO ANIMATED ===== */
-.about-hero-wrap{
-  position:relative;overflow:hidden;
-  min-height:720px;display:flex;align-items:center;justify-content:center;
-  padding:7rem 2.5rem 7.5rem;text-align:center;background:#071e2a;
-}
-/* Ken Burns zooming photo layer */
-.ahero-photo-bg{
-  position:absolute;inset:-8%;z-index:0;
-  background:url('images/about-hero-bg.jpeg') center 46%/cover no-repeat;
-  background:image-set(url('images/about-hero-bg.avif') type('image/avif'),url('images/about-hero-bg.jpeg') type('image/jpeg')) center 46%/cover no-repeat;
-  animation:aheroZoom 26s ease-in-out infinite alternate;
-  will-change:transform;
-}
-@keyframes aheroZoom{0%{transform:scale(1) translateY(0)}100%{transform:scale(1.10) translateY(-2%)}}
-/* dark tinted overlay, ~82% opacity so photo breathes through */
-.about-hero-wrap::before{
-  content:'';position:absolute;inset:0;z-index:1;pointer-events:none;
-  background:
-    radial-gradient(ellipse 52% 46% at 88% 8%,rgba(249,115,22,0.26) 0%,transparent 65%),
-    radial-gradient(ellipse 58% 52% at 6% 76%,rgba(13,148,136,0.28) 0%,transparent 62%),
-    radial-gradient(ellipse 42% 36% at 94% 90%,rgba(236,72,153,0.16) 0%,transparent 56%),
-    radial-gradient(ellipse 68% 58% at 46% 44%,rgba(22,97,120,0.22) 0%,transparent 76%),
-    linear-gradient(155deg,rgba(4,18,28,0.87) 0%,rgba(7,30,42,0.82) 40%,rgba(10,44,64,0.80) 68%,rgba(6,24,36,0.88) 100%)}
-/* film grain */
-.about-hero-wrap::after{
-  content:'';position:absolute;inset:0;z-index:2;pointer-events:none;
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.72' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
-  opacity:0.05}
-.ahero-bokeh{position:absolute;border-radius:50%;pointer-events:none;filter:blur(88px);z-index:3}
-.ahero-b1{width:440px;height:440px;background:rgba(249,115,22,0.16);top:-150px;right:2%}
-.ahero-b2{width:380px;height:380px;background:rgba(13,148,136,0.18);bottom:-110px;left:0%}
-.ahero-b3{width:300px;height:300px;background:rgba(251,191,36,0.11);top:20%;right:0%}
-.ahero-b4{width:360px;height:360px;background:rgba(22,97,120,0.20);top:8%;left:14%}
-@keyframes aheroFloat{0%,100%{transform:translateY(0) rotate(var(--r,0deg))}50%{transform:translateY(-16px) rotate(var(--r,0deg))}}
-@keyframes aheroFloatD{0%,100%{transform:translateY(0) rotate(var(--r,0deg))}50%{transform:translateY(13px) rotate(var(--r,0deg))}}
-.ahero-deco{position:absolute;pointer-events:none;z-index:4;opacity:var(--op,0.18);animation:var(--anim,aheroFloat) var(--dur,6s) ease-in-out infinite;animation-delay:var(--delay,0s);--r:0deg}
-.ahero-deco svg{display:block;width:var(--sz,56px);height:var(--sz,56px)}
-.ahero-d1{top:11%;left:3%;--sz:74px;--r:-22deg;--op:0.22;--dur:7.5s;--delay:0s}
-.ahero-d2{top:7%;right:4.5%;--sz:66px;--r:16deg;--op:0.18;--dur:8.8s;--delay:-2s;--anim:aheroFloatD}
-.ahero-d3{bottom:20%;left:5.5%;--sz:52px;--r:8deg;--op:0.24;--dur:6.4s;--delay:-1s}
-.ahero-d4{top:40%;right:3%;--sz:84px;--r:36deg;--op:0.14;--dur:9.6s;--delay:-3.5s;--anim:aheroFloatD}
-.ahero-d5{bottom:10%;right:7.5%;--sz:58px;--r:-12deg;--op:0.20;--dur:8.2s;--delay:-0.5s}
-.ahero-d6{top:58%;left:1.5%;--sz:46px;--r:0deg;--op:0.22;--dur:5.6s;--delay:-4s}
-.ahero-inner{position:relative;z-index:5;max-width:700px;margin:0 auto;width:100%}
-@media(max-width:768px){.ahero-d1,.ahero-d2,.ahero-d4{display:none}.about-hero-wrap{padding:5rem 1.5rem 5.5rem;min-height:480px}}
 
 /* ===== RIBBON ===== */
 .ribbon{background:var(--white);border-bottom:2px solid var(--border);padding:1rem 2.5rem}
@@ -423,79 +376,6 @@ footer{background:#0e4050;color:rgba(255,255,255,0.65);padding:3.5rem 2.5rem 2re
   .logo-name span{display:none}
 }
 
-/* ===== EXPERT TEAM SECTION ===== */
-.team-section{background:#fff;padding:5rem 2.5rem}
-.team-inner{max-width:1200px;margin:0 auto}
-.team-header{text-align:center;margin-bottom:3.5rem}
-.team-tag{display:inline-flex;align-items:center;gap:6px;background:rgba(22,97,120,0.08);color:#166178;border:1.5px solid rgba(22,97,120,0.22);padding:0.32rem 0.9rem;border-radius:20px;font-size:0.75rem;font-weight:800;letter-spacing:0.06em;text-transform:uppercase;margin-bottom:0.85rem}
-.team-title{font-family:'Fredoka One',cursive;font-size:2.2rem;font-weight:400;color:#1a1a2e;margin-bottom:0.6rem;line-height:1.2;letter-spacing:0.01em}
-.team-sub{color:#6b7280;font-size:0.97rem;max-width:520px;line-height:1.7;margin:0 auto}
-.team-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem}
-.tcard{background:#fff;border-radius:22px;overflow:hidden;box-shadow:0 6px 30px rgba(0,0,0,0.08);border:1.5px solid #f0e4d4;transition:transform 0.3s cubic-bezier(0.34,1.56,0.64,1),box-shadow 0.3s ease}
-.tcard:hover{transform:translateY(-10px);box-shadow:0 24px 60px rgba(22,97,120,0.18)}
-.tcard-photo{position:relative;aspect-ratio:4/5;overflow:hidden}
-.tcard-photo img{width:100%;height:100%;object-fit:cover;object-position:top center;transition:transform 0.5s ease;display:block}
-.tcard:hover .tcard-photo img{transform:scale(1.06)}
-.tcard-badge{position:absolute;bottom:0.9rem;left:0.9rem;display:inline-flex;align-items:center;gap:5px;padding:0.3rem 0.85rem 0.3rem 0.7rem;border-radius:100px;font-size:0.72rem;font-weight:800;letter-spacing:0.02em;color:#fff;white-space:nowrap;box-shadow:0 4px 16px rgba(0,0,0,0.28)}
-.tcard-body{padding:1.35rem 1.25rem 1.6rem}
-.tcard-name{font-family:'Fredoka One',cursive;font-size:1.12rem;font-weight:400;color:#1a1a2e;margin-bottom:0.28rem;letter-spacing:0.01em;text-align:center}
-.tcard-cred{font-size:0.68rem;font-weight:800;letter-spacing:0.09em;text-transform:uppercase;margin-bottom:0.5rem;text-align:center;line-height:1.3;min-height:3.9em;display:flex;align-items:center;justify-content:center}
-.tcard-exp{display:flex;align-items:center;justify-content:center;gap:5px;font-size:0.82rem;font-weight:700;color:#F97316;margin-bottom:0.85rem;white-space:nowrap;flex-wrap:nowrap}
-.tcard-bio{color:#6b7280;font-size:0.82rem;line-height:1.65;text-align:center}
-.tcard-badge picture,.tcard-badge svg{flex-shrink:0}
-.tcard-photo picture{display:block;width:100%;height:100%}
-/* ===== Team slider (About) ===== */
-.tteam-slider{position:relative;margin-top:2.75rem}
-#team{scroll-margin-top:90px}
-@media(max-width:768px){#team{scroll-margin-top:74px}}
-.tcard-flash{animation:tcardFlash 1.8s ease-out}
-@keyframes tcardFlash{0%{box-shadow:0 0 0 0 rgba(249,115,22,0)}18%{box-shadow:0 0 0 4px rgba(249,115,22,0.55)}100%{box-shadow:0 0 0 0 rgba(249,115,22,0)}}
-.tteam-clip{overflow:hidden;padding:14px 4px;margin:-14px -4px}
-.tteam-track{display:flex;align-items:stretch;transition:transform .55s cubic-bezier(0.4,0,0.2,1);will-change:transform}
-.tteam-slide{flex-shrink:0;box-sizing:border-box;padding:0 12px;display:flex}
-.tteam-slide>.tcard{width:100%;display:flex;flex-direction:column}
-.tteam-slide>.tcard .tcard-body{flex:1}
-.tteam-controls{display:flex;align-items:center;justify-content:center;gap:18px;margin-top:36px}
-.tteam-arrow{width:44px;height:44px;border-radius:50%;background:#fff;border:2px solid #f0e4d4;color:#166178;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .25s,border-color .25s,transform .2s,color .2s;flex-shrink:0;box-shadow:0 2px 12px rgba(22,97,120,0.12);font-size:1.15rem;line-height:1}
-.tteam-arrow:hover{background:#166178;border-color:#166178;color:#fff;transform:scale(1.1)}
-.tteam-dots{display:flex;align-items:center;justify-content:center;gap:8px}
-.tteam-dot{width:9px;height:9px;padding:0;border:none;border-radius:50%;background:#d9cbb8;cursor:pointer;transition:background .25s,transform .25s}
-.tteam-dot.active{background:#166178;transform:scale(1.35)}
-@media(max-width:1024px){.team-section{padding:4rem 1.5rem}}
-@media(max-width:540px){.team-section{padding:3rem 1.2rem}}
-/* ===== HOLISTIC APPROACH SECTION ===== */
-.approach-section{background:#FFF8F0;padding:5.5rem 2.5rem}
-.approach-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center}
-.approach-img{border-radius:28px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,0.14)}
-.approach-img picture{display:block;width:100%;height:100%}
-.approach-img img{width:100%;height:100%;object-fit:cover;object-position:center;display:block}
-.approach-content{}
-.approach-tag{display:inline-flex;align-items:center;gap:6px;background:rgba(249,115,22,0.1);color:#EA580C;border:1.5px solid rgba(249,115,22,0.25);padding:0.32rem 0.9rem;border-radius:20px;font-size:0.75rem;font-weight:800;letter-spacing:0.07em;text-transform:uppercase;margin-bottom:1rem}
-.approach-title{font-family:'Quicksand',sans-serif;font-size:2.5rem;font-weight:800;color:#1a1a2e;margin-bottom:0.75rem;line-height:1.15;letter-spacing:-0.01em}
-.approach-sub{color:#6b7280;font-size:0.97rem;line-height:1.75;margin-bottom:2rem}
-.step-list{display:flex;flex-direction:column;gap:0.85rem}
-.step-card{background:#fff;border:1.5px solid #f0e4d4;border-radius:16px;padding:1.1rem 1.25rem;display:flex;align-items:flex-start;gap:1rem;box-shadow:0 3px 14px rgba(0,0,0,0.05);transition:box-shadow 0.25s ease,transform 0.25s ease}
-.step-card:hover{box-shadow:0 10px 30px rgba(249,115,22,0.14);transform:translateX(4px)}
-.step-num{flex-shrink:0;width:38px;height:38px;border-radius:12px;background:linear-gradient(135deg,#F97316,#EA580C);display:flex;align-items:center;justify-content:center;font-family:'Quicksand',sans-serif;font-size:1.05rem;font-weight:800;color:#fff;box-shadow:0 4px 12px rgba(249,115,22,0.4)}
-.step-body{}
-.step-title{font-family:'Quicksand',sans-serif;font-weight:500;font-size:1rem;color:#1a1a2e;margin-bottom:0.3rem;letter-spacing:0}
-.step-desc,.step-desc *{font-size:0.88rem;line-height:1.7;color:#6b7280!important;background:none!important;-webkit-text-fill-color:#6b7280!important;background-clip:border-box!important;-webkit-background-clip:border-box!important}
-@media(max-width:1024px){.approach-inner{grid-template-columns:1fr;gap:2.5rem}.approach-section{padding:4rem 1.5rem}.approach-img{max-height:none}.approach-img img{height:auto;object-fit:contain}.approach-title{white-space:nowrap;font-size:2.2rem}}
-@media(max-width:540px){.approach-section{padding:3rem 1.2rem}.approach-title{font-size:1.75rem;white-space:nowrap}}
-/* ===== TEAM CTA SECTION ===== */
-.team-cta{position:relative;overflow:hidden;background:linear-gradient(135deg,#0b3544 0%,#166178 55%,#1a8a9e 100%);padding:5.5rem 2.5rem;text-align:center}
-.team-cta::before{content:'';position:absolute;left:-160px;top:50%;transform:translateY(-50%);width:520px;height:520px;border-radius:50%;background:rgba(255,255,255,0.05);pointer-events:none}
-.team-cta::after{content:'';position:absolute;right:-100px;bottom:-120px;width:340px;height:340px;border-radius:50%;background:rgba(255,255,255,0.04);pointer-events:none}
-.team-cta-inner{position:relative;z-index:1;max-width:640px;margin:0 auto}
-.team-cta-tag{display:inline-flex;align-items:center;gap:7px;background:rgba(255,255,255,0.1);color:#fff;border:1.5px solid rgba(255,255,255,0.25);padding:0.35rem 1rem;border-radius:100px;font-size:0.73rem;font-weight:800;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:1.4rem}
-.team-cta-title{font-family:'Quicksand',sans-serif;font-size:2.8rem;font-weight:800;color:#fff;line-height:1.15;margin-bottom:1rem;letter-spacing:-0.01em}
-.team-cta-sub{color:rgba(255,255,255,0.75);font-size:1rem;line-height:1.75;margin-bottom:2.2rem}
-.team-cta-btns{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
-.btn-cta-primary{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,#F97316,#166178);color:#fff;font-family:'Quicksand',sans-serif;font-weight:800;font-size:0.95rem;padding:0.85rem 1.8rem;border-radius:100px;text-decoration:none;border:none;cursor:pointer;box-shadow:0 4px 16px rgba(249,115,22,0.30);transition:transform 0.25s cubic-bezier(0.4,0,0.2,1),box-shadow 0.25s ease;animation:btnPulse 2.8s ease-in-out infinite}
-.btn-cta-primary:hover{transform:translateY(-3px);box-shadow:0 8px 24px rgba(0,0,0,0.18);animation:none}
-.btn-cta-outline{display:inline-flex;align-items:center;gap:8px;background:transparent;color:#fff;font-family:'Quicksand',sans-serif;font-weight:800;font-size:0.95rem;padding:0.85rem 1.8rem;border-radius:100px;text-decoration:none;border:2px solid rgba(255,255,255,0.5);cursor:pointer;transition:background 0.22s ease,border-color 0.22s ease}
-.btn-cta-outline:hover{background:rgba(255,255,255,0.1);border-color:rgba(255,255,255,0.8)}
-@media(max-width:540px){.team-cta{padding:4rem 1.5rem}.team-cta-title{font-size:2rem}.team-cta-btns{flex-direction:column;align-items:center}}
 /* ===== ENROLLMENT MODAL ===== */
 .modal-overlay{display:none;position:fixed;inset:0;background:rgba(22,97,120,0.55);z-index:9999;align-items:flex-start;justify-content:center;padding:0.5rem;backdrop-filter:blur(3px);overflow-y:auto}
 .modal-overlay.open{display:flex}
@@ -682,13 +562,6 @@ footer{background:#0e4050;color:rgba(255,255,255,0.65);padding:3.5rem 2.5rem 2re
 }
 
 
-@media(max-width:768px){
-  div[style*="grid-template-columns:1fr 1fr"],
-  div[style*="grid-template-columns:1fr 1.4fr"]{
-    grid-template-columns:1fr !important;
-  }
-}
-
 /* ═══════ NEST Lively Animations ═══════ */
 /* Keyframes */
 @keyframes fadeInUp{from{opacity:0;transform:translateY(32px)}to{opacity:1;transform:translateY(0)}}
@@ -753,17 +626,126 @@ nav.scrolled{box-shadow:0 4px 28px rgba(0,0,0,0.11)!important}
 .hamburger.open span:nth-child(3){transform:translateY(-7.5px) rotate(-45deg)}
 .mobile-backdrop{display:none;position:fixed;inset:0;background:rgba(14,64,80,0.35);z-index:997;backdrop-filter:blur(2px)}
 .mobile-backdrop.open{display:block}
-/* About stats row, mobile sizing */
-@media(max-width:600px){
-  .about-stats{gap:0.3rem!important;padding:1.75rem 0.5rem!important}
-  .about-stats>div{display:flex;flex-direction:column;align-items:center;justify-content:flex-start;min-width:0}
-  .about-stats>div>div:first-child{font-size:1.35rem!important;line-height:1.1;margin-bottom:0.4rem}
-  .about-stats>div>div:last-child{font-size:0.52rem!important;line-height:1.3;letter-spacing:0;white-space:nowrap}
+
+/* ===== GALLERY HERO ===== */
+.gallery-hero{
+  position:relative;text-align:center;overflow:hidden;
+  min-height:820px;display:flex;align-items:center;justify-content:center;
+  padding:7rem 2.5rem 7.5rem;background:#071e2a;
 }
-@media(max-width:380px){
-  .about-stats>div>div:first-child{font-size:1.2rem!important}
-  .about-stats>div>div:last-child{font-size:0.48rem!important}
+/* 4×2 children photo mosaic grid, each cell Ken Burns in a different direction */
+.ghero-grid-bg{
+  position:absolute;inset:0;z-index:0;
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  grid-template-rows:repeat(2,1fr);
+  gap:3px;background:#071e2a;
 }
+.ghero-cell{overflow:hidden;position:relative}
+.ghero-cell::after{
+  content:'';position:absolute;inset:0;
+  background-size:cover;background-position:center;
+  animation-name:var(--kb,gcKBtl);
+  animation-duration:var(--dur,24s);
+  animation-delay:var(--delay,0s);
+  animation-timing-function:ease-in-out;
+  animation-iteration-count:infinite;
+  animation-direction:alternate;
+  will-change:transform;
+  filter:brightness(0.80) saturate(0.85);
+}
+@keyframes gcKBtl{0%{transform:scale(1) translate(0,0)}100%{transform:scale(1.03) translate(-1%,-0.8%)}}
+@keyframes gcKBtr{0%{transform:scale(1) translate(0,0)}100%{transform:scale(1.03) translate(1%,-0.8%)}}
+@keyframes gcKBbl{0%{transform:scale(1) translate(0,0)}100%{transform:scale(1.03) translate(-1%,0.8%)}}
+@keyframes gcKBbr{0%{transform:scale(1) translate(0,0)}100%{transform:scale(1.03) translate(1%,0.8%)}}
+/* 8 cute children / school / therapy photos */
+/* all 8 photos unique, no duplicates */
+.gc-1::after{background-image:image-set(url('images/gm-1.avif') type('image/avif'),url('images/gm-1.jpeg') type('image/jpeg'));background-position:center 30%;filter:brightness(0.88) saturate(0.88);--kb:gcKBtl;--dur:22s;--delay:0s}
+.gc-2::after{background-image:image-set(url('images/gm-2.avif') type('image/avif'),url('images/gm-2.jpeg') type('image/jpeg'));--kb:gcKBbr;--dur:27s;--delay:-6s}
+.gc-3::after{background-image:image-set(url('images/gm-3.avif') type('image/avif'),url('images/gm-3.jpeg') type('image/jpeg'));--kb:gcKBtr;--dur:20s;--delay:-11s}
+.gc-4::after{background-image:image-set(url('images/gm-4.avif') type('image/avif'),url('images/gm-4.jpeg') type('image/jpeg'));background-position:center 30%;--kb:gcKBbl;--dur:25s;--delay:-4s}
+.gc-5::after{background-image:image-set(url('images/gm-5.avif') type('image/avif'),url('images/gm-5.jpeg') type('image/jpeg'));background-position:center 40%;filter:brightness(0.90) saturate(0.88);--kb:gcKBbr;--dur:23s;--delay:-8s}
+.gc-6::after{background-image:image-set(url('images/gm-6.avif') type('image/avif'),url('images/gm-6.jpeg') type('image/jpeg'));--kb:gcKBtl;--dur:29s;--delay:-2s}
+.gc-7::after{background-image:image-set(url('images/gm-7.avif') type('image/avif'),url('images/gm-7.jpeg') type('image/jpeg'));background-position:center 20%;--kb:gcKBtr;--dur:21s;--delay:-7s}
+.gc-8::after{background-image:image-set(url('images/gm-8.avif') type('image/avif'),url('images/gm-8.jpeg') type('image/jpeg'));background-position:center 35%;filter:brightness(0.88) saturate(0.88);--kb:gcKBbl;--dur:26s;--delay:-3s}
+/* dark tinted overlay, ~76% so the photo grid shows through */
+.gallery-hero::before{
+  content:'';position:absolute;inset:0;z-index:1;pointer-events:none;
+  background:
+    radial-gradient(ellipse 48% 44% at 84% 12%,rgba(251,191,36,0.18) 0%,transparent 66%),
+    radial-gradient(ellipse 56% 52% at 9% 68%,rgba(13,148,136,0.22) 0%,transparent 63%),
+    radial-gradient(ellipse 40% 34% at 90% 88%,rgba(124,58,237,0.12) 0%,transparent 58%),
+    radial-gradient(ellipse 68% 58% at 48% 46%,rgba(22,97,120,0.18) 0%,transparent 76%),
+    linear-gradient(148deg,rgba(4,18,28,0.80) 0%,rgba(7,30,42,0.74) 38%,rgba(10,44,64,0.72) 68%,rgba(5,22,34,0.82) 100%)}
+/* film grain */
+.gallery-hero::after{
+  content:'';position:absolute;inset:0;z-index:2;pointer-events:none;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
+  opacity:0.05}
+/* Bokeh light blobs */
+.ghero-bokeh{position:absolute;border-radius:50%;pointer-events:none;filter:blur(88px);z-index:3}
+.ghero-bokeh-1{width:400px;height:400px;background:rgba(251,191,36,0.13);top:-120px;right:5%}
+.ghero-bokeh-2{width:360px;height:360px;background:rgba(13,148,136,0.16);bottom:-100px;left:1%}
+.ghero-bokeh-3{width:280px;height:280px;background:rgba(249,115,22,0.11);top:18%;right:0%}
+.ghero-bokeh-4{width:320px;height:320px;background:rgba(22,97,120,0.20);top:12%;left:16%}
+/* Floating educational icons */
+@keyframes gheroFloat{0%,100%{transform:translateY(0) rotate(var(--r,0deg))}50%{transform:translateY(-15px) rotate(var(--r,0deg))}}
+@keyframes gheroFloatD{0%,100%{transform:translateY(0) rotate(var(--r,0deg))}50%{transform:translateY(12px) rotate(var(--r,0deg))}}
+.ghero-deco{position:absolute;pointer-events:none;z-index:4;opacity:var(--op,0.18);animation:var(--anim,gheroFloat) var(--dur,6s) ease-in-out infinite;animation-delay:var(--delay,0s);--r:0deg}
+.ghero-deco svg{display:block;width:var(--sz,56px);height:var(--sz,56px)}
+.ghero-d1{top:10%;left:4%;--sz:74px;--r:-22deg;--op:0.20;--dur:7.2s;--delay:0s}
+.ghero-d2{top:7%;right:6%;--sz:64px;--r:14deg;--op:0.17;--dur:8.5s;--delay:-2s;--anim:gheroFloatD}
+.ghero-d3{bottom:22%;left:7%;--sz:50px;--r:8deg;--op:0.22;--dur:6.2s;--delay:-1s}
+.ghero-d4{top:38%;right:3.5%;--sz:82px;--r:38deg;--op:0.13;--dur:9.4s;--delay:-3s;--anim:gheroFloatD}
+.ghero-d5{bottom:10%;right:10%;--sz:56px;--r:-12deg;--op:0.18;--dur:7.8s;--delay:-0.5s}
+.ghero-d6{top:55%;left:3%;--sz:44px;--r:0deg;--op:0.20;--dur:5.8s;--delay:-4s}
+.gallery-hero-inner{position:relative;z-index:5;max-width:680px;margin:0 auto;width:100%}
+.ghero-tag{display:inline-flex;align-items:center;gap:7px;background:rgba(255,255,255,0.12);color:#FDE68A;border:1.5px solid rgba(255,255,255,0.22);padding:0.38rem 1rem;border-radius:100px;font-size:0.75rem;font-weight:800;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:1.4rem}
+.ghero-title{font-family:'Quicksand',sans-serif;font-size:3rem;font-weight:800;color:#fff;line-height:1.1;margin-bottom:1rem;letter-spacing:-0.01em;text-shadow:0 2px 28px rgba(0,0,0,0.75),0 0 60px rgba(0,0,0,0.45)}
+.ghero-sub{color:rgba(255,255,255,0.88);font-size:1rem;line-height:1.75;margin-bottom:2rem;text-shadow:0 1px 18px rgba(0,0,0,0.65)}
+.ghero-pills{display:flex;gap:0.75rem;flex-wrap:wrap;justify-content:center}
+.ghero-pill{display:inline-flex;align-items:center;gap:7px;background:rgba(255,255,255,0.1);border:1.5px solid rgba(255,255,255,0.22);color:rgba(255,255,255,0.88);padding:0.45rem 1.1rem;border-radius:100px;font-family:'Quicksand',sans-serif;font-size:0.83rem;font-weight:700;cursor:pointer;transition:background 0.2s,border-color 0.2s,transform 0.22s cubic-bezier(0.34,1.56,0.64,1)}
+.ghero-pill:hover{background:rgba(255,255,255,0.2);border-color:rgba(255,255,255,0.5);transform:translateY(-2px)}
+@media(max-width:768px){.gallery-hero{padding:5rem 1.5rem 5.5rem;min-height:480px}.ghero-title{font-size:2.2rem}.ghero-pills{gap:0.5rem}.ghero-d1,.ghero-d2,.ghero-d4{display:none}}
+
+/* ===== Cinematic "Photos Coming Soon" placeholder ===== */
+.coming-soon{
+  background:linear-gradient(135deg,#0f4f61 0%,#166178 45%,#0d9488 100%);
+  background-size:200% 200%;
+  animation:csGradient 8s ease infinite;
+}
+@keyframes csGradient{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
+.coming-soon .cs-icon{
+  color:#FBBF24;display:flex;align-items:center;justify-content:center;
+  width:56px;height:56px;border-radius:50%;
+  background:rgba(255,255,255,0.10);border:1.5px solid rgba(251,191,36,0.35);
+  animation:csFloat 3.2s ease-in-out infinite;
+  box-shadow:0 0 22px rgba(251,191,36,0.28);
+}
+@keyframes csFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}
+.coming-soon .cs-text{
+  font-family:'Quicksand',sans-serif;font-weight:800;font-size:0.9rem;letter-spacing:0.14em;text-transform:uppercase;
+  background:linear-gradient(90deg,rgba(255,255,255,0.55),#fff,rgba(255,255,255,0.55));
+  background-size:200% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;
+  animation:csTextShine 3s linear infinite;
+}
+@keyframes csTextShine{0%{background-position:200% 0}100%{background-position:-200% 0}}
+/* sweeping light streak */
+.coming-soon .cs-shimmer{
+  position:absolute;top:0;left:-60%;width:45%;height:100%;pointer-events:none;
+  background:linear-gradient(100deg,transparent,rgba(255,255,255,0.16),transparent);
+  transform:skewX(-18deg);
+  animation:csSweep 4.5s ease-in-out infinite;
+}
+@keyframes csSweep{0%{left:-60%}55%{left:130%}100%{left:130%}}
+
+/* ===== Gallery grid responsive columns ===== */
+@media(max-width:960px){#galleryGrid{grid-template-columns:repeat(2,1fr)!important;gap:1.1rem!important}}
+@media(max-width:560px){#galleryGrid{grid-template-columns:1fr!important;gap:1rem!important}}
+
+/* Lightbox: <picture> fills stage so the image scales DOWN to show completely (no default zoom/crop) */
+#lbStage picture{display:flex;align-items:center;justify-content:center;width:100%;height:100%;max-width:100%;max-height:100%}
+#lbStage .lb-media{max-width:100%!important;max-height:100%!important;width:auto!important;height:auto!important;object-fit:contain}
 </style>
 </head>
 <body>
@@ -776,8 +758,8 @@ nav.scrolled{box-shadow:0 4px 28px rgba(0,0,0,0.11)!important}
     <li><a href="/">Home</a></li>
     <li><a href="programs">Programs</a></li>
     <li><a href="therapies">Therapies</a></li>
-    <li><a href="about" class="active">About Us</a></li>
-    <li><a href="gallery">Gallery</a></li>
+    <li><a href="about">About Us</a></li>
+    <li><a href="gallery" class="active">Gallery</a></li>
     <li><a href="contact">Contact</a></li>
   </ul>
   <div class="nav-right">
@@ -795,358 +777,48 @@ nav.scrolled{box-shadow:0 4px 28px rgba(0,0,0,0.11)!important}
   <a href="/"><span class="icon-3d c-teal"    style="width:32px;height:32px;border-radius:9px;flex-shrink:0"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></span> Home</a>
   <a href="programs"><span class="icon-3d c-orange"  style="width:32px;height:32px;border-radius:9px;flex-shrink:0"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg></span> Programs</a>
   <a href="therapies"><span class="icon-3d c-purple"  style="width:32px;height:32px;border-radius:9px;flex-shrink:0"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg></span> Therapies</a>
-  <a href="about" class="active"><span class="icon-3d c-blue"    style="width:32px;height:32px;border-radius:9px;flex-shrink:0"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg></span> About Us</a>
-  <a href="gallery"><span class="icon-3d c-pink"    style="width:32px;height:32px;border-radius:9px;flex-shrink:0"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg></span> Gallery</a>
+  <a href="about"><span class="icon-3d c-blue"    style="width:32px;height:32px;border-radius:9px;flex-shrink:0"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg></span> About Us</a>
+  <a href="gallery" class="active"><span class="icon-3d c-pink"    style="width:32px;height:32px;border-radius:9px;flex-shrink:0"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg></span> Gallery</a>
   <a href="contact"><span class="icon-3d c-green"   style="width:32px;height:32px;border-radius:9px;flex-shrink:0"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 014.69 13a19.79 19.79 0 01-3.07-8.67A2 2 0 013.18 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9a16 16 0 006.91 6.91l.27-.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg></span> Contact</a>
   <a href="#" onclick="openEnrollModal();return false;" class="mob-enroll">Enroll Now <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></a>
 </div>
 
-<div class="about-hero-wrap">
-  <!-- Ken Burns therapy photo background -->
-  <div class="ahero-photo-bg"></div>
-  <!-- bokeh lights -->
-  <div class="ahero-bokeh ahero-b1"></div>
-  <div class="ahero-bokeh ahero-b2"></div>
-  <div class="ahero-bokeh ahero-b3"></div>
-  <div class="ahero-bokeh ahero-b4"></div>
-  <!-- floating deco icons -->
-  <div class="ahero-deco ahero-d1">
-    <svg viewBox="0 0 24 24" fill="none" stroke="#FBBF24" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+<!-- ============================================================
+     ARTICLE TEMPLATE  —  duplicate this file for each new post.
+     TO CREATE A NEW ARTICLE:
+     1. Copy this file to  blog-your-slug.html
+     2. Edit the <title>, meta description, canonical & og:url in <head>
+        (replace 'ARTICLE-SLUG' with your slug, and the placeholder text).
+     3. Fill in the H1, date, author, hero image, and body below.
+     4. Add a matching card to blog.html's #blogGrid and remove #blogEmpty
+        once you have at least one article.
+     ============================================================ -->
+<article style="max-width:760px;margin:0 auto;padding:3rem 6% 4rem">
+  <a href="blog" style="display:inline-flex;align-items:center;gap:6px;color:#166178;font-weight:700;font-size:0.9rem;text-decoration:none;margin-bottom:1.5rem"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#166178" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg> Back to Blog</a>
+
+  <span style="display:inline-block;background:#F0FDFA;color:#166178;font-weight:700;font-size:0.75rem;letter-spacing:0.04em;text-transform:uppercase;padding:0.3rem 0.85rem;border-radius:20px;margin-bottom:1rem">CATEGORY (e.g. Autism)</span>
+  <h1 style="font-family:'Fredoka One',cursive;font-weight:400;color:#1a1a2e;font-size:clamp(1.8rem,4.5vw,2.4rem);line-height:1.25;margin-bottom:0.75rem">Article Headline Goes Here</h1>
+  <div style="display:flex;align-items:center;gap:10px;color:#6b7280;font-size:0.85rem;margin-bottom:2rem">
+    <span>By NEST Team</span><span>&middot;</span><span>MONTH DD, YYYY</span><span>&middot;</span><span>X min read</span>
   </div>
-  <div class="ahero-deco ahero-d2">
-    <svg viewBox="0 0 24 24" fill="none" stroke="#F97316" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+
+  <!-- Hero image (optional). Use AVIF + JPEG. -->
+  <!-- <picture><source srcset="images/blog/ARTICLE-SLUG.avif" type="image/avif"/><img src="images/blog/ARTICLE-SLUG.jpeg" alt="DESCRIPTIVE ALT" style="width:100%;border-radius:16px;margin-bottom:2rem;display:block"/></picture> -->
+
+  <div style="color:#374151;font-size:1.05rem;line-height:1.9">
+    <p style="margin-bottom:1.25rem">Opening paragraph. Write the article body here using &lt;p&gt; for paragraphs, &lt;h2&gt; for section headings, &lt;ul&gt;/&lt;li&gt; for lists.</p>
+    <h2 style="font-family:'Fredoka One',cursive;font-weight:400;color:#166178;font-size:1.4rem;margin:2rem 0 0.85rem">A Section Heading</h2>
+    <p style="margin-bottom:1.25rem">More content...</p>
   </div>
-  <div class="ahero-deco ahero-d3">
-    <svg viewBox="0 0 24 24" fill="none" stroke="#0D9488" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+
+  <!-- Soft CTA at the end of every article -->
+  <div style="margin-top:2.5rem;background:#166178;border-radius:18px;padding:2rem;text-align:center">
+    <h3 style="font-family:'Fredoka One',cursive;font-weight:400;color:#fff;font-size:1.3rem;margin-bottom:0.6rem">Have questions about your child?</h3>
+    <p style="color:rgba(255,255,255,0.82);font-size:0.95rem;margin-bottom:1.25rem">Our certified team offers a free assessment with enrollment. Reach out any time.</p>
+    <a href="contact" style="display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,#FBBF24,#F59E0B);color:#0d2f3d;font-weight:800;font-size:0.92rem;padding:0.75rem 1.6rem;border-radius:100px;text-decoration:none">Contact NEST</a>
   </div>
-  <div class="ahero-deco ahero-d4">
-    <svg viewBox="0 0 24 24" fill="none" stroke="#EC4899" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
-  </div>
-  <div class="ahero-deco ahero-d5">
-    <svg viewBox="0 0 24 24" fill="none" stroke="#FBBF24" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/></svg>
-  </div>
-  <div class="ahero-deco ahero-d6">
-    <svg viewBox="0 0 24 24" fill="none" stroke="#0D9488" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"/></svg>
-  </div>
-  <!-- content -->
-  <div class="ahero-inner">
-    <span style="display:inline-flex;align-items:center;gap:5px;background:rgba(255,255,255,0.15);color:#FDE68A;border:1px solid rgba(255,255,255,0.2);padding:0.3rem 0.85rem;border-radius:20px;font-size:0.75rem;font-weight:800;letter-spacing:0.06em;text-transform:uppercase;margin-bottom:1.1rem"><div class="icon-3d c-teal" style="width:22px;height:22px"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div> About Us</span>
-    <h1 style="font-family:'Fredoka One',cursive;font-size:2.6rem;font-weight:400;color:#fff;margin-bottom:0.85rem;line-height:1.25;letter-spacing:0.01em">Who We Are</h1>
-    <h2 style="font-family:'Poppins',sans-serif;font-size:1.05rem;font-weight:600;color:rgba(255,255,255,0.92);line-height:1.4;margin:-0.35rem auto 0.9rem;max-width:600px">Special Needs Education &amp; Therapy Center in Islamabad</h2>
-    <p style="color:rgba(255,255,255,0.8);font-size:1.05rem;line-height:1.75;max-width:560px;margin:0 auto">NEST was founded with one belief, every child with special needs deserves world-class care, close to home.</p>
-  </div>
-</div>
-<section style="background:#FFF8F0;padding:3.5rem 2rem">
-<div style="max-width:1100px;margin:0 auto">
+</article>
 
-<div style="display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center;margin-bottom:4rem">
-<div>
-<span style="display:inline-block;background:#F0FDFA;color:#0f766e;padding:0.3rem 0.85rem;border-radius:20px;font-size:0.75rem;font-weight:800;letter-spacing:0.06em;text-transform:uppercase;margin-bottom:1rem">Our Story</span>
-<h2 style="font-family:'Fredoka One',cursive;font-weight:400;font-size:1.9rem;color:#1a1a2e;margin-bottom:1rem;line-height:1.3">Born From a Parent's Heart</h2>
-<p style="color:#6b7280;font-size:0.95rem;line-height:1.8;margin-bottom:1rem">NEST was founded by parents who experienced firsthand the challenges of finding quality, compassionate care for children with special needs in Pakistan. What began as a small therapy room has grown into a full-service school and therapy center.</p>
-<p style="color:#6b7280;font-size:0.95rem;line-height:1.8">Today, NEST serves hundreds of families across Pakistan from our center in DHA Phase 2, Sector G, Islamabad, providing hope, progress, and belonging to every child who walks through our doors.</p>
-</div>
-<div style="background:linear-gradient(145deg,#F0FDFA,#EFF6FF);border-radius:24px;padding:2.5rem;text-align:center">
-<div class="icon-3d c-amber" style="width:72px;height:72px;margin:0 auto 1rem"><svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
-<div style="font-family:'Fredoka One',cursive;font-size:1.15rem;color:#1a1a2e;line-height:1.6;margin-bottom:0.75rem">"We don't just run a school and therapy center, we build futures, one child at a time."</div>
-<div style="color:#6b7280;font-size:0.85rem;font-weight:700">NEST Founders</div>
-<div style="display:flex;align-items:center;justify-content:center;margin-top:1rem">
-  <div style="width:52px;height:52px;border-radius:50%;padding:2px;background:linear-gradient(135deg,#F97316,#166178);box-shadow:0 3px 12px rgba(22,97,120,0.22)" title="Hina Haroon, CEO">
-    <picture><source srcset="images/team/hina-haroon.avif" type="image/avif"/><img src="images/team/hina-haroon.jpeg" alt="Hina Haroon, CEO at NEST, Islamabad" style="width:100%;height:100%;border-radius:50%;object-fit:cover;object-position:center 22%;display:block;border:2px solid #eaf6f5"/></picture>
-  </div>
-  <div style="width:52px;height:52px;border-radius:50%;padding:2px;background:linear-gradient(135deg,#F97316,#166178);box-shadow:0 3px 12px rgba(22,97,120,0.22);margin-left:-14px" title="Summaira Tariq, Director">
-    <picture><source srcset="images/team/summaira-tariq.avif" type="image/avif"/><img src="images/team/summaira-tariq.jpeg" alt="Summaira Tariq, Director and Administration at NEST, Islamabad" style="width:100%;height:100%;border-radius:50%;object-fit:cover;object-position:center 22%;display:block;border:2px solid #eaf6f5"/></picture>
-  </div>
-  <div style="width:52px;height:52px;border-radius:50%;padding:2px;background:linear-gradient(135deg,#F97316,#166178);box-shadow:0 3px 12px rgba(22,97,120,0.22);margin-left:-14px" title="Sidra Simaab, Director">
-    <picture><source srcset="images/team/sidra-simaab.avif" type="image/avif"/><img src="images/team/sidra-simaab.jpeg" alt="Sidra Simaab, Director and Behavior Therapist at NEST, Islamabad" style="width:100%;height:100%;border-radius:50%;object-fit:cover;object-position:center 22%;display:block;border:2px solid #eaf6f5"/></picture>
-  </div>
-</div>
-</div>
-</div>
-
-<div style="margin-bottom:4rem">
-<h2 style="font-family:'Fredoka One',cursive;font-weight:400;font-size:1.8rem;color:#1a1a2e;text-align:center;margin-bottom:0.5rem">Our Mission & Values</h2>
-<p style="color:#6b7280;text-align:center;margin-bottom:2rem;font-size:0.95rem">Everything we do is guided by these core principles.</p>
-<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1.25rem">
-<div style="background:#fff;border:2px solid #e5e7eb;border-radius:16px;padding:1.5rem;text-align:center">
-<div class="icon-3d c-orange" style="width:44px;height:44px;margin:0 auto 0.75rem"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></div>
-<h3 style="font-family:'Fredoka One',cursive;font-weight:400;font-size:1rem;color:#1a1a2e;margin-bottom:0.4rem">Compassion First</h3>
-<p style="color:#6b7280;font-size:0.84rem;line-height:1.6">Every interaction with children and families is rooted in empathy, patience, and genuine care.</p>
-</div>
-<div style="background:#fff;border:2px solid #e5e7eb;border-radius:16px;padding:1.5rem;text-align:center">
-<div class="icon-3d c-teal" style="width:44px;height:44px;margin:0 auto 0.75rem"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 2v7.527a2 2 0 0 1-.211.896L4.72 20.55a1 1 0 0 0 .9 1.45h12.76a1 1 0 0 0 .9-1.45l-5.069-10.127A2 2 0 0 1 14 9.527V2"/><path d="M8.5 2h7"/><path d="M7 16h10"/></svg></div>
-<h3 style="font-family:'Fredoka One',cursive;font-weight:400;font-size:1rem;color:#1a1a2e;margin-bottom:0.4rem">Evidence-Based</h3>
-<p style="color:#6b7280;font-size:0.84rem;line-height:1.6">All our programs follow internationally recognized, research-backed therapeutic approaches.</p>
-</div>
-<div style="background:#fff;border:2px solid #e5e7eb;border-radius:16px;padding:1.5rem;text-align:center">
-<div class="icon-3d c-blue" style="width:44px;height:44px;margin:0 auto 0.75rem"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
-<h3 style="font-family:'Fredoka One',cursive;font-weight:400;font-size:1rem;color:#1a1a2e;margin-bottom:0.4rem">Family Partnership</h3>
-<p style="color:#6b7280;font-size:0.84rem;line-height:1.6">Parents are our partners. We keep families informed, involved, and empowered at every step.</p>
-</div>
-<div style="background:#fff;border:2px solid #e5e7eb;border-radius:16px;padding:1.5rem;text-align:center">
-<div class="icon-3d c-green" style="width:44px;height:44px;margin:0 auto 0.75rem"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 20h10"/><path d="M10 20c5.5-2.5.8-6.4 3-10"/><path d="M9.5 9.4c1.1.8 1.8 2.1 2 3.6.5-1.9 1.1-3.3 2.4-4.4"/><path d="M14.1 6.5a5.5 5.5 0 1 0 .9 10"/></svg></div>
-<h3 style="font-family:'Fredoka One',cursive;font-weight:400;font-size:1rem;color:#1a1a2e;margin-bottom:0.4rem">Continuous Growth</h3>
-<p style="color:#6b7280;font-size:0.84rem;line-height:1.6">We celebrate every milestone, no matter how small, because progress is progress.</p>
-</div>
-</div>
-</div>
-
-
-<div class="about-stats" style="background:#166178;border-radius:24px;padding:2rem 1.25rem;display:grid;grid-template-columns:repeat(4,1fr);gap:0.75rem;text-align:center">
-<div><div style="font-family:'Fredoka One',cursive;font-size:2rem;color:#FBBF24">2026</div><div style="color:rgba(255,255,255,0.75);font-size:0.82rem;font-weight:600">Founded</div></div>
-<div><div style="font-family:'Fredoka One',cursive;font-size:2rem;color:#FBBF24">100+</div><div style="color:rgba(255,255,255,0.75);font-size:0.82rem;font-weight:600">Families Served</div></div>
-<div><div style="font-family:'Fredoka One',cursive;font-size:2rem;color:#FBBF24">5+</div><div style="color:rgba(255,255,255,0.75);font-size:0.82rem;font-weight:600">Expert Staff</div></div>
-<div><div style="font-family:'Fredoka One',cursive;font-size:2rem;color:#FBBF24">98%</div><div style="color:rgba(255,255,255,0.75);font-size:0.82rem;font-weight:600">Parent Satisfaction</div></div>
-</div>
-
-</div>
-</section>
-
-<!-- ===== EXPERT TEAM SECTION ===== -->
-<section class="team-section" id="team">
-  <div class="team-inner">
-    <div class="team-header">
-      <div class="team-tag">
-        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-        Our Expert Team
-      </div>
-      <h2 class="team-title">Meet Our Expert Team</h2>
-      <p class="team-sub">Dedicated specialists who bring world-class expertise and genuine heart to every child's journey.</p>
-    </div>
-    <div class="tteam-slider">
-     <div class="tteam-clip">
-      <div class="tteam-track" id="tteam-track">
-
-      <!-- Card 1: Hina Haroon (CEO) -->
-      <div class="tteam-slide"><div class="tcard" id="hina-haroon">
-        <div class="tcard-photo">
-          <picture><source srcset="images/team/hina-haroon.avif" type="image/avif"/><img src="images/team/hina-haroon.jpeg" alt="Hina Haroon, CEO at NEST, Islamabad" loading="lazy"></picture>
-          <span class="tcard-badge" style="background:linear-gradient(135deg,#166178,#0D9488)">
-            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
-            CEO
-          </span>
-        </div>
-        <div class="tcard-body">
-          <div class="tcard-name">Hina Haroon</div>
-          <div class="tcard-cred" style="color:#166178">M.A World History<br/>M.A Literature and Urdu</div>
-          <div class="tcard-exp">
-            26 Years Experience
-          </div>
-          <p class="tcard-bio">Leading NEST as CEO with 26 years of experience in education and organizational leadership, bringing a multidisciplinary academic foundation in World History and Literature (Urdu), and currently pursuing certification in International Baccalaureate Teaching (IBT) to further strengthen the school's academic framework.</p>
-        </div>
-      </div></div>
-
-      <!-- Card 2: Summaira Tariq -->
-      <div class="tteam-slide"><div class="tcard" id="summaira-tariq">
-        <div class="tcard-photo">
-          <picture><source srcset="images/team/summaira-tariq.avif" type="image/avif"/><img src="images/team/summaira-tariq.jpeg" alt="Summaira Tariq, Director and Administration at NEST, Islamabad" loading="lazy"></picture>
-          <span class="tcard-badge" style="background:linear-gradient(135deg,#F97316,#EA580C)">
-            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
-            Director &amp; Administration
-          </span>
-        </div>
-        <div class="tcard-body">
-          <div class="tcard-name">Summaira Tariq</div>
-          <div class="tcard-cred" style="color:#F97316">M.S.c Applied Psychology &middot; PMDCP &middot; ABA Therapist &amp; Branch Manager</div>
-          <div class="tcard-exp">
-            8 Years Experience
-          </div>
-          <p class="tcard-bio">Serving as Director &amp; Administration with 8 years of experience in applied psychology and clinical practice, holding an M.Sc. in Applied Psychology along with a Post Master's Diploma in Clinical Psychology (PMDCP), and working as an ABA Therapist and Branch Manager to oversee both clinical quality and day-to-day operations.</p>
-        </div>
-      </div></div>
-
-      <!-- Card 3: Sidra Simaab -->
-      <div class="tteam-slide"><div class="tcard" id="sidra-simaab">
-        <div class="tcard-photo">
-          <picture><source srcset="images/team/sidra-simaab.avif" type="image/avif"/><img src="images/team/sidra-simaab.jpeg" alt="Sidra Simaab, Director and Behavior Therapist at NEST, Islamabad" loading="lazy"></picture>
-          <span class="tcard-badge" style="background:linear-gradient(135deg,#EC4899,#BE185D)">
-            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4"/><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-            Director &amp; Behavior Therapist
-          </span>
-        </div>
-        <div class="tcard-body">
-          <div class="tcard-name">Sidra Simaab</div>
-          <div class="tcard-cred" style="color:#EC4899">M.S.c in Clinical Psychology &middot; ADCP &middot; International Behavior Analyst (IBA) Candidate</div>
-          <div class="tcard-exp">
-            7 Years Experience
-          </div>
-          <p class="tcard-bio">Serving as Director &amp; Behavior Therapist with 7 years of experience in clinical psychology and behavior analysis, holding an M.Sc. in Clinical Psychology along with an Advanced Diploma in Clinical Psychology (ADCP), and currently pursuing candidacy as an International Behavior Analyst (IBA) to further advance evidence-based behavioral interventions.</p>
-        </div>
-      </div></div>
-
-      <!-- Card 4: Harmain Fatima -->
-      <div class="tteam-slide"><div class="tcard" id="harmain-fatima">
-        <div class="tcard-photo">
-          <picture><source srcset="images/team/harmain-fatima.avif" type="image/avif"/><img src="images/team/harmain-fatima.jpeg" alt="Harmain Fatima, Speech Therapist at NEST, Islamabad" loading="lazy"></picture>
-          <span class="tcard-badge" style="background:linear-gradient(135deg,#F97316,#EC4899)">
-            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg>
-            Speech Therapist
-          </span>
-        </div>
-        <div class="tcard-body">
-          <div class="tcard-name">Harmain Fatima</div>
-          <div class="tcard-cred" style="color:#F97316">M.S Speech Language Pathologist</div>
-          <div class="tcard-exp">
-            3 Years Experience
-          </div>
-          <p class="tcard-bio">Serving as Speech Therapist with 3 years of experience in communication and language intervention, holding an M.S. in Speech-Language Pathology to support individuals in achieving their speech, language, and communication goals.</p>
-        </div>
-      </div></div>
-
-      <!-- Card 5: Hajra Abbasi -->
-      <div class="tteam-slide"><div class="tcard" id="hajra-abbasi">
-        <div class="tcard-photo">
-          <picture><source srcset="images/team/hajra-abbasi.avif" type="image/avif"/><img src="images/team/hajra-abbasi.jpeg" alt="Hajra Abbasi, Teacher at NEST, Islamabad" loading="lazy"></picture>
-          <span class="tcard-badge" style="background:linear-gradient(135deg,#166178,#0D9488)">
-            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
-            Teacher
-          </span>
-        </div>
-        <div class="tcard-body">
-          <div class="tcard-name">Hajra Abbasi</div>
-          <div class="tcard-cred" style="color:#166178">Bachelor&rsquo;s in Fashion Designing</div>
-          <div class="tcard-exp">
-            5 Years Teaching Expertise
-          </div>
-          <p class="tcard-bio">Serving as Teacher with 5 years of teaching expertise, holding a Bachelor's degree in Fashion Designing, and bringing a creative, hands-on approach to fostering students' learning and development.</p>
-        </div>
-      </div></div>
-
-      <!-- Card 6: Sana Waheed -->
-      <div class="tteam-slide"><div class="tcard" id="sana-waheed">
-        <div class="tcard-photo">
-          <picture><source srcset="images/team/sana-waheed.avif" type="image/avif"/><img src="images/team/sana-waheed.jpeg" alt="Sana Waheed, Physiotherapist and Occupational Therapist at NEST, Islamabad" loading="lazy"></picture>
-          <span class="tcard-badge" style="background:linear-gradient(135deg,#F97316,#EA580C)">
-            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
-            Physio &amp; Occupational Therapist
-          </span>
-        </div>
-        <div class="tcard-body">
-          <div class="tcard-name">Sana Waheed</div>
-          <div class="tcard-cred" style="color:#F97316">Doctor of Physical Therapy (DPT)</div>
-          <div class="tcard-exp">
-            2 Years Experience
-          </div>
-          <p class="tcard-bio">Serving as Physio &amp; Occupational Therapist with 2 years of experience, holding a Doctor of Physical Therapy (DPT) degree, and dedicated to helping individuals improve mobility, function, and independence through personalized therapeutic care.</p>
-        </div>
-      </div></div>
-
-      <!-- Card 7: Wajeeha Majid -->
-      <div class="tteam-slide"><div class="tcard" id="wajeeha-majid">
-        <div class="tcard-photo">
-          <picture><source srcset="images/team/wajeeha-majid.avif" type="image/avif"/><img src="images/team/wajeeha-majid.jpeg" alt="Wajeeha Majid, Special Educator at NEST, Islamabad" loading="lazy"></picture>
-          <span class="tcard-badge" style="background:linear-gradient(135deg,#EC4899,#BE185D)">
-            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
-            Special Educator
-          </span>
-        </div>
-        <div class="tcard-body">
-          <div class="tcard-name">Wajeeha Majid</div>
-          <div class="tcard-cred" style="color:#EC4899">Bachelor&rsquo;s in Psychology</div>
-          <div class="tcard-exp">
-            1 Year Experience
-          </div>
-          <p class="tcard-bio">Serving as Special Educator with 1 year of experience, holding a Bachelor's degree in Psychology, and committed to supporting children's individual learning needs through patient, personalized instruction.</p>
-        </div>
-      </div></div>
-
-      </div><!-- /tteam-track -->
-     </div><!-- /tteam-clip -->
-
-     <div class="tteam-controls">
-       <button class="tteam-arrow" id="tteam-prev" aria-label="Previous team members">&#8592;</button>
-       <div class="tteam-dots" id="tteam-dots"></div>
-       <button class="tteam-arrow" id="tteam-next" aria-label="Next team members">&#8594;</button>
-     </div>
-    </div>
-  </div>
-</section>
-
-<!-- ===== HOLISTIC APPROACH SECTION ===== -->
-<section class="approach-section">
-  <div class="approach-inner">
-
-    <div class="approach-img">
-      <picture><source srcset="images/holistic-approach.avif" type="image/avif"/><img src="images/holistic-approach.jpeg" alt="Happy children learning at NEST special education and therapy center, DHA Phase 2, Islamabad"></picture>
-    </div>
-
-    <div class="approach-content">
-      <div class="approach-tag">
-        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22V12M12 12L8 16M12 12L16 16"/><circle cx="12" cy="7" r="4"/></svg>
-        How We Work
-      </div>
-      <h2 class="approach-title">Our Holistic Approach</h2>
-      <p class="approach-sub">We don't just offer therapy, we build a complete ecosystem of support around each child and family. Here's our proven five-step process that delivers real, lasting results.</p>
-
-      <div class="step-list">
-        <div class="step-card">
-          <div class="step-num">1</div>
-          <div class="step-body">
-            <div class="step-title">Comprehensive Assessment</div>
-            <div class="step-desc">A multidisciplinary evaluation covering cognitive, communication, motor, and social-emotional domains to build a complete picture of your child's strengths and needs.</div>
-          </div>
-        </div>
-        <div class="step-card">
-          <div class="step-num">2</div>
-          <div class="step-body">
-            <div class="step-title">Personalized Therapy Plan</div>
-            <div class="step-desc">Our team designs an individualized plan with clear, measurable goals aligned to your child's specific profile, reviewed and updated every three months.</div>
-          </div>
-        </div>
-        <div class="step-card">
-          <div class="step-num">3</div>
-          <div class="step-body">
-            <div class="step-title">Expert Therapy Sessions</div>
-            <div class="step-desc">Engaging, evidence-based one-on-one and small-group sessions delivered by our certified specialists in a warm, stimulating environment.</div>
-          </div>
-        </div>
-        <div class="step-card">
-          <div class="step-num">4</div>
-          <div class="step-body">
-            <div class="step-title">Family Training &amp; Support</div>
-            <div class="step-desc">We train parents and caregivers with practical home strategies so therapy goals are reinforced throughout the day, not just during clinic hours.</div>
-          </div>
-        </div>
-        <div class="step-card">
-          <div class="step-num">5</div>
-          <div class="step-body">
-            <div class="step-title">Ongoing Progress Tracking</div>
-            <div class="step-desc">Regular progress reports, parent meetings, and goal reviews ensure transparency and keep the entire team, including your family, aligned at all times.</div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-  </div>
-</section>
-
-<!-- ===== TEAM CTA SECTION ===== -->
-<section class="team-cta">
-  <div class="team-cta-inner">
-    <div style="display:flex;flex-direction:column;align-items:center;gap:0.6rem;margin-bottom:1.5rem">
-      <div style="width:92px;height:92px;border-radius:50%;padding:3px;background:linear-gradient(135deg,#F97316,#FBBF24);box-shadow:0 6px 22px rgba(0,0,0,0.28)">
-        <picture><source srcset="images/team/sidra-simaab.avif" type="image/avif"/><img src="images/team/sidra-simaab.jpeg" alt="Sidra Simaab, Director and Behavior Therapist at NEST, Islamabad" style="width:100%;height:100%;border-radius:50%;object-fit:cover;object-position:center 18%;display:block;border:3px solid rgba(255,255,255,0.9)"/></picture>
-      </div>
-      <div style="text-align:center;line-height:1.3">
-        <div style="color:#fff;font-weight:800;font-size:0.95rem">Sidra Simaab</div>
-        <div style="color:rgba(255,255,255,0.7);font-size:0.78rem;font-weight:600">Clinical Director</div>
-      </div>
-    </div>
-    <div class="team-cta-tag">
-      <svg width="13" height="13" viewBox="0 0 24 24" fill="#FBBF24" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-      Free Consultation Available
-    </div>
-    <h2 class="team-cta-title">Ready to Meet Our Team?</h2>
-    <p class="team-cta-sub">Book a free 30-minute consultation with our Clinical Director. We'll review your child's needs, answer every question, and help you take the first confident step forward.</p>
-    <div class="team-cta-btns">
-      <a href="#" class="btn-cta-primary" onclick="openEnrollModal();return false;">
-        Book Free Consultation
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-      </a>
-      <a href="programs" class="btn-cta-outline">Explore Our Programs</a>
-    </div>
-  </div>
-</section>
 
 <footer>
   <div class="ft-inner">
@@ -1587,17 +1259,16 @@ document.addEventListener('DOMContentLoaded',function(){
 });
 
 /* ── helpers ── */
-function syncCsError(el){ if(!el)return; var w=el.nextSibling; if(w&&w.classList){ if(w.classList.contains('cs-dd')){ var b=w.querySelector('.cs-dd-btn'); if(b) b.classList.toggle('error',el.classList.contains('error')); } else if(w.classList.contains('cs-dp')){ var b2=w.querySelector('.cs-dp-input'); if(b2) b2.classList.toggle('error',el.classList.contains('error')); } } }
 function errMsgEl(el){ var w=el.parentNode; return w?w.querySelector('.err-msg'):null; }
 function setError(el,msg){
-  el.classList.add('error'); syncCsError(el);
+  el.classList.add('error');
   var m=errMsgEl(el);
   if(m){ if(!m.dataset.default) m.dataset.default=m.textContent; if(msg) m.textContent=msg; }
 }
 function clearError(el){
-  el.classList.remove('error'); syncCsError(el);
+  el.classList.remove('error');
   var m=errMsgEl(el);
-  if(m && m.dataset.default) m.textContent=m.dataset.default; // restore original wording
+  if(m && m.dataset.default) m.textContent=m.dataset.default;
 }
 
 function liveAlpha(el){
@@ -1886,124 +1557,6 @@ document.querySelectorAll('.ribbon-item').forEach(function(el,i){
   if(!el.dataset.nr) addReveal(el,'animate-fade-up',i%6+1);
 });
 
-})();
-</script>
-<script>
-/* ===== About page, Team slider ===== */
-(function(){
-  var track = document.getElementById('tteam-track');
-  if(!track) return;
-  var prevBtn = document.getElementById('tteam-prev');
-  var nextBtn = document.getElementById('tteam-next');
-  var dotsWrap= document.getElementById('tteam-dots');
-  var slides  = track.querySelectorAll('.tteam-slide');
-  var total   = slides.length;
-  var current = 0;
-  var AUTO_MS = 4800;
-  var autoTimer;
-
-  function visibleCount(){
-    var w = track.parentElement.offsetWidth;
-    return w >= 1024 ? 4 : w >= 640 ? 2 : 1;
-  }
-  function slideWidth(){
-    return track.parentElement.offsetWidth / visibleCount();
-  }
-  function recalcSlides(){
-    var sw = slideWidth();
-    slides.forEach(function(s){ s.style.width = sw + 'px'; s.style.minWidth = sw + 'px'; });
-    var maxH = 0;
-    slides.forEach(function(s){ maxH = Math.max(maxH, s.firstElementChild.scrollHeight); });
-    slides.forEach(function(s){ s.firstElementChild.style.minHeight = maxH + 'px'; });
-  }
-  function maxIndex(){ return Math.max(0, total - visibleCount()); }
-  function buildDots(){
-    if(!dotsWrap) return;
-    dotsWrap.innerHTML = '';
-    var pages = maxIndex() + 1;
-    for(var i = 0; i < pages; i++){
-      (function(idx){
-        var d = document.createElement('button');
-        d.className = 'tteam-dot' + (idx === current ? ' active' : '');
-        d.setAttribute('aria-label', 'Go to slide ' + (idx + 1));
-        d.addEventListener('click', function(){ stopAuto(); goTo(idx); startAuto(); });
-        dotsWrap.appendChild(d);
-      })(i);
-    }
-  }
-  function updateDots(){
-    if(!dotsWrap) return;
-    dotsWrap.querySelectorAll('.tteam-dot').forEach(function(d, i){ d.classList.toggle('active', i === current); });
-  }
-  function goTo(idx){
-    current = Math.max(0, Math.min(idx, maxIndex()));
-    track.style.transform = 'translateX(-' + (current * slideWidth()) + 'px)';
-    updateDots();
-  }
-  function startAuto(){
-    if(total <= visibleCount()) return;
-    autoTimer = setInterval(function(){
-      goTo(current < maxIndex() ? current + 1 : 0);
-    }, AUTO_MS);
-  }
-  function stopAuto(){ clearInterval(autoTimer); }
-
-  if(prevBtn) prevBtn.addEventListener('click', function(){ stopAuto(); goTo(current - 1); startAuto(); });
-  if(nextBtn) nextBtn.addEventListener('click', function(){ stopAuto(); goTo(current + 1); startAuto(); });
-
-  /* Touch / swipe */
-  var tsX = 0;
-  track.addEventListener('touchstart', function(e){ tsX = e.touches[0].clientX; }, {passive:true});
-  track.addEventListener('touchend', function(e){
-    var dx = e.changedTouches[0].clientX - tsX;
-    if(Math.abs(dx) > 45){ stopAuto(); goTo(current + (dx < 0 ? 1 : -1)); startAuto(); }
-  }, {passive:true});
-
-  // Deep-link: jump to a specific team member's card via #slug (from homepage Profile icons)
-  function slideIndexOf(el){
-    var slide = el.closest('.tteam-slide');
-    return Array.prototype.indexOf.call(slides, slide);
-  }
-  function goToHash(smooth){
-    var id = (location.hash || '').replace('#','');
-    if(!id) return false;
-    var card = document.getElementById(id);
-    if(!card || !card.classList.contains('tcard')) return false;
-    stopAuto();
-    var idx = slideIndexOf(card);
-    if(idx < 0) return false;
-    // land the card's slide into the visible window (respecting maxIndex)
-    goTo(Math.min(idx, maxIndex()));
-    // Scroll so the whole team section header + cards clear the fixed navbar.
-    // Compute target manually (scrollIntoView ignores our offset inconsistently).
-    function doScroll(){
-      var navH = (document.querySelector('nav') || {}).offsetHeight || 72;
-      var gap = 24;
-      var sec = document.getElementById('team') || track.closest('.team-section') || track;
-      var top = sec.getBoundingClientRect().top + window.pageYOffset - navH - gap;
-      if(top < 0) top = 0;
-      window.scrollTo({top: top, behavior: smooth ? 'smooth' : 'auto'});
-    }
-    // wait one frame so the slider transform/layout settles before measuring
-    requestAnimationFrame(function(){ requestAnimationFrame(doScroll); });
-    // brief highlight so the parent immediately sees which person
-    card.classList.remove('tcard-flash'); void card.offsetWidth; card.classList.add('tcard-flash');
-    startAuto();
-    return true;
-  }
-
-  function init(){ recalcSlides(); buildDots(); goTo(current); }
-  init();
-  startAuto();
-  // run after layout settles so slideWidth() is accurate
-  setTimeout(function(){ goToHash(false); }, 60);
-  window.addEventListener('hashchange', function(){ goToHash(true); });
-
-  var rz;
-  window.addEventListener('resize', function(){
-    clearTimeout(rz);
-    rz = setTimeout(function(){ recalcSlides(); buildDots(); goTo(current); }, 150);
-  });
 })();
 </script>
 
