@@ -1,3 +1,13 @@
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EMR8204CT9"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag("js", new Date());
+  gtag("config", "G-EMR8204CT9");
+  // track outbound Instagram clicks as a lead-interest signal
+  document.addEventListener("click",function(e){var a=e.target.closest && e.target.closest("a[href*='instagram.com']");if(a&&typeof gtag==="function"){gtag("event","social_click",{event_category:"outbound",event_label:"Instagram"});}},true);
+</script>
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <title>404 &ndash; Page Not Found | N.E.S.T</title>

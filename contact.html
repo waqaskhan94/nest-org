@@ -1,6 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EMR8204CT9"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag("js", new Date());
+  gtag("config", "G-EMR8204CT9");
+  // track outbound Instagram clicks as a lead-interest signal
+  document.addEventListener("click",function(e){var a=e.target.closest && e.target.closest("a[href*='instagram.com']");if(a&&typeof gtag==="function"){gtag("event","social_click",{event_category:"outbound",event_label:"Instagram"});}},true);
+</script>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Contact Us | Book Free Assessment - NEST Islamabad</title>
@@ -1413,6 +1423,7 @@ function submitForm(){
   }
   document.querySelectorAll('.step-panel').forEach(function(p){p.classList.remove('active')});
   document.getElementById('successScreen').classList.add('show');
+    if(typeof gtag==='function'){ gtag('event','generate_lead',{event_category:'enrollment',event_label:'Enrollment Form Submitted'}); }
   document.getElementById('modalFooter').style.display='none';
   document.getElementById('stepDots').style.display='none';
 }
