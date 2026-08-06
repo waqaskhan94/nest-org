@@ -1505,7 +1505,7 @@ function toggleFaq(el){
           <div class="form-group"><label>Relationship to Child <span class="req">*</span></label><select id="parentRel"><option value="" disabled selected hidden>Select</option><option>Mother</option><option>Father</option><option>Guardian</option><option>Other</option></select><div class="err-msg">Please select relationship</div></div>
         </div>
         <div class="form-row">
-          <div class="form-group"><label>Phone Number <span class="req">*</span></label><input type="tel" id="parentPhone" placeholder="e.g. 0300-1234567" maxlength="15" minlength="10"/><div class="err-msg">Enter valid Pakistani number e.g. 0300-1234567</div></div>
+          <div class="form-group"><label>Phone Number <span class="req">*</span></label><input type="tel" id="parentPhone" placeholder="e.g. 03001234567" maxlength="11" minlength="11"/><div class="err-msg">Enter a valid 11-digit Pakistani number, e.g. 03001234567</div></div>
           <div class="form-group"><label>Email Address</label><input type="email" id="parentEmail" placeholder="e.g. sara@email.com"/></div>
         </div>
         <div class="form-group"><label>City / Area in Pakistan <span class="req">*</span></label><select id="parentArea">
@@ -1552,11 +1552,11 @@ function toggleFaq(el){
 </select><div class="err-msg">Please select your city</div></div>
         <div class="form-group"><label>How did you hear about NEST?</label>
           <div class="radio-group" id="hearGroup">
-            <label class="radio-item" onclick="selectRadio(this,'hearGroup')"><input type="radio" name="hear" value="Instagram"/> Instagram</label>
-            <label class="radio-item" onclick="selectRadio(this,'hearGroup')"><input type="radio" name="hear" value="Friend/Family"/> Friend/Family</label>
-            <label class="radio-item" onclick="selectRadio(this,'hearGroup')"><input type="radio" name="hear" value="Doctor"/> Doctor</label>
-            <label class="radio-item" onclick="selectRadio(this,'hearGroup')"><input type="radio" name="hear" value="Google"/> Google</label>
-            <label class="radio-item" onclick="selectRadio(this,'hearGroup')"><input type="radio" name="hear" value="Other"/> Other</label>
+            <div class="radio-item" data-value="Instagram" onclick="toggleMulti(this)">Instagram</div>
+            <div class="radio-item" data-value="Friend/Family" onclick="toggleMulti(this)">Friend/Family</div>
+            <div class="radio-item" data-value="Doctor" onclick="toggleMulti(this)">Doctor</div>
+            <div class="radio-item" data-value="Google" onclick="toggleMulti(this)">Google</div>
+            <div class="radio-item" data-value="Other" onclick="toggleMulti(this)">Other</div>
           </div>
         </div>
       </div>
@@ -1794,6 +1794,7 @@ function openEnrollModal(){
   document.getElementById('prefDate').min=today;
   document.getElementById('childDob').max=today;
   enhanceDates();
+  resetEnrollForm(); /* always start fresh (clears any leftover data from a previous session) */
 }
 function resetEnrollForm(){
   /* Hide success screen, show footer & dots */
@@ -1803,13 +1804,24 @@ function resetEnrollForm(){
 
   /* Clear all inputs, selects, textareas */
   document.querySelectorAll('#enrollModal input:not([type="checkbox"]):not([type="radio"])').forEach(function(el){ el.value=''; el.classList.remove('error'); });
-  document.querySelectorAll('#enrollModal select').forEach(function(el){ el.selectedIndex=0; el.classList.remove('error'); });
+  document.querySelectorAll('#enrollModal select').forEach(function(el){ el.selectedIndex=0; el.classList.remove('error'); el.dispatchEvent(new Event('change',{bubbles:true})); });
   document.querySelectorAll('#enrollModal textarea').forEach(function(el){ el.value=''; el.classList.remove('error'); });
   document.querySelectorAll('#enrollModal input[type="checkbox"]').forEach(function(el){ el.checked=false; });
   var pErrR=document.getElementById('programsErr'); if(pErrR) pErrR.style.display='none';
   document.querySelectorAll('#enrollModal .radio-item').forEach(function(el){ el.classList.remove('selected'); });
   document.querySelectorAll('#enrollModal .check-item').forEach(function(el){ el.classList.remove('checked'); });
   document.getElementById('consentItem').style.borderColor='';
+
+  /* Reset custom (styled) dropdown buttons back to their placeholder */
+  document.querySelectorAll('#enrollModal .cs-dd').forEach(function(dd){
+    var sel=dd.previousElementSibling; // the hidden native <select>
+    var btn=dd.querySelector('.cs-dd-btn');
+    if(sel&&btn){ var o=sel.options[sel.selectedIndex]; btn.textContent=o?o.textContent:''; btn.classList.toggle('placeholder',!sel.value); btn.classList.remove('error'); }
+    dd.querySelectorAll('.cs-dd-opt').forEach(function(x){x.classList.remove('active');});
+    dd.classList.remove('open');
+  });
+  /* Reset custom date picker visible field */
+  document.querySelectorAll('#enrollModal .cs-dp .cs-dp-input').forEach(function(f){ f.value=''; f.classList.remove('error'); });
 
   /* Go back to step 1 */
   goToStep(1);
@@ -1823,9 +1835,8 @@ function closeEnrollModal(){
 }
 
 document.addEventListener('DOMContentLoaded',function(){
-  document.getElementById('enrollModal').addEventListener('click',function(e){
-    if(e.target===this) closeEnrollModal();
-  });
+  /* NOTE: background/backdrop click intentionally does NOT close the form —
+     it only closes via the ✕ button, so users don't lose their entered data by accident. */
 
   /* ── Alpha fields: only letters/spaces/hyphens, max enforced by HTML ── */
   ['childFirst','childLast','parentName'].forEach(function(id){
@@ -1839,12 +1850,12 @@ document.addEventListener('DOMContentLoaded',function(){
     el.addEventListener('blur',function(){ liveAlpha(this); });
   });
 
-  /* ── Phone field: digits / dash / plus only, max 15 enforced by HTML ── */
+  /* ── Phone field: digits only, exactly 11 (Pakistani 03XXXXXXXXX) ── */
   var phoneEl=document.getElementById('parentPhone');
   if(phoneEl){
-    phoneEl.setAttribute('inputmode','tel');
+    phoneEl.setAttribute('inputmode','numeric');
     phoneEl.addEventListener('input',function(){
-      this.value=this.value.replace(/[^0-9\-+\s]/g,'');
+      this.value=this.value.replace(/\D/g,'').slice(0,11); /* digits only, cap at 11 */
       clearError(this);
     });
     phoneEl.addEventListener('blur',function(){ livePhone(this); });
@@ -1909,9 +1920,9 @@ function liveAlpha(el){
 }
 function livePhone(el){
   var v=el.value.trim();
-  /* Pakistan numbers: 10-13 digits (with optional +92 prefix) */
-  if(!v || v.length<10){ setError(el); return false; }
-  if(!/^(\+92|0)[0-9\-\s]{9,13}$/.test(v)){ setError(el); return false; }
+  /* Pakistan mobile: exactly 11 digits starting 03 (03XXXXXXXXX) */
+  if(!v){ setError(el); return false; }
+  if(!/^03\d{9}$/.test(v)){ setError(el); return false; }
   clearError(el); return true;
 }
 
@@ -1971,8 +1982,7 @@ function validateStep(n){
     if(!el) return true;
     var v=el.value.trim();
     if(!v){ setError(el); ok=false; return false; }
-    if(v.length<10||v.length>15){ setError(el); ok=false; return false; }
-    if(!/^(\+92|0)[0-9\-\s]{9,13}$/.test(v)){ setError(el); ok=false; return false; }
+    if(!/^03\d{9}$/.test(v)){ setError(el); ok=false; return false; }
     clearError(el); return true;
   }
 
@@ -2044,9 +2054,8 @@ function submitForm(){
   var programs = [].slice.call(document.querySelectorAll('#programsGroup input:checked'))
                    .map(function(c){ return c.value; }).join(', ');
 
-  var hearAbout = '';
-  var hearChecked = document.querySelector('#hearGroup .radio-item.selected input');
-  if(hearChecked) hearAbout = hearChecked.value;
+  var hearAbout = [].slice.call(document.querySelectorAll('#hearGroup .radio-item.selected'))
+                    .map(function(c){ return c.dataset.value; }).join(', ');
 
   var prevTherapy = '';
   var prevChecked = document.querySelector('#prevGroup .radio-item.selected input');
@@ -2095,6 +2104,11 @@ function submitForm(){
 }
 
 function toggleCheck(el){ el.classList.toggle('checked'); }
+/* multi-select pill (e.g. "How did you hear about NEST?" — allow choosing more than one).
+   Pure class toggle on a <div> (no native input to conflict with). */
+function toggleMulti(el){
+  el.classList.toggle('selected');
+}
 function selectRadio(el,groupId){
   document.querySelectorAll('#'+groupId+' .radio-item').forEach(function(r){r.classList.remove('selected')});
   el.classList.add('selected');
