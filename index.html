@@ -741,6 +741,9 @@ footer{background:#0e4050;color:rgba(255,255,255,0.65);padding:3.5rem 2.5rem 2re
 .btn-icon svg{position:relative;z-index:1}
 .step-counter{font-size:0.8rem;color:#6b7280;font-weight:700;white-space:nowrap;flex-shrink:0}
 @media(max-width:600px){
+/* Footer: stack to a single column on phones so nothing cramps/wraps awkwardly */
+.ft-top{grid-template-columns:1fr !important;gap:1.75rem !important;text-align:left}
+.ft-top>div:first-child{grid-column:auto !important}
 .modal{
   border-radius:16px;
   max-height:94vh;
