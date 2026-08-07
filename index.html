@@ -222,10 +222,11 @@ nav{
 .hib-emoji{font-size:2rem;display:block;margin-bottom:0.4rem}
 .hib-title{font-family:'Quicksand',sans-serif;font-weight:600;font-size:0.84rem;color:#fff;margin-bottom:2px}
 .hib-sub{font-size:0.72rem;color:rgba(255,255,255,0.55)}
-.hero-bottom{margin-top:1rem;background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.12);border-radius:14px;padding:0.9rem 1rem;display:flex;align-items:center;justify-content:space-between}
+.hero-offer-divider{height:1px;background:rgba(255,255,255,0.15);margin:1.5rem 0 0.25rem}
+.hero-bottom{margin-top:1.25rem;background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.12);border-radius:14px;padding:0.9rem 1rem;display:flex;align-items:center;justify-content:space-between}
 .hb-stat{text-align:center}
 .hb-num{font-family:'Fredoka One',cursive;font-weight:400;font-size:1.2rem;color:#FBBF24;letter-spacing:0.01em}
-.hb-lbl{font-size:0.7rem;color:rgba(255,255,255,0.6);font-weight:600}
+.hb-lbl{font-size:0.7rem;color:rgba(255,255,255,0.6);font-weight:600;white-space:nowrap}
 .hb-div{width:1px;height:32px;background:rgba(255,255,255,0.15)}
 
 /* ===== RIBBON ===== */
@@ -538,7 +539,8 @@ footer{background:#0e4050;color:rgba(255,255,255,0.65);padding:3.5rem 2.5rem 2re
   .hero-bottom{gap:0.25rem;padding:0.75rem 0.5rem;flex-wrap:nowrap;justify-content:space-evenly}
   .hb-stat{flex:1;text-align:center}
   .hb-num{font-size:1.1rem}
-  .hb-lbl{font-size:0.62rem}
+  .hb-lbl{font-size:0.58rem;letter-spacing:-0.01em}
+  .hb-stat{padding:0 2px}
 
   .ribbon{padding:0.75rem 1.2rem;overflow-x:hidden;width:100%}
   .ribbon-inner{display:flex;flex-wrap:wrap;justify-content:center;gap:0.3rem;width:100%}
@@ -1001,6 +1003,7 @@ html.nest-modal-open,html.nest-modal-open body{overflow:hidden!important;touch-a
           <div class="hib-sub">Motor skills</div>
         </div>
       </div>
+      <div class="hero-offer-divider" aria-hidden="true"></div>
       <div class="hero-bottom">
         <div class="hb-stat"><div class="hb-num">100+</div><div class="hb-lbl">Children Helped</div></div>
         <div class="hb-div"></div>
