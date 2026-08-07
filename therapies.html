@@ -115,9 +115,10 @@ body{padding-top:72px}
 .mobile-menu a{text-decoration:none;color:var(--muted);font-weight:700;font-size:0.95rem;padding:0.6rem 0.9rem;border-radius:10px;transition:all 0.18s;display:flex;align-items:center;gap:12px}
 .mobile-menu a:hover{color:var(--orange);background:#FFF7ED}
 .mobile-menu a.active{color:#166178;background:rgba(22,97,120,0.10)}
-.mobile-menu .mob-enroll{background:linear-gradient(135deg,#F97316,#166178)!important;color:#fff!important;text-align:center;border-radius:100px!important;margin-top:0.5rem}
+.mobile-menu .mob-enroll{background:linear-gradient(135deg,#F97316,#166178)!important;color:#fff!important;text-align:center;justify-content:center;border-radius:100px!important;margin:0.75rem auto 0.25rem;width:auto;min-width:180px;max-width:260px;padding:0.75rem 1.5rem!important;box-shadow:0 4px 16px rgba(249,115,22,0.35);transition:all .25s cubic-bezier(0.4,0,0.2,1)!important;display:flex!important;align-items:center;gap:8px;font-size:0.92rem;font-weight:800!important;letter-spacing:0.01em}
+.mobile-menu .mob-enroll:hover{transform:translateY(-3px)!important;box-shadow:0 8px 24px rgba(0,0,0,0.18)!important}
 .mobile-menu.open{display:flex}
-@media(max-width:768px){#navbar{grid-template-columns:1fr auto;padding:0 1.2rem;height:62px}.nav-links{display:none}#navbar .btn-primary{display:none}.hamburger{display:flex}.mobile-menu{top:62px}.logo-name span{display:none}}
+@media(max-width:768px){#navbar{display:flex;align-items:center;justify-content:space-between;padding:0 1.2rem;height:62px}.nav-links{display:none}#navbar .btn-primary{display:inline-flex;margin-left:auto;margin-right:0.6rem;padding:0.45rem 1rem;font-size:0.82rem}.hamburger{display:flex}.mobile-menu{top:62px}.logo-name span{display:none}}
 
 /* ===== PAGE HERO ===== */
 .page-hero{
@@ -302,11 +303,11 @@ body{padding-top:72px}
 .faq-inner{max-width:1100px;margin:0 auto}
 .faq-grid{display:grid;grid-template-columns:1fr 1fr;gap:0.85rem;margin-top:2.5rem;align-items:start}
 .faq-item{border:2px solid var(--border);border-radius:16px;padding:1.1rem 1.25rem;cursor:pointer;transition:all 0.2s}
-.faq-item:hover{border-color:#C4B5FD;background:#F5F3FF}
-.faq-item.open{border-color:#7C3AED;background:#F5F3FF}
+.faq-item:hover{border-color:#166178;background:#eaf6f5}
+.faq-item.open{border-color:#166178;background:#eaf6f5}
 .faq-q{font-weight:800;color:#1a1a2e;font-size:0.88rem;display:flex;justify-content:space-between;align-items:center;gap:0.75rem}
 .faq-arrow{color:#6b7280;transition:transform 0.2s;flex-shrink:0;font-size:1rem}
-.faq-item.open .faq-arrow{transform:rotate(180deg);color:#7C3AED}
+.faq-item.open .faq-arrow{transform:rotate(180deg);color:#166178}
 .faq-a{color:#6b7280;font-size:0.84rem;margin-top:0.6rem;line-height:1.65;display:none}
 .faq-item.open .faq-a{display:block}
 
@@ -557,7 +558,7 @@ footer{background:#0e4050;color:rgba(255,255,255,0.65);padding:3.5rem 2.5rem 2re
   .therapies-sec,.approach-sec,.assessment-cta,.faq-sec,.cta-band{padding:3rem 1.5rem}
   .faq-grid{grid-template-columns:1fr}
   .approach-grid{grid-template-columns:1fr 1fr}
-  .ft-top{grid-template-columns:1fr}
+  .ft-top{grid-template-columns:1fr 1fr 1fr;gap:1.5rem 1.5rem}.ft-top>div:first-child{grid-column:1 / -1}
   .page-hero-btns{flex-direction:column;max-width:260px;margin-left:auto;margin-right:auto;align-items:center}
   .btn-hero-main,.btn-hero-ghost{width:100%;justify-content:center}
 }
@@ -571,6 +572,8 @@ footer{background:#0e4050;color:rgba(255,255,255,0.65);padding:3.5rem 2.5rem 2re
 
 .tel-link{display:inline-block;color:inherit;text-decoration:none;transform-origin:left center;transition:color .18s,transform .18s}
 .tel-link:hover{color:#38b6d6;transform:scale(1.06)}
+/* Robust scroll-lock while a modal is open */
+html.nest-modal-open,html.nest-modal-open body{overflow:hidden!important;touch-action:none}
 </style>
 </head>
 <body>
@@ -589,7 +592,7 @@ footer{background:#0e4050;color:rgba(255,255,255,0.65);padding:3.5rem 2.5rem 2re
     <li><a href="gallery">Gallery</a></li>
     <li><a href="contact">Contact</a></li>
   </ul>
-  <a href="contact" class="btn-primary">Enroll Now &#x2605;</a>
+  <a role="button" tabindex="0" style="cursor:pointer" onclick="openEnrollModal();return false;" class="btn-primary">Enroll Now &#x2605;</a>
   <button class="hamburger" onclick="toggleMenu()" aria-label="Toggle menu">
     <span></span><span></span><span></span>
   </button>
@@ -602,7 +605,7 @@ footer{background:#0e4050;color:rgba(255,255,255,0.65);padding:3.5rem 2.5rem 2re
   <a href="about"><span class="icon-3d c-blue"    style="width:32px;height:32px;border-radius:9px;flex-shrink:0"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg></span> About Us</a>
   <a href="gallery"><span class="icon-3d c-pink"    style="width:32px;height:32px;border-radius:9px;flex-shrink:0"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg></span> Gallery</a>
   <a href="contact"><span class="icon-3d c-green"   style="width:32px;height:32px;border-radius:9px;flex-shrink:0"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 014.69 13a19.79 19.79 0 01-3.07-8.67A2 2 0 013.18 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9a16 16 0 006.91 6.91l.27-.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg></span> Contact</a>
-  <a href="contact" class="mob-enroll">Enroll Now &rarr;</a>
+  <a role="button" tabindex="0" style="cursor:pointer" onclick="enrollFromMenu();return false;" class="mob-enroll">Enroll Now <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></a>
 </div>
 
 <!-- ===== PAGE HERO ===== -->
@@ -999,11 +1002,11 @@ window.addEventListener('scroll', function(){
 var mobileMenuEl = document.getElementById('mobileMenu');
 var mobileBackdropEl = document.getElementById('mobileBackdrop');
 var hamburgerBtn = document.querySelector('.hamburger');
-function openMenu(){ mobileMenuEl.classList.add('open'); mobileBackdropEl.classList.add('open'); hamburgerBtn.classList.add('open'); document.body.style.overflow='hidden';document.documentElement.style.overflow='hidden'; }
-function closeMenu(){ mobileMenuEl.classList.remove('open'); mobileBackdropEl.classList.remove('open'); hamburgerBtn.classList.remove('open'); document.body.style.overflow='';document.documentElement.style.overflow=''; }
+function openMenu(){ mobileMenuEl.classList.add('open'); mobileBackdropEl.classList.add('open'); hamburgerBtn.classList.add('open'); document.body.style.overflow='hidden';document.documentElement.style.overflow='hidden';document.documentElement.classList.add('nest-modal-open'); }
+function closeMenu(){ mobileMenuEl.classList.remove('open'); mobileBackdropEl.classList.remove('open'); hamburgerBtn.classList.remove('open'); document.body.style.overflow='';document.documentElement.style.overflow='';document.documentElement.classList.remove('nest-modal-open'); }
 function toggleMenu(){ mobileMenuEl.classList.contains('open') ? closeMenu() : openMenu(); }
 if(mobileBackdropEl) mobileBackdropEl.addEventListener('click', closeMenu);
-mobileMenuEl.querySelectorAll('a').forEach(function(l){ l.addEventListener('click', closeMenu); });
+mobileMenuEl.querySelectorAll('a:not(.mob-enroll)').forEach(function(l){ l.addEventListener('click', closeMenu); });
 
 /* ===== COUNTER ANIMATION ===== */
 function animateStatsCard(){
@@ -1332,9 +1335,15 @@ function enhanceDates(){
   });
   document.addEventListener('click',function(){ document.querySelectorAll('.cs-dp.open').forEach(function(x){x.classList.remove('open');}); });
 }
+function enrollFromMenu(){
+  var mm=document.getElementById('mobileMenu'); if(mm) mm.classList.remove('open');
+  var mb=document.getElementById('mobileBackdrop'); if(mb) mb.classList.remove('open');
+  var hb=document.querySelector('.hamburger'); if(hb) hb.classList.remove('open');
+  openEnrollModal();
+}
 function openEnrollModal(){
   document.getElementById('enrollModal').classList.add('open');
-  document.body.style.overflow='hidden';document.documentElement.style.overflow='hidden';
+  document.body.style.overflow='hidden';document.documentElement.style.overflow='hidden';document.documentElement.classList.add('nest-modal-open');
   enhanceSelects();
   var today=new Date().toISOString().split('T')[0];
   document.getElementById('prefDate').min=today;
@@ -1358,13 +1367,11 @@ function resetEnrollForm(){
 function closeEnrollModal(){
   if(window._nestResetTimer){ clearTimeout(window._nestResetTimer); window._nestResetTimer=null; }
   document.getElementById('enrollModal').classList.remove('open');
-  document.body.style.overflow='';document.documentElement.style.overflow='';
+  document.body.style.overflow='';document.documentElement.style.overflow='';document.documentElement.classList.remove('nest-modal-open');
   resetEnrollForm();
 }
 document.addEventListener('DOMContentLoaded',function(){
-  document.getElementById('enrollModal').addEventListener('click',function(e){
-    if(e.target===this) closeEnrollModal();
-  });
+  /* background click does NOT close the form — only the X button, so users do not lose entered data */
   ['childFirst','childLast','parentName'].forEach(function(id){
     var el=document.getElementById(id);
     if(!el) return;

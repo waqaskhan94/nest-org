@@ -100,7 +100,7 @@ nav{
 .mobile-menu{display:none;background:var(--white);border-top:2px solid var(--border);padding:1rem 1.5rem;flex-direction:column;gap:0.35rem;position:fixed;top:62px;left:0;right:0;z-index:1500;box-shadow:0 8px 24px rgba(0,0,0,0.1);overflow:hidden}
 .mobile-menu a{text-decoration:none;color:var(--muted);font-weight:700;font-size:0.95rem;padding:0.6rem 0.9rem;border-radius:10px;transition:all 0.18s;display:flex;align-items:center;gap:12px}
 .mobile-menu a:hover{color:#F97316;background:rgba(249,115,22,0.07)}.mobile-menu a.active{color:#166178!important;background:rgba(22,97,120,0.12)!important;font-weight:800!important}
-.mobile-menu .mob-enroll{background:linear-gradient(135deg,#F97316,#166178)!important;color:#fff!important;text-align:center;justify-content:center;border-radius:100px!important;margin-top:0.75rem;padding:0.75rem 1.5rem!important;box-shadow:0 4px 16px rgba(249,115,22,0.35);transition:all .25s cubic-bezier(0.4,0,0.2,1)!important;display:flex!important;align-items:center;gap:8px;font-size:0.92rem;font-weight:800!important;letter-spacing:0.01em}.mobile-menu .mob-enroll:hover{transform:translateY(-3px)!important;box-shadow:0 8px 24px rgba(0,0,0,0.18)!important}
+.mobile-menu .mob-enroll{background:linear-gradient(135deg,#F97316,#166178)!important;color:#fff!important;text-align:center;justify-content:center;border-radius:100px!important;margin:0.75rem auto 0.25rem;width:auto;min-width:180px;max-width:260px;padding:0.75rem 1.5rem!important;box-shadow:0 4px 16px rgba(249,115,22,0.35);transition:all .25s cubic-bezier(0.4,0,0.2,1)!important;display:flex!important;align-items:center;gap:8px;font-size:0.92rem;font-weight:800!important;letter-spacing:0.01em}.mobile-menu .mob-enroll:hover{transform:translateY(-3px)!important;box-shadow:0 8px 24px rgba(0,0,0,0.18)!important}
 .mobile-menu.open{display:flex}
 
 /* ===== HERO ===== */
@@ -229,7 +229,7 @@ section{padding:4rem 2.5rem}
 .why-grid{display:grid;grid-template-columns:1fr 1fr;gap:3.5rem;align-items:start;margin-top:2rem}
 .why-cards{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:0.5rem}
 .why-card{background:var(--bg);border:2px solid var(--border);border-radius:16px;padding:1.25rem;transition:all 0.2s}
-.why-card:hover{border-color:var(--purple);background:var(--purple-l)}
+.why-card:hover{border-color:#166178;background:#eaf6f5}
 .wc-icon{font-size:1.5rem;margin-bottom:0.5rem;display:block}
 .wc-title{font-weight:700;color:var(--navy);font-size:0.88rem;margin-bottom:3px}
 .wc-text{color:var(--muted);font-size:0.82rem;line-height:1.55}
@@ -257,11 +257,11 @@ section{padding:4rem 2.5rem}
 .faq-sec{background:var(--white)}
 .faq-grid{display:grid;grid-template-columns:1fr 1fr;gap:0.85rem;margin-top:2.5rem;align-items:start}
 .faq-item{border:2px solid var(--border);border-radius:16px;padding:1.1rem 1.25rem;cursor:pointer;transition:all 0.2s}
-.faq-item:hover{border-color:#C4B5FD;background:var(--purple-l)}
-.faq-item.open{border-color:var(--purple);background:var(--purple-l)}
+.faq-item:hover{border-color:#166178;background:#eaf6f5}
+.faq-item.open{border-color:#166178;background:#eaf6f5}
 .faq-q{font-weight:800;color:var(--navy);font-size:0.88rem;display:flex;justify-content:space-between;align-items:center;gap:0.75rem}
 .faq-arrow{color:var(--muted);transition:transform 0.2s;flex-shrink:0;font-size:1rem}
-.faq-item.open .faq-arrow{transform:rotate(180deg);color:var(--purple)}
+.faq-item.open .faq-arrow{transform:rotate(180deg);color:#166178}
 .faq-a{color:var(--muted);font-size:0.84rem;margin-top:0.5rem;margin-bottom:0;line-height:1.6;display:none}
 .faq-item.open .faq-a{display:block}
 
@@ -365,7 +365,9 @@ footer{background:#0e4050;color:rgba(255,255,255,0.65);padding:3.5rem 2.5rem 2re
     height:62px;padding:0 1.2rem;
   }
   .nav-links{display:none}
-  .nav-right{display:none}
+  nav{display:flex;align-items:center;justify-content:space-between}
+  .nav-right{display:flex;gap:0.6rem;align-items:center;margin-left:auto}
+  .nav-right .nav-badge{display:none}
   .hamburger{display:flex}
 
   .hero{
@@ -402,7 +404,7 @@ footer{background:#0e4050;color:rgba(255,255,255,0.65);padding:3.5rem 2.5rem 2re
   .cta-btns{flex-direction:column;align-items:center}
   .btn-cta-main,.btn-cta-out{width:100%;max-width:100%;text-align:center;font-size:0.9rem;padding:0.75rem 1.2rem}
 
-  .ft-top{grid-template-columns:1fr}
+  .ft-top{grid-template-columns:1fr 1fr 1fr;gap:1.5rem 1.5rem}.ft-top>div:first-child{grid-column:1 / -1}
   footer{padding:2.5rem 1.2rem 1.5rem}
   .ft-bottom{flex-direction:column;align-items:flex-start;gap:0.5rem}
   .ft-bottom-links{display:flex;flex-wrap:wrap;gap:0.5rem}
@@ -767,6 +769,8 @@ nav.scrolled{box-shadow:0 4px 28px rgba(0,0,0,0.11)!important}
 
 .tel-link{display:inline-block;color:inherit;text-decoration:none;transform-origin:left center;transition:color .18s,transform .18s}
 .tel-link:hover{color:#38b6d6;transform:scale(1.06)}
+/* Robust scroll-lock while a modal is open */
+html.nest-modal-open,html.nest-modal-open body{overflow:hidden!important;touch-action:none}
 </style>
 </head>
 <body>
@@ -801,7 +805,7 @@ nav.scrolled{box-shadow:0 4px 28px rgba(0,0,0,0.11)!important}
   <a href="about" class="active"><span class="icon-3d c-blue"    style="width:32px;height:32px;border-radius:9px;flex-shrink:0"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg></span> About Us</a>
   <a href="gallery"><span class="icon-3d c-pink"    style="width:32px;height:32px;border-radius:9px;flex-shrink:0"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg></span> Gallery</a>
   <a href="contact"><span class="icon-3d c-green"   style="width:32px;height:32px;border-radius:9px;flex-shrink:0"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 014.69 13a19.79 19.79 0 01-3.07-8.67A2 2 0 013.18 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9a16 16 0 006.91 6.91l.27-.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg></span> Contact</a>
-  <a role="button" tabindex="0" style="cursor:pointer" onclick="openEnrollModal();return false;" class="mob-enroll">Enroll Now <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></a>
+  <a role="button" tabindex="0" style="cursor:pointer" onclick="enrollFromMenu();return false;" class="mob-enroll">Enroll Now <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></a>
 </div>
 
 <div class="about-hero-wrap">
@@ -1510,24 +1514,28 @@ function enhanceDates(){
   });
   document.addEventListener('click',function(){ document.querySelectorAll('.cs-dp.open').forEach(function(x){x.classList.remove('open');}); });
 }
+function enrollFromMenu(){
+  /* hard-close the mobile menu directly by ID (robust) */
+  ['mobileMenu','hamburger','mobileBackdrop'].forEach(function(id){ var el=document.getElementById(id); if(el) el.classList.remove('open'); });
+  openEnrollModal(); /* this re-applies the scroll lock and shows the form */
+}
 function openEnrollModal(){
   document.getElementById('enrollModal').classList.add('open');
-  document.body.style.overflow='hidden';document.documentElement.style.overflow='hidden';
+  document.body.style.overflow='hidden';document.documentElement.style.overflow='hidden';document.documentElement.classList.add('nest-modal-open');
   enhanceSelects();
   var today=new Date().toISOString().split('T')[0];
   document.getElementById('prefDate').min=today;
   document.getElementById('childDob').max=today;
   enhanceDates();
+  resetEnrollForm();
 }
 function closeEnrollModal(){
   document.getElementById('enrollModal').classList.remove('open');
-  document.body.style.overflow='';document.documentElement.style.overflow='';
+  document.body.style.overflow='';document.documentElement.style.overflow='';document.documentElement.classList.remove('nest-modal-open');
 }
 
 document.addEventListener('DOMContentLoaded',function(){
-  document.getElementById('enrollModal').addEventListener('click',function(e){
-    if(e.target===this) closeEnrollModal();
-  });
+  /* background click does NOT close the form — only the X button, so users do not lose entered data */
 
   /* ── Alpha fields: only letters/spaces/hyphens, max enforced by HTML ── */
   ['childFirst','childLast','parentName'].forEach(function(id){
@@ -1775,19 +1783,19 @@ function openMobileMenu(){
   hamburger.classList.add('open');
   mobileMenu.classList.add('open');
   if(backdrop) backdrop.classList.add('open');
-  document.body.style.overflow='hidden';document.documentElement.style.overflow='hidden';
+  document.body.style.overflow='hidden';document.documentElement.style.overflow='hidden';document.documentElement.classList.add('nest-modal-open');
 }
 function closeMobileMenu(){
   hamburger.classList.remove('open');
   mobileMenu.classList.remove('open');
   if(backdrop) backdrop.classList.remove('open');
-  document.body.style.overflow='';document.documentElement.style.overflow='';
+  document.body.style.overflow='';document.documentElement.style.overflow='';document.documentElement.classList.remove('nest-modal-open');
 }
 hamburger.addEventListener('click',function(){
   mobileMenu.classList.contains('open')?closeMobileMenu():openMobileMenu();
 });
 if(backdrop) backdrop.addEventListener('click',closeMobileMenu);
-mobileMenu.querySelectorAll('a').forEach(function(l){l.addEventListener('click',closeMobileMenu);});
+mobileMenu.querySelectorAll('a:not(.mob-enroll)').forEach(function(l){l.addEventListener('click',closeMobileMenu);});
 
 
 /* ── 2. Float the logo bubble ── */
