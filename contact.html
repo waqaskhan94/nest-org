@@ -406,7 +406,7 @@ footer{background:#0e4050;color:rgba(255,255,255,0.65);padding:3.5rem 2.5rem 2re
 .modal-overlay.open{display:flex}
 .modal{background:#fff;border-radius:24px;width:100%;max-width:680px;max-height:none;position:relative;box-shadow:0 24px 64px rgba(22,97,120,0.25);animation:slideUp 0.3s ease;display:flex;flex-direction:column}
 @keyframes slideUp{from{transform:translateY(30px);opacity:0}to{transform:translateY(0);opacity:1}}
-.modal-header{background:#166178;padding:2rem 2rem 1.5rem;border-radius:24px 24px 0 0;position:relative;text-align:center}
+.modal-header{background:#166178;padding:1.35rem 2rem 1.1rem;border-radius:24px 24px 0 0;position:relative;text-align:center}
 .modal-close{position:absolute;top:1rem;right:1rem;width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,0.15);border:none;color:#fff;font-size:1.1rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background 0.2s}
 .modal-close:hover{background:rgba(255,255,255,0.3)}
 .modal-icon{font-size:2.5rem;display:block;margin-bottom:0.5rem}
@@ -414,7 +414,7 @@ footer{background:#0e4050;color:rgba(255,255,255,0.65);padding:3.5rem 2.5rem 2re
 .icon-3d.xs::after{border-radius:6px 6px 40% 40%/4px 4px 2px 2px}
 .icon-3d.sm{width:34px;height:34px;border-radius:10px;flex-shrink:0}
 .icon-3d.sm::after{border-radius:10px 10px 40% 40%/7px 7px 3px 3px}
-.modal-icon-3d{width:64px;height:64px;border-radius:18px;display:inline-flex;align-items:center;justify-content:center;background:linear-gradient(145deg,rgba(255,255,255,0.24),rgba(255,255,255,0.06));border:1.5px solid rgba(255,255,255,0.22);margin:0 auto 0.75rem;position:relative;overflow:hidden;box-shadow:0 6px 20px rgba(0,0,0,0.18),inset 0 1px 0 rgba(255,255,255,0.25)}
+.modal-icon-3d{width:52px;height:52px;border-radius:14px;display:inline-flex;align-items:center;justify-content:center;background:linear-gradient(145deg,rgba(255,255,255,0.24),rgba(255,255,255,0.06));border:1.5px solid rgba(255,255,255,0.22);margin:0 auto 0.5rem;position:relative;overflow:hidden;box-shadow:0 6px 20px rgba(0,0,0,0.18),inset 0 1px 0 rgba(255,255,255,0.25)}
 .modal-icon-3d::after{content:'';position:absolute;top:0;left:0;right:0;height:50%;background:rgba(255,255,255,0.16);border-radius:18px 18px 40% 40%/10px 10px 5px 5px}
 .modal-icon-3d svg{position:relative;z-index:1}
 .btn-icon{width:22px;height:22px;border-radius:6px;background:rgba(255,255,255,0.18);border:1px solid rgba(255,255,255,0.28);display:inline-flex;align-items:center;justify-content:center;flex-shrink:0;position:relative;overflow:hidden}
@@ -428,9 +428,9 @@ footer{background:#0e4050;color:rgba(255,255,255,0.65);padding:3.5rem 2.5rem 2re
 #consentItem{display:flex!important;flex-direction:row!important;align-items:flex-start!important;gap:10px!important;margin-bottom:0!important}
 #consentItem input[type="checkbox"]{flex-shrink:0!important;margin-top:3px!important;align-self:flex-start!important}
 #consentItem>span{flex:1!important;min-width:0!important;line-height:1.5!important}
-.modal-title{font-family:"Fredoka One",cursive;font-size:1.7rem;color:#fff;margin-bottom:0.3rem}
+.modal-title{font-family:"Fredoka One",cursive;font-size:1.45rem;color:#fff;margin-bottom:0.25rem}
 .modal-sub-txt{color:rgba(255,255,255,0.8);font-size:0.88rem}
-.modal-steps{display:flex;justify-content:center;gap:0.5rem;margin-top:1.2rem}
+.modal-steps{display:flex;justify-content:center;gap:0.5rem;margin-top:0.85rem}
 .step-dot{width:28px;height:6px;border-radius:3px;background:rgba(255,255,255,0.25);transition:background 0.3s}
 .step-dot.active{background:#FBBF24}.step-dot.done{background:rgba(255,255,255,0.6)}
 .modal-body{padding:2rem;overflow-y:auto;flex:1;max-height:65vh}
@@ -459,6 +459,19 @@ footer{background:#0e4050;color:rgba(255,255,255,0.65);padding:3.5rem 2.5rem 2re
 .cs-dd-panel{position:absolute;top:calc(100% + 6px);left:0;right:0;background:#fff;border:1.5px solid #e5e7eb;border-radius:14px;box-shadow:0 12px 32px rgba(22,97,120,0.16);padding:0.35rem;z-index:50;max-height:240px;overflow-y:auto;display:none}
 .cs-dd.open .cs-dd-panel{display:block}
 .cs-dd-opt{padding:0.6rem 0.85rem;border-radius:10px;font-size:0.9rem;color:#374151;cursor:pointer;transition:background 0.15s,color 0.15s}
+/* Mobile: open custom dropdown as a full-width bottom sheet (not a cramped in-field box) + perf */
+@media(max-width:600px){
+  .cs-dd.open .cs-dd-panel{position:fixed;left:0;right:0;bottom:0;top:auto;width:100%;max-height:55vh;border-radius:18px 18px 0 0;border:none;box-shadow:0 -8px 30px rgba(0,0,0,0.25);padding:0.5rem 0.75rem 1rem;z-index:10000;animation:ddSheetUp .22s ease}
+  .cs-dd.open .cs-dd-panel::before{content:'';display:block;width:40px;height:4px;border-radius:4px;background:#d1d5db;margin:6px auto 10px}
+  .cs-dd-opt{padding:0.85rem 0.9rem;font-size:1rem}
+  .cs-dd.open::after{content:'';position:fixed;inset:0;background:rgba(8,24,34,0.4);z-index:9999}
+}
+@keyframes ddSheetUp{from{transform:translateY(100%)}to{transform:translateY(0)}}
+/* Mobile performance: backdrop-blur forces costly repaints on phones -> drop it while keeping the dim */
+@media(max-width:600px){
+  .modal-overlay{backdrop-filter:none!important;-webkit-backdrop-filter:none!important;background:rgba(22,97,120,0.75)}
+  .mobile-backdrop{backdrop-filter:none!important}
+}
 .cs-dd-opt:hover,.cs-dd-opt.active{background:#F0FDFA;color:#166178;font-weight:700}
 .cs-dd-optgroup{padding:0.5rem 0.85rem 0.2rem;font-size:0.7rem;font-weight:800;letter-spacing:0.06em;text-transform:uppercase;color:#9ca3af}
 /* ===== Custom rounded date picker ===== */
@@ -509,6 +522,7 @@ footer{background:#0e4050;color:rgba(255,255,255,0.65);padding:3.5rem 2.5rem 2re
 .radio-item input{accent-color:#166178;cursor:pointer;appearance:none;-webkit-appearance:none;width:0;height:0;margin:0;padding:0;opacity:0;position:absolute}
 .info-box{background:#F0FDFA;border:1.5px solid #99f6e4;border-radius:12px;padding:0.9rem 1rem;display:flex;gap:10px;align-items:flex-start;margin-bottom:1.25rem}
 .info-box span{font-size:1.1rem;flex-shrink:0;margin-top:1px}.info-box p{font-size:0.82rem;color:#0f766e;font-weight:600;line-height:1.5}
+.info-box .icon-3d{align-self:flex-start!important;margin-top:1px}
 .summary-box{background:#FFF8F0;border:2px solid #e5e7eb;border-radius:16px;padding:1.25rem;margin-bottom:1.5rem}
 .summary-title{font-family:"Fredoka One",cursive;font-size:1rem;font-weight:400;color:#1a1a2e;margin-bottom:0.75rem}
 .summary-row{display:flex;justify-content:space-between;align-items:center;padding:0.4rem 0;border-bottom:1px solid #e5e7eb;font-size:0.85rem}
@@ -963,7 +977,7 @@ html.nest-modal-open,html.nest-modal-open body{overflow:hidden!important;touch-a
   <div class="modal">
     <div class="modal-header">
       <button class="modal-close" onclick="closeEnrollModal()">&#x2715;</button>
-      <span class="modal-icon-3d"><svg width="30" height="30" viewBox="0 0 24 24" fill="rgba(255,218,40,0.95)" stroke="rgba(255,255,255,0.35)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></span>
+      <span class="modal-icon-3d"><img src="/favicon.png" alt="NEST logo" style="width:100%;height:100%;object-fit:cover;border-radius:14px;display:block"/></span>
       <div class="modal-title">NEST Enrollment Form</div>
       <div class="modal-sub-txt">Free assessment &middot; Takes 3 minutes &middot; No commitment</div>
       <div class="modal-steps" id="stepDots">
@@ -1084,7 +1098,7 @@ html.nest-modal-open,html.nest-modal-open body{overflow:hidden!important;touch-a
         <div class="step-desc">Please review your details before submitting.</div>
         <div class="summary-box" id="summaryBox"></div>
         <div class="form-group">
-          <label class="check-item" style="width:100%;border-radius:12px" onclick="toggleCheck(this)" id="consentItem"><input type="checkbox" id="consent"/><span>I agree that NEST may contact me regarding my child's enrollment and assessment.</span></label>
+          <label class="check-item checked" style="width:100%;border-radius:12px" onclick="toggleCheck(this)" id="consentItem"><input type="checkbox" id="consent" checked/><span>I agree that NEST may contact me regarding my child's enrollment and assessment.</span></label>
         </div>
       </div>
       <div class="success-screen" id="successScreen">
@@ -1336,6 +1350,8 @@ document.addEventListener('DOMContentLoaded',function(){
   var con=document.getElementById('consent');
   if(con) con.addEventListener('change',function(){
     if(this.checked) document.getElementById('consentItem').style.borderColor='';
+  /* consent is pre-agreed by default */
+  var cons=document.getElementById('consent'); if(cons){ cons.checked=true; var ci=document.getElementById('consentItem'); if(ci) ci.classList.add('checked'); }
   });
 });
 
@@ -1384,6 +1400,9 @@ function goToStep(n){
   document.getElementById('stepCounter').textContent='Step '+n+' of 4';
   currentStep=n;
   if(n===4) buildSummary();
+  var mb=document.querySelector('#enrollModal .modal-body'); if(mb) mb.scrollTop=0;
+  var ov=document.getElementById('enrollModal'); if(ov) ov.scrollTop=0;
+  var mdl=document.querySelector('#enrollModal .modal'); if(mdl) mdl.scrollTop=0;
 }
 
 /* ── full validation on Next click ── */
@@ -1458,7 +1477,13 @@ function validateStep(n){
   return ok;
 }
 
-function nextStep(){ if(!validateStep(currentStep)) return; if(currentStep<4) goToStep(currentStep+1); }
+function scrollToFirstError(){
+  var active=document.querySelector('#enrollModal .step-panel.active')||document;
+  var el=active.querySelector('.error, .cs-dd-btn.error, .cs-dp-input.error');
+  if(!el){ var pe=document.getElementById('programsErr'); if(pe && pe.style.display==='block') el=pe; }
+  if(el){ var target=el.closest('.form-group')||el.closest('.radio-group')||el; if(target.scrollIntoView) target.scrollIntoView({behavior:'smooth',block:'center'}); var focusable=target.querySelector&&target.querySelector('input,select,textarea'); if(focusable&&focusable.focus){try{focusable.focus({preventScroll:true});}catch(e){}} }
+}
+function nextStep(){ if(!validateStep(currentStep)){ scrollToFirstError(); return; } if(currentStep<4) goToStep(currentStep+1); }
 function prevStep(){ if(currentStep>1) goToStep(currentStep-1); }
 
 function buildSummary(){
@@ -1487,7 +1512,9 @@ function buildSummary(){
 
 function submitForm(){
   if(!document.getElementById('consent').checked){
-    document.getElementById('consentItem').style.borderColor='#DC2626';
+    var ci=document.getElementById('consentItem');
+    ci.style.borderColor='#DC2626';
+    if(ci.scrollIntoView) ci.scrollIntoView({behavior:'smooth',block:'center'});
     return;
   }
   document.querySelectorAll('.step-panel').forEach(function(p){p.classList.remove('active')});
