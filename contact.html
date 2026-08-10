@@ -614,9 +614,16 @@ footer{background:#0e4050;color:rgba(255,255,255,0.65);padding:3.5rem 2.5rem 2re
     gap:0.75rem !important;
   }
   /* Address / Phone / Working Hours cards side-by-side (shorter) instead of stacked */
-  .contact-cards{flex-direction:row !important;gap:0.6rem !important}
-  .contact-cards>div{flex:1;flex-direction:column !important;align-items:center !important;text-align:center;padding:0.9rem 0.6rem !important;gap:0.5rem !important}
+  .contact-cards{flex-direction:row !important;gap:0.6rem !important;align-items:flex-start !important}
+  .contact-cards>div{flex:1;flex-direction:column !important;align-items:center !important;text-align:center;padding:0.9rem 0.5rem !important;gap:0.45rem !important}
   .contact-cards>div>div:last-child>div{font-size:0.78rem;line-height:1.45}
+}
+/* Phones: stack the 3 contact cards vertically, equal full width, centered text */
+@media(max-width:600px){
+  .contact-cards{flex-direction:column !important;gap:0.9rem !important;align-items:stretch !important}
+  .contact-cards>div{width:100% !important;flex:none;box-sizing:border-box;flex-direction:column !important;align-items:center !important;justify-content:center;text-align:center !important;padding:1.1rem 1rem !important;gap:0.5rem !important}
+  .contact-cards>div>div:last-child{width:100%;text-align:center}
+  .contact-cards>div>div:last-child>div{font-size:0.85rem;line-height:1.5;text-align:center}
 }
 
 /* ═══════ NEST Lively Animations ═══════ */
@@ -875,8 +882,8 @@ html.nest-modal-open,html.nest-modal-open body{overflow:hidden!important;touch-a
 
   <!-- Caption card below illustration -->
   <div style="padding:1.75rem 2rem;background:#fff">
-    <div style="display:flex;align-items:center;gap:8px;margin-bottom:0.75rem">
-      <span style="display:inline-flex;align-items:center"><svg width="18" height="18" viewBox="0 0 24 24" fill="#fbbf24" stroke="#d97706" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></span>
+    <div style="display:flex;align-items:flex-start;gap:8px;margin-bottom:0.75rem">
+      <span style="display:inline-flex;align-items:center;flex-shrink:0;margin-top:3px"><svg width="18" height="18" viewBox="0 0 24 24" fill="#fbbf24" stroke="#d97706" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></span>
       <h3 style="font-family:'Fredoka One',cursive;font-weight:400;font-size:1.3rem;color:#166178;margin:0">Where Every Child Shines</h3>
     </div>
     <p style="color:#6b7280;font-size:0.88rem;line-height:1.7;margin-bottom:1.25rem">Our warm, expert-led environment in DHA Phase 2, Sector G, Islamabad nurtures every child's unique potential, through play, therapy, and love.</p>
