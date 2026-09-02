@@ -1301,8 +1301,10 @@ function openEnrollModal(){
   resetEnrollForm();
 }
 function closeEnrollModal(){
+  if(window._nestResetTimer){ clearTimeout(window._nestResetTimer); window._nestResetTimer=null; }
   document.getElementById('enrollModal').classList.remove('open');
   document.body.style.overflow='';document.documentElement.style.overflow='';document.documentElement.classList.remove('nest-modal-open');
+  resetEnrollForm();
 }
 
 document.addEventListener('DOMContentLoaded',function(){
