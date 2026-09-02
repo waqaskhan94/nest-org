@@ -1253,7 +1253,7 @@ function enhanceSelects(){
     sel.parentNode.insertBefore(dd,sel.nextSibling);
     refreshBtn();
   });
-  document.addEventListener('click',function(){ document.querySelectorAll('.cs-dd.open').forEach(function(x){x.classList.remove('open');}); });
+  document.addEventListener('click',function(e){ document.querySelectorAll('.cs-dd.open').forEach(function(x){ if(!x.contains(e.target)) x.classList.remove('open'); }); });
 }
 function enhanceDates(){
   var modal=document.getElementById('enrollModal');
@@ -1378,7 +1378,7 @@ function enhanceDates(){
     inp.parentNode.insertBefore(dp,inp.nextSibling);
     render(); refreshField();
   });
-  document.addEventListener('click',function(){ document.querySelectorAll('.cs-dp.open').forEach(function(x){x.classList.remove('open');}); });
+  document.addEventListener('click',function(e){ document.querySelectorAll('.cs-dp.open').forEach(function(x){ if(!x.contains(e.target)) x.classList.remove('open'); }); });
 }
 function enrollFromMenu(){
   var mm=document.getElementById('mobileMenu'); if(mm) mm.classList.remove('open');
@@ -1578,21 +1578,20 @@ function submitForm(){
     prefDate:document.getElementById('prefDate').value,prefTime:document.getElementById('prefTime').value,
     prevTherapy:prevTherapy,notes:document.getElementById('notes').value
   };
-  fetch('https://script.google.com/macros/s/AKfycbz_njfYUo78Eo2q-TKhFVA8EKZrPItRH1uEZGYzr9y5o0xB2bgS7NFHXOQDPDrUPc7ltA/exec',{
-    method:'POST',body:JSON.stringify(data)
-  }).then(function(res){ return res.json(); })
-  .then(function(result){
-    document.querySelectorAll('.step-panel').forEach(function(p){ p.classList.remove('active'); });
+    function _nestShowSuccess(){
+    document.querySelectorAll('#enrollModal .step-panel').forEach(function(p){ p.classList.remove('active'); });
     document.getElementById('successScreen').classList.add('show');
     if(typeof gtag==='function'){ gtag('event','generate_lead',{event_category:'enrollment',event_label:'Enrollment Form Submitted'}); }
     document.getElementById('modalFooter').style.display='none';
     document.getElementById('stepDots').style.display='none';
     if(window._nestResetTimer) clearTimeout(window._nestResetTimer);
-    window._nestResetTimer=setTimeout(function(){ closeEnrollModal(); },6000);
-  }).catch(function(err){ alert('Submission failed. Please try again or call us directly.'); console.error(err);
-    window._nestSubmitting=false;
-    var _b=document.getElementById('btnSubmit');
-    if(_b){ _b.disabled=false; _b.style.opacity=''; _b.style.pointerEvents=''; } });
+    window._nestResetTimer = setTimeout(function(){ closeEnrollModal(); }, 4000);
+  }
+  fetch('https://script.google.com/macros/s/AKfycbz_njfYUo78Eo2q-TKhFVA8EKZrPItRH1uEZGYzr9y5o0xB2bgS7NFHXOQDPDrUPc7ltA/exec', {
+    method: 'POST',
+    body: JSON.stringify(data)
+  }).catch(function(err){ console.error(err); });
+  _nestShowSuccess();
 }
 function toggleCheck(el){ el.classList.toggle('checked'); }
 function selectRadio(el,groupId){
