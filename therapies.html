@@ -1397,6 +1397,9 @@ function resetEnrollForm(){
   document.getElementById('consentItem').style.borderColor='';
   /* consent is pre-agreed by default */
   var cons=document.getElementById('consent'); if(cons){ cons.checked=true; var ci=document.getElementById('consentItem'); if(ci) ci.classList.add('checked'); }
+  /* release the submit lock + re-enable the button for a fresh submission */
+  window._nestSubmitting=false;
+  var _sb=document.getElementById('btnSubmit'); if(_sb){ _sb.disabled=false; _sb.style.opacity=''; _sb.style.pointerEvents=''; }
   goToStep(1);
 }
 function closeEnrollModal(){
@@ -1544,6 +1547,7 @@ function buildSummary(){
     rows.map(function(r){ return '<div class="summary-row"><span class="summary-label">'+r[0]+'</span><span class="summary-val">'+(r[1]||'')+'</span></div>'; }).join('');
 }
 function submitForm(){
+  if(window._nestSubmitting) return;
   if(!document.getElementById('consent').checked){
     var ci=document.getElementById('consentItem');
     ci.style.borderColor='#DC2626';
@@ -1573,7 +1577,10 @@ function submitForm(){
     document.getElementById('stepDots').style.display='none';
     if(window._nestResetTimer) clearTimeout(window._nestResetTimer);
     window._nestResetTimer=setTimeout(function(){ closeEnrollModal(); },6000);
-  }).catch(function(err){ alert('Submission failed. Please try again or call us directly.'); console.error(err); });
+  }).catch(function(err){ alert('Submission failed. Please try again or call us directly.'); console.error(err);
+    window._nestSubmitting=false;
+    var _b=document.getElementById('btnSubmit');
+    if(_b){ _b.disabled=false; _b.style.opacity=''; _b.style.pointerEvents=''; } });
 }
 function toggleCheck(el){ el.classList.toggle('checked'); }
 function selectRadio(el,groupId){

@@ -1857,6 +1857,9 @@ function resetEnrollForm(){
   document.getElementById('consentItem').style.borderColor='';
   /* consent is pre-agreed by default */
   var cons=document.getElementById('consent'); if(cons){ cons.checked=true; var ci=document.getElementById('consentItem'); if(ci) ci.classList.add('checked'); }
+  /* release the submit lock + re-enable the button for a fresh submission */
+  window._nestSubmitting=false;
+  var _sb=document.getElementById('btnSubmit'); if(_sb){ _sb.disabled=false; _sb.style.opacity=''; _sb.style.pointerEvents=''; }
 
   /* Reset custom (styled) dropdown buttons back to their placeholder */
   document.querySelectorAll('#enrollModal .cs-dd').forEach(function(dd){
@@ -2107,12 +2110,20 @@ function buildSummary(){
 }
 
 function submitForm(){
+  /* prevent double submission (double-tap / slow network / multiple clicks) */
+  if(window._nestSubmitting) return;
+
   if(!document.getElementById('consent').checked){
     var ci=document.getElementById('consentItem');
     ci.style.borderColor='#DC2626';
     if(ci.scrollIntoView) ci.scrollIntoView({behavior:'smooth',block:'center'});
     return;
   }
+
+  /* lock: mark as submitting and disable the button so it can't fire twice */
+  window._nestSubmitting=true;
+  var _submitBtn=document.getElementById('btnSubmit');
+  if(_submitBtn){ _submitBtn.disabled=true; _submitBtn.style.opacity='0.6'; _submitBtn.style.pointerEvents='none'; }
 
   // Collect all form data
   var programs = [].slice.call(document.querySelectorAll('#programsGroup input:checked'))
@@ -2164,6 +2175,10 @@ function submitForm(){
   .catch(function(err){
     alert('Submission failed. Please try again or call us directly.');
     console.error(err);
+    /* release the lock so the user can retry after a genuine failure */
+    window._nestSubmitting=false;
+    var b=document.getElementById('btnSubmit');
+    if(b){ b.disabled=false; b.style.opacity=''; b.style.pointerEvents=''; }
   });
 }
 

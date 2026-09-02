@@ -1367,6 +1367,9 @@ document.addEventListener('DOMContentLoaded',function(){
     if(this.checked) document.getElementById('consentItem').style.borderColor='';
   /* consent is pre-agreed by default */
   var cons=document.getElementById('consent'); if(cons){ cons.checked=true; var ci=document.getElementById('consentItem'); if(ci) ci.classList.add('checked'); }
+  /* release the submit lock + re-enable the button for a fresh submission */
+  window._nestSubmitting=false;
+  var _sb=document.getElementById('btnSubmit'); if(_sb){ _sb.disabled=false; _sb.style.opacity=''; _sb.style.pointerEvents=''; }
   });
 });
 
@@ -1526,17 +1529,76 @@ function buildSummary(){
 }
 
 function submitForm(){
+  /* prevent double submission (double-tap / slow network / multiple clicks) */
+  if(window._nestSubmitting) return;
+
   if(!document.getElementById('consent').checked){
     var ci=document.getElementById('consentItem');
     ci.style.borderColor='#DC2626';
     if(ci.scrollIntoView) ci.scrollIntoView({behavior:'smooth',block:'center'});
     return;
   }
-  document.querySelectorAll('.step-panel').forEach(function(p){p.classList.remove('active')});
-  document.getElementById('successScreen').classList.add('show');
+
+  /* lock: mark as submitting and disable the button so it can't fire twice */
+  window._nestSubmitting=true;
+  var _submitBtn=document.getElementById('btnSubmit');
+  if(_submitBtn){ _submitBtn.disabled=true; _submitBtn.style.opacity='0.6'; _submitBtn.style.pointerEvents='none'; }
+
+  // Collect all form data
+  var programs = [].slice.call(document.querySelectorAll('#programsGroup input:checked'))
+                   .map(function(c){ return c.value; }).join(', ');
+
+  var hearAbout = [].slice.call(document.querySelectorAll('#hearGroup .radio-item.selected'))
+                    .map(function(c){ return c.dataset.value; }).join(', ');
+
+  var prevTherapy = '';
+  var prevChecked = document.querySelector('#prevGroup .radio-item.selected input');
+  if(prevChecked) prevTherapy = prevChecked.value;
+
+  var data = {
+    childFirst:   document.getElementById('childFirst').value,
+    childLast:    document.getElementById('childLast').value,
+    dob:          document.getElementById('childDob').value,
+    gender:       document.getElementById('childGender').value,
+    diagnosis:    document.getElementById('childDiag').value,
+    programs:     programs,
+    parentName:   document.getElementById('parentName').value,
+    relationship: document.getElementById('parentRel').value,
+    phone:        document.getElementById('parentPhone').value,
+    email:        document.getElementById('parentEmail').value,
+    city:         document.getElementById('parentArea').value,
+    hearAbout:    hearAbout,
+    prefDate:     document.getElementById('prefDate').value,
+    prefTime:     document.getElementById('prefTime').value,
+    prevTherapy:  prevTherapy,
+    notes:        document.getElementById('notes').value
+  };
+
+  // Send to Google Sheets
+  fetch('https://script.google.com/macros/s/AKfycbz_njfYUo78Eo2q-TKhFVA8EKZrPItRH1uEZGYzr9y5o0xB2bgS7NFHXOQDPDrUPc7ltA/exec', {
+    method: 'POST',
+    body: JSON.stringify(data)
+  })
+  .then(function(res){ return res.json(); })
+  .then(function(result){
+    // Show success screen
+    document.querySelectorAll('.step-panel').forEach(function(p){ p.classList.remove('active'); });
+    document.getElementById('successScreen').classList.add('show');
     if(typeof gtag==='function'){ gtag('event','generate_lead',{event_category:'enrollment',event_label:'Enrollment Form Submitted'}); }
-  document.getElementById('modalFooter').style.display='none';
-  document.getElementById('stepDots').style.display='none';
+    document.getElementById('modalFooter').style.display='none';
+    document.getElementById('stepDots').style.display='none';
+    // Auto-close and reset to Step 1 after 6 seconds if user doesn't click Close
+    if(window._nestResetTimer) clearTimeout(window._nestResetTimer);
+    window._nestResetTimer = setTimeout(function(){ closeEnrollModal(); }, 6000);
+  })
+  .catch(function(err){
+    alert('Submission failed. Please try again or call us directly.');
+    console.error(err);
+    /* release the lock so the user can retry after a genuine failure */
+    window._nestSubmitting=false;
+    var b=document.getElementById('btnSubmit');
+    if(b){ b.disabled=false; b.style.opacity=''; b.style.pointerEvents=''; }
+  });
 }
 
 function toggleCheck(el){ el.classList.toggle('checked'); }
