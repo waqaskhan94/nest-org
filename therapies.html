@@ -446,6 +446,13 @@ footer{background:#0e4050;color:rgba(255,255,255,0.65);padding:3.5rem 2.5rem 2re
 .cs-dd.open .cs-dd-btn::after{transform:translateY(-30%) rotate(-135deg)}
 .cs-dd-panel{position:absolute;top:calc(100% + 6px);left:0;right:0;background:#fff;border:1.5px solid #e5e7eb;border-radius:14px;box-shadow:0 12px 32px rgba(22,97,120,0.16);padding:0.35rem;z-index:50;max-height:240px;overflow-y:auto;display:none}
 .cs-dd.open .cs-dd-panel{display:block}
+/* Desktop/tablet: open the dropdown as a centered overlay above the form (not cramped inline) */
+@media(min-width:601px){
+  .cs-dd.open .cs-dd-panel{position:fixed;top:50%;left:50%;right:auto;transform:translate(-50%,-50%);width:min(420px,90vw);max-height:70vh;border-radius:16px;box-shadow:0 20px 50px rgba(8,24,34,0.35);padding:0.5rem;z-index:10000}
+  .cs-dd.open .cs-dd-panel::before{content:'';display:block;width:40px;height:4px;border-radius:4px;background:#e5e7eb;margin:4px auto 8px}
+  .cs-dd.open::after{content:'';position:fixed;inset:0;background:rgba(8,24,34,0.45);z-index:9999}
+  .cs-dd-opt{padding:0.7rem 0.9rem;font-size:0.95rem}
+}
 .cs-dd-opt{padding:0.6rem 0.85rem;border-radius:10px;font-size:0.9rem;color:#374151;cursor:pointer;transition:background 0.15s,color 0.15s}
 /* Mobile: open custom dropdown as a full-width bottom sheet (not a cramped in-field box) + perf */
 @media(max-width:600px){
@@ -471,6 +478,11 @@ footer{background:#0e4050;color:rgba(255,255,255,0.65);padding:3.5rem 2.5rem 2re
 .cs-dp-btn svg{position:absolute;right:1rem;top:50%;transform:translateY(-50%);stroke:#6b7280}
 .cs-dp-cal{position:absolute;top:calc(100% + 6px);left:0;background:#fff;border:1.5px solid #e5e7eb;border-radius:16px;box-shadow:0 14px 36px rgba(22,97,120,0.18);padding:0.85rem;z-index:60;width:290px;display:none}
 .cs-dp.open .cs-dp-cal{display:block}
+/* Desktop/tablet: date-picker as a centered overlay above the form */
+@media(min-width:601px){
+  .cs-dp.open .cs-dp-cal{position:fixed;top:50%;left:50%;right:auto;bottom:auto;transform:translate(-50%,-50%);width:320px;max-width:90vw;max-height:80vh;overflow-y:auto;border-radius:16px;box-shadow:0 20px 50px rgba(8,24,34,0.35);z-index:10000}
+  .cs-dp.open::after{content:'';position:fixed;inset:0;background:rgba(8,24,34,0.45);z-index:9999}
+}
 /* Mobile: date-picker opens as a centered/bottom sheet instead of a clipped inline box */
 @media(max-width:600px){
   .cs-dp.open .cs-dp-cal{position:fixed;left:0;right:0;bottom:0;top:auto;width:100%;max-width:100%;margin:0;border-radius:18px 18px 0 0;border:none;box-shadow:0 -8px 30px rgba(0,0,0,0.28);padding:1rem 1.1rem 1.5rem;z-index:10000;animation:sheetUp .22s ease}
