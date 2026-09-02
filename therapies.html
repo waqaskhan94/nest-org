@@ -445,6 +445,8 @@ footer{background:#0e4050;color:rgba(255,255,255,0.65);padding:3.5rem 2.5rem 2re
 .cs-dd-btn::after{content:'';position:absolute;right:1rem;top:50%;width:8px;height:8px;border-right:2px solid #6b7280;border-bottom:2px solid #6b7280;transform:translateY(-70%) rotate(45deg);transition:transform 0.2s}
 .cs-dd.open .cs-dd-btn::after{transform:translateY(-30%) rotate(-135deg)}
 .cs-dd-panel{position:absolute;top:calc(100% + 6px);left:0;right:0;background:#fff;border:1.5px solid #e5e7eb;border-radius:14px;box-shadow:0 12px 32px rgba(22,97,120,0.16);padding:0.35rem;z-index:50;max-height:240px;overflow-y:auto;display:none}
+.cs-dd-x{position:sticky;top:0;left:auto;margin-left:auto;display:flex;align-items:center;justify-content:center;width:26px;height:26px;border:none;border-radius:50%;background:#f0f0f0;color:#6b7280;font-size:1.1rem;line-height:1;cursor:pointer;z-index:6;transition:background .15s}
+.cs-dd-x:hover{background:#e5e7eb;color:#1a1a2e}
 .cs-dd.open .cs-dd-panel{display:block}
 /* Desktop/tablet: open the dropdown as a centered overlay above the form (not cramped inline) */
 @media(min-width:601px){
@@ -499,9 +501,9 @@ footer{background:#0e4050;color:rgba(255,255,255,0.65);padding:3.5rem 2.5rem 2re
 .cs-dp-nav{width:30px;height:30px;border:none;border-radius:50%;background:#F0FDFA;color:#166178;cursor:pointer;font-size:1rem;display:flex;align-items:center;justify-content:center;transition:background 0.15s}
 .cs-dp-nav:hover{background:#cdeeea}
 .cs-dp-nav.disabled{opacity:0.32;cursor:not-allowed;pointer-events:none}
-.cs-dp-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:2px}
+.cs-dp-grid{display:grid;grid-template-columns:repeat(7,1fr);grid-auto-rows:34px;gap:2px;min-height:204px;align-content:start}
 .cs-dp-dow{font-size:0.66rem;font-weight:800;color:#9ca3af;text-align:center;padding:4px 0}
-.cs-dp-day{aspect-ratio:1;display:flex;align-items:center;justify-content:center;font-size:0.82rem;color:#374151;border-radius:8px;cursor:pointer;transition:background 0.12s}
+.cs-dp-day{height:34px;display:flex;align-items:center;justify-content:center;font-size:0.82rem;color:#374151;border-radius:8px;cursor:pointer;transition:background 0.12s}
 .cs-dp-day:hover{background:#F0FDFA;color:#166178}
 .cs-dp-day.sel{background:#166178;color:#fff;font-weight:700}
 .cs-dp-day.disabled{color:#d1d5db;cursor:not-allowed;pointer-events:none}
@@ -1244,6 +1246,9 @@ function enhanceSelects(){
     var dd=document.createElement('div'); dd.className='cs-dd';
     var btn=document.createElement('button'); btn.type='button'; btn.className='cs-dd-btn';
     var panel=document.createElement('div'); panel.className='cs-dd-panel';
+    var ddClose=document.createElement('button'); ddClose.type='button'; ddClose.className='cs-dd-x'; ddClose.setAttribute('aria-label','Close'); ddClose.innerHTML='&times;';
+    ddClose.addEventListener('click',function(e){ e.stopPropagation(); dd.classList.remove('open'); });
+    panel.appendChild(ddClose);
     function refreshBtn(){ var o=sel.options[sel.selectedIndex]; btn.textContent=o?o.textContent:''; btn.classList.toggle('placeholder',!sel.value); btn.classList.toggle('error',sel.classList.contains('error')); }
     function mkOpt(op){ var el=document.createElement('div'); el.className='cs-dd-opt'; el.textContent=op.textContent; el.dataset.val=op.value||op.textContent; el.addEventListener('click',function(e){ e.stopPropagation(); sel.value=op.value||op.textContent; sel.dispatchEvent(new Event('change',{bubbles:true})); dd.classList.remove('open'); panel.querySelectorAll('.cs-dd-opt').forEach(function(x){x.classList.remove('active');}); el.classList.add('active'); refreshBtn(); }); return el; }
     Array.from(sel.children).forEach(function(node){
