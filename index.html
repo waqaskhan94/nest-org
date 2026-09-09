@@ -874,7 +874,7 @@ nav.scrolled{box-shadow:0 4px 28px rgba(0,0,0,0.11)!important}
 /* ===== TESTIMONIALS SLIDER ===== */
 .testi-section{background:linear-gradient(135deg,rgba(10,50,65,0.91) 0%,rgba(22,97,120,0.88) 100%),image-set(url('images/testi-bg.avif') type('image/avif'),url('images/testi-bg.jpeg') type('image/jpeg')) center/cover no-repeat;padding:4rem 2.5rem;position:relative;overflow:hidden}
 .testi-section .hero-wrap-pts{position:absolute;inset:0;overflow:hidden;pointer-events:none;z-index:1}
-.testi-section .hp{animation-name:hpUpTesti;animation-timing-function:linear}
+.testi-section .hp{animation-name:hpUpTesti;animation-timing-function:linear;animation-iteration-count:infinite;animation-fill-mode:none}
 @keyframes hpUpTesti{
   0%  {transform:translateY(20px) translateX(0);opacity:0}
   6%  {opacity:1}
