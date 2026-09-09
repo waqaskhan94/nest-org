@@ -1633,6 +1633,9 @@ document.querySelectorAll('.ribbon-item').forEach(function(el,i){
 <script>
 function openWaModal(){document.getElementById('waModal').classList.add('open');}
 function notifyWaClick(who){try{var pg=(document.title||location.pathname||'').toString();fetch('https://script.google.com/macros/s/AKfycbz_njfYUo78Eo2q-TKhFVA8EKZrPItRH1uEZGYzr9y5o0xB2bgS7NFHXOQDPDrUPc7ltA/exec',{method:'POST',body:JSON.stringify({type:'whatsapp',contact:who,page:pg,url:location.href})}).catch(function(e){});}catch(e){}}
+
+function notifyPhoneClick(num,who){try{var pg=(document.title||location.pathname||'').toString();fetch('https://script.google.com/macros/s/AKfycbz_njfYUo78Eo2q-TKhFVA8EKZrPItRH1uEZGYzr9y5o0xB2bgS7NFHXOQDPDrUPc7ltA/exec',{method:'POST',body:JSON.stringify({type:'phone',number:num,contact:who,page:pg,url:location.href})}).catch(function(e){});}catch(e){}}
+(function(){var ROLE={'923005347304':'CEO','923156289892':'Administration Director','923197757058':'Clinical Director'};document.addEventListener('click',function(e){var a=e.target&&e.target.closest?e.target.closest('a[href^="tel:"]'):null;if(!a)return;var raw=(a.getAttribute('href')||'').replace('tel:','');var digits=raw.replace(/[^0-9]/g,'');notifyPhoneClick(a.textContent.trim()||raw,ROLE[digits]||'Unknown');},true);})();
 function closeWaModal(){document.getElementById('waModal').classList.remove('open');}
 document.addEventListener('keydown',function(e){if(e.key==='Escape')closeWaModal();});
 </script>
