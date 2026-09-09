@@ -93,6 +93,7 @@
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link rel="preload" as="image" href="/favicon-sm.png" fetchpriority="high"/>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&family=Fredoka+One&family=Nunito:wght@400;600;700;800;900&display=swap" media="print" onload="this.media='all'"/><noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&family=Fredoka+One&family=Nunito:wght@400;600;700;800;900&display=swap"/></noscript>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
@@ -194,11 +195,11 @@ nav{
 .hero-icon-box:hover{background:rgba(255,255,255,0.16)}
 .hib-emoji{font-size:2rem;display:block;margin-bottom:0.4rem}
 .hib-title{font-family:'Quicksand',sans-serif;font-weight:600;font-size:0.84rem;color:#fff;margin-bottom:2px}
-.hib-sub{font-size:0.72rem;color:rgba(255,255,255,0.55)}
+.hib-sub{font-size:0.72rem;color:rgba(255,255,255,0.9)}
 .hero-offer-divider{height:1px;background:rgba(255,255,255,0.15);margin:1.5rem 0 0.25rem}
 .hero-bottom{margin-top:1.25rem;background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.12);border-radius:14px;padding:0.9rem 1rem;display:flex;align-items:center;justify-content:space-between}
 .hb-stat{text-align:center}
-.hb-num{font-family:'Fredoka One',cursive;font-weight:400;font-size:1.2rem;color:#FBBF24;letter-spacing:0.01em}
+.hb-num{font-family:'Fredoka One',cursive;font-weight:400;font-size:1.2rem;color:#FCD34D;letter-spacing:0.01em}
 .hb-lbl{font-size:0.7rem;color:rgba(255,255,255,0.82);font-weight:600;white-space:nowrap}
 .hb-div{width:1px;height:32px;background:rgba(255,255,255,0.15)}
 
@@ -294,9 +295,9 @@ section{padding:4rem 2.5rem}
 .team-controls{display:flex;align-items:center;justify-content:center;gap:18px;margin-top:36px}
 .team-arrow{width:44px;height:44px;border-radius:50%;background:var(--white);border:2px solid var(--border);color:#166178;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .25s,border-color .25s,transform .2s,color .2s;flex-shrink:0;box-shadow:0 2px 12px rgba(22,97,120,0.12);font-size:1.15rem;line-height:1}
 .team-arrow:hover{background:#166178;border-color:#166178;color:#fff;transform:scale(1.1)}
-.team-dots{display:flex;align-items:center;justify-content:center;gap:8px}
+.team-dots{display:flex;align-items:center;justify-content:center;gap:20px}
 .team-dot{position:relative;width:10px;height:10px;border-radius:5px;background:var(--border);border:none;cursor:pointer;padding:0;transition:background .3s,width .3s}
-.team-dot::after{content:"";position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:24px;height:24px}
+.team-dot::after{content:"";position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:44px;height:44px}
 .team-dot.active{background:var(--orange);width:28px}
 .team-card{
   background:var(--white);border:2px solid var(--border);border-radius:20px;
@@ -322,7 +323,7 @@ section{padding:4rem 2.5rem}
 .team-avatar{width:100%;height:100%;object-fit:cover;object-position:center 18%;display:block;border-radius:50%;transition:transform 0.35s ease}
 .team-card:hover .team-avatar{transform:scale(1.08)}
 .team-name{font-family:'Nunito',sans-serif;font-weight:800;font-size:1.02rem;color:#166178;margin-bottom:0.3rem}
-.team-role{color:var(--orange);font-weight:700;font-size:0.82rem;margin-bottom:0.75rem}
+.team-role{color:#C2410C;font-weight:700;font-size:0.82rem;margin-bottom:0.75rem}
 .team-creds{color:var(--muted);font-size:0.77rem;line-height:1.7;margin-bottom:1.25rem}
 .team-divider{width:36px;height:2px;background:linear-gradient(90deg,#F97316,#166178);border-radius:2px;margin:auto auto 1.1rem}
 .team-socials{display:flex;justify-content:center;gap:0.5rem}
@@ -391,12 +392,12 @@ footer{background:#0e4050;color:rgba(255,255,255,0.65);padding:3.5rem 2.5rem 2re
 .ft-col h2,.ft-col .ft-col-h{color:#fff;font-weight:700;font-size:0.88rem;margin:0 0 0.85rem}
 .ft-col ul{list-style:none}
 .ft-col li{margin-bottom:0.45rem}
-.ft-col a{color:rgba(255,255,255,0.55);text-decoration:none;font-size:0.83rem;transition:color 0.2s}
+.ft-col a{color:rgba(255,255,255,0.82);text-decoration:none;font-size:0.83rem;transition:color 0.2s}
 .ft-col a:hover{color:#fff}
 .ft-bottom{border-top:1px solid rgba(255,255,255,0.1);padding-top:1.5rem;display:flex;justify-content:space-between;align-items:center;font-size:0.8rem;flex-wrap:wrap;gap:0.75rem}
 .ft-bottom-links a{color:rgba(255,255,255,0.4);text-decoration:none;margin-left:1.25rem;font-size:0.8rem}
 .ft-bottom-links a:hover{color:#fff}
-.ft-contact-items{display:flex;flex-direction:column;gap:0.85rem}.ft-contact-item{display:flex;align-items:flex-start;gap:0.75rem}.ft-contact-icon{display:flex;align-items:center;justify-content:center;width:34px;height:34px;border-radius:10px;flex-shrink:0}.ft-contact-label{color:#fff;font-size:0.8rem;font-weight:700;margin-bottom:0.1rem}.ft-contact-val{color:rgba(255,255,255,0.55);font-size:0.78rem;line-height:1.5}
+.ft-contact-items{display:flex;flex-direction:column;gap:0.85rem}.ft-contact-item{display:flex;align-items:flex-start;gap:0.75rem}.ft-contact-icon{display:flex;align-items:center;justify-content:center;width:34px;height:34px;border-radius:10px;flex-shrink:0}.ft-contact-label{color:#fff;font-size:0.8rem;font-weight:700;margin-bottom:0.1rem}.ft-contact-val{color:rgba(255,255,255,0.82);font-size:0.78rem;line-height:1.5}
 .heart{color:#EC4899}
 /* Animated "Coming Soon" badge (footer placeholder links) */
 /* "Coming soon" link: text + badge animate together as one unit */
@@ -894,9 +895,9 @@ nav.scrolled{box-shadow:0 4px 28px rgba(0,0,0,0.11)!important}
 .testi-controls{display:flex;align-items:center;justify-content:center;gap:18px;margin-top:40px}
 .testi-arrow{width:44px;height:44px;border-radius:50%;background:rgba(255,255,255,.15);border:2px solid rgba(255,255,255,.35);color:#fff;font-size:1.25rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .25s,border-color .25s,transform .2s;backdrop-filter:blur(4px);flex-shrink:0;line-height:1}
 .testi-arrow:hover{background:#0e4050;border-color:#0e4050;transform:scale(1.1)}
-.testi-dots{display:flex;align-items:center;justify-content:center;gap:8px}
+.testi-dots{display:flex;align-items:center;justify-content:center;gap:20px}
 .testi-dot{position:relative;width:10px;height:10px;border-radius:5px;background:rgba(255,255,255,.30);border:none;cursor:pointer;padding:0;transition:background .3s,width .3s}
-.testi-dot::after{content:"";position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:24px;height:24px}
+.testi-dot::after{content:"";position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:44px;height:44px}
 .testi-dot.active{background:#FBBF24;width:28px}
 .testi-progress-bar{display:none}
 @media(max-width:1024px){.testi-section{padding:3.5rem 1.5rem}.testi-header h2{font-size:1.85rem}}
@@ -1145,7 +1146,7 @@ html.nest-modal-open,html.nest-modal-open body{overflow:hidden!important;touch-a
         <div class="wv-quote">"An inclusive School and Therapy center where every child belongs and every ability matters."</div>
         <div class="wv-cite">The NEST Philosophy</div>
         <div class="wv-stats">
-          <div class="wv-stat"><div class="wv-num" style="color:var(--orange)">5+</div><div class="wv-lbl">Years Experience</div></div>
+          <div class="wv-stat"><div class="wv-num" style="color:#C2410C">5+</div><div class="wv-lbl">Years Experience</div></div>
           <div class="wv-stat"><div class="wv-num" style="color:var(--teal)">100%</div><div class="wv-lbl">Certified Staff</div></div>
           <div class="wv-stat"><div class="wv-num" style="color:var(--purple)">8</div><div class="wv-lbl">Therapy Types</div></div>
           <div class="wv-stat"><div class="wv-num" style="color:var(--pink)">100+</div><div class="wv-lbl">Children Helped</div></div>
