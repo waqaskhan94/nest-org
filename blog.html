@@ -47,7 +47,7 @@
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700;800&family=Fredoka+One&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700;800&family=Fredoka+One&display=swap" media="print" onload="this.media='all'"/><noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700;800&family=Fredoka+One&display=swap"/></noscript>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
@@ -114,7 +114,7 @@ nav{
 .hero-tag{
   display:inline-flex;align-items:center;gap:6px;
   background:rgba(251,191,36,0.18);border:1px solid rgba(251,191,36,0.35);
-  color:#FDE68A;padding:0.35rem 1rem;border-radius:20px;
+  color:#FEF9E7;padding:0.35rem 1rem;border-radius:20px;
   font-size:0.78rem;font-weight:800;letter-spacing:0.05em;margin-bottom:1.25rem;
 }
 .hero h1{font-family:'Fredoka One',cursive;font-size:2.7rem;font-weight:400;color:#fff;line-height:1.2;margin-bottom:1.1rem;letter-spacing:0.01em}
@@ -138,7 +138,7 @@ nav{
 .hero-bottom{margin-top:1rem;background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.12);border-radius:14px;padding:0.9rem 1rem;display:flex;align-items:center;justify-content:space-between}
 .hb-stat{text-align:center}
 .hb-num{font-family:'Fredoka One',cursive;font-weight:400;font-size:1.2rem;color:#FBBF24;letter-spacing:0.01em}
-.hb-lbl{font-size:0.7rem;color:rgba(255,255,255,0.6);font-weight:600}
+.hb-lbl{font-size:0.7rem;color:rgba(255,255,255,0.82);font-weight:600}
 .hb-div{width:1px;height:32px;background:rgba(255,255,255,0.15)}
 
 /* ===== RIBBON ===== */
@@ -241,7 +241,7 @@ footer{background:#0e4050;color:rgba(255,255,255,0.65);padding:3.5rem 2.5rem 2re
 .ft-social{display:flex;gap:0.6rem;margin-top:1rem;flex-wrap:wrap}
 .ft-soc{width:34px;height:34px;border-radius:9px;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.15);display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,0.65);text-decoration:none;font-size:0.8rem;font-weight:700;transition:all 0.2s}
 .ft-soc:hover{background:rgba(255,255,255,0.2);color:#fff}
-.ft-col h5{color:#fff;font-weight:700;font-size:0.88rem;margin-bottom:0.85rem}
+.ft-col h2,.ft-col .ft-col-h{color:#fff;font-weight:700;font-size:0.88rem;margin-bottom:0.85rem}
 .ft-col ul{list-style:none}
 .ft-col li{margin-bottom:0.45rem}
 .ft-col a{color:rgba(255,255,255,0.55);text-decoration:none;font-size:0.83rem;transition:color 0.2s}
@@ -846,7 +846,7 @@ nav.scrolled{box-shadow:0 4px 28px rgba(0,0,0,0.11)!important}
         <div class="ft-social" style="display:flex;flex-direction:column;align-items:flex-start;gap:6px"><span style="color:rgba(255,255,255,0.7);font-size:0.72rem;font-weight:800;letter-spacing:0.08em;text-transform:uppercase">Instagram</span><a href="https://www.instagram.com/nestdha?igsh=YmxwMTJkMHNuYmgw" target="_blank" rel="noopener" aria-label="Instagram" style="display:inline-flex;align-items:center;gap:7px;padding:0.45rem 1rem;border-radius:10px;text-decoration:none;font-weight:700;font-size:0.82rem;color:#fff;background:linear-gradient(135deg,#833ab4,#fd1d1d,#fcb045);box-shadow:0 3px 10px rgba(253,29,29,0.3);transition:opacity 0.2s" onmouseover="this.style.opacity=0.85" onmouseout="this.style.opacity=1"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="2" y="2" width="20" height="20" rx="6" stroke="white" stroke-width="2"/><circle cx="12" cy="12" r="4.5" stroke="white" stroke-width="2"/><circle cx="17.5" cy="6.5" r="1.2" fill="white"/></svg></a></div>
       </div>
       <div class="ft-col">
-        <h5>Quick Links</h5>
+        <h2 class="ft-col-h">Quick Links</h2>
         <ul>
           <li><a href="/">Home</a></li>
           <li><a href="about">About Us</a></li>
@@ -858,7 +858,7 @@ nav.scrolled{box-shadow:0 4px 28px rgba(0,0,0,0.11)!important}
         </ul>
       </div>
       <div class="ft-col">
-        <h5>Our Programs</h5>
+        <h2 class="ft-col-h">Our Programs</h2>
         <ul>
           <li><a href="programs#special-education">Special Education</a></li>
           <li><a href="therapies#speech">Speech Therapy</a></li>
@@ -870,7 +870,7 @@ nav.scrolled{box-shadow:0 4px 28px rgba(0,0,0,0.11)!important}
         </ul>
       </div>
       <div class="ft-col">
-        <h5>Contact Us</h5>
+        <h2 class="ft-col-h">Contact Us</h2>
         <div class="ft-contact-items">
           <div class="ft-contact-item">
             <span class="ft-contact-icon" style="background:linear-gradient(135deg,#f97316,#ea580c)"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></span>
