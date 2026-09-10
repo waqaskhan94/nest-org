@@ -127,10 +127,19 @@ nav.scrolled{box-shadow:0 4px 24px rgba(0,0,0,0.08)}
 /* ===== PAGE HERO ===== */
 .page-hero{
   position:relative;min-height:680px;display:flex;align-items:center;
-  background:url('images/therapies-hero-bg.jpeg') center 67%/cover no-repeat;
-  background:image-set(url('images/therapies-hero-bg.avif') type('image/avif'),url('images/therapies-hero-bg.jpeg') type('image/jpeg')) center 67%/cover no-repeat;
+  background:#071e2a;
   overflow:hidden;
 }
+/* Ken Burns slow-zoom photo layer (matches About page hero) */
+.thero-photo-bg{
+  position:absolute;inset:-8%;z-index:0;
+  background:url('images/therapies-hero-bg.jpeg') center 67%/cover no-repeat;
+  background:image-set(url('images/therapies-hero-bg.avif') type('image/avif'),url('images/therapies-hero-bg.jpeg') type('image/jpeg')) center 67%/cover no-repeat;
+  animation:theroZoom 26s ease-in-out infinite alternate;
+  will-change:transform;
+}
+@keyframes theroZoom{0%{transform:scale(1) translateY(0)}100%{transform:scale(1.10) translateY(-2%)}}
+@media(prefers-reduced-motion:reduce){.thero-photo-bg{animation:none}}
 .page-hero::before{
   content:'';position:absolute;inset:0;
   background:linear-gradient(135deg,rgba(13,79,97,0.90) 0%,rgba(22,97,120,0.82) 55%,rgba(236,72,153,0.30) 100%);
@@ -661,6 +670,7 @@ html.nest-modal-open,html.nest-modal-open body{overflow:hidden!important;touch-a
 <!-- ===== PAGE HERO ===== -->
 <main>
 <section class="page-hero">
+  <div class="thero-photo-bg" aria-hidden="true"></div>
   <div class="page-hero-inner">
     <div class="page-hero-tag">
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
