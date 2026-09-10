@@ -384,7 +384,7 @@ footer{background:#0e4050;color:rgba(255,255,255,0.65);padding:3.5rem 2.5rem 2re
 .modal-overlay.open{display:flex}
 .modal{background:#fff;border-radius:24px;width:100%;max-width:680px;max-height:none;position:relative;box-shadow:0 24px 64px rgba(22,97,120,0.25);animation:slideUp 0.3s ease;display:flex;flex-direction:column}
 @keyframes slideUp{from{transform:translateY(30px);opacity:0}to{transform:translateY(0);opacity:1}}
-.modal-header{background:#166178;padding:2rem 2rem 1.5rem;border-radius:24px 24px 0 0;position:relative;text-align:center}
+.modal-header{background:#166178;padding:1.35rem 2rem 1.1rem;border-radius:24px 24px 0 0;position:relative;text-align:center}
 .modal-close{position:absolute;top:1rem;right:1rem;width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,0.15);border:none;color:#fff;font-size:1.1rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background 0.2s}
 .modal-close:hover{background:rgba(255,255,255,0.3)}
 .modal-icon{font-size:2.5rem;display:block;margin-bottom:0.5rem}
@@ -392,7 +392,7 @@ footer{background:#0e4050;color:rgba(255,255,255,0.65);padding:3.5rem 2.5rem 2re
 .icon-3d.xs::after{border-radius:6px 6px 40% 40%/4px 4px 2px 2px}
 .icon-3d.sm{width:34px;height:34px;border-radius:10px;flex-shrink:0}
 .icon-3d.sm::after{border-radius:10px 10px 40% 40%/7px 7px 3px 3px}
-.modal-icon-3d{width:64px;height:64px;border-radius:18px;display:inline-flex;align-items:center;justify-content:center;background:linear-gradient(145deg,rgba(255,255,255,0.24),rgba(255,255,255,0.06));border:1.5px solid rgba(255,255,255,0.22);margin:0 auto 0.75rem;position:relative;overflow:hidden;box-shadow:0 6px 20px rgba(0,0,0,0.18),inset 0 1px 0 rgba(255,255,255,0.25)}
+.modal-icon-3d{width:52px;height:52px;border-radius:14px;display:inline-flex;align-items:center;justify-content:center;background:linear-gradient(145deg,rgba(255,255,255,0.24),rgba(255,255,255,0.06));border:1.5px solid rgba(255,255,255,0.22);margin:0 auto 0.5rem;position:relative;overflow:hidden;box-shadow:0 6px 20px rgba(0,0,0,0.18),inset 0 1px 0 rgba(255,255,255,0.25)}
 .modal-icon-3d::after{content:'';position:absolute;top:0;left:0;right:0;height:50%;background:rgba(255,255,255,0.16);border-radius:18px 18px 40% 40%/10px 10px 5px 5px}
 .modal-icon-3d svg{position:relative;z-index:1}
 .btn-icon{width:22px;height:22px;border-radius:6px;background:rgba(255,255,255,0.18);border:1px solid rgba(255,255,255,0.28);display:inline-flex;align-items:center;justify-content:center;flex-shrink:0;position:relative;overflow:hidden}
@@ -406,9 +406,9 @@ footer{background:#0e4050;color:rgba(255,255,255,0.65);padding:3.5rem 2.5rem 2re
 #consentItem{display:flex!important;flex-direction:row!important;align-items:flex-start!important;gap:10px!important;margin-bottom:0!important}
 #consentItem input[type="checkbox"]{flex-shrink:0!important;margin-top:3px!important;align-self:flex-start!important}
 #consentItem>span{flex:1!important;min-width:0!important;line-height:1.5!important}
-.modal-title{font-family:"Fredoka One",cursive;font-size:1.7rem;color:#fff;margin-bottom:0.3rem}
+.modal-title{font-family:"Fredoka One",cursive;font-size:1.45rem;color:#fff;margin-bottom:0.25rem}
 .modal-sub-txt{color:rgba(255,255,255,0.8);font-size:0.88rem}
-.modal-steps{display:flex;justify-content:center;gap:0.5rem;margin-top:1.2rem}
+.modal-steps{display:flex;justify-content:center;gap:0.5rem;margin-top:0.85rem}
 .step-dot{width:28px;height:6px;border-radius:3px;background:rgba(255,255,255,0.25);transition:background 0.3s}
 .step-dot.active{background:#FBBF24}.step-dot.done{background:rgba(255,255,255,0.6)}
 .modal-body{padding:2rem;overflow-y:auto;flex:1;max-height:65vh}
@@ -435,8 +435,30 @@ footer{background:#0e4050;color:rgba(255,255,255,0.65);padding:3.5rem 2.5rem 2re
 .cs-dd-btn::after{content:'';position:absolute;right:1rem;top:50%;width:8px;height:8px;border-right:2px solid #6b7280;border-bottom:2px solid #6b7280;transform:translateY(-70%) rotate(45deg);transition:transform 0.2s}
 .cs-dd.open .cs-dd-btn::after{transform:translateY(-30%) rotate(-135deg)}
 .cs-dd-panel{position:absolute;top:calc(100% + 6px);left:0;right:0;background:#fff;border:1.5px solid #e5e7eb;border-radius:14px;box-shadow:0 12px 32px rgba(22,97,120,0.16);padding:0.35rem;z-index:50;max-height:240px;overflow-y:auto;display:none}
+.cs-dd-x{position:sticky;top:0;left:auto;margin-left:auto;display:flex;align-items:center;justify-content:center;width:26px;height:26px;border:none;border-radius:50%;background:#f0f0f0;color:#6b7280;font-size:1.1rem;line-height:1;cursor:pointer;z-index:6;transition:background .15s}
+.cs-dd-x:hover{background:#e5e7eb;color:#1a1a2e}
 .cs-dd.open .cs-dd-panel{display:block}
+/* Desktop/tablet: open the dropdown as a centered overlay above the form (not cramped inline) */
+@media(min-width:601px){
+  .cs-dd.open .cs-dd-panel{position:fixed;top:50%;left:50%;right:auto;transform:translate(-50%,-50%);width:min(420px,90vw);max-height:70vh;border-radius:16px;box-shadow:0 20px 50px rgba(8,24,34,0.35);padding:0.5rem;z-index:10000}
+  .cs-dd.open .cs-dd-panel::before{content:'';display:block;width:40px;height:4px;border-radius:4px;background:#e5e7eb;margin:4px auto 8px}
+  .cs-dd.open::after{content:'';position:fixed;inset:0;background:rgba(8,24,34,0.45);z-index:9999}
+  .cs-dd-opt{padding:0.7rem 0.9rem;font-size:0.95rem}
+}
 .cs-dd-opt{padding:0.6rem 0.85rem;border-radius:10px;font-size:0.9rem;color:#374151;cursor:pointer;transition:background 0.15s,color 0.15s}
+/* Mobile: open custom dropdown as a full-width bottom sheet (not a cramped in-field box) + perf */
+@media(max-width:600px){
+  .cs-dd.open .cs-dd-panel{position:fixed;left:0;right:0;bottom:0;top:auto;width:100%;max-height:55vh;border-radius:18px 18px 0 0;border:none;box-shadow:0 -8px 30px rgba(0,0,0,0.25);padding:0.5rem 0.75rem 1rem;z-index:10000;animation:ddSheetUp .22s ease}
+  .cs-dd.open .cs-dd-panel::before{content:'';display:block;width:40px;height:4px;border-radius:4px;background:#d1d5db;margin:6px auto 10px}
+  .cs-dd-opt{padding:0.85rem 0.9rem;font-size:1rem}
+  .cs-dd.open::after{content:'';position:fixed;inset:0;background:rgba(8,24,34,0.4);z-index:9999}
+}
+@keyframes ddSheetUp{from{transform:translateY(100%)}to{transform:translateY(0)}}
+/* Mobile performance: backdrop-blur forces costly repaints on phones -> drop it while keeping the dim */
+@media(max-width:600px){
+  .modal-overlay{backdrop-filter:none!important;-webkit-backdrop-filter:none!important;background:rgba(22,97,120,0.75)}
+  .mobile-backdrop{backdrop-filter:none!important}
+}
 .cs-dd-opt:hover,.cs-dd-opt.active{background:#F0FDFA;color:#166178;font-weight:700}
 .cs-dd-optgroup{padding:0.5rem 0.85rem 0.2rem;font-size:0.7rem;font-weight:800;letter-spacing:0.06em;text-transform:uppercase;color:#9ca3af}
 /* ===== Custom rounded date picker ===== */
@@ -448,14 +470,30 @@ footer{background:#0e4050;color:rgba(255,255,255,0.65);padding:3.5rem 2.5rem 2re
 .cs-dp-btn svg{position:absolute;right:1rem;top:50%;transform:translateY(-50%);stroke:#6b7280}
 .cs-dp-cal{position:absolute;top:calc(100% + 6px);left:0;background:#fff;border:1.5px solid #e5e7eb;border-radius:16px;box-shadow:0 14px 36px rgba(22,97,120,0.18);padding:0.85rem;z-index:60;width:290px;display:none}
 .cs-dp.open .cs-dp-cal{display:block}
+/* Desktop/tablet: date-picker as a centered overlay above the form */
+@media(min-width:601px){
+  .cs-dp.open .cs-dp-cal{position:fixed;top:50%;left:50%;right:auto;bottom:auto;transform:translate(-50%,-50%);width:320px;max-width:90vw;max-height:80vh;overflow-y:auto;border-radius:16px;box-shadow:0 20px 50px rgba(8,24,34,0.35);z-index:10000}
+  .cs-dp.open::after{content:'';position:fixed;inset:0;background:rgba(8,24,34,0.45);z-index:9999}
+}
+/* Mobile: date-picker opens as a centered/bottom sheet instead of a clipped inline box */
+@media(max-width:600px){
+  .cs-dp.open .cs-dp-cal{position:fixed;left:0;right:0;bottom:0;top:auto;width:100%;max-width:100%;margin:0;border-radius:18px 18px 0 0;border:none;box-shadow:0 -8px 30px rgba(0,0,0,0.28);padding:1rem 1.1rem 1.5rem;z-index:10000;animation:sheetUp .22s ease}
+  .cs-dp.open .cs-dp-cal::before{content:'';display:block;width:40px;height:4px;border-radius:4px;background:#d1d5db;margin:0 auto 12px}
+  .cs-dp.open::after{content:'';position:fixed;inset:0;background:rgba(8,24,34,0.4);z-index:9999}
+  .cs-dp-day,.cs-dp-yr{min-height:38px;font-size:0.95rem}
+}
+@keyframes sheetUp{from{transform:translateY(100%)}to{transform:translateY(0)}}
+.cs-dp-x{position:absolute;top:6px;right:6px;width:26px;height:26px;border:none;border-radius:50%;background:#f0f0f0;color:#6b7280;font-size:1.1rem;line-height:1;cursor:pointer;display:flex;align-items:center;justify-content:center;z-index:5;transition:background .15s}
+.cs-dp-x:hover{background:#e5e7eb;color:#1a1a2e}
+.cs-dp-cal{position:relative;padding-top:2.4rem!important}
 .cs-dp-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:0.6rem}
 .cs-dp-title{font-weight:800;color:#166178;font-size:0.92rem}
 .cs-dp-nav{width:30px;height:30px;border:none;border-radius:50%;background:#F0FDFA;color:#166178;cursor:pointer;font-size:1rem;display:flex;align-items:center;justify-content:center;transition:background 0.15s}
 .cs-dp-nav:hover{background:#cdeeea}
 .cs-dp-nav.disabled{opacity:0.32;cursor:not-allowed;pointer-events:none}
-.cs-dp-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:2px}
+.cs-dp-grid{display:grid;grid-template-columns:repeat(7,1fr);grid-auto-rows:34px;gap:2px;min-height:204px;align-content:start}
 .cs-dp-dow{font-size:0.66rem;font-weight:800;color:#9ca3af;text-align:center;padding:4px 0}
-.cs-dp-day{aspect-ratio:1;display:flex;align-items:center;justify-content:center;font-size:0.82rem;color:#374151;border-radius:8px;cursor:pointer;transition:background 0.12s}
+.cs-dp-day{height:34px;display:flex;align-items:center;justify-content:center;font-size:0.82rem;color:#374151;border-radius:8px;cursor:pointer;transition:background 0.12s}
 .cs-dp-day:hover{background:#F0FDFA;color:#166178}
 .cs-dp-day.sel{background:#166178;color:#fff;font-weight:700}
 .cs-dp-day.disabled{color:#d1d5db;cursor:not-allowed;pointer-events:none}
@@ -487,6 +525,7 @@ footer{background:#0e4050;color:rgba(255,255,255,0.65);padding:3.5rem 2.5rem 2re
 .radio-item input{accent-color:#166178;cursor:pointer;appearance:none;-webkit-appearance:none;width:0;height:0;margin:0;padding:0;opacity:0;position:absolute}
 .info-box{background:#F0FDFA;border:1.5px solid #99f6e4;border-radius:12px;padding:0.9rem 1rem;display:flex;gap:10px;align-items:flex-start;margin-bottom:1.25rem}
 .info-box span{font-size:1.1rem;flex-shrink:0;margin-top:1px}.info-box p{font-size:0.82rem;color:#0f766e;font-weight:600;line-height:1.5}
+.info-box .icon-3d{align-self:flex-start!important;margin-top:1px}
 .summary-box{background:#FFF8F0;border:2px solid #e5e7eb;border-radius:16px;padding:1.25rem;margin-bottom:1.5rem}
 .summary-title{font-family:"Fredoka One",cursive;font-size:1rem;font-weight:400;color:#1a1a2e;margin-bottom:0.75rem}
 .summary-row{display:flex;justify-content:space-between;align-items:center;padding:0.4rem 0;border-bottom:1px solid #e5e7eb;font-size:0.85rem}
@@ -1026,7 +1065,7 @@ nav.scrolled{box-shadow:0 4px 28px rgba(0,0,0,0.11)!important}
         <div class="step-desc">Please review your details before submitting.</div>
         <div class="summary-box" id="summaryBox"></div>
         <div class="form-group">
-          <label class="check-item" style="width:100%;border-radius:12px" onclick="toggleCheck(this)" id="consentItem"><input type="checkbox" id="consent"/><span>I agree that NEST may contact me regarding my child's enrollment and assessment.</span></label>
+          <label class="check-item checked" style="width:100%;border-radius:12px" onclick="toggleCheck(this)" id="consentItem"><input type="checkbox" id="consent" checked/><span>I agree that NEST may contact me regarding my child's enrollment and assessment.</span></label>
         </div>
       </div>
       <div class="success-screen" id="successScreen">
@@ -1059,6 +1098,9 @@ function enhanceSelects(){
     var dd=document.createElement('div'); dd.className='cs-dd';
     var btn=document.createElement('button'); btn.type='button'; btn.className='cs-dd-btn';
     var panel=document.createElement('div'); panel.className='cs-dd-panel';
+    var ddClose=document.createElement('button'); ddClose.type='button'; ddClose.className='cs-dd-x'; ddClose.setAttribute('aria-label','Close'); ddClose.innerHTML='&times;';
+    ddClose.addEventListener('click',function(e){ e.stopPropagation(); dd.classList.remove('open'); });
+    panel.appendChild(ddClose);
     function refreshBtn(){ var o=sel.options[sel.selectedIndex]; btn.textContent=o?o.textContent:''; btn.classList.toggle('placeholder',!sel.value); btn.classList.toggle('error',sel.classList.contains('error')); }
     function mkOpt(op){ var el=document.createElement('div'); el.className='cs-dd-opt'; el.textContent=op.textContent; el.dataset.val=op.value||op.textContent; el.addEventListener('click',function(e){ e.stopPropagation(); sel.value=op.value||op.textContent; sel.dispatchEvent(new Event('change',{bubbles:true})); dd.classList.remove('open'); panel.querySelectorAll('.cs-dd-opt').forEach(function(x){x.classList.remove('active');}); el.classList.add('active'); refreshBtn(); }); return el; }
     Array.from(sel.children).forEach(function(node){
@@ -1071,7 +1113,7 @@ function enhanceSelects(){
     sel.parentNode.insertBefore(dd,sel.nextSibling);
     refreshBtn();
   });
-  document.addEventListener('click',function(){ document.querySelectorAll('.cs-dd.open').forEach(function(x){x.classList.remove('open');}); });
+  document.addEventListener('click',function(e){ document.querySelectorAll('.cs-dd.open').forEach(function(x){ if(!x.contains(e.target)) x.classList.remove('open'); }); });
 }
 function enhanceDates(){
   var modal=document.getElementById('enrollModal');
@@ -1137,7 +1179,7 @@ function enhanceDates(){
       var prevLast=new Date(y,m,0);       // last day of previous month
       var nextFirst=new Date(y,m+1,1);    // first day of next month
       var prevDis=minD&&prevLast<minD, nextDis=maxD&&nextFirst>maxD;
-      var h='<div class="cs-dp-head"><button type="button" class="cs-dp-nav'+(prevDis?' disabled':'')+'" data-d="-1"'+(prevDis?' disabled':'')+'>&#8249;</button><span class="cs-dp-title" data-yearview="1">'+MON[m]+' '+y+'</span><button type="button" class="cs-dp-nav'+(nextDis?' disabled':'')+'" data-d="1"'+(nextDis?' disabled':'')+'>&#8250;</button></div><div class="cs-dp-grid">';
+      var h='<button type="button" class="cs-dp-x" data-dpclose="1" aria-label="Close">&times;</button><div class="cs-dp-head"><button type="button" class="cs-dp-nav'+(prevDis?' disabled':'')+'" data-d="-1"'+(prevDis?' disabled':'')+'>&#8249;</button><span class="cs-dp-title" data-yearview="1">'+MON[m]+' '+y+'</span><button type="button" class="cs-dp-nav'+(nextDis?' disabled':'')+'" data-d="1"'+(nextDis?' disabled':'')+'>&#8250;</button></div><div class="cs-dp-grid">';
       DOW.forEach(function(d){ h+='<div class="cs-dp-dow">'+d+'</div>'; });
       for(var i=0;i<first;i++) h+='<div class="cs-dp-day empty"></div>';
       for(var day=1;day<=dim;day++){
@@ -1153,7 +1195,7 @@ function enhanceDates(){
       var minY=minD?minD.getFullYear():1950;
       var maxY=maxD?maxD.getFullYear():(new Date().getFullYear());
       var selY=inp.value?new Date(inp.value+'T00:00:00').getFullYear():null;
-      var h='<div class="cs-dp-head"><span class="cs-dp-title" data-dayview="1">'+MON[view.getMonth()]+' '+y+'</span></div><div class="cs-dp-years">';
+      var h='<button type="button" class="cs-dp-x" data-dpclose="1" aria-label="Close">&times;</button><div class="cs-dp-head"><span class="cs-dp-title" data-dayview="1">'+MON[view.getMonth()]+' '+y+'</span></div><div class="cs-dp-years">';
       // newest year first so recent birth years are at the top
       for(var yr=maxY; yr>=minY; yr--){
         h+='<div class="cs-dp-yr'+(yr===selY?' sel':'')+'" data-yr="'+yr+'">'+yr+'</div>';
@@ -1166,6 +1208,7 @@ function enhanceDates(){
     function render(){ minD=parseAttr(inp.getAttribute('min')); maxD=parseAttr(inp.getAttribute('max')); if(mode==='years') renderYears(); else renderDays(); }
     cal.addEventListener('click',function(e){
       e.stopPropagation();
+      var closeBtn=e.target.closest('[data-dpclose]'); if(closeBtn){ dp.classList.remove('open'); return; }
       var titleY=e.target.closest('[data-yearview]'); if(titleY){ mode='years'; render(); return; }
       var titleD=e.target.closest('[data-dayview]'); if(titleD){ mode='days'; render(); return; }
       var yr=e.target.closest('.cs-dp-yr'); if(yr&&yr.dataset.yr){ view.setFullYear(parseInt(yr.dataset.yr,10)); mode='days'; render(); return; }
@@ -1196,26 +1239,67 @@ function enhanceDates(){
     inp.parentNode.insertBefore(dp,inp.nextSibling);
     render(); refreshField();
   });
-  document.addEventListener('click',function(){ document.querySelectorAll('.cs-dp.open').forEach(function(x){x.classList.remove('open');}); });
+  document.addEventListener('click',function(e){ document.querySelectorAll('.cs-dp.open').forEach(function(x){ if(!x.contains(e.target)) x.classList.remove('open'); }); });
+}
+function enrollFromMenu(){
+  /* hard-close the mobile menu directly by ID (robust) */
+  ['mobileMenu','hamburger','mobileBackdrop'].forEach(function(id){ var el=document.getElementById(id); if(el) el.classList.remove('open'); });
+  openEnrollModal(); /* this re-applies the scroll lock and shows the form */
+}
+function resetEnrollForm(){
+  /* Hide success screen, show footer & dots */
+  document.getElementById('successScreen').classList.remove('show');
+  document.getElementById('modalFooter').style.display='';
+  document.getElementById('stepDots').style.display='';
+
+  /* Clear all inputs, selects, textareas */
+  document.querySelectorAll('#enrollModal input:not([type="checkbox"]):not([type="radio"])').forEach(function(el){ el.value=''; el.classList.remove('error'); });
+  document.querySelectorAll('#enrollModal select').forEach(function(el){ el.selectedIndex=0; el.classList.remove('error'); el.dispatchEvent(new Event('change',{bubbles:true})); });
+  document.querySelectorAll('#enrollModal textarea').forEach(function(el){ el.value=''; el.classList.remove('error'); });
+  document.querySelectorAll('#enrollModal input[type="checkbox"]').forEach(function(el){ el.checked=false; });
+  var pErrR=document.getElementById('programsErr'); if(pErrR) pErrR.style.display='none';
+  document.querySelectorAll('#enrollModal .radio-item').forEach(function(el){ el.classList.remove('selected'); });
+  document.querySelectorAll('#enrollModal .check-item').forEach(function(el){ el.classList.remove('checked'); });
+  document.getElementById('consentItem').style.borderColor='';
+  /* consent is pre-agreed by default */
+  var cons=document.getElementById('consent'); if(cons){ cons.checked=true; var ci=document.getElementById('consentItem'); if(ci) ci.classList.add('checked'); }
+  /* release the submit lock + re-enable the button for a fresh submission */
+  window._nestSubmitting=false;
+  var _sb=document.getElementById('btnSubmit'); if(_sb){ _sb.disabled=false; _sb.style.opacity=''; _sb.style.pointerEvents=''; }
+
+  /* Reset custom (styled) dropdown buttons back to their placeholder */
+  document.querySelectorAll('#enrollModal .cs-dd').forEach(function(dd){
+    var sel=dd.previousElementSibling; // the hidden native <select>
+    var btn=dd.querySelector('.cs-dd-btn');
+    if(sel&&btn){ var o=sel.options[sel.selectedIndex]; btn.textContent=o?o.textContent:''; btn.classList.toggle('placeholder',!sel.value); btn.classList.remove('error'); }
+    dd.querySelectorAll('.cs-dd-opt').forEach(function(x){x.classList.remove('active');});
+    dd.classList.remove('open');
+  });
+  /* Reset custom date picker visible field */
+  document.querySelectorAll('#enrollModal .cs-dp .cs-dp-input').forEach(function(f){ f.value=''; f.classList.remove('error'); });
+
+  /* Go back to step 1 */
+  goToStep(1);
 }
 function openEnrollModal(){
   document.getElementById('enrollModal').classList.add('open');
-  document.body.style.overflow='hidden';document.documentElement.style.overflow='hidden';
+  document.body.style.overflow='hidden';document.documentElement.style.overflow='hidden';document.documentElement.classList.add('nest-modal-open');
   enhanceSelects();
   var today=new Date().toISOString().split('T')[0];
   document.getElementById('prefDate').min=today;
   document.getElementById('childDob').max=today;
   enhanceDates();
+  resetEnrollForm();
 }
 function closeEnrollModal(){
+  if(window._nestResetTimer){ clearTimeout(window._nestResetTimer); window._nestResetTimer=null; }
   document.getElementById('enrollModal').classList.remove('open');
-  document.body.style.overflow='';document.documentElement.style.overflow='';
+  document.body.style.overflow='';document.documentElement.style.overflow='';document.documentElement.classList.remove('nest-modal-open');
+  resetEnrollForm();
 }
 
 document.addEventListener('DOMContentLoaded',function(){
-  document.getElementById('enrollModal').addEventListener('click',function(e){
-    if(e.target===this) closeEnrollModal();
-  });
+  /* background click does NOT close the form — only the X button, so users do not lose entered data */
 
   /* ── Alpha fields: only letters/spaces/hyphens, max enforced by HTML ── */
   ['childFirst','childLast','parentName'].forEach(function(id){
@@ -1274,6 +1358,11 @@ document.addEventListener('DOMContentLoaded',function(){
   var con=document.getElementById('consent');
   if(con) con.addEventListener('change',function(){
     if(this.checked) document.getElementById('consentItem').style.borderColor='';
+  /* consent is pre-agreed by default */
+  var cons=document.getElementById('consent'); if(cons){ cons.checked=true; var ci=document.getElementById('consentItem'); if(ci) ci.classList.add('checked'); }
+  /* release the submit lock + re-enable the button for a fresh submission */
+  window._nestSubmitting=false;
+  var _sb=document.getElementById('btnSubmit'); if(_sb){ _sb.disabled=false; _sb.style.opacity=''; _sb.style.pointerEvents=''; }
   });
 });
 
@@ -1322,6 +1411,9 @@ function goToStep(n){
   document.getElementById('stepCounter').textContent='Step '+n+' of 4';
   currentStep=n;
   if(n===4) buildSummary();
+  var mb=document.querySelector('#enrollModal .modal-body'); if(mb) mb.scrollTop=0;
+  var ov=document.getElementById('enrollModal'); if(ov) ov.scrollTop=0;
+  var mdl=document.querySelector('#enrollModal .modal'); if(mdl) mdl.scrollTop=0;
 }
 
 /* ── full validation on Next click ── */
@@ -1396,7 +1488,13 @@ function validateStep(n){
   return ok;
 }
 
-function nextStep(){ if(!validateStep(currentStep)) return; if(currentStep<4) goToStep(currentStep+1); }
+function scrollToFirstError(){
+  var active=document.querySelector('#enrollModal .step-panel.active')||document;
+  var el=active.querySelector('.error, .cs-dd-btn.error, .cs-dp-input.error');
+  if(!el){ var pe=document.getElementById('programsErr'); if(pe && pe.style.display==='block') el=pe; }
+  if(el){ var target=el.closest('.form-group')||el.closest('.radio-group')||el; if(target.scrollIntoView) target.scrollIntoView({behavior:'smooth',block:'center'}); var focusable=target.querySelector&&target.querySelector('input,select,textarea'); if(focusable&&focusable.focus){try{focusable.focus({preventScroll:true});}catch(e){}} }
+}
+function nextStep(){ if(!validateStep(currentStep)){ scrollToFirstError(); return; } if(currentStep<4) goToStep(currentStep+1); }
 function prevStep(){ if(currentStep>1) goToStep(currentStep-1); }
 
 function buildSummary(){
@@ -1424,15 +1522,67 @@ function buildSummary(){
 }
 
 function submitForm(){
+  /* prevent double submission (double-tap / slow network / multiple clicks) */
+  if(window._nestSubmitting) return;
+
   if(!document.getElementById('consent').checked){
-    document.getElementById('consentItem').style.borderColor='#DC2626';
+    var ci=document.getElementById('consentItem');
+    ci.style.borderColor='#DC2626';
+    if(ci.scrollIntoView) ci.scrollIntoView({behavior:'smooth',block:'center'});
     return;
   }
-  document.querySelectorAll('.step-panel').forEach(function(p){p.classList.remove('active')});
-  document.getElementById('successScreen').classList.add('show');
+
+  /* lock: mark as submitting and disable the button so it can't fire twice */
+  window._nestSubmitting=true;
+  var _submitBtn=document.getElementById('btnSubmit');
+  if(_submitBtn){ _submitBtn.disabled=true; _submitBtn.style.opacity='0.6'; _submitBtn.style.pointerEvents='none'; }
+
+  // Collect all form data
+  var programs = [].slice.call(document.querySelectorAll('#programsGroup input:checked'))
+                   .map(function(c){ return c.value; }).join(', ');
+
+  var hearAbout = [].slice.call(document.querySelectorAll('#hearGroup .radio-item.selected'))
+                    .map(function(c){ return c.dataset.value; }).join(', ');
+
+  var prevTherapy = '';
+  var prevChecked = document.querySelector('#prevGroup .radio-item.selected input');
+  if(prevChecked) prevTherapy = prevChecked.value;
+
+  var data = {
+    childFirst:   document.getElementById('childFirst').value,
+    childLast:    document.getElementById('childLast').value,
+    dob:          document.getElementById('childDob').value,
+    gender:       document.getElementById('childGender').value,
+    diagnosis:    document.getElementById('childDiag').value,
+    programs:     programs,
+    parentName:   document.getElementById('parentName').value,
+    relationship: document.getElementById('parentRel').value,
+    phone:        document.getElementById('parentPhone').value,
+    email:        document.getElementById('parentEmail').value,
+    city:         document.getElementById('parentArea').value,
+    hearAbout:    hearAbout,
+    prefDate:     document.getElementById('prefDate').value,
+    prefTime:     document.getElementById('prefTime').value,
+    prevTherapy:  prevTherapy,
+    notes:        document.getElementById('notes').value
+  };
+
+  // Send to Google Sheets
+    // Show success screen immediately (independent of network response)
+  function _nestShowSuccess(){
+    document.querySelectorAll('#enrollModal .step-panel').forEach(function(p){ p.classList.remove('active'); });
+    document.getElementById('successScreen').classList.add('show');
     if(typeof gtag==='function'){ gtag('event','generate_lead',{event_category:'enrollment',event_label:'Enrollment Form Submitted'}); }
-  document.getElementById('modalFooter').style.display='none';
-  document.getElementById('stepDots').style.display='none';
+    document.getElementById('modalFooter').style.display='none';
+    document.getElementById('stepDots').style.display='none';
+    if(window._nestResetTimer) clearTimeout(window._nestResetTimer);
+    window._nestResetTimer = setTimeout(function(){ closeEnrollModal(); }, 4000);
+  }
+  fetch('https://script.google.com/macros/s/AKfycbz_njfYUo78Eo2q-TKhFVA8EKZrPItRH1uEZGYzr9y5o0xB2bgS7NFHXOQDPDrUPc7ltA/exec', {
+    method: 'POST',
+    body: JSON.stringify(data)
+  }).catch(function(err){ console.error(err); });
+  _nestShowSuccess();
 }
 
 function toggleCheck(el){ el.classList.toggle('checked'); }
