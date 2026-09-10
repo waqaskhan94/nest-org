@@ -1,0 +1,26 @@
+# Cache images & static assets for 30 days so navigation between pages is instant.
+# (Not "immutable" — so if you replace an image under the same name, it still refreshes within 30 days.)
+/images/*
+  Cache-Control: public, max-age=2592000
+
+/favicon.png
+  Cache-Control: public, max-age=2592000
+/favicon-sm.png
+  Cache-Control: public, max-age=2592000
+/apple-touch-icon.png
+  Cache-Control: public, max-age=2592000
+
+*.avif
+  Cache-Control: public, max-age=2592000
+*.jpeg
+  Cache-Control: public, max-age=2592000
+*.jpg
+  Cache-Control: public, max-age=2592000
+*.png
+  Cache-Control: public, max-age=2592000
+*.webp
+  Cache-Control: public, max-age=2592000
+
+# Site manifest
+/site.webmanifest
+  Cache-Control: public, max-age=604800
