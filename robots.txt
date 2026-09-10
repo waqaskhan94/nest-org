@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://nest-org.pages.dev/sitemap.xml
+Sitemap: https://nestislamabad.com/sitemap.xml
