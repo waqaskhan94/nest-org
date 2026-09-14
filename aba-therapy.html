@@ -128,19 +128,21 @@ nav.scrolled{box-shadow:0 4px 24px rgba(0,0,0,0.08)}
   background:#071e2a;
   overflow:hidden;
 }
-/* Ken Burns slow-zoom photo layer (matches About page hero) */
-.thero-photo-bg{
-  position:absolute;inset:-8%;z-index:0;
-  background:url('images/therapies-hero-bg.jpeg') center 67%/cover no-repeat;
-  background:image-set(url('images/therapies-hero-bg.avif') type('image/avif'),url('images/therapies-hero-bg.jpeg') type('image/jpeg')) center 67%/cover no-repeat;
-  animation:theroZoom 26s ease-in-out infinite alternate;
-  will-change:transform;
-}
-@keyframes theroZoom{0%{transform:scale(1) translateY(0)}100%{transform:scale(1.10) translateY(-2%)}}
-@media(prefers-reduced-motion:reduce){.thero-photo-bg{animation:none}}
+/* 3-photo mosaic background (matches Gallery hero style) */
+.se-grid-bg{position:absolute;inset:0;z-index:0;display:grid;grid-template-columns:repeat(3,1fr);gap:3px;background:#071e2a}
+.se-cell{overflow:hidden;position:relative}
+.se-cell::after{content:'';position:absolute;inset:0;background-size:cover;background-position:center;animation:seKB var(--dur,26s) ease-in-out infinite alternate;animation-delay:var(--delay,0s);will-change:transform;filter:brightness(0.85) saturate(0.9)}
+@keyframes seKB{0%{transform:scale(1) translate(0,0)}100%{transform:scale(1.08) translate(-1%,-1%)}}
+.se-c1::after{background-image:image-set(url('images/ph-aba.avif') type('image/avif'),url('images/ph-aba.jpeg') type('image/jpeg'));background-position:center 35%;--dur:24s;--delay:0s}
+.se-c2::after{background-image:image-set(url('images/aba-therapy.avif') type('image/avif'),url('images/aba-therapy.jpeg') type('image/jpeg'));background-position:center 30%;--dur:28s;--delay:-6s}
+.se-c3::after{background-image:image-set(url('images/family-support.avif') type('image/avif'),url('images/family-support.jpeg') type('image/jpeg'));background-position:center 40%;--dur:22s;--delay:-3s}
+@media(prefers-reduced-motion:reduce){.se-cell::after{animation:none}}
+@media(max-width:600px){.se-grid-bg{grid-template-columns:1fr 1fr}.se-c3{display:none}}
 .page-hero::before{
   content:'';position:absolute;inset:0;
-  background:linear-gradient(135deg,rgba(13,79,97,0.90) 0%,rgba(22,97,120,0.82) 55%,rgba(236,72,153,0.30) 100%);
+  background:
+    radial-gradient(ellipse 60% 55% at 50% 45%,rgba(22,97,120,0.30) 0%,transparent 78%),
+    linear-gradient(150deg,rgba(6,26,38,0.86) 0%,rgba(13,79,97,0.80) 45%,rgba(11,53,68,0.82) 75%,rgba(6,26,38,0.88) 100%);
   z-index:1;
 }
 .page-hero-inner{
@@ -668,7 +670,11 @@ html.nest-modal-open,html.nest-modal-open body{overflow:hidden!important;touch-a
 <!-- ===== PAGE HERO ===== -->
 <main>
 <section class="page-hero">
-  <div class="thero-photo-bg" aria-hidden="true" style="background:url('images/aba-therapy.jpeg') center 40%/cover no-repeat;background:image-set(url('images/aba-therapy.avif') type('image/avif'),url('images/aba-therapy.jpeg') type('image/jpeg')) center 40%/cover no-repeat;"></div>
+  <div class="se-grid-bg" aria-hidden="true">
+    <div class="se-cell se-c1"></div>
+    <div class="se-cell se-c2"></div>
+    <div class="se-cell se-c3"></div>
+  </div>
   <div class="page-hero-inner">
     <div class="page-hero-tag">
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
