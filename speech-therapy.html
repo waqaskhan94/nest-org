@@ -133,8 +133,8 @@ nav.scrolled{box-shadow:0 4px 24px rgba(0,0,0,0.08)}
 .se-cell{overflow:hidden;position:relative}
 .se-cell::after{content:'';position:absolute;inset:0;background-size:cover;background-position:center;animation:seKB var(--dur,26s) ease-in-out infinite alternate;animation-delay:var(--delay,0s);will-change:transform;filter:brightness(0.85) saturate(0.9)}
 @keyframes seKB{0%{transform:scale(1) translate(0,0)}100%{transform:scale(1.08) translate(-1%,-1%)}}
-.se-c1::after{background-image:image-set(url('images/bg-read.avif') type('image/avif'),url('images/bg-read.jpeg') type('image/jpeg'));background-position:center 35%;--dur:24s;--delay:0s}
-.se-c2::after{background-image:image-set(url('images/ph-speech.avif') type('image/avif'),url('images/ph-speech.jpeg') type('image/jpeg'));background-position:center 30%;--dur:28s;--delay:-6s}
+.se-c1::after{background-image:image-set(url('images/ph-speech.avif') type('image/avif'),url('images/ph-speech.jpeg') type('image/jpeg'));background-position:center 30%;--dur:24s;--delay:0s}
+.se-c2::after{background-image:image-set(url('images/bg-read.avif') type('image/avif'),url('images/bg-read.jpeg') type('image/jpeg'));background-position:center 35%;--dur:28s;--delay:-6s}
 .se-c3::after{background-image:image-set(url('images/bg-blocks.avif') type('image/avif'),url('images/bg-blocks.jpeg') type('image/jpeg'));background-position:center 40%;--dur:22s;--delay:-3s}
 @media(prefers-reduced-motion:reduce){.se-cell::after{animation:none}}
 @media(max-width:600px){.se-grid-bg{grid-template-columns:1fr 1fr}.se-c3{display:none}}
