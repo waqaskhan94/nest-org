@@ -6,11 +6,23 @@
 /gallery.html    /gallery     301
 /contact.html    /contact     301
 /blog.html       /blog        301
-/blog-early-signs-autism-toddlers.html          /blog-early-signs-autism-toddlers          301
-/blog-speech-delay-vs-autism.html               /blog-speech-delay-vs-autism               301
-/blog-adhd-vs-normal-child-behavior.html        /blog-adhd-vs-normal-child-behavior        301
-/blog-choose-special-education-school-islamabad.html /blog-choose-special-education-school-islamabad 301
-/blog-what-is-aba-therapy.html                  /blog-what-is-aba-therapy                  301
+# Old flat blog URLs -> new nested /blog/<slug> (301 to preserve SEO)
+/blog-early-signs-autism-toddlers               /blog/early-signs-autism-toddlers               301
+/blog-early-signs-autism-toddlers.html          /blog/early-signs-autism-toddlers               301
+/blog-speech-delay-vs-autism                    /blog/speech-delay-vs-autism                    301
+/blog-speech-delay-vs-autism.html               /blog/speech-delay-vs-autism                    301
+/blog-adhd-vs-normal-child-behavior             /blog/adhd-vs-normal-child-behavior             301
+/blog-adhd-vs-normal-child-behavior.html        /blog/adhd-vs-normal-child-behavior             301
+/blog-choose-special-education-school-islamabad      /blog/choose-special-education-school-islamabad 301
+/blog-choose-special-education-school-islamabad.html /blog/choose-special-education-school-islamabad 301
+/blog-what-is-aba-therapy                       /blog/what-is-aba-therapy                       301
+/blog-what-is-aba-therapy.html                  /blog/what-is-aba-therapy                       301
+# New nested .html -> clean
+/blog/early-signs-autism-toddlers.html          /blog/early-signs-autism-toddlers               301
+/blog/speech-delay-vs-autism.html               /blog/speech-delay-vs-autism                    301
+/blog/adhd-vs-normal-child-behavior.html        /blog/adhd-vs-normal-child-behavior             301
+/blog/choose-special-education-school-islamabad.html /blog/choose-special-education-school-islamabad 301
+/blog/what-is-aba-therapy.html                  /blog/what-is-aba-therapy                       301
 /special-education.html    /special-education    301
 /aba-therapy.html          /aba-therapy          301
 /speech-therapy.html       /speech-therapy       301
