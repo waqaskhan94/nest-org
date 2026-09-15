@@ -1993,14 +1993,15 @@ function clearError(el){
 
 function liveAlpha(el){
   var v=el.value.trim();
-  if(!v || v.length<2){ setError(el); return false; }
+  if(!v){ clearError(el); return true; }          /* empty on blur: don't flag (only at submit) */
+  if(v.length<2){ setError(el); return false; }
   if(!/^[a-zA-Z\u0600-\u06FF\s\-']+$/.test(v)){ setError(el); return false; }
   clearError(el); return true;
 }
 function livePhone(el){
   var v=el.value.trim();
   /* Pakistan mobile: exactly 11 digits starting 03 (03XXXXXXXXX) */
-  if(!v){ setError(el); return false; }
+  if(!v){ clearError(el); return true; }           /* empty on blur: don't flag (only at submit) */
   if(!/^03\d{9}$/.test(v)){ setError(el); return false; }
   clearError(el); return true;
 }

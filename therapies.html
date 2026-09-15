@@ -1499,13 +1499,15 @@ function clearError(el){
 }
 function liveAlpha(el){
   var v=el.value.trim();
-  if(!v || v.length<2){ setError(el); return false; }
+  if(!v){ clearError(el); return true; }
+  if(v.length<2){ setError(el); return false; }
   if(!/^[a-zA-Z؀-ۿ\s\-']+$/.test(v)){ setError(el); return false; }
   clearError(el); return true;
 }
 function livePhone(el){
   var v=el.value.trim();
-  if(!v || v.length<10){ setError(el); return false; }
+  if(!v){ clearError(el); return true; }
+  if(v.length<10){ setError(el); return false; }
   if(!/^(\+92|0)[0-9\-\s]{9,13}$/.test(v)){ setError(el); return false; }
   clearError(el); return true;
 }
