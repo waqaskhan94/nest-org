@@ -721,6 +721,10 @@ nav.scrolled{box-shadow:0 4px 28px rgba(0,0,0,0.11)!important}
 .contact-hero>div[style*="max-width:700px"]{position:relative;z-index:2}
 /* Robust scroll-lock while the enrollment modal is open */
 html.nest-modal-open,html.nest-modal-open body{overflow:hidden!important;touch-action:none}
+
+/* In-content links: underline + theme hover (matches blog article links) */
+main a[style*="#166178"]{text-decoration:underline;text-decoration-color:rgba(22,97,120,0.4);text-underline-offset:3px;text-decoration-thickness:2px;transition:color .18s ease,text-decoration-color .18s ease}
+main a[style*="#166178"]:hover{color:#0D9488 !important;text-decoration-color:#0D9488}
 </style>
 </head>
 <body>
