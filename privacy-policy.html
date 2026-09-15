@@ -747,7 +747,7 @@ main a[style*="#166178"]:hover{color:#0D9488 !important;text-decoration-color:#0
 .ih-pts{position:absolute;inset:0;overflow:hidden;pointer-events:none;z-index:1}
 .ihp{position:absolute;border-radius:50%;animation:ihpUp linear infinite;opacity:0}
 @keyframes ihpUp{0%{transform:translateY(0) translateX(0);opacity:0}8%{opacity:1}90%{opacity:.5}100%{transform:translateY(-320px) translateX(var(--dx,0px));opacity:0}}
-.info-hero > div{position:relative;z-index:2}
+.info-hero > div:not(.ih-wm):not(.ih-pts){position:relative;z-index:2}
 @media(prefers-reduced-motion:reduce){.ih-wm{animation:none}.ihp{animation:none}}
 </style>
 </head>
@@ -786,7 +786,7 @@ main a[style*="#166178"]:hover{color:#0D9488 !important;text-decoration-color:#0
   <a role="button" tabindex="0" style="cursor:pointer" onclick="enrollFromMenu();return false;" class="mob-enroll">Enroll Now <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></a>
 </div>
 
-<div class="info-hero" style="background:#166178;padding:6rem 2rem 5rem;text-align:center">
+<div class="info-hero" style="background:#166178;padding:3.5rem 6% 3rem;text-align:center">
   <div class="ih-wm" aria-hidden="true"></div>
   <div class="ih-pts" aria-hidden="true">
     <div class="ihp" style="left:6%;bottom:0;width:4px;height:4px;background:rgba(255,255,255,0.6);animation-duration:9s;animation-delay:-1s;--dx:14px"></div>
