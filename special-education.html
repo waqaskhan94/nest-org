@@ -647,6 +647,35 @@ html.nest-modal-open,html.nest-modal-open body{overflow:hidden!important;touch-a
 @media(max-width:540px){.team-cta{padding:4rem 1.5rem}.team-cta-title{font-size:2rem}.team-cta-btns{flex-direction:column;align-items:center}}
 .soon-link{display:inline-flex;align-items:center;gap:6px;cursor:default;pointer-events:none;animation:soonFade 2.2s ease-in-out infinite}.soon-link .soon-badge{font-size:0.5rem;font-weight:800;letter-spacing:0.05em;text-transform:uppercase;color:#0d2f3d;background:linear-gradient(135deg,#FBBF24,#F59E0B);padding:1px 6px;border-radius:20px;line-height:1.5;white-space:nowrap}@keyframes soonFade{0%,100%{opacity:1}50%{opacity:0.55}}
 </style>
+<style>
+/* Related Articles animated background + card hover */
+.ra-sec{position:relative;overflow:hidden;padding:4.5rem 2.5rem;background:linear-gradient(120deg,#d6f0ec,#e8f6ee,#d3ecf2,#e4f0e6);background-size:300% 300%;animation:raGradient 18s ease infinite}
+@keyframes raGradient{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
+.ra-orbs{position:absolute;inset:0;overflow:hidden;pointer-events:none;z-index:0}
+.ra-orbs span{position:absolute;border-radius:50%;animation:raOrb 16s ease-in-out infinite}
+.ra-orbs span:nth-child(1){width:190px;height:190px;left:-40px;top:20px;background:radial-gradient(circle at 30% 30%,rgba(45,212,191,0.38),rgba(45,212,191,0) 70%);animation-duration:18s}
+.ra-orbs span:nth-child(2){width:130px;height:130px;right:8%;top:-30px;background:radial-gradient(circle at 30% 30%,rgba(249,115,22,0.22),rgba(249,115,22,0) 70%);animation-duration:22s;animation-delay:-6s}
+.ra-orbs span:nth-child(3){width:230px;height:230px;right:-60px;bottom:-40px;background:radial-gradient(circle at 30% 30%,rgba(22,97,120,0.26),rgba(22,97,120,0) 70%);animation-duration:20s;animation-delay:-3s}
+.ra-orbs span:nth-child(4){width:100px;height:100px;left:15%;bottom:30px;background:radial-gradient(circle at 30% 30%,rgba(45,212,191,0.32),rgba(45,212,191,0) 70%);animation-duration:15s;animation-delay:-9s}
+.ra-orbs span:nth-child(5){width:70px;height:70px;left:45%;top:8%;background:radial-gradient(circle at 30% 30%,rgba(251,191,36,0.28),rgba(251,191,36,0) 70%);animation-duration:24s;animation-delay:-12s}
+.ra-orbs span:nth-child(6){width:150px;height:150px;left:55%;bottom:-30px;background:radial-gradient(circle at 30% 30%,rgba(22,97,120,0.16),rgba(22,97,120,0) 70%);animation-duration:17s;animation-delay:-5s}
+@keyframes raOrb{0%,100%{transform:translate(0,0) scale(1)}33%{transform:translate(22px,-26px) scale(1.1)}66%{transform:translate(-20px,18px) scale(0.94)}}
+.ra-bubbles{position:absolute;inset:0;overflow:hidden;pointer-events:none;z-index:0}
+.ra-bubbles i{position:absolute;bottom:-20px;border-radius:50%;background:rgba(255,255,255,0.55);animation:raRise linear infinite}
+.ra-bubbles i:nth-child(1){left:10%;width:10px;height:10px;animation-duration:14s;animation-delay:0s}
+.ra-bubbles i:nth-child(2){left:25%;width:7px;height:7px;animation-duration:18s;animation-delay:-4s}
+.ra-bubbles i:nth-child(3){left:40%;width:12px;height:12px;animation-duration:16s;animation-delay:-8s;background:rgba(45,212,191,0.4)}
+.ra-bubbles i:nth-child(4){left:62%;width:8px;height:8px;animation-duration:20s;animation-delay:-2s}
+.ra-bubbles i:nth-child(5){left:78%;width:11px;height:11px;animation-duration:15s;animation-delay:-6s;background:rgba(249,115,22,0.35)}
+.ra-bubbles i:nth-child(6){left:90%;width:6px;height:6px;animation-duration:19s;animation-delay:-10s}
+@keyframes raRise{0%{transform:translateY(0) translateX(0);opacity:0}10%{opacity:1}85%{opacity:.6}100%{transform:translateY(-560px) translateX(20px);opacity:0}}
+.ra-inner{position:relative;z-index:1;max-width:1080px;margin:0 auto}
+.ra-card{transition:transform .28s cubic-bezier(0.4,0,0.2,1),box-shadow .28s ease,border-color .28s ease}
+.ra-card:hover{transform:translateY(-8px)!important;box-shadow:0 18px 40px rgba(22,97,120,0.20)!important;border-color:#5eead4!important}
+.ra-arrow{transition:transform .25s ease}
+.ra-card:hover .ra-arrow{transform:translateX(6px)}
+@media(prefers-reduced-motion:reduce){.ra-sec{animation:none}.ra-orbs span,.ra-bubbles i{animation:none}.ra-bubbles{display:none}}
+</style>
 </head>
 <body>
 
@@ -783,40 +812,42 @@ html.nest-modal-open,html.nest-modal-open body{overflow:hidden!important;touch-a
 </section>
 
 <!-- ===== RELATED ARTICLES ===== -->
-<section style="background:linear-gradient(180deg,#E0F2F1,#CDECEA);padding:4.5rem 2.5rem">
-  <div style="max-width:1080px;margin:0 auto">
+<section class="ra-sec">
+  <div class="ra-orbs"><span></span><span></span><span></span><span></span><span></span><span></span></div>
+  <div class="ra-bubbles"><i></i><i></i><i></i><i></i><i></i><i></i></div>
+  <div class="ra-inner">
     <div style="text-align:center;margin-bottom:2.5rem">
       <span class="sec-tag" style="background:#fff;color:#0f766e">From Our Blog</span>
       <h2 class="sec-title">Related Articles</h2>
       <p class="sec-sub">Helpful reading for parents exploring this service.</p>
     </div>
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.5rem">
-      <a href="/blog/choose-special-education-school-islamabad" style="display:flex;flex-direction:column;background:#fff;border:1px solid #cffafe;border-radius:16px;padding:1.5rem;text-decoration:none;box-shadow:0 4px 16px rgba(22,97,120,0.06);transition:transform .25s ease,box-shadow .25s ease" onmouseover="this.style.transform='translateY(-5px)';this.style.boxShadow='0 12px 30px rgba(22,97,120,0.14)'" onmouseout="this.style.transform='';this.style.boxShadow='0 4px 16px rgba(22,97,120,0.06)'">
+      <a href="/blog/choose-special-education-school-islamabad" class="ra-card" style="display:flex;flex-direction:column;background:#fff;border:1px solid #cffafe;border-radius:16px;padding:1.5rem;text-decoration:none;box-shadow:0 4px 16px rgba(22,97,120,0.06)">
         <span style="display:inline-flex;align-items:center;gap:6px;font-size:0.72rem;font-weight:800;letter-spacing:0.03em;color:#F97316;text-transform:uppercase;margin-bottom:0.6rem">
           <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
           Article
         </span>
         <h3 style="font-family:'Fredoka One',cursive;font-weight:400;font-size:1.08rem;color:#166178;line-height:1.35;margin:0 0 0.5rem">Choosing a Special Education School</h3>
         <p style="color:#64748b;font-size:0.88rem;line-height:1.6;margin:0 0 1rem">What to look for when picking the right special education school in Islamabad.</p>
-        <span style="margin-top:auto;color:#F97316;font-weight:700;font-size:0.85rem;display:inline-flex;align-items:center;gap:5px">Read article <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+        <span style="margin-top:auto;color:#F97316;font-weight:700;font-size:0.85rem;display:inline-flex;align-items:center;gap:5px">Read article <svg class="ra-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
       </a>
-      <a href="/blog/early-signs-autism-toddlers" style="display:flex;flex-direction:column;background:#fff;border:1px solid #cffafe;border-radius:16px;padding:1.5rem;text-decoration:none;box-shadow:0 4px 16px rgba(22,97,120,0.06);transition:transform .25s ease,box-shadow .25s ease" onmouseover="this.style.transform='translateY(-5px)';this.style.boxShadow='0 12px 30px rgba(22,97,120,0.14)'" onmouseout="this.style.transform='';this.style.boxShadow='0 4px 16px rgba(22,97,120,0.06)'">
+      <a href="/blog/early-signs-autism-toddlers" class="ra-card" style="display:flex;flex-direction:column;background:#fff;border:1px solid #cffafe;border-radius:16px;padding:1.5rem;text-decoration:none;box-shadow:0 4px 16px rgba(22,97,120,0.06)">
         <span style="display:inline-flex;align-items:center;gap:6px;font-size:0.72rem;font-weight:800;letter-spacing:0.03em;color:#F97316;text-transform:uppercase;margin-bottom:0.6rem">
           <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
           Article
         </span>
         <h3 style="font-family:'Fredoka One',cursive;font-weight:400;font-size:1.08rem;color:#166178;line-height:1.35;margin:0 0 0.5rem">Early Signs of Autism in Toddlers</h3>
         <p style="color:#64748b;font-size:0.88rem;line-height:1.6;margin:0 0 1rem">The gentle signs worth noticing early, and what to do next if you spot them.</p>
-        <span style="margin-top:auto;color:#F97316;font-weight:700;font-size:0.85rem;display:inline-flex;align-items:center;gap:5px">Read article <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+        <span style="margin-top:auto;color:#F97316;font-weight:700;font-size:0.85rem;display:inline-flex;align-items:center;gap:5px">Read article <svg class="ra-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
       </a>
-      <a href="/blog/adhd-vs-normal-child-behavior" style="display:flex;flex-direction:column;background:#fff;border:1px solid #cffafe;border-radius:16px;padding:1.5rem;text-decoration:none;box-shadow:0 4px 16px rgba(22,97,120,0.06);transition:transform .25s ease,box-shadow .25s ease" onmouseover="this.style.transform='translateY(-5px)';this.style.boxShadow='0 12px 30px rgba(22,97,120,0.14)'" onmouseout="this.style.transform='';this.style.boxShadow='0 4px 16px rgba(22,97,120,0.06)'">
+      <a href="/blog/adhd-vs-normal-child-behavior" class="ra-card" style="display:flex;flex-direction:column;background:#fff;border:1px solid #cffafe;border-radius:16px;padding:1.5rem;text-decoration:none;box-shadow:0 4px 16px rgba(22,97,120,0.06)">
         <span style="display:inline-flex;align-items:center;gap:6px;font-size:0.72rem;font-weight:800;letter-spacing:0.03em;color:#F97316;text-transform:uppercase;margin-bottom:0.6rem">
           <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
           Article
         </span>
         <h3 style="font-family:'Fredoka One',cursive;font-weight:400;font-size:1.08rem;color:#166178;line-height:1.35;margin:0 0 0.5rem">ADHD vs Normal Child Behavior</h3>
         <p style="color:#64748b;font-size:0.88rem;line-height:1.6;margin:0 0 1rem">What is typical high energy and what may point to ADHD in your child.</p>
-        <span style="margin-top:auto;color:#F97316;font-weight:700;font-size:0.85rem;display:inline-flex;align-items:center;gap:5px">Read article <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+        <span style="margin-top:auto;color:#F97316;font-weight:700;font-size:0.85rem;display:inline-flex;align-items:center;gap:5px">Read article <svg class="ra-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
       </a>
     </div>
   </div>
