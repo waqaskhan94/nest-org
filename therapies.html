@@ -220,13 +220,15 @@ nav.scrolled{box-shadow:0 4px 24px rgba(0,0,0,0.08)}
 .therapy-content p{color:#6b7280;font-size:0.95rem;line-height:1.78;margin-bottom:1.5rem}
 .therapy-features{display:flex;flex-wrap:wrap;gap:0.65rem;margin-bottom:1.5rem}
 .tf-badge{display:inline-flex;align-items:center;gap:5px;padding:0.38rem 0.9rem;border-radius:20px;font-size:0.8rem;font-weight:700;background:#F0FDFA;color:#0f766e;border:1.5px solid #99f6e4}
+.therapy-btns{display:flex;flex-wrap:wrap;gap:0.75rem;margin-top:0.25rem}
 .btn-learn{
-  display:inline-flex;align-items:center;gap:6px;
+  display:inline-flex;align-items:center;justify-content:center;gap:6px;white-space:nowrap;
   background:linear-gradient(135deg,#166178,#0D9488);color:#fff;
   padding:0.7rem 1.6rem;border-radius:100px;font-weight:800;font-size:0.88rem;
   text-decoration:none;transition:all 0.2s;box-shadow:0 4px 12px rgba(22,97,120,0.25);
 }
 .btn-learn:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(22,97,120,0.35)}
+@media(max-width:520px){.therapy-btns{flex-direction:column;align-items:stretch}.btn-learn{width:100%}}
 
 /* ===== APPROACH SECTION ===== */
 .approach-sec{background:#FFF8F0;padding:5rem 2.5rem}
@@ -718,8 +720,10 @@ html.nest-modal-open,html.nest-modal-open body{overflow:hidden!important;touch-a
           <span class="tf-badge"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> BCBA Certified</span>
           <span class="tf-badge"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Data-Driven Progress</span>
         </div>
-        <a role="button" tabindex="0" style="cursor:pointer" onclick="openEnrollModal();return false;" class="btn-learn">Book Assessment &rarr;</a>
-        <a href="aba-therapy" class="btn-learn" style="margin-left:0.6rem">Learn more about ABA Therapy &rarr;</a>
+        <div class="therapy-btns">
+          <a role="button" tabindex="0" style="cursor:pointer" onclick="openEnrollModal();return false;" class="btn-learn">Book Assessment &rarr;</a>
+          <a href="aba-therapy" class="btn-learn">Learn more about ABA Therapy &rarr;</a>
+        </div>
       </div>
     </div>
 
@@ -745,8 +749,10 @@ html.nest-modal-open,html.nest-modal-open body{overflow:hidden!important;touch-a
           <span class="tf-badge"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Social Communication</span>
           <span class="tf-badge"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Early Intervention</span>
         </div>
-        <a role="button" tabindex="0" style="cursor:pointer" onclick="openEnrollModal();return false;" class="btn-learn">Book Assessment &rarr;</a>
-        <a href="speech-therapy" class="btn-learn" style="margin-left:0.6rem">Learn more about Speech Therapy &rarr;</a>
+        <div class="therapy-btns">
+          <a role="button" tabindex="0" style="cursor:pointer" onclick="openEnrollModal();return false;" class="btn-learn">Book Assessment &rarr;</a>
+          <a href="speech-therapy" class="btn-learn">Learn more about Speech Therapy &rarr;</a>
+        </div>
       </div>
     </div>
 
@@ -772,8 +778,10 @@ html.nest-modal-open,html.nest-modal-open body{overflow:hidden!important;touch-a
           <span class="tf-badge"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Self-Care &amp; ADL</span>
           <span class="tf-badge"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> School Readiness</span>
         </div>
-        <a role="button" tabindex="0" style="cursor:pointer" onclick="openEnrollModal();return false;" class="btn-learn">Book Assessment &rarr;</a>
-        <a href="occupational-therapy" class="btn-learn" style="margin-left:0.6rem">Learn more about Occupational Therapy &rarr;</a>
+        <div class="therapy-btns">
+          <a role="button" tabindex="0" style="cursor:pointer" onclick="openEnrollModal();return false;" class="btn-learn">Book Assessment &rarr;</a>
+          <a href="occupational-therapy" class="btn-learn">Learn more about Occupational Therapy &rarr;</a>
+        </div>
       </div>
     </div>
 
