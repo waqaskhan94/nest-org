@@ -14,6 +14,8 @@
 </script>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<!-- TEMPLATE ONLY: keep this noindex on the raw template. When you copy this file to a real article, DELETE the next line. -->
+<meta name="robots" content="noindex, nofollow"/>
 <title>ARTICLE HEADLINE | N.E.S.T Blog, Islamabad</title>
 <meta name="description" content="150-160 character summary of the article for Google search results."/>
 <link rel="icon" type="image/png" sizes="288x288" href="/favicon.png"/>
@@ -21,13 +23,13 @@
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"/>
 <link rel="manifest" href="/site.webmanifest"/>
 <meta name="theme-color" content="#166178"/>
-<link rel="canonical" href="https://nestislamabad.com/blog-ARTICLE-SLUG"/>
+<link rel="canonical" href="https://nestislamabad.com/blog/ARTICLE-SLUG"/>
 <!-- Open Graph / social sharing -->
 <meta property="og:type" content="website"/>
 <meta property="og:site_name" content="N.E.S.T"/>
 <meta property="og:title" content="ARTICLE HEADLINE | N.E.S.T Blog"/>
 <meta property="og:description" content="See NEST's classrooms, therapy sessions & activities at our special education school & therapy center in DHA Phase 2, Islamabad, supporting children with Autism, ADHD & more."/>
-<meta property="og:url" content="https://nestislamabad.com/blog-ARTICLE-SLUG"/>
+<meta property="og:url" content="https://nestislamabad.com/blog/ARTICLE-SLUG"/>
 <meta property="og:image" content="https://nestislamabad.com/images/og-image.jpg"/>
 <meta property="og:image:width" content="1200"/>
 <meta property="og:image:height" content="630"/>
@@ -832,12 +834,15 @@ nav.scrolled{box-shadow:0 4px 28px rgba(0,0,0,0.11)!important}
 <!-- ============================================================
      ARTICLE TEMPLATE: duplicate this file for each new post.
      TO CREATE A NEW ARTICLE:
-     1. Copy this file to  blog-your-slug.html
-     2. Edit the <title>, meta description, canonical & og:url in <head>
-        (replace 'ARTICLE-SLUG' with your slug, and the placeholder text).
-     3. Fill in the H1, date, author, hero image, and body below.
-     4. Add a matching card to blog.html's #blogGrid and remove #blogEmpty
-        once you have at least one article.
+     1. Copy this file to  blog/your-slug.html  (articles live in the blog/ folder)
+     2. IMPORTANT: DELETE the <meta name="robots" content="noindex, nofollow"/> line
+        near the top of <head> — that noindex must NOT stay on a real, published article.
+     3. Edit the <title>, meta description, canonical & og:url in <head>
+        (replace 'ARTICLE-SLUG' with your slug; canonical/og:url should be
+        https://nestislamabad.com/blog/your-slug). Use ROOT-RELATIVE paths (/about, /images/...).
+     4. Fill in the H1, date, author, hero image, and body below.
+     5. Add a matching card to blog.html's #blogGrid (href="/blog/your-slug").
+     6. Add the new URL to sitemap.xml.
      ============================================================ -->
 <main>
 <article style="max-width:760px;margin:0 auto;padding:3rem 6% 4rem">
