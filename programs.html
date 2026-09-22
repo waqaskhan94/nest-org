@@ -62,6 +62,20 @@
   ]
 }
 </script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type": "Question", "name": "What programs does N.E.S.T offer?", "acceptedAnswer": {"@type": "Answer", "text": "N.E.S.T offers Special Education plus ABA therapy, Speech & Language therapy, Occupational therapy, Physical therapy and a Family Support program. Many children benefit from a combination, and our team helps you choose the right mix after an assessment."}},
+    {"@type": "Question", "name": "What ages do you accept?", "acceptedAnswer": {"@type": "Answer", "text": "We welcome children and young people from ages 2 to 20, including early intervention for toddlers and continued support for older students with autism, ADHD, Down syndrome and other developmental needs."}},
+    {"@type": "Question", "name": "How does the assessment process work?", "acceptedAnswer": {"@type": "Answer", "text": "An assessment is offered as part of enrollment. Our specialists observe how your child communicates, plays and learns, then recommend an individualized plan with the most suitable programs and therapies. Assessment fees are shared during enrollment."}},
+    {"@type": "Question", "name": "How often are sessions held?", "acceptedAnswer": {"@type": "Answer", "text": "Session frequency depends on each child's plan. Special education runs as daily school sessions, while therapies are typically scheduled as 45-minute sessions one or more times per week. Your child's schedule is set after assessment."}},
+    {"@type": "Question", "name": "What are your fees?", "acceptedAnswer": {"@type": "Answer", "text": "Fees vary by the program, number of sessions and level of support your child needs. Because every plan is individualized, we share exact fees during the assessment and enrollment conversation so you get accurate, transparent pricing."}},
+    {"@type": "Question", "name": "Where is N.E.S.T located?", "acceptedAnswer": {"@type": "Answer", "text": "N.E.S.T is located in DHA Phase 2, Sector G, Islamabad, Pakistan, serving families across Islamabad and Rawalpindi. You can book a visit or assessment by enrolling online or messaging us on WhatsApp."}}
+  ]
+}
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&family=Fredoka+One&display=swap" media="print" onload="this.media='all'"/><noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&family=Fredoka+One&display=swap"/></noscript>
@@ -1015,6 +1029,25 @@ html.nest-modal-open,html.nest-modal-open body{overflow:hidden!important;touch-a
   </div>
 </section>
 
+<!-- ===== FAQ SECTION ===== -->
+<section class="faq-sec">
+  <div style="max-width:1080px;margin:0 auto">
+    <div style="text-align:center">
+      <span class="sec-tag" style="background:#F0FDFA;color:#0f766e">FAQs</span>
+      <h2 class="sec-title">Programs &amp; Enrollment FAQs</h2>
+      <p class="sec-sub">Answers to common questions from Islamabad families about our programs, assessment and enrollment at N.E.S.T.</p>
+    </div>
+    <div class="faq-grid">
+      <div class="faq-item" onclick="toggleFaq(this)"><div class="faq-q">What programs does N.E.S.T offer?<span class="faq-arrow">&#9662;</span></div><div class="faq-a">N.E.S.T offers Special Education plus ABA therapy, Speech &amp; Language therapy, Occupational therapy, Physical therapy and a Family Support program. Many children benefit from a combination, and our team helps you choose the right mix after an assessment.</div></div>
+      <div class="faq-item" onclick="toggleFaq(this)"><div class="faq-q">What ages do you accept?<span class="faq-arrow">&#9662;</span></div><div class="faq-a">We welcome children and young people from ages 2 to 20, including early intervention for toddlers and continued support for older students with autism, ADHD, Down syndrome and other developmental needs.</div></div>
+      <div class="faq-item" onclick="toggleFaq(this)"><div class="faq-q">How does the assessment process work?<span class="faq-arrow">&#9662;</span></div><div class="faq-a">An assessment is offered as part of enrollment. Our specialists observe how your child communicates, plays and learns, then recommend an individualized plan with the most suitable programs and therapies. Assessment fees are shared during enrollment.</div></div>
+      <div class="faq-item" onclick="toggleFaq(this)"><div class="faq-q">How often are sessions held?<span class="faq-arrow">&#9662;</span></div><div class="faq-a">Session frequency depends on each child's plan. Special education runs as daily school sessions, while therapies are typically scheduled as 45-minute sessions one or more times per week. Your child's schedule is set after assessment.</div></div>
+      <div class="faq-item" onclick="toggleFaq(this)"><div class="faq-q">What are your fees?<span class="faq-arrow">&#9662;</span></div><div class="faq-a">Fees vary by the program, number of sessions and level of support your child needs. Because every plan is individualized, we share exact fees during the assessment and enrollment conversation so you get accurate, transparent pricing.</div></div>
+      <div class="faq-item" onclick="toggleFaq(this)"><div class="faq-q">Where is N.E.S.T located?<span class="faq-arrow">&#9662;</span></div><div class="faq-a">N.E.S.T is located in DHA Phase 2, Sector G, Islamabad, Pakistan, serving families across Islamabad and Rawalpindi. You can book a visit or assessment by enrolling online or messaging us on WhatsApp.</div></div>
+    </div>
+  </div>
+</section>
+
 <section style="background:#166178;padding:3rem 2rem;text-align:center">
 <div style="max-width:600px;margin:0 auto">
 <h2 style="font-family:'Fredoka One',cursive;font-weight:400;font-size:1.8rem;color:#fff;margin-bottom:0.75rem">Ready to Get Started?</h2>
@@ -1425,6 +1458,11 @@ function resetEnrollForm(){
 
   /* Go back to step 1 */
   goToStep(1);
+}
+function toggleFaq(item){
+  var isOpen = item.classList.contains('open');
+  document.querySelectorAll('.faq-item').forEach(function(el){ el.classList.remove('open'); });
+  if(!isOpen) item.classList.add('open');
 }
 function openEnrollModal(){
   document.getElementById('enrollModal').classList.add('open');
