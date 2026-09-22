@@ -836,7 +836,7 @@ nav.scrolled{box-shadow:0 4px 28px rgba(0,0,0,0.11)!important}
      TO CREATE A NEW ARTICLE:
      1. Copy this file to  blog/your-slug.html  (articles live in the blog/ folder)
      2. IMPORTANT: DELETE the <meta name="robots" content="noindex, nofollow"/> line
-        near the top of <head> — that noindex must NOT stay on a real, published article.
+        near the top of <head>, that noindex must NOT stay on a real, published article.
      3. Edit the <title>, meta description, canonical & og:url in <head>
         (replace 'ARTICLE-SLUG' with your slug; canonical/og:url should be
         https://nestislamabad.com/blog/your-slug). Use ROOT-RELATIVE paths (/about, /images/...).
@@ -1294,7 +1294,7 @@ function closeEnrollModal(){
 }
 
 document.addEventListener('DOMContentLoaded',function(){
-  /* background click does NOT close the form — only the X button, so users do not lose entered data */
+  /* background click does NOT close the form, only the X button, so users do not lose entered data */
 
   /* ── Alpha fields: only letters/spaces/hyphens, max enforced by HTML ── */
   ['childFirst','childLast','parentName'].forEach(function(id){

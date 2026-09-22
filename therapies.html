@@ -1467,7 +1467,7 @@ function closeEnrollModal(){
   resetEnrollForm();
 }
 document.addEventListener('DOMContentLoaded',function(){
-  /* background click does NOT close the form — only the X button, so users do not lose entered data */
+  /* background click does NOT close the form, only the X button, so users do not lose entered data */
   ['childFirst','childLast','parentName'].forEach(function(id){
     var el=document.getElementById(id);
     if(!el) return;
