@@ -1723,7 +1723,9 @@ function submitForm(){
     prefDate:     document.getElementById('prefDate').value,
     prefTime:     document.getElementById('prefTime').value,
     prevTherapy:  prevTherapy,
-    notes:        document.getElementById('notes').value
+    notes:        document.getElementById('notes').value,
+    page:         (document.title||location.pathname||'').toString(),
+    url:          location.href
   };
 
   // Send to Google Sheets

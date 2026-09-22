@@ -1505,7 +1505,9 @@ function submitForm(){
     phone:document.getElementById('parentPhone').value,email:document.getElementById('parentEmail').value,
     city:document.getElementById('parentArea').value,hearAbout:hearAbout,
     prefDate:document.getElementById('prefDate').value,prefTime:document.getElementById('prefTime').value,
-    prevTherapy:prevTherapy,notes:document.getElementById('notes').value
+    prevTherapy:prevTherapy,notes:document.getElementById('notes').value,
+    page:         (document.title||location.pathname||'').toString(),
+    url:          location.href
   };
     function _nestShowSuccess(){
     document.querySelectorAll('#enrollModal .step-panel').forEach(function(p){ p.classList.remove('active'); });
