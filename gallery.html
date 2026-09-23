@@ -980,7 +980,7 @@ function mediaTag(name,alt,extra,opts){
     var vsrc=/^images\/|^videos\/|\//.test(name)?name:('videos/'+name);
     var vattrs=opts.cover
       ? 'muted loop playsinline preload="metadata"'      /* card cover: silent auto-behavior */
-      : 'controls playsinline preload="metadata"';        /* lightbox: full player */
+      : 'controls autoplay muted playsinline preload="auto"';  /* lightbox: autoplay muted so it starts on open */
     return '<video '+vattrs+' '+(extra||'')+'><source src="'+vsrc+'" type="video/mp4"/></video>';
   }
   var hasExt=/\.(jpe?g|png|avif|webp)$/i.test(name);
@@ -1078,6 +1078,14 @@ function lbShow(){
   var media=mediaTag(c.images[lbIndex],c.title,'class="lb-media" style="max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain;border-radius:14px;box-shadow:0 10px 40px rgba(0,0,0,0.5);display:block;transition:transform .2s ease;transform-origin:center center;cursor:'+(vid?'default':'zoom-in')+'"',{cover:false});
   stage.innerHTML=media;
   var mEl=stage.querySelector('.lb-media');
+  if(mEl && vid){
+    // start playing as soon as it can, so the user does not have to press play
+    mEl.muted=true;
+    var _tryPlay=function(){ var p=mEl.play(); if(p&&p.catch) p.catch(function(){}); };
+    _tryPlay();
+    mEl.addEventListener('loadeddata',_tryPlay,{once:true});
+    mEl.addEventListener('canplay',_tryPlay,{once:true});
+  }
   if(mEl && !vid){
     mEl.addEventListener('click',function(ev){ev.stopPropagation();lbSetZoom(lbZoom>1?1:2);});
     // drag to pan when zoomed
