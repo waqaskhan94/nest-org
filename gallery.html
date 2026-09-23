@@ -980,7 +980,7 @@ function mediaTag(name,alt,extra,opts){
     var vsrc=/^images\/|^videos\/|\//.test(name)?name:('videos/'+name);
     var vattrs=opts.cover
       ? 'muted loop playsinline preload="metadata"'      /* card cover: silent auto-behavior */
-      : 'controls autoplay muted playsinline preload="auto"';  /* lightbox: autoplay muted so it starts on open */
+      : 'controls autoplay playsinline preload="auto"';  /* lightbox: autoplay with sound + full controls (play/pause, mute, seek) */
     return '<video '+vattrs+' '+(extra||'')+'><source src="'+vsrc+'" type="video/mp4"/></video>';
   }
   var hasExt=/\.(jpe?g|png|avif|webp)$/i.test(name);
@@ -1079,12 +1079,18 @@ function lbShow(){
   stage.innerHTML=media;
   var mEl=stage.querySelector('.lb-media');
   if(mEl && vid){
-    // start playing as soon as it can, so the user does not have to press play
-    mEl.muted=true;
-    var _tryPlay=function(){ var p=mEl.play(); if(p&&p.catch) p.catch(function(){}); };
-    _tryPlay();
-    mEl.addEventListener('loadeddata',_tryPlay,{once:true});
-    mEl.addEventListener('canplay',_tryPlay,{once:true});
+    // Autoplay WITH sound (opening the lightbox was a user click, so browsers allow it).
+    // If a browser still blocks unmuted autoplay, fall back to muted so it at least plays.
+    mEl.muted=false;
+    mEl.volume=1;
+    var _playWithSound=function(){
+      mEl.muted=false;
+      var p=mEl.play();
+      if(p&&p.catch){ p.catch(function(){ mEl.muted=true; var p2=mEl.play(); if(p2&&p2.catch) p2.catch(function(){}); }); }
+    };
+    _playWithSound();
+    mEl.addEventListener('loadeddata',_playWithSound,{once:true});
+    mEl.addEventListener('canplay',_playWithSound,{once:true});
   }
   if(mEl && !vid){
     mEl.addEventListener('click',function(ev){ev.stopPropagation();lbSetZoom(lbZoom>1?1:2);});
