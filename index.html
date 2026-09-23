@@ -1575,7 +1575,7 @@ function toggleFaq(el){
           <div class="form-group"><label>Relationship to Child <span class="req">*</span></label><select id="parentRel"><option value="" disabled selected hidden>Select</option><option>Mother</option><option>Father</option><option>Guardian</option><option>Other</option></select><div class="err-msg">Please select relationship</div></div>
         </div>
         <div class="form-row">
-          <div class="form-group"><label>Phone Number <span class="req">*</span></label><input type="tel" id="parentPhone" placeholder="e.g. 03001234567" maxlength="11" minlength="11"/><div class="err-msg">Enter a valid 11-digit Pakistani number, e.g. 03001234567</div></div>
+          <div class="form-group"><label>Phone Number <span class="req">*</span></label><input type="tel" id="parentPhone" placeholder="e.g. 0300-1234567" maxlength="15" minlength="10"/><div class="err-msg">Enter valid Pakistani number e.g. 0300-1234567</div></div>
           <div class="form-group"><label>Email Address</label><input type="email" id="parentEmail" placeholder="e.g. sara@email.com"/></div>
         </div>
         <div class="form-group"><label>City / Area in Pakistan <span class="req">*</span></label><select id="parentArea">
@@ -1936,9 +1936,9 @@ document.addEventListener('DOMContentLoaded',function(){
   /* ── Phone field: digits only, exactly 11 (Pakistani 03XXXXXXXXX) ── */
   var phoneEl=document.getElementById('parentPhone');
   if(phoneEl){
-    phoneEl.setAttribute('inputmode','numeric');
+    phoneEl.setAttribute('inputmode','tel');
     phoneEl.addEventListener('input',function(){
-      this.value=this.value.replace(/\D/g,'').slice(0,11); /* digits only, cap at 11 */
+      this.value=this.value.replace(/[^0-9\-+\s]/g,'');
       clearError(this);
     });
     phoneEl.addEventListener('blur',function(){ livePhone(this); });
@@ -2004,9 +2004,10 @@ function liveAlpha(el){
 }
 function livePhone(el){
   var v=el.value.trim();
-  /* Pakistan mobile: exactly 11 digits starting 03 (03XXXXXXXXX) */
-  if(!v){ clearError(el); return true; }           /* empty on blur: don't flag (only at submit) */
-  if(!/^03\d{9}$/.test(v)){ setError(el); return false; }
+  /* Pakistan numbers: 10-13 digits (with optional +92 prefix) */
+  if(!v){ clearError(el); return true; }
+  if(v.length<10){ setError(el); return false; }
+  if(!/^(\+92|0)[0-9\-\s]{9,13}$/.test(v)){ setError(el); return false; }
   clearError(el); return true;
 }
 
