@@ -21,6 +21,12 @@
 *.webp
   Cache-Control: public, max-age=2592000
 
+# Gallery videos — cache 30 days
+/videos/*
+  Cache-Control: public, max-age=2592000
+*.mp4
+  Cache-Control: public, max-age=2592000
+
 # Site manifest
 /site.webmanifest
   Cache-Control: public, max-age=604800
