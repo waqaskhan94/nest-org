@@ -903,48 +903,7 @@ nav.scrolled{box-shadow:0 4px 28px rgba(0,0,0,0.11)!important}
           <div class="form-group"><label>Phone Number <span class="req">*</span></label><input type="tel" id="parentPhone" placeholder="e.g. 0300-1234567" maxlength="15" minlength="10"/><div class="err-msg">Enter valid Pakistani number e.g. 0300-1234567</div></div>
           <div class="form-group"><label>Email Address</label><input type="email" id="parentEmail" placeholder="e.g. sara@email.com"/></div>
         </div>
-        <div class="form-group"><label>City / Area in Pakistan <span class="req">*</span></label><select id="parentArea">
-<option value="" disabled selected hidden>Select your city / area</option>
-<optgroup label="― Punjab ―">
-<option>Lahore</option><option>Faisalabad</option><option>Rawalpindi</option><option>Gujranwala</option>
-<option>Multan</option><option>Sialkot</option><option>Bahawalpur</option><option>Sargodha</option>
-<option>Sheikhupura</option><option>Jhang</option><option>Gujrat</option><option>Rahim Yar Khan</option>
-<option>Kasur</option><option>Dera Ghazi Khan</option><option>Sahiwal</option><option>Okara</option>
-<option>Wah Cantt</option><option>Attock</option><option>Chakwal</option>
-</optgroup>
-<optgroup label="― Sindh ―">
-<option>Karachi, DHA</option><option>Karachi, Clifton</option><option>Karachi, Gulshan-e-Iqbal</option>
-<option>Karachi, North Nazimabad</option><option>Karachi, PECHS</option><option>Karachi, Gulistan-e-Johar</option>
-<option>Karachi, Nazimabad</option><option>Karachi, Malir</option><option>Karachi, Korangi</option>
-<option>Karachi, Orangi Town</option><option>Karachi, Saddar</option><option>Karachi, Landhi</option>
-<option>Karachi, Other Area</option>
-<option>Hyderabad</option><option>Sukkur</option><option>Larkana</option>
-<option>Mirpur Khas</option><option>Nawabshah</option><option>Jacobabad</option><option>Shikarpur</option>
-</optgroup>
-<optgroup label="― Islamabad (Federal) ―">
-<option>Islamabad, F-6</option><option>Islamabad, F-7</option><option>Islamabad, G-9</option>
-<option>Islamabad, G-10</option><option>Islamabad, G-11</option><option>Islamabad, I-8</option>
-<option>Islamabad, Bahria Town</option><option>Islamabad, DHA</option><option>Islamabad, Other</option>
-</optgroup>
-<optgroup label="― Khyber Pakhtunkhwa (KPK) ―">
-<option>Peshawar</option><option>Abbottabad</option><option>Mardan</option><option>Swat</option>
-<option>Kohat</option><option>Mansehra</option><option>Dera Ismail Khan</option><option>Nowshera</option>
-<option>Haripur</option><option>Charsadda</option><option>Bannu</option>
-</optgroup>
-<optgroup label="― Balochistan ―">
-<option>Quetta</option><option>Turbat</option><option>Khuzdar</option>
-<option>Hub</option><option>Gwadar</option><option>Chaman</option><option>Zhob</option>
-</optgroup>
-<optgroup label="― Azad Kashmir ―">
-<option>Muzaffarabad</option><option>Mirpur (AJK)</option><option>Rawalakot</option>
-</optgroup>
-<optgroup label="― Gilgit-Baltistan ―">
-<option>Gilgit</option><option>Skardu</option><option>Hunza</option>
-</optgroup>
-<optgroup label="― Other ―">
-<option>Other City / Town</option>
-</optgroup>
-</select><div class="err-msg">Please select your city</div></div>
+        <div class="form-group"><label>City / Area in Pakistan <span class="req">*</span></label><select id="parentArea" onchange="toggleCityOther()"><option value="" disabled selected hidden>Select your city / area</option><option>Islamabad</option><option>Rawalpindi</option><option value="Other">Other (type below)</option></select><div class="err-msg">Please select your city</div><div id="parentAreaOtherWrap" style="display:none;margin-top:0.5rem"><input type="text" id="parentAreaOther" placeholder="Enter your city / area" oninput="clearError(this)"/><div class="err-msg">Please enter your city</div></div></div>
         <div class="form-group"><label>How did you hear about NEST?</label>
           <div class="radio-group" id="hearGroup">
             <label class="radio-item" onclick="selectRadio(this,'hearGroup')"><input type="radio" name="hear" value="Instagram"/> Instagram</label>
@@ -1331,6 +1290,24 @@ function goToStep(n){
   var mdl=document.querySelector('#enrollModal .modal'); if(mdl) mdl.scrollTop=0;
 }
 
+/* ── City "Other" toggle + value helper ── */
+function toggleCityOther(){
+  var sel=document.getElementById('parentArea');
+  var wrap=document.getElementById('parentAreaOtherWrap');
+  var other=document.getElementById('parentAreaOther');
+  if(!sel||!wrap) return;
+  if(sel.value==='Other'){ wrap.style.display='block'; }
+  else { wrap.style.display='none'; if(other) other.classList.remove('error'); }
+}
+function getCityValue(){
+  var sel=document.getElementById('parentArea');
+  if(sel && sel.value==='Other'){
+    var other=document.getElementById('parentAreaOther');
+    return (other && other.value.trim()) ? other.value.trim() : 'Other';
+  }
+  return sel ? sel.value : '';
+}
+
 /* ── full validation on Next click ── */
 function validateStep(n){
   var ok=true;
@@ -1391,6 +1368,7 @@ function validateStep(n){
     reqField('parentRel');
     phoneField('parentPhone');
     reqField('parentArea');
+    if(document.getElementById('parentArea').value==='Other'){ reqField('parentAreaOther'); }
     var emailEl=document.getElementById('parentEmail');
     if(emailEl && emailEl.value.trim().length>0){
       if(!/^[^@\s]+@[^@\s]+\.[^@\s]{2,}$/.test(emailEl.value)){ setError(emailEl); ok=false; }
@@ -1425,7 +1403,7 @@ function buildSummary(){
     ['Programs',programs],
     ['Parent Name',document.getElementById('parentName').value],
     ['Phone',document.getElementById('parentPhone').value],
-    ['City / Area',document.getElementById('parentArea').value],
+    ['City / Area',getCityValue()],
     ['Date',document.getElementById('prefDate').value||''],
     ['Time',document.getElementById('prefTime').value||'']
   ];
@@ -1474,7 +1452,7 @@ function submitForm(){
     relationship: document.getElementById('parentRel').value,
     phone:        document.getElementById('parentPhone').value,
     email:        document.getElementById('parentEmail').value,
-    city:         document.getElementById('parentArea').value,
+    city:         getCityValue(),
     hearAbout:    hearAbout,
     prefDate:     document.getElementById('prefDate').value,
     prefTime:     document.getElementById('prefTime').value,
