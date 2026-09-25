@@ -282,9 +282,10 @@ nav.scrolled{box-shadow:0 4px 24px rgba(0,0,0,0.08)}
   margin-bottom:1.25rem;
 }
 .assessment-cta h2{
-  font-family:'Fredoka One',cursive;font-size:2.6rem;font-weight:400;
-  color:#fff;margin-bottom:1rem;letter-spacing:0.01em;line-height:1.18;
+  font-family:'Fredoka One',cursive;font-size:clamp(1.5rem,3.6vw,2.6rem);font-weight:400;
+  color:#fff;margin-bottom:1rem;letter-spacing:0.01em;line-height:1.18;white-space:nowrap;
 }
+@media(max-width:640px){.assessment-cta h2{font-size:1.7rem;white-space:normal}}
 .assessment-cta p{color:rgba(255,255,255,0.78);font-size:1rem;line-height:1.75;margin-bottom:2rem;max-width:560px;margin-left:auto;margin-right:auto}
 .btn-assess-wrap{display:inline-block;margin-bottom:1.5rem}
 .btn-assess{
