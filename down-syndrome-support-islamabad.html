@@ -130,16 +130,17 @@ nav.scrolled{box-shadow:0 4px 24px rgba(0,0,0,0.08)}
   background:#071e2a;
   overflow:hidden;
 }
-/* 3-photo mosaic background (matches Gallery hero style) */
-.se-grid-bg{position:absolute;inset:0;z-index:0;display:grid;grid-template-columns:repeat(3,1fr);gap:3px;background:#071e2a}
+/* 4-photo mosaic background (matches Gallery hero style) */
+.se-grid-bg{position:absolute;inset:0;z-index:0;display:grid;grid-template-columns:repeat(4,1fr);gap:3px;background:#071e2a}
 .se-cell{overflow:hidden;position:relative}
 .se-cell::after{content:'';position:absolute;inset:0;background-size:cover;background-position:center;animation:seKB var(--dur,26s) ease-in-out infinite alternate;animation-delay:var(--delay,0s);will-change:transform;filter:brightness(0.85) saturate(0.9)}
 @keyframes seKB{0%{transform:scale(1) translate(0,0)}100%{transform:scale(1.08) translate(-1%,-1%)}}
+.se-c0::after{background-image:image-set(url('images/autism-art-session.avif') type('image/avif'),url('images/autism-art-session.jpeg') type('image/jpeg'));background-position:center 30%;--dur:26s;--delay:-9s}
 .se-c1::after{background-image:image-set(url('images/speech-therapy.avif') type('image/avif'),url('images/speech-therapy.jpeg') type('image/jpeg'));background-position:center 35%;--dur:24s;--delay:0s}
 .se-c2::after{background-image:image-set(url('images/occupational-therapy.avif') type('image/avif'),url('images/occupational-therapy.jpeg') type('image/jpeg'));background-position:center 40%;--dur:28s;--delay:-6s}
-.se-c3::after{background-image:image-set(url('images/family-support.avif') type('image/avif'),url('images/family-support.jpeg') type('image/jpeg'));background-position:center 30%;--dur:22s;--delay:-3s}
+.se-c3::after{background-image:image-set(url('images/aba-shapes.avif') type('image/avif'),url('images/aba-shapes.jpeg') type('image/jpeg'));background-position:center 30%;--dur:22s;--delay:-3s}
 @media(prefers-reduced-motion:reduce){.se-cell::after{animation:none}}
-@media(max-width:600px){.se-grid-bg{grid-template-columns:1fr 1fr}.se-c3{display:none}}
+@media(max-width:600px){.se-grid-bg{grid-template-columns:1fr 1fr}.se-c0{display:none}.se-c3{display:none}}
 .page-hero::before{
   content:'';position:absolute;inset:0;
   background:
@@ -729,6 +730,7 @@ html.nest-modal-open,html.nest-modal-open body{overflow:hidden!important;touch-a
 <main>
 <section class="page-hero">
   <div class="se-grid-bg" aria-hidden="true">
+    <div class="se-cell se-c0"></div>
     <div class="se-cell se-c1"></div>
     <div class="se-cell se-c2"></div>
     <div class="se-cell se-c3"></div>
