@@ -197,6 +197,8 @@ nav.scrolled{box-shadow:0 4px 24px rgba(0,0,0,0.08)}
 .therapy-img-wrap picture{display:block;width:100%;height:100%}
 .therapy-img-wrap img{width:100%;height:100%;object-fit:cover;object-position:center 35%;display:block;transition:transform 0.4s ease}
 .therapy-img-wrap:hover img{transform:scale(1.04)}
+.therapy-img-wrap video{transition:transform 0.4s ease}
+.therapy-img-wrap:hover video{transform:scale(1.04)}
 .therapy-img-wrap.pa-img img{object-position:center 62%}
 .therapy-img-badge{
   position:absolute;bottom:1.2rem;left:1.2rem;
@@ -782,8 +784,8 @@ html.nest-modal-open,html.nest-modal-open body{overflow:hidden!important;touch-a
     </div>
 
     <div class="therapy-row reverse">
-      <div class="therapy-img-wrap">
-        <picture><source srcset="images/bg-read.avif" type="image/avif"/><img src="images/bg-read.jpeg" alt="Child reading a picture book during speech and language therapy at NEST, Islamabad" loading="lazy"/></picture>
+      <div class="therapy-img-wrap" style="cursor:pointer" onclick="openSpeechVideoLightbox()">
+        <video muted loop playsinline autoplay preload="metadata" style="width:100%;height:100%;object-fit:cover;display:block" aria-label="Child reading a picture book during speech and language therapy at NEST, Islamabad"><source src="videos/speech-therapy-1.mp4" type="video/mp4"/></video>
         <span class="therapy-img-badge">
           <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
           Language
@@ -899,6 +901,39 @@ html.nest-modal-open,html.nest-modal-open body{overflow:hidden!important;touch-a
     </div>
   </div>
 </section>
+
+<div id="speechVideoLightbox" style="display:none;position:fixed;inset:0;z-index:9999;background:rgba(8,24,34,0.94);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)" onclick="if(event.target===this)closeSpeechVideoLightbox()">
+  <button onclick="closeSpeechVideoLightbox()" aria-label="Close" style="position:absolute;top:18px;right:22px;z-index:3;width:44px;height:44px;border-radius:50%;border:none;background:rgba(255,255,255,0.14);color:#fff;font-size:1.5rem;cursor:pointer;line-height:1">&times;</button>
+  <div style="position:absolute;inset:76px 8% 40px;display:flex;align-items:center;justify-content:center">
+    <video id="speechVideoLightboxVideo" controls playsinline style="max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain;border-radius:14px;box-shadow:0 10px 40px rgba(0,0,0,0.5);display:block"><source src="videos/speech-therapy-1.mp4" type="video/mp4"/></video>
+  </div>
+</div>
+<script>
+function openSpeechVideoLightbox(){
+  var modal=document.getElementById('speechVideoLightbox');
+  var vid=document.getElementById('speechVideoLightboxVideo');
+  modal.style.display='block';
+  document.body.style.overflow='hidden';document.documentElement.style.overflow='hidden';document.documentElement.classList.add('nest-modal-open');
+  vid.muted=false;vid.volume=1;vid.currentTime=0;
+  var playWithSound=function(){
+    vid.muted=false;
+    var p=vid.play();
+    if(p&&p.catch){ p.catch(function(){ vid.muted=true; var p2=vid.play(); if(p2&&p2.catch) p2.catch(function(){}); }); }
+  };
+  playWithSound();
+}
+function closeSpeechVideoLightbox(){
+  var modal=document.getElementById('speechVideoLightbox');
+  var vid=document.getElementById('speechVideoLightboxVideo');
+  try{vid.pause();}catch(e){}
+  modal.style.display='none';
+  document.body.style.overflow='';document.documentElement.style.overflow='';document.documentElement.classList.remove('nest-modal-open');
+}
+document.addEventListener('keydown',function(e){
+  if(document.getElementById('speechVideoLightbox').style.display!=='block') return;
+  if(e.key==='Escape')closeSpeechVideoLightbox();
+});
+</script>
 
 <!-- ===== FOOTER ===== -->
 </main>
