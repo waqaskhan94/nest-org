@@ -935,7 +935,9 @@ html{scroll-behavior:smooth}
 @keyframes guideTickerBg{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
 .guide-ticker-track{flex:1 1 auto;min-width:0;overflow:hidden;white-space:nowrap;position:relative;height:100%;display:flex;align-items:center}
 .guide-ticker-track-inner{display:flex;align-items:center;width:max-content;animation:guideTickerScroll var(--ticker-duration,34s) linear infinite;will-change:transform}
-.guide-ticker-text{display:inline-flex;align-items:center;white-space:nowrap;color:#fff;font-weight:700;font-size:0.88rem;flex-shrink:0;padding-right:3.5rem;text-shadow:0 1px 3px rgba(0,0,0,0.25)}
+.guide-ticker-text{display:inline-flex;align-items:center;white-space:nowrap;color:#fff;font-weight:700;font-size:0.88rem;flex-shrink:0;text-shadow:0 1px 3px rgba(0,0,0,0.25)}
+.guide-ticker-item{display:inline-flex;align-items:center;gap:10px;flex-shrink:0;padding-right:3.5rem}
+.guide-ticker-bar:hover .guide-ticker-track-inner{animation-play-state:paused}
 @keyframes guideTickerScroll{0%{transform:translateX(var(--ticker-start, 100%))}100%{transform:translateX(calc(-1 * var(--ticker-w, 50%)))}}
 .guide-ticker-btn{animation:guideTickerBtnPulse 2.2s ease-in-out infinite}
 @keyframes guideTickerBtnPulse{0%,100%{transform:scale(1);box-shadow:0 0 0 0 rgba(251,191,36,0.55)}50%{transform:scale(1.06);box-shadow:0 0 0 7px rgba(251,191,36,0)}}
@@ -1008,8 +1010,7 @@ body.has-guide-ticker{padding-top:114px}
   </button>
 </nav>
 <div class="guide-ticker-bar" id="guideTickerBar"><div class="guide-ticker-shimmer"></div>
-  <div class="guide-ticker-track"><div class="guide-ticker-track-inner"><span class="guide-ticker-text">📄 Free Guide: Signs to Look For Before Age 3 — know what to watch for before your child turns 3</span><span class="guide-ticker-text">📄 Free Guide: Signs to Look For Before Age 3 — know what to watch for before your child turns 3</span></div></div>
-  <a role="button" tabindex="0" class="guide-ticker-btn" onclick="openGuideModal();return false;"><span class="guide-ticker-btn-shimmer"></span><span class="gt-full">Get the Free Guide</span><span class="gt-short">Free Guide</span></a>
+  <div class="guide-ticker-track"><div class="guide-ticker-track-inner"><span class="guide-ticker-pair"><span class="guide-ticker-item"><span class="guide-ticker-text">📄 Free Guide: Signs to Look For Before Age 3 — know what to watch for before your child turns 3</span><a role="button" tabindex="0" class="guide-ticker-btn" onclick="openGuideModal();return false;"><span class="guide-ticker-btn-shimmer"></span><span class="gt-full">Get the Free Guide</span><span class="gt-short">Free Guide</span></a></span><span class="guide-ticker-item"><span class="guide-ticker-text">📋 Free Checklist: Speech Delay or Autism? — know the signs that lean toward each</span><a role="button" tabindex="0" class="guide-ticker-btn" onclick="openChecklistModal();return false;"><span class="guide-ticker-btn-shimmer"></span><span class="gt-full">Get the Checklist</span><span class="gt-short">Checklist</span></a></span></span><span class="guide-ticker-pair"><span class="guide-ticker-item"><span class="guide-ticker-text">📄 Free Guide: Signs to Look For Before Age 3 — know what to watch for before your child turns 3</span><a role="button" tabindex="0" class="guide-ticker-btn" onclick="openGuideModal();return false;"><span class="guide-ticker-btn-shimmer"></span><span class="gt-full">Get the Free Guide</span><span class="gt-short">Free Guide</span></a></span><span class="guide-ticker-item"><span class="guide-ticker-text">📋 Free Checklist: Speech Delay or Autism? — know the signs that lean toward each</span><a role="button" tabindex="0" class="guide-ticker-btn" onclick="openChecklistModal();return false;"><span class="guide-ticker-btn-shimmer"></span><span class="gt-full">Get the Checklist</span><span class="gt-short">Checklist</span></a></span></span></div></div>
   <button type="button" class="guide-ticker-close" id="guideTickerClose" aria-label="Dismiss">&times;</button>
 </div>
 <script>(function(){
@@ -1019,14 +1020,14 @@ body.has-guide-ticker{padding-top:114px}
     var track=document.querySelector('.guide-ticker-track');
     var inner=document.querySelector('.guide-ticker-track-inner');
     if(!inner||!track) return;
-    var first=inner.querySelector('.guide-ticker-text');
+    var first=inner.querySelector('.guide-ticker-pair');
     if(!first) return;
     var w=first.getBoundingClientRect().width;
     var trackW=track.getBoundingClientRect().width;
     if(!w||!trackW) return;
     inner.style.setProperty('--ticker-w', w+'px');
     inner.style.setProperty('--ticker-start', trackW+'px');
-    var speedDivisor=(window.innerWidth>=769)?42:28;
+    var speedDivisor=(window.innerWidth>=769)?85:56;
     inner.style.setProperty('--ticker-duration', ((w+trackW)/speedDivisor)+'s');
   }
   if(document.fonts && document.fonts.ready){ document.fonts.ready.then(setTickerWidth); }

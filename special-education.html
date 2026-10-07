@@ -102,6 +102,106 @@ function submitGuideForm(){
     body:JSON.stringify({type:'lead_magnet',guide:'Signs to Look For Before Age 3',name:name,phone:phone,page:pg,url:location.href})
   }).then(deliverGuide).catch(deliverGuide);
 }
+var _nestChecklistModalLoading=null;
+function _nestEnsureChecklistModal(){
+  if(document.getElementById('checklistDownloadModal')) return Promise.resolve();
+  if(_nestChecklistModalLoading) return _nestChecklistModalLoading;
+  _nestChecklistModalLoading=fetch('/partials/checklist-download-modal.html').then(function(r){return r.text();}).then(function(html){
+    var wrap=document.createElement('div'); wrap.innerHTML=html;
+    document.body.appendChild(wrap.firstElementChild);
+    var cName=document.getElementById('checklistName');
+    var cPhone=document.getElementById('checklistPhone');
+    if(cName) cName.addEventListener('input',function(){
+      var lettersOnly=cName.value.replace(/[^A-Za-z ]/g,'');
+      if(lettersOnly!==cName.value) cName.value=lettersOnly;
+      if(lettersOnly.trim().length>=2){
+        cName.closest('.form-group').classList.remove('error');
+        var e=document.getElementById('checklistNameErr'); if(e) e.style.display='none';
+      }
+    });
+    if(cPhone) cPhone.addEventListener('input',function(){
+      var digitsOnly=cPhone.value.replace(/[^0-9]/g,'');
+      if(digitsOnly!==cPhone.value) cPhone.value=digitsOnly;
+      if(/^03\d{9}$/.test(digitsOnly)){
+        cPhone.closest('.form-group').classList.remove('error');
+        var e=document.getElementById('checklistPhoneErr'); if(e) e.style.display='none';
+      }
+    });
+  }).catch(function(err){ console.error('Failed to load checklist download form',err); });
+  return _nestChecklistModalLoading;
+}
+function openChecklistModal(){
+  _nestEnsureChecklistModal().then(function(){
+    var modal=document.getElementById('checklistDownloadModal');
+    modal.classList.add('open');
+    document.body.style.overflow='hidden';document.documentElement.style.overflow='hidden';document.documentElement.classList.add('nest-modal-open');
+    document.getElementById('checklistFormPanel').style.display='';
+    document.getElementById('checklistModalFooter').style.display='';
+    var nameInput=document.getElementById('checklistName');
+    var phoneInput=document.getElementById('checklistPhone');
+    nameInput.value='';
+    phoneInput.value='';
+    nameInput.closest('.form-group').classList.remove('error');
+    phoneInput.closest('.form-group').classList.remove('error');
+    var btn=document.getElementById('checklistSubmitBtn');
+    btn.disabled=false;
+    btn.innerHTML='Download Checklist <span class="btn-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2" fill="white" stroke="none"/></svg></span>';
+    if(typeof gtag==='function'){ gtag('event','guide_modal_open',{event_category:'lead_magnet',event_label:'Speech Delay or Autism Checklist'}); }
+  });
+}
+function closeChecklistModal(){
+  var modal=document.getElementById('checklistDownloadModal');
+  if(modal) modal.classList.remove('open');
+  document.body.style.overflow='';document.documentElement.style.overflow='';document.documentElement.classList.remove('nest-modal-open');
+}
+function submitChecklistForm(){
+  var nameInput=document.getElementById('checklistName');
+  var phoneInput=document.getElementById('checklistPhone');
+  var name=nameInput.value.trim();
+  var phone=phoneInput.value.trim();
+  var phoneRe=/^03\d{9}$/;
+  var nameErr=document.getElementById('checklistNameErr');
+  var phoneErr=document.getElementById('checklistPhoneErr');
+  var hasError=false;
+  if(name.length<2){
+    nameInput.closest('.form-group').classList.add('error');
+    if(nameErr) nameErr.style.display='block';
+    hasError=true;
+  } else {
+    nameInput.closest('.form-group').classList.remove('error');
+  }
+  if(!phoneRe.test(phone)){
+    phoneInput.closest('.form-group').classList.add('error');
+    if(phoneErr) phoneErr.style.display='block';
+    hasError=true;
+  } else {
+    phoneInput.closest('.form-group').classList.remove('error');
+  }
+  if(hasError){
+    (name.length<2?nameInput:phoneInput).focus();
+    return;
+  }
+  var btn=document.getElementById('checklistSubmitBtn');
+  btn.disabled=true;
+  btn.innerHTML='<span class="btn-spinner"></span> Downloading...';
+  var pg=(document.title||location.pathname||'').toString();
+  function deliverChecklist(){
+    window.open('/resources/speech-delay-vs-autism-checklist.pdf','_blank','noopener');
+    var a=document.createElement('a');
+    a.href='/resources/speech-delay-vs-autism-checklist.pdf';
+    a.download='Speech Delay or Autism Checklist.pdf';
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    btn.innerHTML='Downloaded! <span class="btn-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>';
+    if(typeof gtag==='function'){ gtag('event','generate_lead',{event_category:'lead_magnet',event_label:'Speech Delay or Autism Checklist'}); }
+    setTimeout(function(){ closeChecklistModal(); },1800);
+  }
+  fetch('https://script.google.com/macros/s/AKfycbz_njfYUo78Eo2q-TKhFVA8EKZrPItRH1uEZGYzr9y5o0xB2bgS7NFHXOQDPDrUPc7ltA/exec',{
+    method:'POST',
+    body:JSON.stringify({type:'lead_magnet',guide:'Speech Delay or Autism Checklist',name:name,phone:phone,page:pg,url:location.href})
+  }).then(deliverChecklist).catch(deliverChecklist);
+}
 if(location.hostname==="nest-org.pages.dev"){location.replace("https://nestislamabad.com"+location.pathname+location.search+location.hash);}</script>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-EMR8204CT9"></script>
@@ -760,7 +860,9 @@ html.nest-modal-open,html.nest-modal-open body{overflow:hidden!important;touch-a
 .guide-ticker-bar.hidden{display:none}
 .guide-ticker-track{flex:1 1 auto;min-width:0;overflow:hidden;white-space:nowrap;position:relative;height:100%;display:flex;align-items:center}
 .guide-ticker-track-inner{display:flex;align-items:center;width:max-content;animation:guideTickerScroll var(--ticker-duration,34s) linear infinite;will-change:transform}
-.guide-ticker-text{display:inline-flex;align-items:center;white-space:nowrap;color:#fff;font-weight:700;font-size:0.88rem;flex-shrink:0;padding-right:3.5rem;text-shadow:0 1px 3px rgba(0,0,0,0.25)}
+.guide-ticker-text{display:inline-flex;align-items:center;white-space:nowrap;color:#fff;font-weight:700;font-size:0.88rem;flex-shrink:0;text-shadow:0 1px 3px rgba(0,0,0,0.25)}
+.guide-ticker-item{display:inline-flex;align-items:center;gap:10px;flex-shrink:0;padding-right:3.5rem}
+.guide-ticker-bar:hover .guide-ticker-track-inner{animation-play-state:paused}
 @keyframes guideTickerScroll{0%{transform:translateX(var(--ticker-start, 100%))}100%{transform:translateX(calc(-1 * var(--ticker-w, 50%)))}}
 .guide-ticker-btn{flex-shrink:0;display:inline-flex;align-items:center;gap:6px;background:#FBBF24;color:#166178;border:none;padding:0.4rem 0.9rem;border-radius:20px;font-weight:800;font-size:0.8rem;white-space:nowrap;cursor:pointer;text-decoration:none;transition:transform 0.2s}
 .guide-ticker-btn:hover{transform:translateY(-1px)}
@@ -793,8 +895,9 @@ body.has-guide-ticker{padding-top:114px}
 @media(max-width:768px){body.has-guide-ticker{padding-top:102px}}
 @media(max-width:480px){body.has-guide-ticker{padding-top:100px}}
 #guideModalFooter{justify-content:center}#guideModalFooter .btn-fsubmit{flex:0 1 auto;margin:0 auto}
-@media(max-width:768px){#guideModalFooter .btn-fsubmit{flex:0 1 auto}}
-@media(max-width:360px){#guideModalFooter .btn-fsubmit{flex:0 1 auto}}
+#checklistModalFooter{justify-content:center}#checklistModalFooter .btn-fsubmit{flex:0 1 auto;margin:0 auto}
+@media(max-width:768px){#guideModalFooter .btn-fsubmit{flex:0 1 auto}#checklistModalFooter .btn-fsubmit{flex:0 1 auto}}
+@media(max-width:360px){#guideModalFooter .btn-fsubmit{flex:0 1 auto}#checklistModalFooter .btn-fsubmit{flex:0 1 auto}}
 .guide-ticker-btn{position:relative;overflow:hidden}
 .guide-ticker-btn-shimmer{position:absolute;top:0;left:-60%;width:40%;height:100%;pointer-events:none;background:linear-gradient(100deg,transparent,rgba(255,255,255,0.65),transparent);transform:skewX(-18deg);animation:guideTickerBtnSweep 2.6s ease-in-out infinite;animation-delay:0.6s}
 @keyframes guideTickerBtnSweep{0%{left:-60%}55%{left:130%}100%{left:130%}}
@@ -866,8 +969,7 @@ body.has-guide-ticker{padding-top:114px}
   </div>
 </nav>
 <div class="guide-ticker-bar" id="guideTickerBar"><div class="guide-ticker-shimmer"></div>
-  <div class="guide-ticker-track"><div class="guide-ticker-track-inner"><span class="guide-ticker-text">📄 Free Guide: Signs to Look For Before Age 3 — know what to watch for before your child turns 3</span><span class="guide-ticker-text">📄 Free Guide: Signs to Look For Before Age 3 — know what to watch for before your child turns 3</span></div></div>
-  <a role="button" tabindex="0" class="guide-ticker-btn" onclick="openGuideModal();return false;"><span class="guide-ticker-btn-shimmer"></span><span class="gt-full">Get the Free Guide</span><span class="gt-short">Free Guide</span></a>
+  <div class="guide-ticker-track"><div class="guide-ticker-track-inner"><span class="guide-ticker-pair"><span class="guide-ticker-item"><span class="guide-ticker-text">📄 Free Guide: Signs to Look For Before Age 3 — know what to watch for before your child turns 3</span><a role="button" tabindex="0" class="guide-ticker-btn" onclick="openGuideModal();return false;"><span class="guide-ticker-btn-shimmer"></span><span class="gt-full">Get the Free Guide</span><span class="gt-short">Free Guide</span></a></span><span class="guide-ticker-item"><span class="guide-ticker-text">📋 Free Checklist: Speech Delay or Autism? — know the signs that lean toward each</span><a role="button" tabindex="0" class="guide-ticker-btn" onclick="openChecklistModal();return false;"><span class="guide-ticker-btn-shimmer"></span><span class="gt-full">Get the Checklist</span><span class="gt-short">Checklist</span></a></span></span><span class="guide-ticker-pair"><span class="guide-ticker-item"><span class="guide-ticker-text">📄 Free Guide: Signs to Look For Before Age 3 — know what to watch for before your child turns 3</span><a role="button" tabindex="0" class="guide-ticker-btn" onclick="openGuideModal();return false;"><span class="guide-ticker-btn-shimmer"></span><span class="gt-full">Get the Free Guide</span><span class="gt-short">Free Guide</span></a></span><span class="guide-ticker-item"><span class="guide-ticker-text">📋 Free Checklist: Speech Delay or Autism? — know the signs that lean toward each</span><a role="button" tabindex="0" class="guide-ticker-btn" onclick="openChecklistModal();return false;"><span class="guide-ticker-btn-shimmer"></span><span class="gt-full">Get the Checklist</span><span class="gt-short">Checklist</span></a></span></span></div></div>
   <button type="button" class="guide-ticker-close" id="guideTickerClose" aria-label="Dismiss">&times;</button>
 </div>
 <script>(function(){
@@ -877,14 +979,14 @@ body.has-guide-ticker{padding-top:114px}
     var track=document.querySelector('.guide-ticker-track');
     var inner=document.querySelector('.guide-ticker-track-inner');
     if(!inner||!track) return;
-    var first=inner.querySelector('.guide-ticker-text');
+    var first=inner.querySelector('.guide-ticker-pair');
     if(!first) return;
     var w=first.getBoundingClientRect().width;
     var trackW=track.getBoundingClientRect().width;
     if(!w||!trackW) return;
     inner.style.setProperty('--ticker-w', w+'px');
     inner.style.setProperty('--ticker-start', trackW+'px');
-    var speedDivisor=(window.innerWidth>=769)?42:28;
+    var speedDivisor=(window.innerWidth>=769)?85:56;
     inner.style.setProperty('--ticker-duration', ((w+trackW)/speedDivisor)+'s');
   }
   if(document.fonts && document.fonts.ready){ document.fonts.ready.then(setTickerWidth); }
