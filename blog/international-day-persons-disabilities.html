@@ -1367,14 +1367,13 @@ function openGuideModal(){
     modal.classList.add('open');
     document.body.style.overflow='hidden';document.documentElement.style.overflow='hidden';document.documentElement.classList.add('nest-modal-open');
     document.getElementById('guideFormPanel').style.display='';
-    document.getElementById('guideSuccessScreen').style.display='none';
     document.getElementById('guideModalFooter').style.display='';
     var emailInput=document.getElementById('guideEmail');
     emailInput.value='';
     emailInput.closest('.form-group').classList.remove('error');
     var btn=document.getElementById('guideSubmitBtn');
     btn.disabled=false;
-    btn.innerHTML='Send Me the Guide <span class="btn-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2" fill="white" stroke="none"/></svg></span>';
+    btn.innerHTML='Download Guide <span class="btn-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2" fill="white" stroke="none"/></svg></span>';
     if(typeof gtag==='function'){ gtag('event','guide_modal_open',{event_category:'lead_magnet',event_label:'Signs to Look For Before Age 3'}); }
   });
 }
@@ -1397,21 +1396,24 @@ function submitGuideForm(){
   emailInput.closest('.form-group').classList.remove('error');
   var btn=document.getElementById('guideSubmitBtn');
   btn.disabled=true;
-  btn.textContent='Sending...';
+  btn.textContent='Downloading...';
   var pg=(document.title||location.pathname||'').toString();
+  function deliverGuide(){
+    window.open('/resources/signs-to-look-for-before-age-3.pdf','_blank','noopener');
+    var a=document.createElement('a');
+    a.href='/resources/signs-to-look-for-before-age-3.pdf';
+    a.download='Signs to Look For Before Age 3.pdf';
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    btn.textContent='Downloaded!';
+    if(typeof gtag==='function'){ gtag('event','generate_lead',{event_category:'lead_magnet',event_label:'Signs to Look For Before Age 3'}); }
+    setTimeout(function(){ closeGuideModal(); },1800);
+  }
   fetch('https://script.google.com/macros/s/AKfycbz_njfYUo78Eo2q-TKhFVA8EKZrPItRH1uEZGYzr9y5o0xB2bgS7NFHXOQDPDrUPc7ltA/exec',{
     method:'POST',
     body:JSON.stringify({type:'lead_magnet',guide:'Signs to Look For Before Age 3',email:email,page:pg,url:location.href})
-  }).then(function(){
-    document.getElementById('guideFormPanel').style.display='none';
-    document.getElementById('guideModalFooter').style.display='none';
-    document.getElementById('guideSuccessScreen').style.display='';
-    if(typeof gtag==='function'){ gtag('event','generate_lead',{event_category:'lead_magnet',event_label:'Signs to Look For Before Age 3'}); }
-  }).catch(function(){
-    document.getElementById('guideFormPanel').style.display='none';
-    document.getElementById('guideModalFooter').style.display='none';
-    document.getElementById('guideSuccessScreen').style.display='';
-  });
+  }).then(deliverGuide).catch(deliverGuide);
 }
 
 function _nestWireEnrollFormListeners(){
