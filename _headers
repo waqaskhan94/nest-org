@@ -30,3 +30,8 @@
 # Site manifest
 /site.webmanifest
   Cache-Control: public, max-age=604800
+
+# Downloadable resources (lead-magnet PDFs)
+/resources/*
+  Cache-Control: public, max-age=2592000
+

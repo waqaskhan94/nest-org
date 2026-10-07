@@ -892,6 +892,21 @@ nav.scrolled{box-shadow:0 4px 28px rgba(0,0,0,0.11)!important}
   </div>
 </section>
 
+<!-- ===== FREE DOWNLOAD / LEAD MAGNET ===== -->
+<section style="background:linear-gradient(135deg,#166178 0%,#0D9488 100%);padding:3rem 6%;position:relative;overflow:hidden">
+  <div style="max-width:1100px;margin:0 auto;position:relative;z-index:1;display:flex;flex-wrap:wrap;align-items:center;gap:2rem;justify-content:center;text-align:left">
+    <div style="flex:1;min-width:260px">
+      <span style="display:inline-flex;align-items:center;gap:7px;background:rgba(255,255,255,0.14);border:1.5px solid rgba(255,255,255,0.25);color:#fff;font-weight:700;font-size:0.75rem;padding:0.35rem 0.9rem;border-radius:100px;margin-bottom:0.9rem">Free Download</span>
+      <h2 style="font-family:'Fredoka One',cursive;font-weight:400;color:#fff;font-size:clamp(1.3rem,3vw,1.7rem);line-height:1.25;margin-bottom:0.5rem">Signs to Look For Before Age 3</h2>
+      <p style="color:rgba(255,255,255,0.85);font-size:0.95rem;max-width:520px;margin-bottom:1.1rem">A free parent checklist covering speech, social, and behavior milestones by age, written by our Director &amp; Behavior Therapist.</p>
+      <a role="button" tabindex="0" style="cursor:pointer;display:inline-flex;align-items:center;gap:8px;background:#FBBF24;color:#166178;font-weight:700;font-size:0.95rem;padding:0.75rem 1.5rem;border-radius:100px;text-decoration:none" onclick="openGuideModal();return false;">Get the Free Guide <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#166178" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></a>
+    </div>
+    <div style="flex-shrink:0;width:110px;height:140px;background:rgba(255,255,255,0.1);border:2px solid rgba(255,255,255,0.3);border-radius:12px;display:flex;align-items:center;justify-content:center">
+      <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#FBBF24" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+    </div>
+  </div>
+</section>
+
 <!-- ===== BLOG GRID ===== -->
 <section style="max-width:1100px;margin:0 auto;padding:3.5rem 6%">
   <div id="blogGrid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1.75rem">
@@ -1208,6 +1223,69 @@ function closeEnrollModal(){
   document.getElementById('enrollModal').classList.remove('open');
   document.body.style.overflow='';document.documentElement.style.overflow='';document.documentElement.classList.remove('nest-modal-open');
   resetEnrollForm();
+}
+
+var _nestGuideModalLoading=null;
+function _nestEnsureGuideModal(){
+  if(document.getElementById('guideDownloadModal')) return Promise.resolve();
+  if(_nestGuideModalLoading) return _nestGuideModalLoading;
+  _nestGuideModalLoading=fetch('/partials/guide-download-modal.html').then(function(r){return r.text();}).then(function(html){
+    var wrap=document.createElement('div'); wrap.innerHTML=html;
+    document.body.appendChild(wrap.firstElementChild);
+  }).catch(function(err){ console.error('Failed to load guide download form',err); });
+  return _nestGuideModalLoading;
+}
+function openGuideModal(){
+  _nestEnsureGuideModal().then(function(){
+    var modal=document.getElementById('guideDownloadModal');
+    modal.classList.add('open');
+    document.body.style.overflow='hidden';document.documentElement.style.overflow='hidden';document.documentElement.classList.add('nest-modal-open');
+    document.getElementById('guideFormPanel').style.display='';
+    document.getElementById('guideSuccessScreen').style.display='none';
+    document.getElementById('guideModalFooter').style.display='';
+    var emailInput=document.getElementById('guideEmail');
+    emailInput.value='';
+    emailInput.closest('.form-group').classList.remove('error');
+    var btn=document.getElementById('guideSubmitBtn');
+    btn.disabled=false;
+    btn.innerHTML='Send Me the Guide <span class="btn-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2" fill="white" stroke="none"/></svg></span>';
+    if(typeof gtag==='function'){ gtag('event','guide_modal_open',{event_category:'lead_magnet',event_label:'Signs to Look For Before Age 3'}); }
+  });
+}
+function closeGuideModal(){
+  var modal=document.getElementById('guideDownloadModal');
+  if(modal) modal.classList.remove('open');
+  document.body.style.overflow='';document.documentElement.style.overflow='';document.documentElement.classList.remove('nest-modal-open');
+}
+function submitGuideForm(){
+  var emailInput=document.getElementById('guideEmail');
+  var email=emailInput.value.trim();
+  var emailRe=/^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  var errEl=document.getElementById('guideEmailErr');
+  if(!emailRe.test(email)){
+    emailInput.closest('.form-group').classList.add('error');
+    if(errEl) errEl.style.display='block';
+    emailInput.focus();
+    return;
+  }
+  emailInput.closest('.form-group').classList.remove('error');
+  var btn=document.getElementById('guideSubmitBtn');
+  btn.disabled=true;
+  btn.textContent='Sending...';
+  var pg=(document.title||location.pathname||'').toString();
+  fetch('https://script.google.com/macros/s/AKfycbz_njfYUo78Eo2q-TKhFVA8EKZrPItRH1uEZGYzr9y5o0xB2bgS7NFHXOQDPDrUPc7ltA/exec',{
+    method:'POST',
+    body:JSON.stringify({type:'lead_magnet',guide:'Signs to Look For Before Age 3',email:email,page:pg,url:location.href})
+  }).then(function(){
+    document.getElementById('guideFormPanel').style.display='none';
+    document.getElementById('guideModalFooter').style.display='none';
+    document.getElementById('guideSuccessScreen').style.display='';
+    if(typeof gtag==='function'){ gtag('event','generate_lead',{event_category:'lead_magnet',event_label:'Signs to Look For Before Age 3'}); }
+  }).catch(function(){
+    document.getElementById('guideFormPanel').style.display='none';
+    document.getElementById('guideModalFooter').style.display='none';
+    document.getElementById('guideSuccessScreen').style.display='';
+  });
 }
 
 function _nestWireEnrollFormListeners(){

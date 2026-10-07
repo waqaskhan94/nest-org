@@ -1,0 +1,26 @@
+<div class="modal-overlay" id="guideDownloadModal">
+  <div class="modal" style="max-width:460px">
+    <div class="modal-header">
+      <button class="modal-close" onclick="closeGuideModal()">&#x2715;</button>
+      <span class="modal-icon-3d"><img src="/favicon.png" alt="NEST logo" style="width:100%;height:100%;object-fit:cover;border-radius:14px;display:block"/></span>
+      <div class="modal-title">Get the Free Guide</div>
+      <div class="modal-sub-txt">Signs to Look For Before Age 3</div>
+    </div>
+    <div class="modal-body">
+      <div class="step-panel active" id="guideFormPanel">
+        <div class="step-desc">Enter your email and we'll send the download link your way. No spam, ever.</div>
+        <div class="form-group"><label>Email Address <span class="req">*</span></label><input type="email" id="guideEmail" placeholder="e.g. sara@email.com" autocomplete="email"/><div class="err-msg" id="guideEmailErr">Please enter a valid email address</div></div>
+      </div>
+      <div class="success-screen" id="guideSuccessScreen" style="display:none">
+        <span class="success-icon-big">&#10003;</span>
+        <div class="success-title2">Your Guide is Ready!</div>
+        <p class="success-sub2">Click below to download your free copy. We've also noted your email in case you'd like more resources from NEST.</p>
+        <a href="/resources/signs-to-look-for-before-age-3.pdf" target="_blank" rel="noopener" class="btn-fnext" style="margin:0 auto;display:flex;margin-top:1.25rem;text-decoration:none">Download PDF <span class="btn-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></span></a>
+      </div>
+    </div>
+    <div class="modal-footer" id="guideModalFooter">
+      <span class="step-counter"></span>
+      <button class="btn-fsubmit" id="guideSubmitBtn" onclick="submitGuideForm()">Send Me the Guide <span class="btn-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2" fill="white" stroke="none"/></svg></span></button>
+    </div>
+  </div>
+</div>
