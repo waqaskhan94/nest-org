@@ -8,8 +8,9 @@
     </div>
     <div class="modal-body">
       <div class="step-panel active" id="guideFormPanel">
-        <div class="step-desc">Enter your email and your free guide will open as a PDF right away. No spam, ever.</div>
-        <div class="form-group"><label>Email Address <span class="req">*</span></label><input type="email" id="guideEmail" placeholder="e.g. sara@email.com" autocomplete="email"/><div class="err-msg" id="guideEmailErr">Please enter a valid email address</div></div>
+        <div class="step-desc" style="font-size:0.78rem;white-space:nowrap">Enter your details and the PDF will open right away.</div>
+        <div class="form-group"><label>Your Name <span class="req">*</span></label><input type="text" id="guideName" placeholder="e.g. Sara Khan" autocomplete="name" maxlength="60"/><div class="err-msg" id="guideNameErr">Please enter your name</div></div>
+        <div class="form-group"><label>Phone Number <span class="req">*</span></label><input type="tel" id="guidePhone" placeholder="e.g. 0300-1234567" autocomplete="tel" maxlength="11" inputmode="numeric"/><div class="err-msg" id="guidePhoneErr">Enter valid Pakistani number e.g. 0300-1234567</div></div>
       </div>
     </div>
     <div class="modal-footer" id="guideModalFooter">

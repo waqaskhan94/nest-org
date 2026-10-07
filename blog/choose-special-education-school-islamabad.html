@@ -977,6 +977,8 @@ body.has-guide-ticker{padding-top:114px}
 .guide-cta-btn{position:relative;overflow:hidden}
 .guide-cta-btn-shimmer{position:absolute;top:0;left:-60%;width:40%;height:100%;pointer-events:none;background:linear-gradient(100deg,transparent,rgba(255,255,255,0.65),transparent);transform:skewX(-18deg);animation:guideCtaBtnSweep 2.8s ease-in-out infinite;animation-delay:0.5s}
 @keyframes guideCtaBtnSweep{0%{left:-60%}55%{left:130%}100%{left:130%}}
+.btn-spinner{display:inline-block;width:14px;height:14px;border:2px solid rgba(255,255,255,0.4);border-top-color:#fff;border-radius:50%;animation:btnSpin 0.7s linear infinite;flex-shrink:0}
+@keyframes btnSpin{to{transform:rotate(360deg)}}
 </style>
 </head>
 <body class="has-guide-ticker">
@@ -1471,6 +1473,22 @@ function _nestEnsureGuideModal(){
   _nestGuideModalLoading=fetch('/partials/guide-download-modal.html').then(function(r){return r.text();}).then(function(html){
     var wrap=document.createElement('div'); wrap.innerHTML=html;
     document.body.appendChild(wrap.firstElementChild);
+    var gName=document.getElementById('guideName');
+    var gPhone=document.getElementById('guidePhone');
+    if(gName) gName.addEventListener('input',function(){
+      if(gName.value.trim().length>=2){
+        gName.closest('.form-group').classList.remove('error');
+        var e=document.getElementById('guideNameErr'); if(e) e.style.display='none';
+      }
+    });
+    if(gPhone) gPhone.addEventListener('input',function(){
+      var digitsOnly=gPhone.value.replace(/[^0-9]/g,'');
+      if(digitsOnly!==gPhone.value) gPhone.value=digitsOnly;
+      if(/^03\d{9}$/.test(digitsOnly)){
+        gPhone.closest('.form-group').classList.remove('error');
+        var e=document.getElementById('guidePhoneErr'); if(e) e.style.display='none';
+      }
+    });
   }).catch(function(err){ console.error('Failed to load guide download form',err); });
   return _nestGuideModalLoading;
 }
@@ -1481,9 +1499,12 @@ function openGuideModal(){
     document.body.style.overflow='hidden';document.documentElement.style.overflow='hidden';document.documentElement.classList.add('nest-modal-open');
     document.getElementById('guideFormPanel').style.display='';
     document.getElementById('guideModalFooter').style.display='';
-    var emailInput=document.getElementById('guideEmail');
-    emailInput.value='';
-    emailInput.closest('.form-group').classList.remove('error');
+    var nameInput=document.getElementById('guideName');
+    var phoneInput=document.getElementById('guidePhone');
+    nameInput.value='';
+    phoneInput.value='';
+    nameInput.closest('.form-group').classList.remove('error');
+    phoneInput.closest('.form-group').classList.remove('error');
     var btn=document.getElementById('guideSubmitBtn');
     btn.disabled=false;
     btn.innerHTML='Download Guide <span class="btn-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2" fill="white" stroke="none"/></svg></span>';
@@ -1496,20 +1517,35 @@ function closeGuideModal(){
   document.body.style.overflow='';document.documentElement.style.overflow='';document.documentElement.classList.remove('nest-modal-open');
 }
 function submitGuideForm(){
-  var emailInput=document.getElementById('guideEmail');
-  var email=emailInput.value.trim();
-  var emailRe=/^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  var errEl=document.getElementById('guideEmailErr');
-  if(!emailRe.test(email)){
-    emailInput.closest('.form-group').classList.add('error');
-    if(errEl) errEl.style.display='block';
-    emailInput.focus();
+  var nameInput=document.getElementById('guideName');
+  var phoneInput=document.getElementById('guidePhone');
+  var name=nameInput.value.trim();
+  var phone=phoneInput.value.trim();
+  var phoneRe=/^03\d{9}$/;
+  var nameErr=document.getElementById('guideNameErr');
+  var phoneErr=document.getElementById('guidePhoneErr');
+  var hasError=false;
+  if(name.length<2){
+    nameInput.closest('.form-group').classList.add('error');
+    if(nameErr) nameErr.style.display='block';
+    hasError=true;
+  } else {
+    nameInput.closest('.form-group').classList.remove('error');
+  }
+  if(!phoneRe.test(phone)){
+    phoneInput.closest('.form-group').classList.add('error');
+    if(phoneErr) phoneErr.style.display='block';
+    hasError=true;
+  } else {
+    phoneInput.closest('.form-group').classList.remove('error');
+  }
+  if(hasError){
+    (name.length<2?nameInput:phoneInput).focus();
     return;
   }
-  emailInput.closest('.form-group').classList.remove('error');
   var btn=document.getElementById('guideSubmitBtn');
   btn.disabled=true;
-  btn.textContent='Downloading...';
+  btn.innerHTML='<span class="btn-spinner"></span> Downloading...';
   var pg=(document.title||location.pathname||'').toString();
   function deliverGuide(){
     window.open('/resources/signs-to-look-for-before-age-3.pdf','_blank','noopener');
@@ -1519,13 +1555,13 @@ function submitGuideForm(){
     document.body.appendChild(a);
     a.click();
     a.remove();
-    btn.textContent='Downloaded!';
+    btn.innerHTML='Downloaded! <span class="btn-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>';
     if(typeof gtag==='function'){ gtag('event','generate_lead',{event_category:'lead_magnet',event_label:'Signs to Look For Before Age 3'}); }
     setTimeout(function(){ closeGuideModal(); },1800);
   }
   fetch('https://script.google.com/macros/s/AKfycbz_njfYUo78Eo2q-TKhFVA8EKZrPItRH1uEZGYzr9y5o0xB2bgS7NFHXOQDPDrUPc7ltA/exec',{
     method:'POST',
-    body:JSON.stringify({type:'lead_magnet',guide:'Signs to Look For Before Age 3',email:email,page:pg,url:location.href})
+    body:JSON.stringify({type:'lead_magnet',guide:'Signs to Look For Before Age 3',name:name,phone:phone,page:pg,url:location.href})
   }).then(deliverGuide).catch(deliverGuide);
 }
 
