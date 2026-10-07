@@ -1890,7 +1890,9 @@ function _nestEnsureGuideModal(){
     var gName=document.getElementById('guideName');
     var gPhone=document.getElementById('guidePhone');
     if(gName) gName.addEventListener('input',function(){
-      if(gName.value.trim().length>=2){
+      var lettersOnly=gName.value.replace(/[^A-Za-z ]/g,'');
+      if(lettersOnly!==gName.value) gName.value=lettersOnly;
+      if(lettersOnly.trim().length>=2){
         gName.closest('.form-group').classList.remove('error');
         var e=document.getElementById('guideNameErr'); if(e) e.style.display='none';
       }

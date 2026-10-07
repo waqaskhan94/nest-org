@@ -861,7 +861,7 @@ nav.scrolled{box-shadow:0 4px 28px rgba(0,0,0,0.11)!important}
 /* Article + sticky sidebar layout (blog) */
 .blog-layout{max-width:1320px;margin:0 auto;display:flex;gap:2.25rem;align-items:flex-start;justify-content:center;padding:0 5%}
 .blog-layout > article{flex:0 1 700px;min-width:0;max-width:700px;margin:0;padding:3rem 0 4rem}
-.blog-side{width:280px;flex-shrink:0;position:sticky;top:90px;margin-top:3rem}
+.blog-side{width:280px;flex-shrink:0;position:sticky;top:90px;margin-top:3rem;margin-bottom:2rem}
 .blog-toc{width:230px;flex-shrink:0;position:sticky;top:90px;margin-top:3rem;max-height:calc(100vh - 120px);overflow-y:auto;background:#fff;border:1.5px solid #e8eef0;border-radius:16px;padding:1.1rem 1.15rem;box-shadow:0 4px 18px rgba(22,97,120,0.06)}
 .blog-toc-title{font-family:'Quicksand',sans-serif;font-weight:800;color:#166178;font-size:0.92rem;margin:0 0 0.7rem;padding-bottom:0.6rem;border-bottom:1px solid #eef3f4}
 .blog-toc ul{list-style:none;margin:0;padding:0}
@@ -1477,7 +1477,9 @@ function _nestEnsureGuideModal(){
     var gName=document.getElementById('guideName');
     var gPhone=document.getElementById('guidePhone');
     if(gName) gName.addEventListener('input',function(){
-      if(gName.value.trim().length>=2){
+      var lettersOnly=gName.value.replace(/[^A-Za-z ]/g,'');
+      if(lettersOnly!==gName.value) gName.value=lettersOnly;
+      if(lettersOnly.trim().length>=2){
         gName.closest('.form-group').classList.remove('error');
         var e=document.getElementById('guideNameErr'); if(e) e.style.display='none';
       }
