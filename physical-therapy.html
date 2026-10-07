@@ -722,9 +722,9 @@ html.nest-modal-open,html.nest-modal-open body{overflow:hidden!important;touch-a
 .guide-ticker-bar{position:relative;display:flex;align-items:center;gap:10px;height:42px;padding:0 10px 0 16px;background:linear-gradient(90deg,#166178,#0D9488);overflow:hidden;z-index:40}
 .guide-ticker-bar.hidden{display:none}
 .guide-ticker-track{flex:1 1 auto;min-width:0;overflow:hidden;white-space:nowrap;position:relative;height:100%;display:flex;align-items:center}
-.guide-ticker-track-inner{display:flex;align-items:center;animation:guideTickerScroll 34s linear infinite;will-change:transform}
+.guide-ticker-track-inner{display:flex;align-items:center;width:max-content;animation:guideTickerScroll var(--ticker-duration,34s) linear infinite;will-change:transform}
 .guide-ticker-text{display:inline-flex;align-items:center;white-space:nowrap;color:#fff;font-weight:700;font-size:0.88rem;flex-shrink:0;padding-right:3.5rem;text-shadow:0 1px 3px rgba(0,0,0,0.25)}
-@keyframes guideTickerScroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+@keyframes guideTickerScroll{0%{transform:translateX(var(--ticker-start, 100%))}100%{transform:translateX(calc(-1 * var(--ticker-w, 50%)))}}
 .guide-ticker-btn{flex-shrink:0;display:inline-flex;align-items:center;gap:6px;background:#FBBF24;color:#166178;border:none;padding:0.4rem 0.9rem;border-radius:20px;font-weight:800;font-size:0.8rem;white-space:nowrap;cursor:pointer;text-decoration:none;transition:transform 0.2s}
 .guide-ticker-btn:hover{transform:translateY(-1px)}
 .guide-ticker-close{flex-shrink:0;display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;min-width:32px;background:rgba(255,255,255,0.15);color:#fff;border:none;border-radius:50%;font-size:1rem;line-height:1;cursor:pointer;transition:background 0.2s}
@@ -831,7 +831,28 @@ body.has-guide-ticker{padding-top:114px}
   <a role="button" tabindex="0" class="guide-ticker-btn" onclick="openGuideModal();return false;"><span class="guide-ticker-btn-shimmer"></span><span class="gt-full">Get the Free Guide</span><span class="gt-short">Free Guide</span></a>
   <button type="button" class="guide-ticker-close" id="guideTickerClose" aria-label="Dismiss">&times;</button>
 </div>
-<script>(function(){var c=document.getElementById('guideTickerClose');if(c)c.addEventListener('click',function(){var b=document.getElementById('guideTickerBar');if(b)b.classList.add('hidden');document.body.classList.remove('has-guide-ticker');});})();</script>
+<script>(function(){
+  var c=document.getElementById('guideTickerClose');
+  if(c)c.addEventListener('click',function(){var b=document.getElementById('guideTickerBar');if(b)b.classList.add('hidden');document.body.classList.remove('has-guide-ticker');});
+  function setTickerWidth(){
+    var track=document.querySelector('.guide-ticker-track');
+    var inner=document.querySelector('.guide-ticker-track-inner');
+    if(!inner||!track) return;
+    var first=inner.querySelector('.guide-ticker-text');
+    if(!first) return;
+    var w=first.getBoundingClientRect().width;
+    var trackW=track.getBoundingClientRect().width;
+    if(!w||!trackW) return;
+    inner.style.setProperty('--ticker-w', w+'px');
+    inner.style.setProperty('--ticker-start', trackW+'px');
+    var speedDivisor=(window.innerWidth>=769)?42:28;
+    inner.style.setProperty('--ticker-duration', ((w+trackW)/speedDivisor)+'s');
+  }
+  if(document.fonts && document.fonts.ready){ document.fonts.ready.then(setTickerWidth); }
+  window.addEventListener('load', setTickerWidth);
+  window.addEventListener('resize', setTickerWidth);
+  setTickerWidth();
+})();</script>
 
 <div class="mobile-backdrop" id="mobileBackdrop"></div>
 <div class="mobile-menu" id="mobileMenu">
