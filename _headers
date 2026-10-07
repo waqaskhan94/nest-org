@@ -31,7 +31,7 @@
 /site.webmanifest
   Cache-Control: public, max-age=604800
 
-# Downloadable resources (lead-magnet PDFs)
+# Downloadable resources (lead-magnet PDFs) - short cache since content may be revised
 /resources/*
-  Cache-Control: public, max-age=2592000
+  Cache-Control: public, max-age=3600, must-revalidate
 
