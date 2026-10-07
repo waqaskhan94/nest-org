@@ -1,7 +1,72 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<script>if(location.hostname==="nest-org.pages.dev"){location.replace("https://nestislamabad.com"+location.pathname+location.search+location.hash);}</script>
+<script>
+var _nestGuideModalLoading=null;
+function _nestEnsureGuideModal(){
+  if(document.getElementById('guideDownloadModal')) return Promise.resolve();
+  if(_nestGuideModalLoading) return _nestGuideModalLoading;
+  _nestGuideModalLoading=fetch('/partials/guide-download-modal.html').then(function(r){return r.text();}).then(function(html){
+    var wrap=document.createElement('div'); wrap.innerHTML=html;
+    document.body.appendChild(wrap.firstElementChild);
+  }).catch(function(err){ console.error('Failed to load guide download form',err); });
+  return _nestGuideModalLoading;
+}
+function openGuideModal(){
+  _nestEnsureGuideModal().then(function(){
+    var modal=document.getElementById('guideDownloadModal');
+    modal.classList.add('open');
+    document.body.style.overflow='hidden';document.documentElement.style.overflow='hidden';document.documentElement.classList.add('nest-modal-open');
+    document.getElementById('guideFormPanel').style.display='';
+    document.getElementById('guideModalFooter').style.display='';
+    var emailInput=document.getElementById('guideEmail');
+    emailInput.value='';
+    emailInput.closest('.form-group').classList.remove('error');
+    var btn=document.getElementById('guideSubmitBtn');
+    btn.disabled=false;
+    btn.innerHTML='Download Guide <span class="btn-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2" fill="white" stroke="none"/></svg></span>';
+    if(typeof gtag==='function'){ gtag('event','guide_modal_open',{event_category:'lead_magnet',event_label:'Signs to Look For Before Age 3'}); }
+  });
+}
+function closeGuideModal(){
+  var modal=document.getElementById('guideDownloadModal');
+  if(modal) modal.classList.remove('open');
+  document.body.style.overflow='';document.documentElement.style.overflow='';document.documentElement.classList.remove('nest-modal-open');
+}
+function submitGuideForm(){
+  var emailInput=document.getElementById('guideEmail');
+  var email=emailInput.value.trim();
+  var emailRe=/^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  var errEl=document.getElementById('guideEmailErr');
+  if(!emailRe.test(email)){
+    emailInput.closest('.form-group').classList.add('error');
+    if(errEl) errEl.style.display='block';
+    emailInput.focus();
+    return;
+  }
+  emailInput.closest('.form-group').classList.remove('error');
+  var btn=document.getElementById('guideSubmitBtn');
+  btn.disabled=true;
+  btn.textContent='Downloading...';
+  var pg=(document.title||location.pathname||'').toString();
+  function deliverGuide(){
+    window.open('/resources/signs-to-look-for-before-age-3.pdf','_blank','noopener');
+    var a=document.createElement('a');
+    a.href='/resources/signs-to-look-for-before-age-3.pdf';
+    a.download='Signs to Look For Before Age 3.pdf';
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    btn.textContent='Downloaded!';
+    if(typeof gtag==='function'){ gtag('event','generate_lead',{event_category:'lead_magnet',event_label:'Signs to Look For Before Age 3'}); }
+    setTimeout(function(){ closeGuideModal(); },1800);
+  }
+  fetch('https://script.google.com/macros/s/AKfycbz_njfYUo78Eo2q-TKhFVA8EKZrPItRH1uEZGYzr9y5o0xB2bgS7NFHXOQDPDrUPc7ltA/exec',{
+    method:'POST',
+    body:JSON.stringify({type:'lead_magnet',guide:'Signs to Look For Before Age 3',email:email,page:pg,url:location.href})
+  }).then(deliverGuide).catch(deliverGuide);
+}
+if(location.hostname==="nest-org.pages.dev"){location.replace("https://nestislamabad.com"+location.pathname+location.search+location.hash);}</script>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-EMR8204CT9"></script>
 <script>
@@ -653,6 +718,48 @@ html.nest-modal-open,html.nest-modal-open body{overflow:hidden!important;touch-a
 .btn-cta-outline:hover{background:rgba(255,255,255,0.1);border-color:rgba(255,255,255,0.8)}
 @media(max-width:540px){.team-cta{padding:4rem 1.5rem}.team-cta-title{font-size:1.7rem;white-space:normal}.team-cta-btns{flex-direction:column;align-items:center}}
 .soon-link{display:inline-flex;align-items:center;gap:6px;cursor:default;pointer-events:none;animation:soonFade 2.2s ease-in-out infinite}.soon-link .soon-badge{font-size:0.5rem;font-weight:800;letter-spacing:0.05em;text-transform:uppercase;color:#0d2f3d;background:linear-gradient(135deg,#FBBF24,#F59E0B);padding:1px 6px;border-radius:20px;line-height:1.5;white-space:nowrap}@keyframes soonFade{0%,100%{opacity:1}50%{opacity:0.55}}
+.guide-ticker-bar{position:relative;display:flex;align-items:center;gap:10px;height:42px;padding:0 10px 0 16px;background:linear-gradient(90deg,#166178,#0D9488);overflow:hidden;z-index:40}
+.guide-ticker-bar.hidden{display:none}
+.guide-ticker-track{flex:1 1 auto;min-width:0;overflow:hidden;white-space:nowrap;position:relative;height:100%;display:flex;align-items:center}
+.guide-ticker-track-inner{display:flex;align-items:center;animation:guideTickerScroll 34s linear infinite;will-change:transform}
+.guide-ticker-text{display:inline-flex;align-items:center;white-space:nowrap;color:#fff;font-weight:700;font-size:0.88rem;flex-shrink:0;padding-right:3.5rem;text-shadow:0 1px 3px rgba(0,0,0,0.25)}
+@keyframes guideTickerScroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+.guide-ticker-btn{flex-shrink:0;display:inline-flex;align-items:center;gap:6px;background:#FBBF24;color:#166178;border:none;padding:0.4rem 0.9rem;border-radius:20px;font-weight:800;font-size:0.8rem;white-space:nowrap;cursor:pointer;text-decoration:none;transition:transform 0.2s}
+.guide-ticker-btn:hover{transform:translateY(-1px)}
+.guide-ticker-close{flex-shrink:0;display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;min-width:32px;background:rgba(255,255,255,0.15);color:#fff;border:none;border-radius:50%;font-size:1rem;line-height:1;cursor:pointer;transition:background 0.2s}
+.guide-ticker-close:hover{background:rgba(255,255,255,0.3)}
+@media(max-width:768px){
+  .guide-ticker-bar{height:40px;padding:0 8px 0 12px;gap:8px}
+  .guide-ticker-text{font-size:0.78rem}
+  .guide-ticker-btn{padding:0.35rem 0.75rem;font-size:0.75rem}
+}
+@media(max-width:480px){
+  .guide-ticker-bar{height:38px;padding:0 6px 0 10px;gap:6px}
+  .guide-ticker-text{font-size:0.7rem}
+  .guide-ticker-btn span.gt-full{display:none}
+  .guide-ticker-btn span.gt-short{display:inline}
+  .guide-ticker-btn{padding:0.32rem 0.6rem;font-size:0.7rem}
+  .guide-ticker-close{width:30px;height:30px;min-width:30px;font-size:0.9rem}
+}
+@media(min-width:481px){
+  .guide-ticker-btn span.gt-short{display:none}
+}
+@media(prefers-reduced-motion:reduce){
+  .guide-ticker-track-inner{animation:none}.guide-ticker-btn{animation:none}.guide-ticker-bar{animation:none}.guide-ticker-shimmer{display:none}.guide-ticker-btn-shimmer{display:none}
+}
+.guide-ticker-shimmer{position:absolute;top:0;left:-60%;width:40%;height:100%;pointer-events:none;background:linear-gradient(100deg,transparent,rgba(255,255,255,0.28),transparent);transform:skewX(-18deg);animation:guideTickerSweep 3.2s ease-in-out infinite}
+@keyframes guideTickerSweep{0%{left:-60%}55%{left:130%}100%{left:130%}}
+.guide-ticker-bar{position:fixed;top:72px;left:0;right:0;z-index:1500}
+@media(max-width:768px){.guide-ticker-bar{top:62px}}
+body.has-guide-ticker{padding-top:114px}
+@media(max-width:768px){body.has-guide-ticker{padding-top:102px}}
+@media(max-width:480px){body.has-guide-ticker{padding-top:100px}}
+#guideModalFooter{justify-content:center}#guideModalFooter .btn-fsubmit{flex:0 1 auto;margin:0 auto}
+@media(max-width:768px){#guideModalFooter .btn-fsubmit{flex:0 1 auto}}
+@media(max-width:360px){#guideModalFooter .btn-fsubmit{flex:0 1 auto}}
+.guide-ticker-btn{position:relative;overflow:hidden}
+.guide-ticker-btn-shimmer{position:absolute;top:0;left:-60%;width:40%;height:100%;pointer-events:none;background:linear-gradient(100deg,transparent,rgba(255,255,255,0.65),transparent);transform:skewX(-18deg);animation:guideTickerBtnSweep 2.6s ease-in-out infinite;animation-delay:0.6s}
+@keyframes guideTickerBtnSweep{0%{left:-60%}55%{left:130%}100%{left:130%}}
 </style>
 <style>
 /* Related Articles animated background + card hover */
@@ -695,7 +802,7 @@ html.nest-modal-open,html.nest-modal-open body{overflow:hidden!important;touch-a
 }
 </script>
 </head>
-<body>
+<body class="has-guide-ticker">
 
 <!-- ===== NAVBAR ===== -->
 <nav>
@@ -718,6 +825,13 @@ html.nest-modal-open,html.nest-modal-open body{overflow:hidden!important;touch-a
     </button>
   </div>
 </nav>
+<div class="guide-ticker-bar" id="guideTickerBar"><div class="guide-ticker-shimmer"></div>
+  <div class="guide-ticker-track"><div class="guide-ticker-track-inner"><span class="guide-ticker-text">📄 Free Guide: Signs to Look For Before Age 3 — know what to watch for before your child turns 3</span><span class="guide-ticker-text">📄 Free Guide: Signs to Look For Before Age 3 — know what to watch for before your child turns 3</span></div></div>
+  <a role="button" tabindex="0" class="guide-ticker-btn" onclick="openGuideModal();return false;"><span class="guide-ticker-btn-shimmer"></span><span class="gt-full">Get the Free Guide</span><span class="gt-short">Free Guide</span></a>
+  <button type="button" class="guide-ticker-close" id="guideTickerClose" aria-label="Dismiss">&times;</button>
+</div>
+<script>(function(){var c=document.getElementById('guideTickerClose');if(c)c.addEventListener('click',function(){var b=document.getElementById('guideTickerBar');if(b)b.classList.add('hidden');document.body.classList.remove('has-guide-ticker');});})();</script>
+
 <div class="mobile-backdrop" id="mobileBackdrop"></div>
 <div class="mobile-menu" id="mobileMenu">
   <a href="/"><span class="icon-3d c-teal"    style="width:32px;height:32px;border-radius:9px;flex-shrink:0"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></span> Home</a>
