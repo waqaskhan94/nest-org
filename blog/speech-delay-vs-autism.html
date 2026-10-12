@@ -1971,7 +1971,7 @@ function submitForm(){
   _nestShowSuccess();
 }
 
-function toggleCheck(el){ el.classList.toggle('checked'); }
+function toggleCheck(el){ var cb=el.querySelector('input[type="checkbox"]'); if(cb) el.classList.toggle('checked', cb.checked); else el.classList.toggle('checked'); }
 function toggleMulti(el){ el.classList.toggle('selected'); }
 function selectRadio(el,groupId){
   document.querySelectorAll('#'+groupId+' .radio-item').forEach(function(r){r.classList.remove('selected')});

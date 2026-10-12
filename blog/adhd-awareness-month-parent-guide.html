@@ -1107,6 +1107,7 @@ body.has-guide-ticker{padding-top:114px}
         <div style="font-weight:600;font-family:'Fredoka One',cursive;color:#fff;font-size:1.05rem">Written by <a href="/about#sidra-simaab" class="author-link-hover" style="color:#fff;text-decoration:underline">Sidra Simaab</a></div>
         <div style="color:#FBBF24;font-weight:700;font-size:0.8rem">Director &amp; Behavior Therapist</div>
         <div style="color:rgba(255,255,255,0.8);font-size:0.78rem;margin-top:0.15rem">M.Sc Clinical Psychology &middot; ADCP &middot; International Behavior Analyst (IBA) Candidate</div>
+        <a href="https://wa.me/923197757058?text=Hi%2C%20I%27d%20like%20to%20book%20an%20online%20session%20with%20the%20Clinical%20Director." target="_blank" rel="noopener" onclick="if(typeof notifyWaClick==='function'){notifyWaClick('Clinical Director - Online Session');}if(typeof gtag==='function'){gtag('event','whatsapp_click',{event_category:'contact',event_label:'Clinical Director - Online Session'});}" style="display:inline-flex;align-items:center;gap:5px;color:#FBBF24;font-weight:700;font-size:0.76rem;text-decoration:underline;margin-top:0.4rem"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#FBBF24" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>Also available for online sessions</a>
       </div>
     </div>
     <div style="margin-top:0.9rem;padding-top:0.9rem;border-top:1px solid rgba(255,255,255,0.2);display:flex;gap:8px;font-size:0.85rem;color:#fff;line-height:1.7">
@@ -1954,7 +1955,7 @@ function submitForm(){
   _nestShowSuccess();
 }
 
-function toggleCheck(el){ el.classList.toggle('checked'); }
+function toggleCheck(el){ var cb=el.querySelector('input[type="checkbox"]'); if(cb) el.classList.toggle('checked', cb.checked); else el.classList.toggle('checked'); }
 function toggleMulti(el){ el.classList.toggle('selected'); }
 function selectRadio(el,groupId){
   document.querySelectorAll('#'+groupId+' .radio-item').forEach(function(r){r.classList.remove('selected')});
