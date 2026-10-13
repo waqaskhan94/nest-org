@@ -1718,7 +1718,7 @@ function submitForm(){
     diagnosis:document.getElementById('childDiag').value,programs:programs,
     parentName:document.getElementById('parentName').value,relationship:document.getElementById('parentRel').value,
     phone:document.getElementById('parentPhone').value,email:document.getElementById('parentEmail').value,
-    city:getCityValue(),hearAbout:hearAbout,
+    city:getCityValue(),hearAbout:hearAbout,website:(document.getElementById('website')||{}).value||'',
     prefDate:document.getElementById('prefDate').value,prefTime:document.getElementById('prefTime').value,
     prevTherapy:prevTherapy,notes:document.getElementById('notes').value,
     page:         (document.title||location.pathname||'').toString(),
@@ -1733,6 +1733,7 @@ function submitForm(){
     if(window._nestResetTimer) clearTimeout(window._nestResetTimer);
     window._nestResetTimer = setTimeout(function(){ closeEnrollModal(); }, 4000);
   }
+  var _hp=document.getElementById('website'); if(_hp&&_hp.value){ return; }
   fetch('https://script.google.com/macros/s/AKfycbz_njfYUo78Eo2q-TKhFVA8EKZrPItRH1uEZGYzr9y5o0xB2bgS7NFHXOQDPDrUPc7ltA/exec', {
     method: 'POST',
     body: JSON.stringify(data)

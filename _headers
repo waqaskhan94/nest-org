@@ -1,3 +1,11 @@
+# Security headers — applied to every response
+/*
+  X-Frame-Options: SAMEORIGIN
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: camera=(), microphone=(), geolocation=()
+  Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
+
 # Cache images & static assets for 30 days so navigation between pages is instant.
 # (Not "immutable" — so if you replace an image under the same name, it still refreshes within 30 days.)
 /images/*
