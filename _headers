@@ -6,6 +6,10 @@
   Permissions-Policy: camera=(), microphone=(), geolocation=()
   Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
 
+# These are JS-injected modal fragments, not real pages — keep them out of search results
+/partials/*
+  X-Robots-Tag: noindex, nofollow
+
 # Cache images & static assets for 30 days so navigation between pages is instant.
 # (Not "immutable" — so if you replace an image under the same name, it still refreshes within 30 days.)
 /images/*
