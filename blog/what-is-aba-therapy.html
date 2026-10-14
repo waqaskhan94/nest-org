@@ -446,7 +446,8 @@ footer{background:#0e4050;color:rgba(255,255,255,0.65);padding:3.5rem 2.5rem 2re
 .btn-icon::after{content:'';position:absolute;top:0;left:0;right:0;height:50%;background:rgba(255,255,255,0.22);border-radius:6px 6px 40% 40%/4px 4px 2px 2px;pointer-events:none}
 .btn-icon svg{position:relative;z-index:1}
 .check-item{display:flex!important;flex-direction:row;flex-wrap:nowrap;align-items:center;gap:14px;padding:0.7rem 1rem;border-radius:10px;border:2px solid #e5e7eb;cursor:pointer;transition:all 0.18s;font-size:0.85rem;font-weight:600;color:#1a1a2e;line-height:1.2}
-.check-item:hover,.check-item.checked{border-color:#166178;background:#F0FDFA}
+.check-item.checked{border-color:#166178;background:#F0FDFA}
+@media(hover:hover){.check-item:hover{border-color:#166178;background:#F0FDFA}}
 .check-item{margin-bottom:0!important}
 .check-item input{width:16px;height:16px;accent-color:#166178;cursor:pointer;flex-shrink:0;align-self:center}
 .check-label{display:flex;align-items:center;gap:8px;flex:1;line-height:1.2}
@@ -564,7 +565,8 @@ footer{background:#0e4050;color:rgba(255,255,255,0.65);padding:3.5rem 2.5rem 2re
 .cs-dp-yr.sel{background:#166178;color:#fff;font-weight:700}
 .cs-dp-yr.disabled{color:#d1d5db;cursor:not-allowed;pointer-events:none}.check-group{display:grid;grid-template-columns:1fr 1fr;gap:0.6rem;margin-top:0.4rem}
 .check-item{display:flex;align-items:flex-start;gap:8px;padding:0.6rem 0.85rem;border-radius:10px;border:2px solid #e5e7eb;cursor:pointer;transition:all 0.18s;font-size:0.85rem;font-weight:600;color:#1a1a2e;line-height:1.5}
-.check-item:hover,.check-item.checked{border-color:#166178;background:#F0FDFA}
+.check-item.checked{border-color:#166178;background:#F0FDFA}
+@media(hover:hover){.check-item:hover{border-color:#166178;background:#F0FDFA}}
 .check-item input{width:16px;height:16px;accent-color:#166178;cursor:pointer}
 .radio-group{display:flex;gap:0.75rem;flex-wrap:wrap;margin-top:0.4rem}
 .radio-item{display:flex;align-items:center;gap:0;padding:0.55rem 1.1rem;border-radius:20px;border:2px solid #e5e7eb;cursor:pointer;transition:all 0.18s;font-size:0.85rem;font-weight:600;color:#6b7280;position:relative}
@@ -1754,7 +1756,7 @@ function clearError(el){
 
 function liveAlpha(el){
   var v=el.value.trim();
-  if(!v){ clearError(el); return true; }          /* empty on blur: don't flag (only at submit) */
+  if(!v){ setError(el); return false; }          /* empty on blur: don't flag (only at submit) */
   if(v.length<2){ setError(el); return false; }
   if(!/^[a-zA-Z\u0600-\u06FF\s\-']+$/.test(v)){ setError(el); return false; }
   clearError(el); return true;
@@ -1762,7 +1764,7 @@ function liveAlpha(el){
 function livePhone(el){
   var v=el.value.trim();
   /* Pakistan numbers: 10-13 digits (with optional +92 prefix) */
-  if(!v){ clearError(el); return true; }
+  if(!v){ setError(el); return false; }
   if(v.length<10){ setError(el); return false; }
   if(!/^(\+92|0)[0-9\-\s]{9,13}$/.test(v)){ setError(el); return false; }
   clearError(el); return true;
