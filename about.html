@@ -1080,9 +1080,9 @@ body.has-guide-ticker{padding-top:114px}
 @keyframes osPhotoPulse{0%,100%{box-shadow:0 8px 24px rgba(255,255,255,0.25)}50%{box-shadow:0 8px 34px rgba(255,255,255,0.5)}}
 .os-wa-btn{position:relative;overflow:hidden}
 .os-wa-btn-shimmer{position:absolute;top:0;left:-60%;width:40%;height:100%;pointer-events:none;background:linear-gradient(100deg,transparent,rgba(255,255,255,0.65),transparent);transform:skewX(-18deg);animation:osWaBtnSweep 2.6s ease-in-out infinite}
-.os-person-card{display:flex;flex-direction:column;align-items:center;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.18);border-radius:18px;padding:1.75rem 1.5rem;text-align:center;backdrop-filter:blur(2px);transition:transform .2s,background .2s;animation:osCardBreathe 4s ease-in-out infinite}
+.os-person-card{display:flex;flex-direction:column;align-items:center;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.18);border-radius:18px;padding:1.75rem 1.5rem;text-align:center;backdrop-filter:blur(2px);transition:transform .2s,background .2s;animation:osCardBreathe 4s ease-in-out infinite;will-change:transform;backface-visibility:hidden;transform-style:preserve-3d}
 .os-person-card:nth-child(2){animation-delay:0.6s}
-@keyframes osCardBreathe{0%,100%{transform:scale(1)}50%{transform:scale(1.025)}}
+@keyframes osCardBreathe{0%,100%{transform:scale(1) translateZ(0)}50%{transform:scale(1.018) translateZ(0)}}
 .os-person-card:hover{transform:translateY(-4px);background:rgba(255,255,255,0.12)}
 .os-person-card h3{font-family:'Fredoka One',cursive;font-weight:400;font-size:1.15rem;color:#fff;margin:0.9rem 0 0.25rem}
 .os-person-card .os-person-role{color:#FBBF24;font-weight:700;font-size:0.8rem;margin-bottom:0.7rem}
