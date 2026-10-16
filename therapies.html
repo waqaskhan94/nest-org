@@ -2128,7 +2128,9 @@ function _nestDetectSource(){
     if(ref.indexOf('google.')!==-1) return 'Google Search';
     if(ref.indexOf('whatsapp')!==-1) return 'WhatsApp';
     if(!ref) return 'Direct';
-    return 'Other (' + ref.replace(/^https?:\/\//,'').split('/')[0] + ')';
+    var refHost=ref.replace(/^https?:\/\//,'').split('/')[0];
+    if(refHost===location.hostname||refHost==='www.'+location.hostname) return 'Internal (clicked from another page on the site)';
+    return 'Other website (' + refHost + ')';
   }catch(e){ return 'Unknown'; }
 }
 function _nestCleanUrl(){
