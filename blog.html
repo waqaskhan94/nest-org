@@ -1311,6 +1311,7 @@ function _nestEnsureModal(){
 function openEnrollModal(){
   _nestEnsureModal().then(function(){
     document.getElementById('enrollModal').classList.add('open');
+    window._nestFormOpenedAt=Date.now();
     document.body.style.overflow='hidden';document.documentElement.style.overflow='hidden';document.documentElement.classList.add('nest-modal-open');
     enhanceSelects();
     var today=new Date().toISOString().split('T')[0];
@@ -1811,7 +1812,7 @@ function submitForm(){
     email:        document.getElementById('parentEmail').value,
     city:         getCityValue(),
     hearAbout:    hearAbout,
-    website:      (document.getElementById('website')||{}).value || '',
+    website:      (document.getElementById('nest_hp_token')||{}).value || '',
     prefDate:     document.getElementById('prefDate').value,
     prefTime:     document.getElementById('prefTime').value,
     prevTherapy:  prevTherapy,
@@ -1831,7 +1832,7 @@ function submitForm(){
     if(window._nestResetTimer) clearTimeout(window._nestResetTimer);
     window._nestResetTimer = setTimeout(function(){ closeEnrollModal(); }, 4000);
   }
-  var _hp=document.getElementById('website'); if(_hp&&_hp.value){ _nestShowSuccess(); return; }
+  var _hp=document.getElementById('nest_hp_token'); var _elapsed=window._nestFormOpenedAt?(Date.now()-window._nestFormOpenedAt):99999; if((_hp&&_hp.value)||_elapsed<1200){ _nestShowSuccess(); return; }
   fetch('https://script.google.com/macros/s/AKfycbz_njfYUo78Eo2q-TKhFVA8EKZrPItRH1uEZGYzr9y5o0xB2bgS7NFHXOQDPDrUPc7ltA/exec', {
     method: 'POST',
     body: JSON.stringify(data)
