@@ -1,80 +1,372 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet type="text/xsl" href="/sitemap.xsl"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>https://nestislamabad.com/</loc>
+    <image:image>
+      <image:loc>https://nestislamabad.com/images/special-education.jpeg</image:loc>
+      <image:caption>Special education classroom for children with autism and special needs at NEST, DHA Phase 2, Islamabad</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://nestislamabad.com/images/aba-therapy.jpeg</image:loc>
+      <image:caption>ABA therapy session for a child with autism at NEST, DHA Phase 2, Islamabad</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://nestislamabad.com/images/speech-therapy.jpeg</image:loc>
+      <image:caption>Speech and language therapy session for a child at NEST, DHA Phase 2, Islamabad</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://nestislamabad.com/images/occupational-therapy.jpeg</image:loc>
+      <image:caption>Occupational therapy session for fine motor development at NEST, DHA Phase 2, Islamabad</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://nestislamabad.com/images/physical-therapy.jpeg</image:loc>
+      <image:caption>Physical therapy session for gross motor development at NEST, DHA Phase 2, Islamabad</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://nestislamabad.com/images/family-counseling-room-2.jpeg</image:loc>
+      <image:caption>Parent counseling and family support session at NEST, DHA Phase 2, Islamabad</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://nestislamabad.com/images/team/hina-haroon.jpeg</image:loc>
+      <image:caption>Hina Haroon, CEO at NEST, Islamabad</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://nestislamabad.com/images/team/summaira-tariq.jpeg</image:loc>
+      <image:caption>Summaira Tariq, Director and Administration at NEST, Islamabad</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://nestislamabad.com/images/team/sidra-simaab.jpeg</image:loc>
+      <image:caption>Sidra Simaab, Director and Behavior Therapist at NEST, Islamabad</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://nestislamabad.com/images/team/harmain-fatima.jpeg</image:loc>
+      <image:caption>Harmain Fatima, Speech-Language Therapist and AAC Specialist at NEST, Islamabad</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://nestislamabad.com/images/team/hajra-abbasi.jpeg</image:loc>
+      <image:caption>Hajra Abbasi, Teacher at NEST, Islamabad</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://nestislamabad.com/images/team/sana-waheed.jpeg</image:loc>
+      <image:caption>Sana Waheed, Physiotherapist and Occupational Therapist at NEST, Islamabad</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://nestislamabad.com/images/team/wajeeha-majid.jpeg</image:loc>
+      <image:caption>Wajeeha Majid, Special Educator at NEST, Islamabad</image:caption>
+    </image:image>
     <lastmod>2026-10-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://nestislamabad.com/programs</loc>
+    <image:image>
+      <image:loc>https://nestislamabad.com/images/special-education.jpeg</image:loc>
+      <image:caption>Special education classroom for children with autism and special needs at NEST, DHA Phase 2, Islamabad</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://nestislamabad.com/images/aba-therapy.jpeg</image:loc>
+      <image:caption>ABA therapy session for a child with autism at NEST, DHA Phase 2, Islamabad</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://nestislamabad.com/images/speech-therapy.jpeg</image:loc>
+      <image:caption>Speech and language therapy session for a child at NEST, DHA Phase 2, Islamabad</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://nestislamabad.com/images/occupational-therapy.jpeg</image:loc>
+      <image:caption>Occupational therapy session for fine motor development at NEST, DHA Phase 2, Islamabad</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://nestislamabad.com/images/physical-therapy.jpeg</image:loc>
+      <image:caption>Physical therapy session for gross motor development at NEST, DHA Phase 2, Islamabad</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://nestislamabad.com/images/family-counseling-room-2.jpeg</image:loc>
+      <image:caption>Parent counseling and family support session at NEST, DHA Phase 2, Islamabad</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://nestislamabad.com/images/team/hina-haroon.jpeg</image:loc>
+      <image:caption>Hina Haroon, CEO at NEST, Islamabad</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://nestislamabad.com/images/team/sidra-simaab.jpeg</image:loc>
+      <image:caption>Sidra Simaab, Clinical Director at NEST, Islamabad</image:caption>
+    </image:image>
     <lastmod>2026-10-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://nestislamabad.com/therapies</loc>
+    <image:image>
+      <image:loc>https://nestislamabad.com/images/aba-therapy.jpeg</image:loc>
+      <image:caption>ABA therapy session for a child with autism at NEST, DHA Phase 2, Islamabad</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://nestislamabad.com/images/speech-therapy.jpeg</image:loc>
+      <image:caption>Speech and language therapy session for a child at NEST, DHA Phase 2, Islamabad</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://nestislamabad.com/images/occupational-therapy.jpeg</image:loc>
+      <image:caption>Occupational therapy session for fine motor development at NEST, DHA Phase 2, Islamabad</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://nestislamabad.com/images/physical-therapy.jpeg</image:loc>
+      <image:caption>Physical therapy session for gross motor development at NEST, DHA Phase 2, Islamabad</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://nestislamabad.com/images/play-art-therapy.jpeg</image:loc>
+      <image:caption>Play and art therapy activity for children with special needs at NEST, DHA Phase 2, Islamabad</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://nestislamabad.com/images/family-counseling-room-2.jpeg</image:loc>
+      <image:caption>Parent counseling and family support session at NEST, DHA Phase 2, Islamabad</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://nestislamabad.com/images/team/sidra-simaab.jpeg</image:loc>
+      <image:caption>Sidra Simaab, Director and Behavior Therapist at NEST, Islamabad</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://nestislamabad.com/images/team/harmain-fatima.jpeg</image:loc>
+      <image:caption>Harmain Fatima, Speech-Language Therapist and AAC Specialist at NEST, Islamabad</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://nestislamabad.com/images/team/sana-waheed.jpeg</image:loc>
+      <image:caption>Sana Waheed, Physiotherapist and Occupational Therapist at NEST, Islamabad</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://nestislamabad.com/images/team/hina-haroon.jpeg</image:loc>
+      <image:caption>Hina Haroon, CEO at NEST, Islamabad</image:caption>
+    </image:image>
     <lastmod>2026-10-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://nestislamabad.com/special-education</loc>
+    <image:image>
+      <image:loc>https://nestislamabad.com/images/special-education.jpeg</image:loc>
+      <image:caption>Special education classroom teacher working with a child at NEST special education school in Islamabad</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://nestislamabad.com/images/se-classroom.jpeg</image:loc>
+      <image:caption>Children learning in a structured special education classroom at NEST, DHA Phase 2, Islamabad</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://nestislamabad.com/images/se-education2.jpeg</image:loc>
+      <image:caption>Station-based learning program at NEST special education school in Islamabad, preparing a child for school entry test</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://nestislamabad.com/images/team/hina-haroon.jpeg</image:loc>
+      <image:caption>Hina Haroon, CEO and Special Educator at NEST, Islamabad</image:caption>
+    </image:image>
     <lastmod>2026-10-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://nestislamabad.com/autism-center-islamabad</loc>
+    <image:image>
+      <image:loc>https://nestislamabad.com/images/aba-therapy.jpeg</image:loc>
+      <image:caption>ABA therapist working one-on-one with a child on the autism spectrum at NEST, Islamabad</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://nestislamabad.com/images/speech-therapy.jpeg</image:loc>
+      <image:caption>Speech therapy session for communication and language at NEST autism center, Islamabad</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://nestislamabad.com/images/se-classroom.jpeg</image:loc>
+      <image:caption>Small-group special education classroom for children on the autism spectrum at NEST, DHA Phase 2, Islamabad</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://nestislamabad.com/images/team/hina-haroon.jpeg</image:loc>
+      <image:caption>Hina Haroon, CEO and Special Educator at NEST, Islamabad</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://nestislamabad.com/images/team/sidra-simaab.jpeg</image:loc>
+      <image:caption>Sidra Simaab, Director and Behavior Therapist at NEST, Islamabad</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://nestislamabad.com/images/team/harmain-fatima.jpeg</image:loc>
+      <image:caption>Harmain Fatima, Speech-Language Therapist and AAC Specialist at NEST, Islamabad</image:caption>
+    </image:image>
     <lastmod>2026-10-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://nestislamabad.com/adhd-therapy-islamabad</loc>
+    <image:image>
+      <image:loc>https://nestislamabad.com/images/se-classroom.jpeg</image:loc>
+      <image:caption>Structured classroom supporting a child with ADHD at NEST, Islamabad</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://nestislamabad.com/images/aba-therapy.jpeg</image:loc>
+      <image:caption>ABA therapist helping a child with ADHD build focus and self-regulation at NEST, Islamabad</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://nestislamabad.com/images/se-education2.jpeg</image:loc>
+      <image:caption>Station-based learning helping a child with ADHD build attention and readiness skills at NEST, Islamabad</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://nestislamabad.com/images/team/hina-haroon.jpeg</image:loc>
+      <image:caption>Hina Haroon, CEO and Special Educator at NEST, Islamabad</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://nestislamabad.com/images/team/sidra-simaab.jpeg</image:loc>
+      <image:caption>Sidra Simaab, Director and Behavior Therapist at NEST, Islamabad</image:caption>
+    </image:image>
     <lastmod>2026-10-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://nestislamabad.com/down-syndrome-support-islamabad</loc>
+    <image:image>
+      <image:loc>https://nestislamabad.com/images/speech-therapy.jpeg</image:loc>
+      <image:caption>Speech therapy session for a child with Down syndrome at NEST, Islamabad</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://nestislamabad.com/images/occupational-therapy.jpeg</image:loc>
+      <image:caption>Occupational therapy building motor skills for a child with Down syndrome at NEST, Islamabad</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://nestislamabad.com/images/family-support.jpeg</image:loc>
+      <image:caption>Parent counseling and family support session at NEST, DHA Phase 2, Islamabad</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://nestislamabad.com/images/team/hina-haroon.jpeg</image:loc>
+      <image:caption>Hina Haroon, CEO and Special Educator at NEST, Islamabad</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://nestislamabad.com/images/team/sidra-simaab.jpeg</image:loc>
+      <image:caption>Sidra Simaab, Director and Behavior Therapist at NEST, Islamabad</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://nestislamabad.com/images/team/harmain-fatima.jpeg</image:loc>
+      <image:caption>Harmain Fatima, Speech-Language Therapist and AAC Specialist at NEST, Islamabad</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://nestislamabad.com/images/team/sana-waheed.jpeg</image:loc>
+      <image:caption>Sana Waheed, Physio and Occupational Therapist at NEST, Islamabad</image:caption>
+    </image:image>
     <lastmod>2026-10-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://nestislamabad.com/aba-therapy</loc>
+    <image:image>
+      <image:loc>https://nestislamabad.com/images/aba-therapy.jpeg</image:loc>
+      <image:caption>IBA-certified therapist delivering ABA therapy to a child with autism at NEST in Islamabad</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://nestislamabad.com/images/team/sidra-simaab.jpeg</image:loc>
+      <image:caption>Sidra Simaab, Clinical Director and ABA Therapist at NEST, Islamabad</image:caption>
+    </image:image>
     <lastmod>2026-10-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://nestislamabad.com/speech-therapy</loc>
+    <image:image>
+      <image:loc>https://nestislamabad.com/images/speech-therapy.jpeg</image:loc>
+      <image:caption>Certified speech-language pathologist during a speech therapy session with a child at NEST in Islamabad</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://nestislamabad.com/images/team/harmain-fatima.jpeg</image:loc>
+      <image:caption>Harmain Fatima, Speech-Language Therapist and AAC Specialist at NEST, Islamabad</image:caption>
+    </image:image>
     <lastmod>2026-10-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://nestislamabad.com/physical-therapy</loc>
+    <image:image>
+      <image:loc>https://nestislamabad.com/images/physical-5.jpeg</image:loc>
+      <image:caption>Physical therapist working with a child on a therapy ball at NEST, Islamabad</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://nestislamabad.com/images/physical-therapy.jpeg</image:loc>
+      <image:caption>Physical therapist working on gross motor skills with a child at NEST in Islamabad</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://nestislamabad.com/images/team/sana-waheed.jpeg</image:loc>
+      <image:caption>Sana Waheed, Physio and Occupational Therapist at NEST, Islamabad</image:caption>
+    </image:image>
     <lastmod>2026-10-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://nestislamabad.com/family-support</loc>
+    <image:image>
+      <image:loc>https://nestislamabad.com/images/family-counseling-group.jpeg</image:loc>
+      <image:caption>Parent counseling and family support session at NEST, DHA Phase 2, Islamabad</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://nestislamabad.com/images/parent-workshop.jpeg</image:loc>
+      <image:caption>Parent workshop session at NEST, Islamabad</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://nestislamabad.com/images/team/summaira-tariq.jpeg</image:loc>
+      <image:caption>Summaira Tariq, Director and Administration at NEST, Islamabad</image:caption>
+    </image:image>
     <lastmod>2026-10-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://nestislamabad.com/occupational-therapy</loc>
+    <image:image>
+      <image:loc>https://nestislamabad.com/images/occupational-therapy.jpeg</image:loc>
+      <image:caption>Licensed occupational therapist helping a child with fine-motor skills at NEST in Islamabad</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://nestislamabad.com/images/team/sana-waheed.jpeg</image:loc>
+      <image:caption>Sana Waheed, Occupational Therapist at NEST, Islamabad</image:caption>
+    </image:image>
     <lastmod>2026-10-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://nestislamabad.com/about</loc>
+    <image:image>
+      <image:loc>https://nestislamabad.com/images/team/hina-haroon.jpeg</image:loc>
+      <image:caption>Hina Haroon, CEO at NEST, Islamabad</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://nestislamabad.com/images/team/summaira-tariq.jpeg</image:loc>
+      <image:caption>Summaira Tariq, Director and Administration at NEST, Islamabad</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://nestislamabad.com/images/team/sidra-simaab.jpeg</image:loc>
+      <image:caption>Sidra Simaab, Director and Behavior Therapist at NEST, Islamabad</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://nestislamabad.com/images/team/harmain-fatima.jpeg</image:loc>
+      <image:caption>Harmain Fatima, Speech-Language Therapist and AAC Specialist at NEST, Islamabad</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://nestislamabad.com/images/team/hajra-abbasi.jpeg</image:loc>
+      <image:caption>Hajra Abbasi, Teacher at NEST, Islamabad</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://nestislamabad.com/images/team/sana-waheed.jpeg</image:loc>
+      <image:caption>Sana Waheed, Physiotherapist and Occupational Therapist at NEST, Islamabad</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://nestislamabad.com/images/team/wajeeha-majid.jpeg</image:loc>
+      <image:caption>Wajeeha Majid, Special Educator at NEST, Islamabad</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://nestislamabad.com/images/holistic-approach.jpeg</image:loc>
+      <image:caption>Happy children learning at NEST special education and therapy center, DHA Phase 2, Islamabad</image:caption>
+    </image:image>
     <lastmod>2026-10-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
@@ -87,6 +379,18 @@
   </url>
   <url>
     <loc>https://nestislamabad.com/contact</loc>
+    <image:image>
+      <image:loc>https://nestislamabad.com/images/contact-main.jpeg</image:loc>
+      <image:caption>Happy child at NEST special education and therapy center, DHA Phase 2, Islamabad</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://nestislamabad.com/images/contact-topright.jpeg</image:loc>
+      <image:caption>Child enjoying a hands-on art activity at NEST therapy center, DHA Phase 2, Islamabad</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://nestislamabad.com/images/holistic-approach.jpeg</image:loc>
+      <image:caption>Happy children learning at NEST special education and therapy center, DHA Phase 2, Islamabad</image:caption>
+    </image:image>
     <lastmod>2026-10-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
@@ -171,12 +475,36 @@
   </url>
   <url>
     <loc>https://nestislamabad.com/online-therapy-sessions</loc>
+    <image:image>
+      <image:loc>https://nestislamabad.com/images/team/sidra-simaab.jpeg</image:loc>
+      <image:caption>Sidra Simaab, Clinical Director and Behavior Therapist at NEST, available for online therapy sessions</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://nestislamabad.com/images/aba-therapy.jpeg</image:loc>
+      <image:caption>Behavior therapy and ABA techniques discussed in an online therapy session with NEST's Clinical Director</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://nestislamabad.com/images/aba-shapes.jpeg</image:loc>
+      <image:caption>Developmental support techniques discussed in an online therapy session with families abroad</image:caption>
+    </image:image>
     <lastmod>2026-10-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://nestislamabad.com/online-academic-sessions</loc>
+    <image:image>
+      <image:loc>https://nestislamabad.com/images/team/hina-haroon.jpeg</image:loc>
+      <image:caption>Hina Haroon, CEO and Special Educator at NEST, available for online academic sessions</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://nestislamabad.com/images/autism-art-session.jpeg</image:loc>
+      <image:caption>Writing and fine motor strategies discussed in an online academic session with NEST's CEO</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://nestislamabad.com/images/se-education2.jpeg</image:loc>
+      <image:caption>School admission preparation strategies for families booking online academic sessions from abroad</image:caption>
+    </image:image>
     <lastmod>2026-10-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
