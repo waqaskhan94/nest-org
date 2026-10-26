@@ -202,6 +202,10 @@ nav{
 .hero-btns{display:flex;gap:1rem;flex-wrap:wrap}
 .btn-bright{background:linear-gradient(135deg,#FBBF24,#F97316);color:#1a1a2e;padding:0.75rem 1.6rem;border-radius:12px;font-weight:900;font-size:0.95rem;text-decoration:none;box-shadow:0 4px 16px rgba(251,191,36,0.4);transition:all 0.2s;display:inline-flex;align-items:center;gap:6px}
 .btn-bright:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(251,191,36,0.5)}
+.btn-hero-wa{display:inline-flex;align-items:center;gap:8px;background:#25D366;color:#fff;font-weight:800;font-size:0.95rem;padding:0.75rem 1.4rem;border-radius:100px;text-decoration:none;box-shadow:0 4px 16px rgba(37,211,102,0.4);transition:transform .2s,box-shadow .2s;animation:heroWaPulse 2.6s ease-in-out infinite}
+.btn-hero-wa:hover{transform:translateY(-2px) scale(1.04);box-shadow:0 8px 26px rgba(37,211,102,0.55)}
+@keyframes heroWaPulse{0%,100%{box-shadow:0 4px 16px rgba(37,211,102,0.4),0 0 0 0 rgba(37,211,102,0.45)}50%{box-shadow:0 4px 16px rgba(37,211,102,0.4),0 0 0 8px rgba(37,211,102,0)}}
+@media(prefers-reduced-motion:reduce){.btn-hero-wa{animation:none}}
 .btn-ghost{background:rgba(255,255,255,0.12);color:#fff;border:1.5px solid rgba(255,255,255,0.35);padding:0.75rem 1.6rem;border-radius:12px;font-weight:700;font-size:0.95rem;text-decoration:none;transition:all 0.2s}
 .btn-ghost:hover{background:rgba(255,255,255,0.22)}
 .hero-pills{display:flex;gap:0.75rem;margin-top:1.5rem;flex-wrap:wrap}
@@ -1152,7 +1156,8 @@ body.has-guide-ticker{padding-top:114px}
       </div>
       <div class="hero-btns">
         <a role="button" tabindex="0" style="cursor:pointer" onclick="openEnrollModal();return false;" class="btn-bright"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1a1a2e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><rect x="8" y="2" width="8" height="4" rx="1" ry="1"/></svg> Enroll Your Child</a>
-        <a href="programs" class="btn-ghost">Explore Programs →</a>
+        <a role="button" tabindex="0" style="cursor:pointer" class="btn-hero-wa" onclick="openWaModal();return false;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.42 2 2 0 0 1 3.6 1.21h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 9a16 16 0 0 0 6.09 6.09l1.95-1.95a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg> WhatsApp Us</a>
+        <a href="programs" class="btn-ghost" style="padding:0.6rem 1.1rem;font-size:0.85rem">Explore Programs →</a>
       </div>
       <div class="hero-pills">
         <span class="hero-pill"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.9)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Assessment with Enrollment</span>
