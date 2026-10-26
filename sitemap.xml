@@ -165,6 +165,24 @@
     <priority>0.9</priority>
   </url>
   <url>
+    <loc>https://nestislamabad.com/early-intervention</loc>
+    <image:image>
+      <image:loc>https://nestislamabad.com/images/special-education.jpeg</image:loc>
+      <image:caption>Early intervention assessment for a young child at NEST in Islamabad</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://nestislamabad.com/images/family-support.jpeg</image:loc>
+      <image:caption>Coordinated early intervention support combining education and therapy at NEST, DHA Phase 2, Islamabad</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://nestislamabad.com/images/family-counseling-room.jpeg</image:loc>
+      <image:caption>Parent discussing developmental signs with a specialist at NEST early intervention program in Islamabad</image:caption>
+    </image:image>
+    <lastmod>2026-10-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
     <loc>https://nestislamabad.com/autism-center-islamabad</loc>
     <image:image>
       <image:loc>https://nestislamabad.com/images/aba-therapy.jpeg</image:loc>
@@ -329,6 +347,24 @@
       <image:caption>Sana Waheed, Occupational Therapist at NEST, Islamabad</image:caption>
     </image:image>
     <lastmod>2026-10-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://nestislamabad.com/sensory-integration-therapy</loc>
+    <image:image>
+      <image:loc>https://nestislamabad.com/images/occupational-therapy.jpeg</image:loc>
+      <image:caption>Child taking part in a sensory integration therapy activity at NEST in Islamabad</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://nestislamabad.com/images/aba-therapy.jpeg</image:loc>
+      <image:caption>Fine-motor and cognitive activity with a therapist at NEST, Islamabad</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://nestislamabad.com/images/ph-yoga.jpeg</image:loc>
+      <image:caption>Group movement and regulation activity for children at NEST, Islamabad</image:caption>
+    </image:image>
+    <lastmod>2026-10-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
