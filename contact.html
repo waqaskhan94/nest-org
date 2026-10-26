@@ -464,7 +464,7 @@ section{padding:4rem 2.5rem}
 /* ===== FOOTER ===== */
 footer{background:#0e4050;color:rgba(255,255,255,0.65);padding:3.5rem 2.5rem 2rem}
 .ft-inner{max-width:1200px;margin:0 auto}
-.ft-top{display:grid;grid-template-columns:2fr 1fr 1fr 1.3fr;gap:2.5rem;margin-bottom:2.5rem}
+.ft-top{display:grid;grid-template-columns:1.8fr 1fr 1.6fr 1.3fr;gap:2.5rem;margin-bottom:2.5rem}
 .ft-logo{display:flex;align-items:center;gap:10px;margin-bottom:1rem;text-decoration:none}
 .ft-logo-bubble{width:38px;height:38px;border-radius:12px;background:linear-gradient(135deg,#F97316,#EC4899);display:flex;align-items:center;justify-content:center;font-size:1.1rem}
 .ft-brand-name{font-family:'Fredoka One',cursive;font-weight:400;font-size:1.1rem;color:#fff}
@@ -474,6 +474,7 @@ footer{background:#0e4050;color:rgba(255,255,255,0.65);padding:3.5rem 2.5rem 2re
 .ft-soc:hover{background:rgba(255,255,255,0.2);color:#fff}
 .ft-col h2,.ft-col .ft-col-h{color:#fff;font-weight:700;font-size:0.88rem;margin:0 0 0.85rem}
 .ft-col ul{list-style:none}
+.ft-programs-grid{display:grid;grid-template-columns:1fr 1fr;gap:0 1.5rem}
 .ft-col li{margin-bottom:0.45rem}
 .ft-col a{color:rgba(255,255,255,0.82);text-decoration:none;font-size:0.83rem;transition:color 0.2s}
 .ft-col a:hover{color:#fff}
@@ -535,6 +536,7 @@ footer{background:#0e4050;color:rgba(255,255,255,0.65);padding:3.5rem 2.5rem 2re
   .test-grid{grid-template-columns:repeat(2,1fr)}
   .faq-grid{grid-template-columns:1fr}
   .ft-top{grid-template-columns:1fr 1fr 1fr;gap:1.5rem 1.5rem}.ft-top>div:first-child{grid-column:1 / -1}
+.ft-programs-grid{grid-template-columns:1fr}
   section{padding:3rem 1.5rem}
   .ribbon{padding:1rem 1.5rem}
 }
@@ -589,6 +591,7 @@ footer{background:#0e4050;color:rgba(255,255,255,0.65);padding:3.5rem 2.5rem 2re
   .btn-cta-main,.btn-cta-out{width:100%;max-width:340px;box-sizing:border-box;display:flex;align-items:center;justify-content:center;gap:8px;text-align:center;font-size:0.92rem;padding:0.85rem 1.2rem}
 
   .ft-top{grid-template-columns:1fr 1fr 1fr;gap:1.5rem 1.5rem}.ft-top>div:first-child{grid-column:1 / -1}
+.ft-programs-grid{grid-template-columns:1fr}
 @media(max-width:600px){.ft-top{grid-template-columns:1fr !important;gap:1.75rem !important}.ft-top>div:first-child{grid-column:auto !important}}
   footer{padding:2.5rem 1.2rem 1.5rem}
   .ft-bottom{flex-direction:column;align-items:flex-start;gap:0.5rem}
@@ -1304,9 +1307,9 @@ body.has-guide-ticker{padding-top:114px}
           <li><a href="contact">Contact Us</a></li>
         </ul>
       </div>
-      <div class="ft-col">
+      <div class="ft-col ft-col-programs">
         <h2 class="ft-col-h">Our Programs</h2>
-        <ul>
+        <ul class="ft-programs-grid">
           <li><a href="special-education">Special Education</a></li>
           <li><a href="aba-therapy">ABA Therapy</a></li>
           <li><a href="speech-therapy">Speech Therapy</a></li>
