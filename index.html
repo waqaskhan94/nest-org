@@ -944,6 +944,25 @@ nav.scrolled{box-shadow:0 4px 28px rgba(0,0,0,0.11)!important}
 .testi-dot::after{content:"";position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:44px;height:44px}
 .testi-dot.active{background:#FBBF24;width:28px}
 .testi-progress-bar{display:none}
+.testi-google-card{max-width:480px;margin:0 auto;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);border-radius:20px;padding:2.5rem 2rem;text-align:center;animation:testiGoogleFloat 5s ease-in-out infinite;transition:transform 0.3s ease,background 0.3s ease}
+.testi-google-card:hover{background:rgba(255,255,255,0.13);animation-play-state:paused}
+.testi-google-stars{display:flex;align-items:center;justify-content:center;gap:4px;margin-bottom:0.75rem}
+.testi-google-stars svg{animation:testiStarPop 2.2s ease-in-out infinite}
+.testi-google-stars svg:nth-child(2){animation-delay:0.12s}
+.testi-google-stars svg:nth-child(3){animation-delay:0.24s}
+.testi-google-stars svg:nth-child(4){animation-delay:0.36s}
+.testi-google-stars svg:nth-child(5){animation-delay:0.48s}
+.testi-google-rating{font-family:'Fredoka One',cursive;font-size:2.2rem;color:#fff;margin-bottom:0.5rem}
+.testi-google-rating span{font-family:'Poppins',sans-serif;font-size:0.95rem;color:rgba(255,255,255,0.6);font-weight:600}
+.testi-google-sub{color:rgba(255,255,255,0.72);font-size:0.9rem;line-height:1.7;margin-bottom:1.5rem}
+.testi-google-btn{position:relative;overflow:hidden;display:inline-flex;align-items:center;gap:10px;background:#fff;color:#1a1a2e;font-weight:800;font-size:0.9rem;padding:0.85rem 1.75rem;border-radius:100px;text-decoration:none;transition:transform 0.25s,box-shadow 0.25s;animation:testiGooglePulse 2.6s ease-in-out infinite}
+.testi-google-btn:hover{transform:translateY(-3px);box-shadow:0 10px 28px rgba(0,0,0,0.3)}
+.testi-google-btn::after{content:"";position:absolute;top:0;left:-60%;width:40%;height:100%;background:linear-gradient(100deg,transparent,rgba(0,0,0,0.08),transparent);transform:skewX(-18deg);animation:testiGoogleSweep 3.2s ease-in-out infinite}
+@keyframes testiGoogleFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+@keyframes testiStarPop{0%,100%{transform:scale(1)}50%{transform:scale(1.18)}}
+@keyframes testiGooglePulse{0%,100%{box-shadow:0 4px 16px rgba(0,0,0,0.18),0 0 0 0 rgba(255,255,255,0.4)}50%{box-shadow:0 4px 16px rgba(0,0,0,0.18),0 0 0 8px rgba(255,255,255,0)}}
+@keyframes testiGoogleSweep{0%{left:-60%}55%{left:130%}100%{left:130%}}
+@media(max-width:768px){.testi-google-card{padding:2rem 1.25rem}.testi-google-rating{font-size:1.9rem}}
 @media(max-width:1024px){.testi-section{padding:3.5rem 1.5rem}.testi-header h2{font-size:1.85rem}}
 @media(max-width:768px){.testi-section{padding:2.5rem 1.2rem}.testi-header h2{font-size:1.6rem}.testi-card{padding:1.4rem 1.25rem}.testi-controls{margin-top:28px}}
 
@@ -1384,70 +1403,21 @@ body.has-guide-ticker{padding-top:114px}
       <p>Real words from the families who trust NEST with their most precious gift, their children.</p>
     </div>
 
-    <div class="testi-slider-wrap">
-      <div class="testi-track-clip">
-        <div class="testi-track" id="testi-track">
-
-          <div class="testi-slide">
-            <div class="testi-card">
-              <span class="testi-quote-icon">"</span>
-              <p>My daughter was diagnosed with autism as a toddler. We were devastated and lost. NEST became our second home. The therapists were not just professionals, they were genuinely invested in her progress. Today she attends a mainstream school and we could not be prouder.</p>
-              <div class="testi-author">
-                <div class="testi-author-info"><strong>Sara A.</strong><span>Mother of a 7-year-old</span><span class="testi-tag">Autism</span></div>
-              </div>
-            </div>
-          </div>
-
-          <div class="testi-slide">
-            <div class="testi-card">
-              <span class="testi-quote-icon">"</span>
-              <p>My son struggled with ADHD and we tried many places before NEST. The difference here is the team's dedication and the structured yet fun environment. His focus has improved dramatically and his confidence is through the roof. I recommend NEST to every parent I meet.</p>
-              <div class="testi-author">
-                <div class="testi-author-info"><strong>Muhammad K.</strong><span>Father of a 9-year-old</span><span class="testi-tag">ADHD</span></div>
-              </div>
-            </div>
-          </div>
-
-          <div class="testi-slide">
-            <div class="testi-card">
-              <span class="testi-quote-icon">"</span>
-              <p>We came to NEST when our son was 4 and barely communicating. The speech therapy program was exceptional, the therapists used creative, play-based techniques that he actually enjoyed. Within a year, he was holding conversations. NEST gave our boy his voice back.</p>
-              <div class="testi-author">
-                <div class="testi-author-info"><strong>Amna S.</strong><span>Parent of a 5-year-old</span><span class="testi-tag">Speech Delay</span></div>
-              </div>
-            </div>
-          </div>
-
-          <div class="testi-slide">
-            <div class="testi-card">
-              <span class="testi-quote-icon">"</span>
-              <p>The OT program at NEST completely transformed how my daughter interacts with her world. Before, sensory overload was a daily battle. Now she can sit in class, join group activities, and even made her first real friends. The team's patience and expertise are unmatched anywhere in Islamabad.</p>
-              <div class="testi-author">
-                <div class="testi-author-info"><strong>Fatima Q.</strong><span>Mother of a 6-year-old</span><span class="testi-tag">Sensory Processing</span></div>
-              </div>
-            </div>
-          </div>
-
-          <div class="testi-slide">
-            <div class="testi-card">
-              <span class="testi-quote-icon">"</span>
-              <p>As parents, we felt alone and overwhelmed when our son was diagnosed with Down syndrome. NEST didn't just treat him, they counseled us, guided us, and became our support system. The family therapy sessions gave us the tools to be better parents and advocates for him every single day.</p>
-              <div class="testi-author">
-                <div class="testi-author-info"><strong>Rashida &amp; Tariq N.</strong><span>Parents of an 8-year-old</span><span class="testi-tag">Down Syndrome</span></div>
-              </div>
-            </div>
-          </div>
-
-        </div><!-- /testi-track -->
-      </div><!-- /testi-track-clip -->
-    </div><!-- /testi-slider-wrap -->
-
-    <div class="testi-controls">
-      <button class="testi-arrow" id="testi-prev" aria-label="Previous">&#8592;</button>
-      <div class="testi-dots" id="testi-dots"></div>
-      <button class="testi-arrow" id="testi-next" aria-label="Next">&#8594;</button>
+    <div class="testi-google-card">
+      <div class="testi-google-stars" aria-hidden="true">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="#FBBF24" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="#FBBF24" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="#FBBF24" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="#FBBF24" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="#FBBF24" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+      </div>
+      <div class="testi-google-rating">5.0 <span>out of 5</span></div>
+      <p class="testi-google-sub">Rated by real parents on Google. See what families in Islamabad are saying about N.E.S.T.</p>
+      <a href="https://www.google.com/maps/place/NEST/@33.5351041,73.1698832,17z/data=!4m8!3m7!1s0x38dfedea1791ad7d:0x8fb8fdc8ee0f529!8m2!3d33.5351041!4d73.1698832!9m1!1b1!16s%2Fg%2F11zb57383g" target="_blank" rel="noopener" class="testi-google-btn">
+        <svg width="18" height="18" viewBox="0 0 24 24"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
+        Read Our Google Reviews
+      </a>
     </div>
-    <div class="testi-progress-bar"><div class="testi-progress-fill" id="testi-prog"></div></div>
 
   </div>
 </section>
@@ -2712,117 +2682,6 @@ document.querySelectorAll('.ribbon-item').forEach(function(el,i){
 </script>
 
 <script>
-/* NEST Testimonials Carousel */
-(function(){
-  var track   = document.getElementById('testi-track');
-  var prevBtn = document.getElementById('testi-prev');
-  var nextBtn = document.getElementById('testi-next');
-  var dotsWrap= document.getElementById('testi-dots');
-  var progFill= document.getElementById('testi-prog');
-  if(!track) return;
-
-  var slides  = track.querySelectorAll('.testi-slide');
-  var total   = slides.length;
-  var current = 0;
-  var autoTimer, progTimer, progVal=0;
-  var AUTO_MS = 4500;
-
-  function visibleCount(){
-    var w=track.parentElement.offsetWidth;
-    return w>=1024?3:w>=640?2:1;
-  }
-  function slideWidth(){ return Math.floor(track.parentElement.offsetWidth/visibleCount()); }
-
-  function recalcSlides(){
-    var vis=visibleCount();
-    var sw=Math.floor(track.parentElement.offsetWidth/vis)-16;
-    var cards=Array.prototype.slice.call(track.querySelectorAll('.testi-card'));
-    slides.forEach(function(s){s.style.width=sw+'px';s.style.minWidth=sw+'px';s.style.height='';});
-    cards.forEach(function(c){c.style.height='';});
-    /* Double RAF: first frame resets layout, second frame measures settled heights */
-    requestAnimationFrame(function(){
-      requestAnimationFrame(function(){
-        var maxH=0;
-        cards.forEach(function(c){maxH=Math.max(maxH,c.offsetHeight);});
-        cards.forEach(function(c){c.style.height=maxH+'px';});
-      });
-    });
-  }
-
-  function buildDots(){
-    dotsWrap.innerHTML='';
-    var max=total-visibleCount();
-    for(var i=0;i<=max;i++){
-      (function(idx){
-        var d=document.createElement('button');
-        d.className='testi-dot'+(idx===current?' active':'');
-        d.setAttribute('aria-label','Slide '+(idx+1));
-        d.addEventListener('click',function(){stopAuto();goTo(idx);startAuto();});
-        dotsWrap.appendChild(d);
-      })(i);
-    }
-  }
-
-  function updateDots(){
-    dotsWrap.querySelectorAll('.testi-dot').forEach(function(d,i){
-      d.classList.toggle('active',i===current);
-    });
-  }
-
-  function goTo(idx){
-    var max=total-visibleCount();
-    current=Math.max(0,Math.min(idx,max));
-    track.style.transform='translateX(-'+(current*slideWidth())+'px)';
-    updateDots();
-    resetProgress();
-  }
-
-  function resetProgress(){
-    clearInterval(progTimer);
-    progVal=0;
-    if(progFill) progFill.style.width='0%';
-    progTimer=setInterval(function(){
-      progVal+=100/(AUTO_MS/80);
-      if(progVal>=100){progVal=100;clearInterval(progTimer);}
-      if(progFill) progFill.style.width=progVal+'%';
-    },80);
-  }
-
-  function startAuto(){
-    clearInterval(autoTimer);
-    autoTimer=setInterval(function(){
-      var max=total-visibleCount();
-      goTo(current<max?current+1:0);
-    },AUTO_MS);
-  }
-  function stopAuto(){clearInterval(autoTimer);clearInterval(progTimer);}
-
-  prevBtn.addEventListener('click',function(){stopAuto();goTo(current-1);startAuto();});
-  nextBtn.addEventListener('click',function(){stopAuto();goTo(current+1);startAuto();});
-
-  /* Touch / swipe */
-  var touchX=0;
-  track.addEventListener('touchstart',function(e){touchX=e.touches[0].clientX;stopAuto();},{passive:true});
-  track.addEventListener('touchend',function(e){
-    var diff=touchX-e.changedTouches[0].clientX;
-    if(Math.abs(diff)>40) goTo(diff>0?current+1:current-1);
-    startAuto();
-  });
-
-  /* Pause on hover */
-  track.parentElement.addEventListener('mouseenter',stopAuto);
-  track.parentElement.addEventListener('mouseleave',startAuto);
-
-  /* Resize */
-  window.addEventListener('resize',function(){recalcSlides();buildDots();goTo(current);});
-
-  /* Init */
-  recalcSlides();
-  buildDots();
-  resetProgress();
-  startAuto();
-})();
-
 /* ── Team Slider ─────────────────────────────────────── */
 (function(){
   var track   = document.getElementById('team-track');
