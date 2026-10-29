@@ -1,10 +1,16 @@
 # Security headers — applied to every response
+# Note on CSP: this site is hand-authored HTML with pervasive inline style="" and
+# onclick="" attributes (no build step), so 'unsafe-inline' is required for script-src
+# and style-src or the entire site breaks. The policy below still restricts which
+# external origins can load scripts/frames/connections/fonts/images to only the
+# ones actually used by the site.
 /*
   X-Frame-Options: SAMEORIGIN
   X-Content-Type-Options: nosniff
   Referrer-Policy: strict-origin-when-cross-origin
   Permissions-Policy: camera=(), microphone=(), geolocation=()
   Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
+  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://www.googletagmanager.com https://script.google.com https://www.google-analytics.com https://analytics.google.com; frame-src https://www.google.com; base-uri 'self'; form-action 'self' https://script.google.com; object-src 'none'
 
 # These are JS-injected modal fragments, not real pages — keep them out of search results
 /partials/*
