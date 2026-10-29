@@ -1356,19 +1356,21 @@ function enhanceDates(){
       var s=cal.querySelector('.cs-dp-yr.sel'); if(s) s.scrollIntoView({block:'center'});
     }
     function render(){ minD=parseAttr(inp.getAttribute('min')); maxD=parseAttr(inp.getAttribute('max')); if(mode==='years') renderYears(); else renderDays(); }
+    function closeDp(){ dp.classList.remove('open'); dp.dataset.suppressFocus='1'; field.blur(); setTimeout(function(){ delete dp.dataset.suppressFocus; },0); }
+    cal.addEventListener('mousedown',function(e){ e.preventDefault(); });
     cal.addEventListener('click',function(e){
       e.stopPropagation();
-      var closeBtn=e.target.closest('[data-dpclose]'); if(closeBtn){ dp.classList.remove('open'); field.blur(); return; }
+      var closeBtn=e.target.closest('[data-dpclose]'); if(closeBtn){ closeDp(); return; }
       var titleY=e.target.closest('[data-yearview]'); if(titleY){ mode='years'; render(); return; }
       var titleD=e.target.closest('[data-dayview]'); if(titleD){ mode='days'; render(); return; }
       var yr=e.target.closest('.cs-dp-yr'); if(yr&&yr.dataset.yr){ view.setFullYear(parseInt(yr.dataset.yr,10)); mode='days'; render(); return; }
       var nav=e.target.closest('.cs-dp-nav'); if(nav){ if(nav.classList.contains('disabled')) return; view.setMonth(view.getMonth()+parseInt(nav.dataset.d,10)); render(); return; }
-      var act=e.target.closest('[data-act]'); if(act){ if(act.dataset.act==='clear'){ inp.value=''; field.value=''; field.classList.remove('error'); } else { var td=new Date(); if((!minD||td>=minD)&&(!maxD||td<=maxD)){ inp.value=fmt(td); view=new Date(td); view.setDate(1);} } inp.dispatchEvent(new Event('change',{bubbles:true})); refreshField(); render(); if(act.dataset.act!=='clear') dp.classList.remove('open'); return; }
-      var day=e.target.closest('.cs-dp-day'); if(day&&day.dataset.day){ inp.value=fmt(new Date(view.getFullYear(),view.getMonth(),parseInt(day.dataset.day,10))); inp.dispatchEvent(new Event('change',{bubbles:true})); refreshField(); render(); dp.classList.remove('open'); }
+      var act=e.target.closest('[data-act]'); if(act){ if(act.dataset.act==='clear'){ inp.value=''; field.value=''; field.classList.remove('error'); } else { var td=new Date(); if((!minD||td>=minD)&&(!maxD||td<=maxD)){ inp.value=fmt(td); view=new Date(td); view.setDate(1);} } inp.dispatchEvent(new Event('change',{bubbles:true})); refreshField(); render(); if(act.dataset.act!=='clear') closeDp(); return; }
+      var day=e.target.closest('.cs-dp-day'); if(day&&day.dataset.day){ inp.value=fmt(new Date(view.getFullYear(),view.getMonth(),parseInt(day.dataset.day,10))); inp.dispatchEvent(new Event('change',{bubbles:true})); refreshField(); render(); closeDp(); }
     });
     function openCal(){ document.querySelectorAll('.cs-dp.open').forEach(function(x){ if(x!==dp) x.classList.remove('open'); }); if(inp.value){view=new Date(inp.value+'T00:00:00');view.setDate(1);} mode='days'; render(); dp.classList.add('open'); }
     iconBtn.addEventListener('click',function(e){ e.stopPropagation(); if(dp.classList.contains('open')) dp.classList.remove('open'); else openCal(); });
-    field.addEventListener('focus',function(){ openCal(); });
+    field.addEventListener('focus',function(){ if(dp.dataset.suppressFocus) return; openCal(); });
     field.addEventListener('click',function(e){ e.stopPropagation(); });
     // auto-insert the "/" separators as the user types (DD/MM/YYYY)
     field.addEventListener('input',function(e){
