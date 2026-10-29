@@ -1615,7 +1615,7 @@ function enhanceDates(){
     function render(){ minD=parseAttr(inp.getAttribute('min')); maxD=parseAttr(inp.getAttribute('max')); if(mode==='years') renderYears(); else renderDays(); }
     cal.addEventListener('click',function(e){
       e.stopPropagation();
-      var closeBtn=e.target.closest('[data-dpclose]'); if(closeBtn){ dp.classList.remove('open'); return; }
+      var closeBtn=e.target.closest('[data-dpclose]'); if(closeBtn){ dp.classList.remove('open'); field.blur(); return; }
       var titleY=e.target.closest('[data-yearview]'); if(titleY){ mode='years'; render(); return; }
       var titleD=e.target.closest('[data-dayview]'); if(titleD){ mode='days'; render(); return; }
       var yr=e.target.closest('.cs-dp-yr'); if(yr&&yr.dataset.yr){ view.setFullYear(parseInt(yr.dataset.yr,10)); mode='days'; render(); return; }
